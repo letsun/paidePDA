@@ -31,6 +31,10 @@ input[type="text"], input[type="password"], textarea, button {
     padding: 0;
 }
 
+::-webkit-input-placeholder {
+    color: #999;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -102,3 +106,20 @@ body {
 }
 
 @mainColor: #06c1ae;
+
+
+.header {
+    text-align: center;
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 80px;
+    border-bottom: #ccc 1px solid;
+    position: relative;
+
+    .return {
+        position: absolute;
+        top: 0px;
+        left: 30px;
+    }
+}
