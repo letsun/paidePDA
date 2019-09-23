@@ -104,6 +104,7 @@ body {
   line-height: 80px;
   border-bottom: #ccc 1px solid;
   position: relative;
+  letter-spacing: 5px;
 }
 .header .return {
   position: absolute;
@@ -127,4 +128,52 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+}
+.container .search {
+  padding: 20px 0px 20px 30px;
+  border-bottom: 1px #ccc solid;
+  display: flex;
+  position: relative;
+}
+.container .search input {
+  background: #f2f2f2;
+  padding: 10px 30px 10px 60px;
+  font-size: 26px;
+  width: 73%;
+  border-radius: 5px;
+}
+.container .search label {
+  width: 10%;
+  display: block;
+  margin: auto;
+  text-align: center;
+  color: #fe9632;
+  letter-spacing: 2px;
+}
+.container .search img {
+  position: absolute;
+  top: 35px;
+  left: 50px;
+}
+.container .content .content-item {
+  padding: 20px 30px 20px 30px;
+  border-bottom: #ccc 1px solid;
+}
+.container .content .content-item .content-item-header {
+  font-weight: bold;
+  font-size: 26px;
+}
+.container .content .content-item .content-item-con {
+  font-size: 24px;
+}
+.container .content .content-item .content-item-con .con-item {
+  position: relative;
+}
+.container .content .content-item .content-item-con .con-item span {
+  color: #999;
+}
+.container .content .content-item .content-item-con .con-item .con-item-right {
+  position: absolute;
+  top: 0px;
+  right: 40px;
 }
