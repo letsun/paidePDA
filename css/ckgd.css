@@ -96,6 +96,28 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.header {
+  text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 80px;
+  border-bottom: #ccc 1px solid;
+  position: relative;
+}
+.header .return {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+}
+.header .setup {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+.header .setup img {
+  display: block;
+}
 html,
 body {
   width: 100%;

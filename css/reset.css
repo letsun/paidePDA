@@ -110,3 +110,11 @@ body {
   top: 0px;
   left: 30px;
 }
+.header .setup {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+.header .setup img {
+  display: block;
+}
