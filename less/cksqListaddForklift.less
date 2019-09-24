@@ -1,0 +1,125 @@
+@import "reset";
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+
+    .search {
+        padding: 20px 0px 20px 30px;
+        border-bottom: 1px #ccc solid;
+        display: flex;
+        position: relative;
+
+        input {
+            background: #f2f2f2;
+            padding: 10px 30px 10px 60px;
+            font-size: 26px;
+            width: 73%;
+            border-radius: 5px;
+        }
+
+        label {
+            width: 10%;
+            display: block;
+            margin: auto;
+            text-align: center;
+            color: #fe9632;
+            letter-spacing: 2px;
+        }
+
+        img {
+            position: absolute;
+            top: 35px;
+            left: 50px;
+        }
+
+    }
+
+    .content {
+
+
+        .after {
+            box-shadow: 0px 0px 10px 0px #ddd;
+            border-radius: 10px;
+        }
+
+        .content-item {
+            margin: 20px 30px 20px 30px;
+            padding: 20px; 
+            position: relative;
+            border-bottom: 1px #ccc solid;
+
+
+
+            .btn1 {
+                background: linear-gradient(to right,#f9bb04,#f68100);
+                color: #fff;
+            }
+
+            .btn2 {
+               
+                color: #fe9632;
+                border: #fe9632 1px solid;
+            }
+
+
+
+            .content-item-header {
+                font-weight: bold;
+                font-size: 26px;
+                padding-bottom: 10px;
+            }
+
+
+            .content-item-con {
+                font-size: 24px;
+                .con-item{
+                    position: relative;
+                    span {
+                        color: #999;
+                    }
+
+                    .span {
+                        width: 120px;
+                        text-align: right;
+                    }
+
+                    .overflow {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        width: 260px;
+                    }
+
+                    .overflow1 {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        width: 530px;
+                    }
+
+                    .con-item-left {
+                        display: flex;
+                    }
+
+                    .con-item-right {
+                        position: absolute;
+                        top: 0px;
+                        left: 380px; 
+                        display: flex; 
+                    }
+                }
+            }
+
+        }
+    }
+}
