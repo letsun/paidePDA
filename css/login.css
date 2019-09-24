@@ -104,11 +104,20 @@ body {
   line-height: 80px;
   border-bottom: #ccc 1px solid;
   position: relative;
+  letter-spacing: 5px;
 }
 .header .return {
   position: absolute;
   top: 0px;
   left: 30px;
+}
+.header .setup {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+.header .setup img {
+  display: block;
 }
 html,
 body {

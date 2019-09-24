@@ -104,18 +104,13 @@ body {
   line-height: 80px;
   border-bottom: #ccc 1px solid;
   position: relative;
-<<<<<<< HEAD:css/ckgd.css
-=======
   letter-spacing: 5px;
->>>>>>> 05de265d23777e64839b6b70cfe1fa036d2251d3:css/ckgdList.css
 }
 .header .return {
   position: absolute;
   top: 0px;
   left: 30px;
 }
-<<<<<<< HEAD:css/ckgd.css
-=======
 .header .setup {
   position: absolute;
   right: 30px;
@@ -124,7 +119,6 @@ body {
 .header .setup img {
   display: block;
 }
->>>>>>> 05de265d23777e64839b6b70cfe1fa036d2251d3:css/ckgdList.css
 html,
 body {
   width: 100%;
