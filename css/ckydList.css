@@ -177,6 +177,11 @@ body {
   color: #fe9632;
   border: #fe9632 1px solid;
 }
+.container .content .content-item .btn3 {
+  background: #ccc;
+  color: #fff;
+  letter-spacing: 8px;
+}
 .container .content .content-item .content-item-header {
   font-weight: bold;
   font-size: 26px;
@@ -206,8 +211,8 @@ body {
   display: flex;
 }
 .container .content .content-item .content-item-con .con-item .con-item-right {
+  display: flex;
   position: absolute;
   top: 0px;
   left: 430px;
-  display: flex;
 }
