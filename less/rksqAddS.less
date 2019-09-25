@@ -19,9 +19,24 @@ body {
 
 		.gd-infor {
 
+
+			.gd-list-item {
+				padding-top: 25px;
+				border-bottom: 1px #ddd solid;
+			}
 			.gd-list {
 				width: 710px;
 				margin: 0 auto;
+
+				position: relative;
+
+				.gd-minus {
+					position: absolute;
+					right: -30px;
+					top: -10px;
+					z-index: 9;
+					margin: 20px;
+				}
 
 				.gd-item {
 					position: relative;
@@ -64,6 +79,8 @@ body {
 						bottom: 0;
 						margin: auto;
 					}
+
+
 
 					.gd-color {
 						color: orange;
@@ -122,7 +139,7 @@ body {
 
 						flex: 1;
 
-						padding: 14px 0;
+						padding: 19px 0;
 						margin-left: 6px;
 
 						font-size: 26px;
@@ -185,11 +202,11 @@ body {
 		}
 
 		.yd-list {
-			display: none;
+			
 
 			width: 710px;
 			margin:0 auto;
-			padding: 20px 0 40px 0;
+			padding: 20px 0 0px 0;
 
 			.yd-item {
 				padding: 0;
@@ -200,10 +217,10 @@ body {
 				.yd-con {
 					padding: 14px 0;
 
-					background: #f3f3f3;
+					background: #fff;
 
 					&:last-child {
-						background: #fff;
+						background: #f3f3f3;
 					}
 
 					.yd-child-item {
@@ -256,6 +273,15 @@ body {
 						}
 					}
 				}
+			}
+		}
+
+		.gd-add {
+			
+			.gd-add-img {
+				display: block;
+				margin: auto;
+				margin-right: 20px;
 			}
 		}
 

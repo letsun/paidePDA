@@ -131,9 +131,21 @@ body {
   position: relative;
   padding-top: 40px;
 }
+.container .content .gd-infor .gd-list-item {
+  padding-top: 25px;
+  border-bottom: 1px #ddd solid;
+}
 .container .content .gd-infor .gd-list {
   width: 710px;
   margin: 0 auto;
+  position: relative;
+}
+.container .content .gd-infor .gd-list .gd-minus {
+  position: absolute;
+  right: -30px;
+  top: -10px;
+  z-index: 9;
+  margin: 20px;
 }
 .container .content .gd-infor .gd-list .gd-item {
   position: relative;
@@ -209,7 +221,7 @@ body {
 .container .content .gd-infor .gd-list .last-gd-item .gd-right {
   position: relative;
   flex: 1;
-  padding: 14px 0;
+  padding: 19px 0;
   margin-left: 6px;
   font-size: 26px;
 }
@@ -258,10 +270,9 @@ body {
   margin: 50px 80px 20px 80px;
 }
 .container .content .yd-list {
-  display: none;
   width: 710px;
   margin: 0 auto;
-  padding: 20px 0 40px 0;
+  padding: 20px 0 0px 0;
 }
 .container .content .yd-list .yd-item {
   padding: 0;
@@ -270,10 +281,10 @@ body {
 }
 .container .content .yd-list .yd-item .yd-con {
   padding: 14px 0;
-  background: #f3f3f3;
+  background: #fff;
 }
 .container .content .yd-list .yd-item .yd-con:last-child {
-  background: #fff;
+  background: #f3f3f3;
 }
 .container .content .yd-list .yd-item .yd-con .yd-child-item {
   padding: 6px 30px;
@@ -315,6 +326,11 @@ body {
 .container .content .yd-list .yd-item .yd-con .yd-child-item .double-find .yd-child-val {
   flex: 1;
   color: #333;
+}
+.container .content .gd-add .gd-add-img {
+  display: block;
+  margin: auto;
+  margin-right: 20px;
 }
 .container .preview-win {
   position: fixed;
