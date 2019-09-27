@@ -347,3 +347,31 @@ var Global = {};
 
 })(jQuery);
 
+/*ajax请求方法
+* type   类型
+* url   接口url
+* data 数据
+* callbackSuc  成功回调
+* callbackErr  失败回调
+*
+*
+* */
+function getData (type,url,data,callbackSuc,callbackErr) {
+    $.ajax({
+        type: type,
+        url: url,
+        data: data,
+        dataType: "json",
+		header: {
+            Authorization: '1111',
+		},
+        success: function (res) {
+            callbackSuc(res);
+        },
+        error: function (res) {
+            callbackErr(res);
+        }
+    });
+}
+
+
