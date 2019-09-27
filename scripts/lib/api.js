@@ -1,4 +1,4 @@
-var ip = '';
+var ip = 'http://192.168.1.20:8888';
 
 var api = {
     rkgd: {
@@ -21,6 +21,12 @@ var api = {
         findApplyMainDetail: '/admin/storageFactoryForecastMain/api/findApplyMainDetail',     // 入库申请详情
         saveStorageFactoryApplyMain: '/admin/storageFactoryForecastMain/api/saveStorageFactoryApplyMain',     // 新增入库单保存
         findDetailById: '/admin/storageFactoryForecastMain/api/findDetailById',     // 新增入库申请预报明细接口
+    },
+    rkybt: {
+        findPageApi: ip + '/api/pda/storageFactoryForecastMain/findPageApi',     // 入库预报列表
+        findApplyMainDetail: ip + '/api/pda/storageFactoryForecastMain/findApplyMainDetail',     // 入库申请详情
+        saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryForecastMain/saveStorageFactoryApplyMain',     // 新增入库单保存
+        findDetailById: ip + '/api/pda/storageFactoryForecastMain/findDetailById',     // 新增入库申请预报明细接口
     },
     ckgd: {
         findPageApi: '/admin/outWorkOrderMain/api/findPageApi',     // 出库工单列表

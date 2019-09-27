@@ -369,7 +369,10 @@ function getData (type,url,data,callbackSuc,callbackErr) {
             callbackSuc(res);
         },
         error: function (res) {
-            callbackErr(res);
+            common.alert({
+                mask: true,
+                content: res.msg
+            })
         }
     });
 }

@@ -1,0 +1,71 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+    <div class="content-item" data-id="<%- result.list[i].id %>">
+        <div class="content-item-btn btn1">
+            新增申请
+        </div>
+
+        <div class="content-item-header">
+            <%- result.list[i].productName %>
+        </div>
+
+        <div class="content-item-con">
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span>生产批次：</span>
+                    <div class="overflow"><%- result.list[i].produceBatchNo %></div>
+                </div>
+            </div>
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span>预报数量：</span>
+                    <div><%- result.list[i].totalQuantity %></div>
+                </div>
+                <div class="con-item-right">
+                    <span>预报重量(吨)：</span>
+                    <div><%- result.list[i].totalWeight %></div>
+                </div>
+            </div>
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span>生产日期：</span>
+                    <div><%- result.list[i].produceTime %></div>
+                </div>
+            </div>
+
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span>包装规格：</span>
+                    <div><%- result.list[i].specification %></div>
+                </div>
+                <div class="con-item-right">
+                    <span>产品单位：</span>
+                    <div><%- result.list[i].unit %></div>
+                </div>
+            </div>
+
+
+
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span>产品榨季：</span>
+                    <div><%- result.list[i].zhaji %></div>
+                </div>
+                <div class="con-item-right">
+                    <span>产品等级：</span>
+                    <div><%- result.list[i].productLevel %></div>
+                </div>
+            </div>
+
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span>产品大类：</span>
+                    <div><%- result.list[i].productType %></div>
+                </div>
+                <div class="con-item-right">
+                    <span>产品品牌：</span>
+                    <div><%- result.list[i].productBrand %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>

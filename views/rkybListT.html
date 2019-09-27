@@ -8,10 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
     <link rel="stylesheet" href="../css/rkybListT.css">
-
-    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-
-    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
 </head>
 
 <body>
@@ -25,157 +21,16 @@
         </div>
 
         <div class="search">
-            <input type="text" placeholder="输入产品名称搜索"> <label>搜索</label>
+            <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
 
             <img src="../img/1_28.png">
         </div>
 
 
         <div class="content">
-            <div class="scroll-wra" id="scrollWra" style="overflow: hidden; height:400px;">
+            <div class="scroll-wra" id="scrollWra">
                 <div class="wrapper">
-                    <div class="list">
-
-                        <div class="content-item">
-                            <div class="content-item-btn btn1">
-                                新增申请
-                            </div>
-
-                            <div class="content-item-header">
-                                华糖牌白砂糖
-                            </div>
-
-                            <div class="content-item-con">
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>生产批次：</span>
-                                        <div class="overflow">20190708551555</div>
-                                    </div>
-                                </div>
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>预报数量：</span>
-                                        <div>600</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>预报重量(吨)：</span>
-                                        <div>30.00</div>
-                                    </div>
-                                </div>
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>生产日期：</span>
-                                        <div>2019-09-08</div>
-                                    </div>
-                                </div>
-
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>包装规格：</span>
-                                        <div>250KG/包</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>产品单位：</span>
-                                        <div>包</div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>产品榨季：</span>
-                                        <div>2019/20</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>产品等级：</span>
-                                        <div>一级</div>
-                                    </div>
-                                </div>
-
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>产品大类：</span>
-                                        <div>白糖类</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>产品品牌：</span>
-                                        <div>华糖牌</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-item">
-                            <div class="content-item-btn btn1">
-                                新增申请
-                            </div>
-
-                            <div class="content-item-header">
-                                华糖牌白砂糖
-                            </div>
-
-                            <div class="content-item-con">
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>生产批次：</span>
-                                        <div class="overflow">20190708551555</div>
-                                    </div>
-                                </div>
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>预报数量：</span>
-                                        <div>600</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>预报重量(吨)：</span>
-                                        <div>30.00</div>
-                                    </div>
-                                </div>
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>生产日期：</span>
-                                        <div>2019-09-08</div>
-                                    </div>
-                                </div>
-
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>包装规格：</span>
-                                        <div>250KG/包</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>产品单位：</span>
-                                        <div>包</div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>产品榨季：</span>
-                                        <div>2019/20</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>产品等级：</span>
-                                        <div>一级</div>
-                                    </div>
-                                </div>
-
-                                <div class="con-item">
-                                    <div class="con-item-left">
-                                        <span>产品大类：</span>
-                                        <div>白糖类</div>
-                                    </div>
-                                    <div class="con-item-right">
-                                        <span>产品品牌：</span>
-                                        <div>华糖牌</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <div class="list" id="list"></div>
 
                     <div class="loadText">上滑加载更多</div>
                 </div>
@@ -184,7 +39,12 @@
 
     </div>
 
-
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
     <script>
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
@@ -196,37 +56,97 @@
             }
         });
 
-        var hasNext = true;     // 是否有下一页;
+        var productName = '';
+
+        var totalPage = 1;     // 总页数;
         var page = 1;          // 第一页;
         var html = '';
 
+        getData('GET',api.rkybt.findPageApi,{
+            accountId: accountId,
+            pageNo: page,
+            pageSize: 10,
+            productName: productName,
+        },function (res) {
+            if (res.code == 200) {
+                if (res.data.list.length > 0) {
+                    totalPage = res.data.totalPage;
+                    var data = res.data.list;
+                    renderData(data);
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
         scrollWra.on('pullingUp', function () {
-            if (!hasNext) {
+            if (totalPage == page) {
                 $('.loadText').text('没有更多数据了');
                 return false;
             }
 
             page++;
+            getData('GET',api.rkybt.findPageApi,{
+                accountId: accountId,
+                pageNo: page,
+                pageSize: 10,
+                productName: productName,
+            },function (res) {
+                if (res.code == 200) {
+                    if (res.data.list.length > 0) {
+                        totalPage = res.data.totalPage;
+                        var data = res.data.list;
+                        renderData(data);
+                    } else {
+                        $('.loadText').text('暂无数据');
+                    }
+                }
+            });
 
+        });
+
+
+        function renderData(data) {
             $('.loadText').text('正在加载中...');
+            Global.requestTempByAjax('../temp/rkyb/list.html', {list:data}, function(template) {
+                $('#list').append(template);
+                scrollWra.finishPullUp();
+                scrollWra.refresh();
+                $('.loadText').text('上滑加载更多...');
+            });
+        }
 
-            if (page == 5) {
-                hasNext = false;
-            }
 
-            // 请求后台接口获取数据
-
-            for (var i = 0; i < 6; i++) {
-                html += '<div class="item">' + i + '</div>';
-            }
-            $('.loadText').text('上滑加载更多');
-            $('.list').append(html);
-            scrollWra.finishPullUp();
-            scrollWra.refresh();
-        });    
+        // 点击搜索
+        $('#scarchBtn').on('click',function () {
+            page = 1;
+            $('#list').html('');
+            productName = $('#productName').val();
+            getData('GET',api.rkybt.findPageApi,{
+                accountId: accountId,
+                pageNo: page,
+                pageSize: 10,
+                productName: productName,
+            },function (res) {
+                if (res.code == 200) {
+                    if (res.data.list.length > 0) {
+                        totalPage = res.data.totalPage;
+                        var data = res.data.list;
+                        renderData(data);
+                    } else {
+                        $('.loadText').text('暂无数据');
+                    }
+                }
+            });
+        });
+        
+        
+        // 点击进入详情
+        $('.container').on('click','.content-item',function () {
+            var id = $(this).attr('data-id');
+            window.location.href = './rkybDetailT.html?id=' + id;
+        })
     </script>
-
-
 </body>
 
 </html>
