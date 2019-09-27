@@ -6,9 +6,9 @@ var api = {
         findDetail: '/admin/storageWorkOrderMain/api/findDetail',     // 入库工单详情
     },
     rksq: {
-        findPageApi: '/admin/storageFactoryApplyMain/api/findPageApi',     // 入库申请单列表
-        findApplyMainDetail: '/admin/storageFactoryApplyMain/api/findApplyMainDetail',     // 入库申请单详情
-        saveStorageFactoryApplyMain: '/admin/storageFactoryApplyMain/api/saveStorageFactoryApplyMain',     // 入库申请单保存
+        findPageApi: ip + '/api/pda/storageFactoryApplyMain/findPageApi',     // 入库申请单列表
+        findApplyMainDetail: ip + '/admin/storageFactoryApplyMain/api/findApplyMainDetail',     // 入库申请单详情
+        saveStorageFactoryApplyMain: ip + '/admin/storageFactoryApplyMain/api/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: '/admin/storageFactoryApplyMain/api/saveStorageFactoryWaybillMain',     // 入库运单保存
     },
     rkyds: {

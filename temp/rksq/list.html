@@ -1,0 +1,77 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="content-item" data-id="<%- result.list[i].id %>">
+    <!-- 新增运单 -->
+
+ 
+
+
+    <% if (result.list[i].status == 1) { %>
+
+        <div class="content-item-btn btn1">
+            新增运单
+        </div>
+
+    <% } %>
+
+    <% if (result.list[i].status == 0) { %>
+
+            <div class="content-item-btn btn2">
+            编辑
+        </div>
+    <% } %>
+
+
+
+    <!-- 编号 -->
+    <div class="content-item-header">
+        <%- result.list[i].applyNo %>
+    </div>
+
+    <div class="content-item-con">
+        <div class="con-item">
+
+            <div class="con-item-left">
+
+                <span>申请时间：</span>
+                <div><%- result.list[i].applyTime %></div>
+            </div>
+        </div>
+        <div class="con-item">
+
+            <div class="con-item-left">
+
+                <span>申请数量：</span>
+                <div><%- result.list[i].totalQuantity %></div>
+            </div>
+            <div class="con-item-right">
+                <span>申请库存(吨)：</span>
+                <div><%- result.list[i].totalWeight %></div>
+            </div>
+        </div>
+
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>产品名称：</span>
+                <div><%- result.list[i].productName %></div>
+            </div>
+        </div>
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>产品等级：</span>
+                <div><%- result.list[i].productLevel %></div>
+            </div>
+        </div>
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>产品大类：</span>
+                <div><%- result.list[i].productType %></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<% } %>
