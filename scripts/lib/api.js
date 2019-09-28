@@ -6,7 +6,7 @@ var api = {
         findDetail: ip + '/api/pda/storageWorkOrderMain/api/findDetail',     // 入库工单详情
     },
     rksq: {
-        findPageApi: ip + '/api/pda/storageFactoryApplyMain/api/findPageApi',     // 入库申请单列表
+        findPageApi: ip + '/api/pda/storageFactoryApplyMain/findPageApi',     // 入库申请单列表
         findApplyMainDetail: ip + '/api/pda/storageFactoryApplyMain/api/findApplyMainDetail',     // 入库申请单详情
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/api/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/api/saveStorageFactoryWaybillMain',     // 入库运单保存
@@ -48,10 +48,10 @@ var api = {
         findPageApi: ip + '/api/pda/baseProduct/api/findPageApi',     // 商品列表查询
     },
     yq: {
-        findList: ip + '/api/pda/baseWarehouse/findList',     // 查询库房
-        index: ip + '/pda/park/index',     // 园区排队信息总览
-        findList2: ip + '/api/pda/basePark/findList',     // 查询园区
-        findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
+        findList: ip + '/api/pda/baseWarehouse/api/findList',     // 仓库
+        index: '/pda/park/index',     // 园区排队信息总览
+        findList2: ip + '/api/pda/basePark/api/findList',     // 查询园区
+        findList3: ip + '/api/pda/baseWarehouseArea/api/findList',     // 查询库区
         findList4: ip + '/api/pda/baseServiceTeam/api/findList',     // 查询装卸队伍
     },
 };

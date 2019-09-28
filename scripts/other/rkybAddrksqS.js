@@ -187,18 +187,18 @@ $(function () {
 
         html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
-        html += '<div class="gd-item storeroomText">';
+        html += '<div class="gd-item showStoreroom">';
         html += '<div class="gd-key">所属库房</div>';
-        html += '<div class="gd-val"></div>';
+        html += '<div class="gd-val storeroomText"></div>';
 
-        html += '<img class="gd-img showStoreroom" src="../img/1_34.png" >';
+        html += '<img class="gd-img " src="../img/1_34.png" >';
         html += '</div>';
 
-        html += '<div class="gd-item reservoirAreaText">';
+        html += '<div class="gd-item  showReservoirArea">';
         html += '<div class="gd-key">所属库区</div>';
-        html += '<div class="gd-val"></div>';
+        html += '<div class="gd-val reservoirAreaText"></div>';
 
-        html += '<img class="gd-img showReservoirArea" src="../img/1_34.png" >';
+        html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
         html += '</div>';
 
