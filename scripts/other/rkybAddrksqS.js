@@ -312,7 +312,18 @@ $(function () {
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
-
+                common.alert({
+                    mask: true,
+                    content: '提交成功',
+                    ok:function () {
+                        location.reload();
+                    }
+                })
+            } else {
+                common.alert({
+                    mask: true,
+                    content: res.msg,
+                })
             }
         });
     })
