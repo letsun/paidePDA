@@ -30,7 +30,7 @@
                     </div>
                     <div class="gd-item">
                         <div class="gd-key">工作班次</div>
-                        <input type="text" class="gd-val" id="teamName">
+                        <input type="text" class="gd-val" id="teamName" data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}">
                     </div>
 
 
@@ -132,23 +132,23 @@
                 <div class="gd-list gd-list-item" data-applicationId="0">
                     <div class="gd-item">
                         <div class="gd-key">申请库存(吨)</div>
-                        <input type="text" class="gd-val inStock">
+                        <input type="text" class="gd-val inStock" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
                     </div>
                     <div class="gd-item showPark">
                         <div class="gd-key">所属园区</div>
-                        <div class="gd-val parkText"></div>
+                        <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
                     <div class="gd-item showStoreroom">
                         <div class="gd-key">所属库房</div>
-                        <div class="gd-val storeroomText"></div>
+                        <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>
 
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
 
                     <div class="gd-item showReservoirArea">
                         <div class="gd-key">所属库区</div>
-                        <div class="gd-val reservoirAreaText"></div>
+                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
                 </div>
@@ -183,6 +183,7 @@
     <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
     <script src="../scripts/other/rkybAddrksqS.js"></script>
