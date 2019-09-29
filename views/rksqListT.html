@@ -7,7 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rksqList.css">
+    <link rel="stylesheet" href="../css/rksqListT.css">
 
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
 </head>
@@ -65,7 +65,7 @@
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET',api.rksq.findPageApi,{
+        getData('GET',api.rksqT.findPageApi,{
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -89,7 +89,7 @@
             }
 
             page++;
-            getData('GET',api.rksq.findPageApi,{
+            getData('GET',api.rksqT.findPageApi,{
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
@@ -125,7 +125,7 @@
             page = 1;
             $('#list').html('');
             applyNo = $('#applyNo').val();
-            getData('GET',api.rksq.findPageApi,{
+            getData('GET',api.rksqT.findPageApi,{
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,

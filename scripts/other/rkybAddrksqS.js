@@ -326,5 +326,40 @@ $(function () {
                 })
             }
         });
+
+        /*var data2 = {
+            id: id,
+            applyNo: applyNo,
+            remarks: remark,
+            teamName: teamName,
+            storageFactoryApplyItemList: [{
+                applyWeight: '11',
+                parkId: '11',
+                warehouseId: '11',
+                warehouseAreaId: '11',
+            }],
+        };
+
+
+        $.ajax({
+            type: 'POST',
+            url: api.rkybt.saveStorageFactoryApplyMain,
+            data: {
+                jsonData: JSON.stringify(data2),
+            },
+            dataType: "json",
+            header: {
+                Authorization: '1111',
+            },
+            success: function (res) {
+                callbackSuc(res);
+            },
+            error: function (res) {
+                common.alert({
+                    mask: true,
+                    content: res.msg
+                })
+            }
+        });*/
     })
 });

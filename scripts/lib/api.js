@@ -5,11 +5,16 @@ var api = {
         findPageApi: ip + '/api/pda/storageWorkOrderMain/findPageApi',     // 入库工单列表
         findDetail: ip + '/api/pda/storageWorkOrderMain/findDetail',     // 入库工单详情
     },
-    rksq: {
+    rksqT: {
         findPageApi: ip + '/api/pda/storageFactoryApplyMain/findPageApi',     // 入库申请单列表
-        findApplyMainDetail: ip + '/api/pda/storageFactoryApplyMain/api/findApplyMainDetail',     // 入库申请单详情
-        saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/api/saveStorageFactoryApplyMain',     // 入库申请单保存
-        saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/api/saveStorageFactoryWaybillMain',     // 入库运单保存
+        findApplyMainDetail: ip + '/api/pda/storageFactoryApplyMain/findApplyMainDetail',     // 入库申请单详情
+        saveStorageFactoryApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
+        saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
+    },
+    rksqS: {
+        findPageApi: ip + '/api/pda/storageWarehouseApplyMain/findPageApi',     // 入库申请单列表
+        findApplyMainDetail: ip + '/api/pda/storageWarehouseApplyMain/findApplyMainDetail',     // 入库申请单详情
+        saveStorageFactoryApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
     },
     rkyds: {
         findPageApi: ip + '/api/pda/storageFactoryWaybillMain/findPageApi',     // 入库运单列表
