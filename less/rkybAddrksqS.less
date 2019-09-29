@@ -35,7 +35,7 @@ body {
 					right: -30px;
 					top: -10px;
 					z-index: 9;
-					margin: 20px;
+					padding: 20px;
 				}
 
 				.gd-item {
@@ -219,10 +219,6 @@ body {
 
 					background: #fff;
 
-					&:last-child {
-						background: #f3f3f3;
-					}
-
 					.yd-child-item {
 						padding: 6px 30px;
 
@@ -324,7 +320,9 @@ body {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: rgba(0,0,0,.6) ;
+		z-index: 99;
+
+		background: rgba(0,0,0,.6);
 
 		display: none;
 
@@ -333,6 +331,8 @@ body {
 			bottom: 0px;
 			left: 0;
 			right: 0px;
+
+			display: none;
 
 			font-size: 28px;
 			background: #fff;
@@ -352,6 +352,11 @@ body {
 
 			.after {
 				background: #ff8500;
+				color: #fff;
+			}
+
+			.disabled {
+				background: #999;
 				color: #fff;
 			}
 		}

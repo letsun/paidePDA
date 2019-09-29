@@ -100,13 +100,12 @@ var Global = {};
 		var validate = null;
 		var validField = null; // 需要验证的表单域的JQ对象
 		var element = $(element);
-		var validateDom = 'select[data-validateInfor],textarea[data-validateInfor],input[data-validateInfor]'
+		var validateDom = 'div[data-validateInfor],select[data-validateInfor],textarea[data-validateInfor],input[data-validateInfor]';
 		validate = new Validate();
 		validField = element.find(validateDom);
 
 		// 循环需要验证的字段
 		for (var i = 0, len = validField.length; i < len; i++) {
-
 			var valideArr = $(validField[i]).attr('data-validateInfor').split('|');
 			var valideRes = [];
 
@@ -140,11 +139,6 @@ var Global = {};
 				return true;
 			}
 		} else if (typeof msg !== 'undefined') {
-
-			// 弹出验证信息
-			/*layui.layer.msg(msg);*/
-
-			// layui.layer.msg(msg, {icon: 5,anim: 6});
 			common.alert({
                 mask: true,
 				content: msg
@@ -153,7 +147,7 @@ var Global = {};
 		}
 
 		return true;
-	}
+	};
 
 	/**
 	 * 获取指定容器的所有字段数据

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/rkybAddrksqS.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="return"> <img src="../img/1_40.png"></div>
+            新增入库申请
+        </div>
+
+        <div class="content">
+
+            <!--工单信息-->
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">申请单号</div>
+                        <input type="text" id="applyNo" class="gd-val">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">工作班次</div>
+                        <input type="text" class="gd-val" id="teamName" data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}">
+                    </div>
+
+
+                    <div class="gd-item last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remark"></textarea>
+                        </div>
+                    </div>
+                    <div class="gd-item last-gd-item">
+                        <div class="gd-left">附件：</div>
+
+                        <div class="gd-right1">
+                            <img src="../img/1_32.png">
+                        </div>
+                        <!-- <div class="gd-right">
+                            <img class="preview-img" src="../img/1_100.png" alt="">
+                            <div class="preview-btn" id="preview-btn">(点击查看大图)</div>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--申请明细-->
+            <div class="yd-list" id="yd-list">
+                <div class="yd-item">
+                    <div class="yd-con">
+                        <div class="yd-child-item">
+                            <div class="yd-child-dec">
+                                <div class="yd-child-key">产品名称：</div>
+                                <div class="yd-child-val" id="productName"></div>
+                            </div>
+                        </div>
+                        <div class="yd-child-item double-find">
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">预报数量：</div>
+                                <div class="yd-child-val" id="totalQuantity"></div>
+                            </div>
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">预报重量(吨)：</div>
+                                <div class="yd-child-val" id="totalWeight"></div>
+                            </div>
+                        </div>
+                        <div class="yd-child-item">
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">生产批次：</div>
+                                <div class="yd-child-val" id="produceBatchNo"></div>
+                            </div>
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">生产日期：</div>
+                                <div class="yd-child-val" id="produceTime"></div>
+                            </div>
+                        </div>
+                        <div class="yd-child-item">
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">包装规格：</div>
+                                <div class="yd-child-val" id="specification"></div>
+                            </div>
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">产品单位：</div>
+                                <div class="yd-child-val" id="unit"></div>
+                            </div>
+                        </div>
+                        <div class="yd-child-item">
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">产品等级：</div>
+                                <div class="yd-child-val" id="productLevel"></div>
+                            </div>
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">产品榨季：</div>
+                                <div class="yd-child-val" id="zhaji"></div>
+                            </div>
+                        </div>
+                        <div class="yd-child-item">
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">产品大类：</div>
+                                <div class="yd-child-val" id="productType"></div>
+                            </div>
+                            <div class="yd-child-dec double-find">
+                                <div class="yd-child-key">产品品牌：</div>
+                                <div class="yd-child-val" id="productBrand"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- 添加库区 -->
+
+            <div class="gd-add">
+                <img class="gd-add-img" src="../img/1_33.png">
+            </div>
+
+            <div class="gd-infor" id='gd-infor'>
+                <div class="gd-list gd-list-item" data-applicationId="0">
+                    <div class="gd-item">
+                        <div class="gd-key">申请库存(吨)</div>
+                        <input type="text" class="gd-val inStock" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
+                    </div>
+                    <div class="gd-item showPark">
+                        <div class="gd-key">所属园区</div>
+                        <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item showStoreroom">
+                        <div class="gd-key">所属库房</div>
+                        <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>
+
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+
+                    <div class="gd-item showReservoirArea">
+                        <div class="gd-key">所属库区</div>
+                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 保存工单 -->
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+        </div>
+
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+        <div class="mask">
+            <div class="maskcon maskcon1">
+
+            </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+            <div class="maskcon maskcon3">
+
+            </div>
+        </div>
+
+    </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script src="../scripts/other/rkybAddrksqS.js"></script>
+</body>
+
+</html>
