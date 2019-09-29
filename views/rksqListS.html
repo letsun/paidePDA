@@ -25,7 +25,7 @@
         </div>
 
         <div class="search">
-            <input type="text" id ="applyNo" placeholder="输入出库单号/装卸队伍搜索"> <label id ="scarchBtn">搜索</label>
+            <input type="text" id="applyNo" placeholder="输入申请单号搜索"> <label id="scarchBtn">搜索</label>
 
             <img src="../img/1_28.png">
         </div>
@@ -70,7 +70,7 @@
             pageNo: page,
             pageSize: 10,
             applyNo: applyNo,
-        },function (res) {
+        }, function (res) {
             if (res.code == 200) {
                 if (res.data.list.length > 0) {
                     totalPage = res.data.totalPage;
@@ -89,12 +89,12 @@
             }
 
             page++;
-            getData('GET',api.rksq.findPageApi,{
+            getData('GET', api.rksqS.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
                 applyNo: applyNo,
-            },function (res) {
+            }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
                         totalPage = res.data.totalPage;
@@ -111,7 +111,17 @@
 
         function renderData(data) {
             $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rksq/list.html', {list:data}, function(template) {
+            Global.requestTempByAjax('../temp/rksq/list.html', { list: data }, function (template) {
+                $('#list').append(template);
+                scrollWra.finishPullUp();
+                scrollWra.refresh();
+                $('.loadText').text('上滑加载更多...');
+            });
+
+        }
+        function renderData(data) {
+            $('.loadText').text('正在加载中...');
+            Global.requestTempByAjax('../temp/rksq/list.html', { list: data }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
@@ -121,16 +131,17 @@
 
 
         // 点击搜索
-        $('#scarchBtn').on('click',function () {
+        $('#scarchBtn').on('click', function(){
+
             page = 1;
             $('#list').html('');
             applyNo = $('#applyNo').val();
-            getData('GET',api.rksq.findPageApi,{
+            getData('GET', api.rksq.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
                 applyNo: applyNo,
-            },function (res) {
+            }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
                         totalPage = res.data.totalPage;
@@ -139,13 +150,13 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
-
-                    if (res.data.pageNo == res.data.totalPage) {
-                        $('.loadText').text('没有更多数据了');
-                    }
                 }
-            });
-        });
+            })
+
+        })
+
+         
+        
 
 
         // 点击进入详情
@@ -159,6 +170,7 @@
         $('.container').on('click','.content-item-btn',function (e) {
             e.stopPropagation();
         });
+
     </script>
 </body>
 

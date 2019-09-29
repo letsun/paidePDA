@@ -45,7 +45,32 @@ body {
     }
 
     .content {
-       
+        position: absolute;
+        left: 0;
+        top: 177px;
+        bottom: 0;
+        z-index: 1;
+        right: 0;
+
+        
+        .scroll-wra {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            .loadText {
+                display: block;
+
+                width: 100%;
+                padding: 14px 0;
+
+                text-align: center;
+            }
+        }
+        
         .content-item {
             padding: 20px 30px 20px 30px;
             border-bottom: #ccc 1px solid;
