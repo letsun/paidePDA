@@ -1,0 +1,89 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+
+<div class="content-item">
+
+
+    <% if (result.list[i].storageStatus == 0) { %>
+
+    <div class="content-item-btn btn1">
+        新增运单
+    </div>
+
+    <% } %>
+
+    <% if (result.list[i].storageStatus == 1) { %>
+
+    <div class="content-item-btn btn2">
+        编辑
+    </div>
+    <% } %>
+
+
+    <% if (result.list[i].storageStatus == 2) { %>
+
+    <div class="content-item-btn btn3">
+        已入库
+    </div>
+    <% } %>
+
+    <div class="content-item-btn btn1">
+        确认完成
+    </div>
+
+    <div class="content-item-header">
+        OC201907230001
+    </div>
+
+    <div class="content-item-con">
+        <div class="con-item">
+
+            <div class="con-item-left">
+                <span>装卸队伍：</span>
+                <div class="overflow"><%- result.list[i].serviceTeamName %></div>
+            </div>
+        </div>
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>入库数量：</span>
+                <div><%- result.list[i].totalQuantity %></div>
+            </div>
+            <div class="con-item-right">
+                <span>入库重量(吨)：</span>
+                <div><%- result.list[i].totalWeight %></div>
+            </div>
+        </div>
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>货主名称：</span>
+                <div class="overflow1"><%- result.list[i].companyName %></div>
+            </div>
+        </div>
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>产品名称：</span>
+                <div><%- result.list[i].productName %></div>
+            </div>
+        </div>
+
+
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>产品等级：</span>
+                <div><%- result.list[i].productLevel %></div>
+            </div>
+
+        </div>
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>产品大类：</span>
+                <div><%- result.list[i].productType %></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% } %>

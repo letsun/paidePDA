@@ -25,7 +25,7 @@
         </div>
 
         <div class="search">
-            <input type="text" id ="applyNo" placeholder="输入出库单号/装卸队伍搜索"> <label id ="scarchBtn">搜索</label>
+            <input type="text" id ="applyNo" placeholder="输入申请单号搜索"> <label id ="scarchBtn">搜索</label>
 
             <img src="../img/1_28.png">
         </div>
@@ -143,9 +143,9 @@
                             $('.loadText').text('暂无数据');
                         }
 
-                        if (res.data.pageNo == res.data.totalPage) {
-                            $('.loadText').text('没有更多数据了');
-                        }
+                        // if (res.data.pageNo == res.data.totalPage) {
+                        //     $('.loadText').text('没有更多数据了');
+                        // }
                     }
                 });
             });
@@ -156,7 +156,7 @@
             //     var id = $(this).attr('data-id');
             //     window.location.href = './rkybDetailT.html?id=' + id;
             // })
-        </script>
+    </script>
 </body>
 
 </html>
