@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/rkydListT.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="return"> <img src="../img/1_40.png"></div>
+            入库运单
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="输入出库单号/装卸队伍搜索"> <label id="scarchBtn">搜索</label>
+
+            <img src="../img/1_28.png">
+        </div>
+
+        <div class="content">
+            <div class="scroll-wra" id="scrollWra">
+                <div class="wrapper">
+                    <div class="list" id="list"></div>
+
+                    <div class="loadText">上滑加载更多</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script>
+            var scrollWra = new BScroll('#scrollWra', {
+                scrollbar: {
+                    fade: true
+                },
+                click: true,
+                pullUpLoad: {
+                    threshold: 0
+                }
+            });
+    
+            var storageNo = '';
+    
+            var totalPage = 1;     // 总页数;
+            var page = 1;          // 第一页;
+            var html = '';
+    
+            getData('GET',api.rkydT.findPageApi,{
+                accountId: accountId,
+                pageNo: page,
+                pageSize: 10,
+                storageNo: storageNo,
+            },function (res) {
+                if (res.code == 200) {
+                    if (res.data.list.length > 0) {
+                        totalPage = res.data.totalPage;
+                        var data = res.data.list;
+                        renderData(data);
+                    } else {
+                        $('.loadText').text('暂无数据');
+                    }
+                }
+            });
+    
+            scrollWra.on('pullingUp', function () {
+                if (totalPage == page) {
+                    $('.loadText').text('没有更多数据了');
+                    return false;
+                }
+    
+                page++;
+                getData('GET',api.rkydT.findPageApi,{
+                    accountId: accountId,
+                    pageNo: page,
+                    pageSize: 10,
+                    storageNo: storageNo,
+                },function (res) {
+                    if (res.code == 200) {
+                        if (res.data.list.length > 0) {
+                            totalPage = res.data.totalPage;
+                            var data = res.data.list;
+                            renderData(data);
+                        } else {
+                            $('.loadText').text('暂无数据');
+                        }
+                    }
+                });
+    
+            });
+    
+    
+            function renderData(data) {
+                $('.loadText').text('正在加载中...');
+                Global.requestTempByAjax('../temp/rkyd/list.html', {list:data}, function(template) {
+                    $('#list').append(template);
+                    scrollWra.finishPullUp();
+                    scrollWra.refresh();
+                    $('.loadText').text('上滑加载更多...');
+                });
+            }
+    
+    
+            // 点击搜索
+            $('#scarchBtn').on('click',function () {
+                page = 1;
+                $('#list').html('');
+                storageNo = $('#storageNo').val();
+                getData('GET',api.rkydT.findPageApi,{
+                    accountId: accountId,
+                    pageNo: page,
+                    pageSize: 10,
+                    storageNo: storageNo,
+                },function (res) {
+                    if (res.code == 200) {
+                        if (res.data.list.length > 0) {
+                            totalPage = res.data.totalPage;
+                            var data = res.data.list;
+                            renderData(data);
+                        } else {
+                            $('.loadText').text('暂无数据');
+                        }
+
+                        // if (res.data.pageNo == res.data.totalPage) {
+                        //     $('.loadText').text('没有更多数据了');
+                        // }
+                    }
+                });
+            });
+            
+            
+            /*点击进入详情*/
+            $('.container').on('click','.content-item',function () {
+                var id = $(this).attr('data-id');
+                window.location.href = './rkydDetailT.html?id=' + id;
+            });
+
+
+            // 编辑运单
+            $('.container').on('click','.btn2',function () {
+                var id = $(this).attr('data-id');
+               /* window.location.href = './rkydDetailT.html?id=' + id;*/
+            });
+    </script>
+</body>
+
+</html>

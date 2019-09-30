@@ -19,24 +19,25 @@ $(function () {
     });
 
     // 获取产品信息
-    getData('GET',api.rksqT.findApplyMainDetail,{
+    getData('GET',api.rkydT.findDetail,{
         accountId: accountId,
         id: id,
     },function (res) {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
-            $('#teamName').html(res.data.teamName);
-            $('#applyTime').html(res.data.applyTime);
+            $('#storageNo').html(res.data.storageNo);
+            $('#rentStartTime').html(res.data.rentStartTime);
+            $('#serviceTeamName').html(res.data.serviceTeamName);
+            $('#workType').html(res.data.workType);
+            $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
-            $('#head-state').html();
             if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rksq/sqdmxT.html', {list:res.data.list}, function(template) {
+                Global.requestTempByAjax('../temp/rkyd/sqdmxT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
                 });
             }
         }
 
     });
-
-});
+})

@@ -134,18 +134,6 @@ body {
   position: relative;
   width: 100%;
 }
-.container .head-state {
-  position: absolute;
-  top: 0;
-  right: 20px;
-  z-index: 1;
-  display: block;
-  font-size: 28px;
-  color: #ff8400;
-  line-height: 80px;
-  letter-spacing: 0;
-  font-weight: normal;
-}
 .container .content {
   position: relative;
   padding-top: 40px;
@@ -294,6 +282,69 @@ body {
   width: 320px;
 }
 .container .content .yd-list .yd-item .yd-con .yd-child-item .double-find .yd-child-val {
+  flex: 1;
+  color: #333;
+}
+.container .content .review-wra {
+  padding: 20px 0 40px 0;
+}
+.container .content .review-wra .review-title {
+  padding: 14px 0;
+  color: #ff8400;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+}
+.container .content .review-wra .review-list {
+  width: 710px;
+  margin: 20px auto 0 auto;
+}
+.container .content .review-wra .review-list .review-item {
+  padding: 0;
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+}
+.container .content .review-wra .review-list .review-item .review-child-item {
+  padding: 6px 30px;
+}
+.container .content .review-wra .review-list .review-item .review-child-item:before,
+.container .content .review-wra .review-list .review-item .review-child-item:after {
+  content: " ";
+  display: table;
+}
+.container .content .review-wra .review-list .review-item .review-child-item:after {
+  clear: both;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .review-child-dec {
+  display: flex;
+  float: left;
+  width: 100%;
+  font-size: 24px;
+  line-height: 40px;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .review-child-dec:last-child {
+  margin-left: 8px;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .review-child-dec:first-child {
+  margin-left: 0;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .review-child-dec .review-child-key {
+  color: #999;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .review-child-dec .review-child-val {
+  flex: 1;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .double-find {
+  width: 270px;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .double-find:last-child {
+  width: 370px;
+}
+.container .content .review-wra .review-list .review-item .review-child-item .double-find .review-child-val {
   flex: 1;
   color: #333;
 }

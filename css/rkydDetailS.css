@@ -134,18 +134,6 @@ body {
   position: relative;
   width: 100%;
 }
-.container .head-state {
-  position: absolute;
-  top: 0;
-  right: 20px;
-  z-index: 1;
-  display: block;
-  font-size: 28px;
-  color: #ff8400;
-  line-height: 80px;
-  letter-spacing: 0;
-  font-weight: normal;
-}
 .container .content {
   position: relative;
   padding-top: 40px;
@@ -220,7 +208,16 @@ body {
   margin-left: 6px;
   font-size: 26px;
 }
+.container .content .gd-infor .gd-list .last-gd-item .gd-right:before,
+.container .content .gd-infor .gd-list .last-gd-item .gd-right:after {
+  content: " ";
+  display: table;
+}
+.container .content .gd-infor .gd-list .last-gd-item .gd-right:after {
+  clear: both;
+}
 .container .content .gd-infor .gd-list .last-gd-item .gd-right .preview-img {
+  float: left;
   width: 100px;
   height: 158px;
 }

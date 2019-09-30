@@ -17,6 +17,11 @@ var api = {
         saveStorageFactoryApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
     },
     rkyds: {
+        findPageApi: ip + '/api/pda/storageWarehouseWaybillMain/findPageApi',     // 入库运单列表
+        findDetail: ip + '/api/pda/storageWarehouseWaybillMain/findDetail',     // 入库运单申请详情
+        saveStorageFactoryWaybillMain: ip + '/api/pda/storageWarehouseWaybillMain/saveWaybillMain',     // 入库运单修改保存
+    },
+    rkydT: {
         findPageApi: ip + '/api/pda/storageFactoryWaybillMain/findPageApi',     // 入库运单列表
         findDetail: ip + '/api/pda/storageFactoryWaybillMain/findDetail',     // 入库运单申请详情
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryWaybillMain/saveStorageFactoryWaybillMain',     // 入库运单修改保存
