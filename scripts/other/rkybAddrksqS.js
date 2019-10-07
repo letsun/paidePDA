@@ -3,18 +3,9 @@ $(function () {
 
     var applicationId = 0;
 
-    var parkId = '';
-    var parkText = '';
-
-    var warehouseId = '';
-    var warehouseText = '';
-
-    var warehouseAreaId = '';
-    var warehouseAreaText = '';
-
     var storageFactoryApplyItemList = [];
 
-    var allWarehouseArea = [];
+    var allWarehouseArea = [];      // 已选库区
 
     // 获取产品信息
     getData('GET',api.rkybt.findDetailById,{
@@ -65,13 +56,14 @@ $(function () {
         $('.maskcon2').html('');
         $('.maskcon3').html('');
         $(this).addClass('after').siblings().removeClass('after');
-        parkId = $(this).attr('data-id');
-        parkText = $(this).html();
+        var parkId = $(this).attr('data-id');
+        var parkText = $(this).html();
         $('.gd-list-item').each(function (i,item) {
             var itemId = $(item).attr('data-applicationId');
             if (applicationId == itemId) {
                 $('.gd-list-item').eq(i).find('.parkText').html(parkText).attr('data-parkId',parkId);
                 $('.gd-list-item').eq(i).find('.storeroomText').html('').removeAttr('data-warehouseId');
+                $('.gd-list-item').eq(i).find('.reservoirAreaText').html('').removeAttr('data-warehouseareaId');
                 $('.maskcon').hide();
                 $('.mask').hide();
                 return;
@@ -84,7 +76,7 @@ $(function () {
     // 点击显示库房列表
     $('.container').on('click','.showStoreroom',function () {
         applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        var selfParkId = $(this).parents('.gd-list-item').find('.parkText').attr('data-parkid');
+        var selfParkId = $(this).parents('.gd-list-item').find('.parkText').attr('data-parkId');
         if ($(this).parents('.gd-list-item').find('.parkText').html() != '') {
             // 获取库房列表
             getData('GET',api.yq.findList,{
@@ -116,8 +108,8 @@ $(function () {
     $('.maskcon2').on('click','.maskcon-item',function (e) {
         $('.maskcon3').html('');
         $(this).addClass('after').siblings().removeClass('after');
-        warehouseId = $(this).attr('data-id');
-        warehouseText = $(this).html();
+        var warehouseId = $(this).attr('data-id');
+        var warehouseText = $(this).html();
         $('.gd-list-item').each(function (i,item) {
             var itemId = $(item).attr('data-applicationId');
             if (applicationId == itemId) {
@@ -136,8 +128,7 @@ $(function () {
     // 点击显示库区列表
     $('.container').on('click','.showReservoirArea',function () {
         $('.maskcon3').html('');
-        var self = this;
-        var selfWarehouseId = $(this).parents('.gd-list-item').find('.storeroomText').attr('data-warehouseid');
+        var selfWarehouseId = $(this).parents('.gd-list-item').find('.storeroomText').attr('data-warehouseId');
         applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
         if ($(this).parents('.gd-list-item').find('.storeroomText').html() != '') {
             // 获取库区列表
@@ -172,8 +163,6 @@ $(function () {
                     $('.mask').show();
                 }
             });
-
-            console.log(allWarehouseArea);
         } else {
             common.alert({
                 mask: true,
@@ -187,22 +176,23 @@ $(function () {
         if (!$(this).hasClass('disabled')) {
             var self = $(this);
             $(this).addClass('after').siblings().removeClass('after');
-            warehouseAreaId = $(this).attr('data-id');
-            warehouseAreaText = $(this).html();
+            var warehouseAreaId = $(this).attr('data-id');
+            var warehouseAreaText = $(this).html();
 
             $('.gd-list-item').each(function (i,item) {
                 var itemId = $(item).attr('data-applicationId');
+                debugger
                 if (applicationId == itemId) {
-                    if ($('.gd-list-item').attr('data-warehouseAreaId') != '' && $('.gd-list-item').attr('data-warehouseAreaId') != warehouseAreaId) {
+                    if ($(item).attr('data-warehouseAreaId')) {
                         for (var j = 0; j < allWarehouseArea.length; j++) {
-                            if ($('.gd-list-item').attr('data-warehouseAreaId') == allWarehouseArea[j]) {
+                            if ($(item).attr('data-warehouseAreaId') == allWarehouseArea[j]) {
                                 allWarehouseArea.splice(j,1);
                             }
                         }
                     }
 
                     $('.gd-list-item').eq(i).find('.reservoirAreaText').html(warehouseAreaText).attr('data-warehouseAreaId',warehouseAreaId);
-                    $('.gd-list-item').attr('data-warehouseAreaId',warehouseAreaId);
+                    $('.gd-list-item').eq(i).attr('data-warehouseAreaId',warehouseAreaId);
                     allWarehouseArea.push(warehouseAreaId);
                     $('.maskcon').hide();
                     $('.mask').hide();
@@ -268,7 +258,6 @@ $(function () {
 
     // 点击删除申请记录
     $('.container').on('click','.gd-minus',function () {
-        debugger
         var text = $(this).parents('.gd-list-item').attr('data-warehouseAreaId');
         if (text != '') {
             for (var i = 0; i < allWarehouseArea.length; i++) {
@@ -297,9 +286,9 @@ $(function () {
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.applyWeight = $(item).find('.inStock').val();
-            obj.parkId = $(item).find('.parkText').attr('data-parkid');
-            obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseid');
-            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaid');
+            obj.parkId = $(item).find('.parkText').attr('data-parkId');
+            obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
+            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             storageFactoryApplyItemList.push(obj);
         });
 
