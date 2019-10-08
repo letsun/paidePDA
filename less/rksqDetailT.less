@@ -230,6 +230,85 @@ body {
 				}
 			}
 		}
+
+		.review-wra {
+			padding: 20px 0 40px 0;
+
+			.review-title {
+				padding: 14px 0;
+
+				color: #ff8400;
+				font-size: 26px;
+				line-height: 40px;
+				text-align: center;
+			}
+
+			.review-list {
+				width: 710px;
+				margin: 20px auto 0 auto;
+
+				.review-item {
+					padding: 0;
+					margin-bottom: 25px;
+
+					border: 1px solid #ddd;
+
+					.review-child-item {
+						padding: 6px 30px;
+
+						.clearFix();
+
+						.review-child-dec {
+							display: flex;
+
+							float: left;
+
+							width: 100%;
+
+							font-size: 24px;
+							line-height: 40px;
+
+							&:last-child {
+								margin-left: 8px;
+
+							}
+
+							&:first-child {
+								margin-left: 0;
+
+							}
+
+							.review-child-key {
+
+								color: #999;
+							}
+
+							.review-child-val {
+								flex: 1;
+
+								color: #333;
+
+								.ellipsisNormal();
+							}
+						}
+
+						.double-find {
+							width: 270px;
+
+							&:last-child {
+								width: 370px;
+							}
+
+							.review-child-val {
+								flex: 1;
+
+								color: #333;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.preview-win {

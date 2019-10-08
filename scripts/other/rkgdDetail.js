@@ -18,22 +18,24 @@ $(function () {
         $('#preview-win').fadeOut();
     });
 
-    // 获取产品信息
-    getData('GET',api.rkydT.findDetail,{
+    getData('GET',api.rkgd.findDetail,{
         accountId: accountId,
         id: id,
     },function (res) {
         if (res.code == 200) {
             var data = res.data;
-            $('#applyNo').html(res.data.applyNo);
-            $('#storageNo').html(res.data.storageNo);
-            $('#rentStartTime').html(res.data.rentStartTime);
+            $('#storageWorkNo').html(res.data.storageWorkNo);
+            $('#createBy').html(res.data.createBy);
+            $('#finishTime').html(res.data.finishTime);
+            $('#serviceCompanyName').html(res.data.serviceCompanyName);
+            $('#serviceCompanyContacter').html(res.data.serviceCompanyContacter);
+            $('#serviceCompanyPhone').html(res.data.serviceCompanyPhone);
             $('#serviceTeamName').html(res.data.serviceTeamName);
-            $('#workType').html(res.data.workType);
-            $('#storageType').html(res.data.storageType);
+            $('#serviceTeamContacter').html(res.data.serviceTeamContacter);
+            $('#serviceTeamPhone').html(res.data.serviceTeamPhone);
             $('#remarks').html(res.data.remarks);
             if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/sqdmxT.html', {list:res.data.list}, function(template) {
+                Global.requestTempByAjax('../temp/rkgd/gdmx.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
                 });
             }
