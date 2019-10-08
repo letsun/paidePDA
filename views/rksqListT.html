@@ -155,9 +155,13 @@
         });
 
 
-        // 点击进入新增或者编辑入库申请
-        $('.container').on('click','.content-item-btn',function (e) {
+        // 点击进入新增入库申请
+        $('.container').on('click','.btn1',function (e) {
             e.stopPropagation();
+            var id = $(this).parent().attr('data-id');
+        
+            console.log(id)
+            window.location.href = './rksqAddrkydT.html?id=' + id;
         });
     </script>
 </body>

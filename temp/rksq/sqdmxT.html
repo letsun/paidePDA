@@ -1,7 +1,7 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
     <div class="yd-item">
         <div class="yd-con">
-            <div class="yd-child-item">
+            <div class="yd-child-item" data-id= '<%- result.list[i].id %>'>
                 <div class="yd-child-dec">
                     <div class="yd-child-key">产品名称：</div>
                     <div class="yd-child-val"><%- result.list[i].productName %></div>
