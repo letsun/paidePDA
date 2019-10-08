@@ -109,7 +109,12 @@
             <div class="gd-infor" id='gd-infor'>
                 <div class="gd-list gd-list-item" data-applicationId="0">
                     <div class="gd-item">
-                        <div class="gd-key">申请库存(吨)</div>
+                        <div class="gd-key">入库数量</div>
+                        <input type="text" class="gd-val inStock"
+                            data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">入库重量(吨)</div>
                         <input type="text" class="gd-val inStock"
                             data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
                     </div>
@@ -126,8 +131,16 @@
                     </div>
 
                     <div class="gd-item showReservoirArea">
-                        <div class="gd-key">所属库区</div>
+                        <div class="gd-key">入库库区</div>
                         <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}">
+                        </div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">特别关注</div>
+                        <div class="gd-val reservoirAreaText">
+                            是
                         </div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
