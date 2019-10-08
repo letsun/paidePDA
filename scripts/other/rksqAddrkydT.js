@@ -3,34 +3,87 @@ $(function () {
 
     var applicationId = 0;
 
-    var storageFactoryApplyItemList = [];
+    var parkId = '';
+    var parkText = '';
 
-    var allWarehouseArea = [];      // 已选库区
+    var warehouseId = '';
+    var warehouseText = '';
 
-    // 获取产品信息
-    getData('GET',api.rkybt.findDetailById,{
+    var warehouseAreaId = '';
+    var warehouseAreaText = '';
+
+    var allWarehouseArea = [];
+
+    getData('GET', api.rksqT.findApplyMainDetail, {
+        accountId: accountId,
         id: id,
-    },function (res) {
+    }, function (res) {
         if (res.code == 200) {
-            var data = res.data;
-            $('#produceBatchNo').html(res.data.produceBatchNo);
-            $('#produceTime').html(res.data.produceTime);
-            $('#productBrand').html(res.data.productBrand);
-            $('#productLevel').html(res.data.productLevel);
-            $('#productName').html(res.data.productName);
-            $('#productType').html(res.data.productType);
-            $('#specification').html(res.data.specification);
-            $('#totalQuantity').html(res.data.totalQuantity);
-            $('#totalWeight').html(res.data.totalWeight);
-            $('#unit').html(res.data.unit);
-            $('#zhaji').html(res.data.zhaji);
+            renderData(res.data.list)
         }
-    });
+    })
+
+
+    // 申请详情列表模板
+    function renderData(data) {
+        Global.requestTempByAjax('../temp/rksqAddrkydT/list.html', { list: data }, function (template) {
+            $('#list').append(template);
+        });
+    }
+
+    // 点击显示装卸队伍
+    $('.team').on('click', function () {
+        getData('GET', api.yq.findList4, {
+            accountId: accountId,
+        }, function (res) {
+
+            if (res.code == 200) {
+
+                var data = res.data
+
+                var html = '';
+
+                for (var i in data) {
+                    html += '<div class="maskcon-item" data-id = ' + data[i].id + '> ' + data[i].name + '</div>';
+                }
+                $('.maskcon4').html(html)
+                $('.mask').fadeIn()
+                $('.maskcon4').fadeIn()
+            }
+
+        });
+    })
+
+    //选择装卸队伍
+    $('.maskcon4').on('click', '.maskcon-item', function () {
+        var team = $(this).text()
+        serviceTeamId = $(this).attr('data-id')
+        $('.team').text(team)
+
+        $('.maskcon4').fadeOut()
+        $('.mask').fadeOut()
+    })
+    // 点击显示叉车作业
+    $('.forklift').on('click', function () {
+        $('.mask').fadeIn()
+        $('.maskcon5').fadeIn()
+    })
+
+    //选择叉车作业方式
+
+    $('.maskcon5').on('click', '.maskcon-item', function () {
+        var forklift = $(this).text()
+        $('.forklift').text(forklift)
+        $('.maskcon5').fadeOut()
+        $('.mask').fadeOut()
+    })
+
+
 
     // 获取园区列表
-    getData('GET',api.yq.findList2,{
+    getData('GET', api.yq.findList2, {
         accountId: accountId,
-    },function (res) {
+    }, function (res) {
         if (res.code == 200) {
             var list = res.data;
             var html_1 = '';
@@ -44,7 +97,7 @@ $(function () {
 
 
     // 点击显示园区列表
-    $('.container').on('click','.showPark',function () {
+    $('.container').on('click', '.showPark', function () {
         $('.maskcon-item').removeClass('after');
         applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
         $('.maskcon1').show();
@@ -52,18 +105,17 @@ $(function () {
     });
 
     // 选择园区
-    $('.maskcon1').on('click','.maskcon-item',function (e) {
+    $('.maskcon1').on('click', '.maskcon-item', function (e) {
         $('.maskcon2').html('');
         $('.maskcon3').html('');
         $(this).addClass('after').siblings().removeClass('after');
-        var parkId = $(this).attr('data-id');
-        var parkText = $(this).html();
-        $('.gd-list-item').each(function (i,item) {
+        parkId = $(this).attr('data-id');
+        parkText = $(this).html();
+        $('.gd-list-item').each(function (i, item) {
             var itemId = $(item).attr('data-applicationId');
             if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.parkText').html(parkText).attr('data-parkId',parkId);
+                $('.gd-list-item').eq(i).find('.parkText').html(parkText).attr('data-parkId', parkId);
                 $('.gd-list-item').eq(i).find('.storeroomText').html('').removeAttr('data-warehouseId');
-                $('.gd-list-item').eq(i).find('.reservoirAreaText').html('').removeAttr('data-warehouseareaId');
                 $('.maskcon').hide();
                 $('.mask').hide();
                 return;
@@ -74,15 +126,15 @@ $(function () {
     });
 
     // 点击显示库房列表
-    $('.container').on('click','.showStoreroom',function () {
+    $('.container').on('click', '.showStoreroom', function () {
         applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        var selfParkId = $(this).parents('.gd-list-item').find('.parkText').attr('data-parkId');
+        var selfParkId = $(this).parents('.gd-list-item').find('.parkText').attr('data-parkid');
         if ($(this).parents('.gd-list-item').find('.parkText').html() != '') {
             // 获取库房列表
-            getData('GET',api.yq.findList,{
+            getData('GET', api.yq.findList, {
                 accountId: accountId,
                 baseParkId: selfParkId,
-            },function (res) {
+            }, function (res) {
                 if (res.code == 200) {
                     var list = res.data;
                     var html_2 = '';
@@ -105,15 +157,15 @@ $(function () {
     });
 
     // 选择库房
-    $('.maskcon2').on('click','.maskcon-item',function (e) {
+    $('.maskcon2').on('click', '.maskcon-item', function (e) {
         $('.maskcon3').html('');
         $(this).addClass('after').siblings().removeClass('after');
-        var warehouseId = $(this).attr('data-id');
-        var warehouseText = $(this).html();
-        $('.gd-list-item').each(function (i,item) {
+        warehouseId = $(this).attr('data-id');
+        warehouseText = $(this).html();
+        $('.gd-list-item').each(function (i, item) {
             var itemId = $(item).attr('data-applicationId');
             if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.storeroomText').html(warehouseText).attr('data-warehouseId',warehouseId);
+                $('.gd-list-item').eq(i).find('.storeroomText').html(warehouseText).attr('data-warehouseId', warehouseId);
                 $('.gd-list-item').eq(i).find('.reservoirAreaText').html('').removeAttr('data-warehouseAreaId');
                 $('.maskcon').hide();
                 $('.mask').hide();
@@ -126,16 +178,17 @@ $(function () {
 
 
     // 点击显示库区列表
-    $('.container').on('click','.showReservoirArea',function () {
+    $('.container').on('click', '.showReservoirArea', function () {
         $('.maskcon3').html('');
-        var selfWarehouseId = $(this).parents('.gd-list-item').find('.storeroomText').attr('data-warehouseId');
+        var self = this;
+        var selfWarehouseId = $(this).parents('.gd-list-item').find('.storeroomText').attr('data-warehouseid');
         applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
         if ($(this).parents('.gd-list-item').find('.storeroomText').html() != '') {
             // 获取库区列表
-            getData('GET',api.yq.findList3,{
+            getData('GET', api.yq.findList3, {
                 accountId: accountId,
                 baseWarehouseId: selfWarehouseId,
-            },function (res) {
+            }, function (res) {
                 if (res.code == 200) {
                     var list = res.data;
                     var html_3 = '';
@@ -163,6 +216,8 @@ $(function () {
                     $('.mask').show();
                 }
             });
+
+            console.log(allWarehouseArea);
         } else {
             common.alert({
                 mask: true,
@@ -172,27 +227,26 @@ $(function () {
     });
 
     // 选择库区
-    $('.maskcon3').on('click','.maskcon-item',function (e) {
+    $('.maskcon3').on('click', '.maskcon-item', function (e) {
         if (!$(this).hasClass('disabled')) {
             var self = $(this);
             $(this).addClass('after').siblings().removeClass('after');
-            var warehouseAreaId = $(this).attr('data-id');
-            var warehouseAreaText = $(this).html();
+            warehouseAreaId = $(this).attr('data-id');
+            warehouseAreaText = $(this).html();
 
-            $('.gd-list-item').each(function (i,item) {
+            $('.gd-list-item').each(function (i, item) {
                 var itemId = $(item).attr('data-applicationId');
-                debugger
                 if (applicationId == itemId) {
-                    if ($(item).attr('data-warehouseAreaId')) {
+                    if ($('.gd-list-item').attr('data-warehouseAreaId') != '' && $('.gd-list-item').attr('data-warehouseAreaId') != warehouseAreaId) {
                         for (var j = 0; j < allWarehouseArea.length; j++) {
-                            if ($(item).attr('data-warehouseAreaId') == allWarehouseArea[j]) {
-                                allWarehouseArea.splice(j,1);
+                            if ($('.gd-list-item').attr('data-warehouseAreaId') == allWarehouseArea[j]) {
+                                allWarehouseArea.splice(j, 1);
                             }
                         }
                     }
 
-                    $('.gd-list-item').eq(i).find('.reservoirAreaText').html(warehouseAreaText).attr('data-warehouseAreaId',warehouseAreaId);
-                    $('.gd-list-item').eq(i).attr('data-warehouseAreaId',warehouseAreaId);
+                    $('.gd-list-item').eq(i).find('.reservoirAreaText').html(warehouseAreaText).attr('data-warehouseAreaId', warehouseAreaId);
+                    $('.gd-list-item').attr('data-warehouseAreaId', warehouseAreaId);
                     allWarehouseArea.push(warehouseAreaId);
                     $('.maskcon').hide();
                     $('.mask').hide();
@@ -258,9 +312,7 @@ $(function () {
 
     // 点击删除申请记录
     $('.container').on('click','.gd-minus',function () {
-
         // debugger
-
         var text = $(this).parents('.gd-list-item').attr('data-warehouseAreaId');
         if (text != '') {
             for (var i = 0; i < allWarehouseArea.length; i++) {
@@ -275,87 +327,16 @@ $(function () {
     });
 
 
-    // 点击保存
-    $('#saveBtn').on('click',function () {
-        var flag = Global.initValidate('.container');
-        if (!flag) {
-            return;
-        }
-
-        var applyNo = $('#applyNo').val();
-        var teamName = $('#teamName').val();
-        var remark = $('#remark').val();
-
-        $('.gd-list-item').each(function (i,item) {
-            var obj = {};
-            obj.applyWeight = $(item).find('.inStock').val();
-            obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
-            storageFactoryApplyItemList.push(obj);
-        });
-
-        var data2 = {
-            id: id,
-            applyNo: applyNo,
-            remarks: remark,
-            teamName: teamName,
-            storageFactoryApplyItemList: storageFactoryApplyItemList,
-        };
-
-        // 提交数据
-        getData('POST',api.rkybt.saveStorageFactoryApplyMain,{
-            jsonData: JSON.stringify(data2),
-        },function (res) {
-            if (res.code == 200) {
-                common.alert({
-                    mask: true,
-                    content: '提交成功',
-                    ok:function () {
-                        location.reload();
-                    }
-                })
-            } else {
-                common.alert({
-                    mask: true,
-                    content: res.msg,
-                })
-            }
-        });
-
-        /*var data2 = {
-            id: id,
-            applyNo: applyNo,
-            remarks: remark,
-            teamName: teamName,
-            storageFactoryApplyItemList: [{
-                applyWeight: '11',
-                parkId: '11',
-                warehouseId: '11',
-                warehouseAreaId: '11',
-            }],
-        };
 
 
-        $.ajax({
-            type: 'POST',
-            url: api.rkybt.saveStorageFactoryApplyMain,
-            data: {
-                jsonData: JSON.stringify(data2),
-            },
-            dataType: "json",
-            header: {
-                Authorization: '1111',
-            },
-            success: function (res) {
-                callbackSuc(res);
-            },
-            error: function (res) {
-                common.alert({
-                    mask: true,
-                    content: res.msg
-                })
-            }
-        });*/
-    })
+    // $('.gd-btn').on('click', function () {
+    //     getData('GET', api.rksqT.saveStorageFactoryWaybillMain, {
+    //         accountId: accountId,
+    //         applyNo: applyNo,
+    //     }, function (res) {
+
+    //     })
+    // })
+
 });
+

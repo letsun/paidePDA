@@ -1,0 +1,73 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+
+<div class="yd-child-item">
+    <div class="yd-child-dec">
+        <div class="yd-child-key">产品名称：</div>
+        <div class="yd-child-val">
+
+            <%- result.list[i].productName %>
+        </div>
+    </div>
+</div>
+<div class="yd-child-item double-find">
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">申请数量：</div>
+        <div class="yd-child-val" id="applyQuantity"><%- result.list[i].applyQuantity %></div>
+    </div>
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">申请重量(吨)：</div>
+        <div class="yd-child-val" id="applyWeight"> <%- result.list[i].applyWeight %></div>
+    </div>
+</div>
+<div class="yd-child-item">
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">生产批次：</div>
+        <div class="yd-child-val" id="produceBatchNo"> <%- result.list[i].produceBatchNo %></div>
+    </div>
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">生产日期：</div>
+        <div class="yd-child-val" id="produceTime"><%- result.list[i].produceTime %></div>
+    </div>
+</div>
+<div class="yd-child-item">
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">包装规格：</div>
+        <div class="yd-child-val">
+            <%- result.list[i].specificationName %>
+            <!-- <span id="specificationName"></span>/<span id="specificationValue"></span> -->
+        </div>
+    </div>
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">产品单位：</div>
+        <div class="yd-child-val" id="unit"><%- result.list[i].unit %></div>
+    </div>
+</div>
+<div class="yd-child-item">
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">产品等级：</div>
+        <div class="yd-child-val" id="productLevel"><%- result.list[i].productLevel %></div>
+    </div>
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">产品榨季：</div>
+        <div class="yd-child-val" id="zhaji"><%- result.list[i].zhaji %></div>
+    </div>
+</div>
+<div class="yd-child-item">
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">产品大类：</div>
+        <div class="yd-child-val" id="productType"><%- result.list[i].productType %></div>
+    </div>
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">产品品牌：</div>
+        <div class="yd-child-val" id="productBrand"><%- result.list[i].productBrand %></div>
+    </div>
+</div>
+
+<div class="yd-child-item">
+    <div class="yd-child-dec double-find">
+        <div class="yd-child-key">质检信息：</div>
+        <div class="yd-child-val" id='checkStatus'><%- result.list[i].checkStatus %></div>
+    </div>
+</div>
+
+<% } %>
