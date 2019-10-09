@@ -1,4 +1,4 @@
-var ip = 'http://192.168.1.20:8888';
+var ip = 'http://192.168.1.20:8899';
 
 var api = {
     rkgd: {
@@ -23,6 +23,7 @@ var api = {
     },
     rkydT: {
         findPageApi: ip + '/api/pda/storageFactoryWaybillMain/findPageApi',     // 入库运单列表
+        saveStorage: ip + '/api/pda/storageFactoryWaybillMain/saveStorage',    //入库运单列表确认完成
         findDetail: ip + '/api/pda/storageFactoryWaybillMain/findDetail',     // 入库运单申请详情
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryWaybillMain/saveStorageFactoryWaybillMain',     // 入库运单修改保存
     },
