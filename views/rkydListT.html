@@ -16,7 +16,7 @@
 
         <div class="header">
 
-            <div class="return"> <img src="../img/1_40.png"></div>
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
             入库运单
         </div>
 
@@ -159,6 +159,16 @@
                 var id = $(this).attr('data-id');
                /* window.location.href = './rkydDetailT.html?id=' + id;*/
             });
+
+
+            /*点击确认完成*/
+            
+            $('.container').on('click', '.btn1', function () {
+            common.alert({
+                content: '提示',
+                mask: true
+            });
+        })
     </script>
 </body>
 
