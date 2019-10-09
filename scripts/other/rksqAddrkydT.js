@@ -27,6 +27,10 @@ $(function () {
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
+                    $('.gd-list-item').each(function (i,item) {
+                        $(item).attr('data-applicationId',applicationId);
+                        applicationId++;
+                    })
                 });
             }
         }
