@@ -159,8 +159,7 @@ body {
   display: flex;
   line-height: 40px;
   font-size: 26px;
-  border: 1px solid #ddd;
-  border-bottom: none;
+  border-top: 1px solid #ddd;
 }
 .container .content .gd-infor .gd-list .gd-item .gd-key {
   width: 170px;
@@ -288,7 +287,7 @@ body {
 }
 .container .content .yd-list .yd-item .yd-con {
   padding: 14px 0;
-  background: #fff;
+  background: #f3f3f3;
 }
 .container .content .yd-list .yd-item .yd-con .yd-child-item {
   padding: 6px 30px;
@@ -331,10 +330,12 @@ body {
   flex: 1;
   color: #333;
 }
+.container .content .gd-add {
+  margin-top: 25px;
+}
 .container .content .gd-add .gd-add-img {
   display: block;
-  margin: auto;
-  margin-right: 20px;
+  margin: auto 20px auto auto;
 }
 .container .preview-win {
   position: fixed;
@@ -366,11 +367,7 @@ body {
   background: rgba(0, 0, 0, 0.6);
   display: none;
 }
-.container .mask .maskcon1,
-.container .mask .maskcon2,
-.container .mask .maskcon3,
-.container .mask .maskcon4,
-.container .mask .maskcon5 {
+.container .mask .maskcon {
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -380,37 +377,21 @@ body {
   background: #fff;
   color: #333;
 }
-.container .mask .maskcon1 .maskcon-item,
-.container .mask .maskcon2 .maskcon-item,
-.container .mask .maskcon3 .maskcon-item,
-.container .mask .maskcon4 .maskcon-item,
-.container .mask .maskcon5 .maskcon-item {
+.container .mask .maskcon .maskcon-item {
   line-height: 100px;
   text-align: center;
   border-bottom: 1px #ddd solid;
   letter-spacing: 5px;
   font-weight: bold;
 }
-.container .mask .maskcon1 .maskcon-item:last-child,
-.container .mask .maskcon2 .maskcon-item:last-child,
-.container .mask .maskcon3 .maskcon-item:last-child,
-.container .mask .maskcon4 .maskcon-item:last-child,
-.container .mask .maskcon5 .maskcon-item:last-child {
+.container .mask .maskcon .maskcon-item:last-child {
   border-bottom: none;
 }
-.container .mask .maskcon1 .after,
-.container .mask .maskcon2 .after,
-.container .mask .maskcon3 .after,
-.container .mask .maskcon4 .after,
-.container .mask .maskcon5 .after {
+.container .mask .maskcon .after {
   background: #ff8500;
   color: #fff;
 }
-.container .mask .maskcon1 .disabled,
-.container .mask .maskcon2 .disabled,
-.container .mask .maskcon3 .disabled,
-.container .mask .maskcon4 .disabled,
-.container .mask .maskcon5 .disabled {
+.container .mask .maskcon .disabled {
   background: #999;
   color: #fff;
 }

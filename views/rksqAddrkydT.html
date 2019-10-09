@@ -28,34 +28,33 @@
                 <div class="gd-list">
                     <div class="gd-item">
                         <div class="gd-key">关联申请单</div>
-                        <input type="text" value="asdfdaf" class="gd-val"></input>
+                        <div class="gd-val" id="applyNo"></div>
                     </div>
                     <div class="gd-item">
                         <div class="gd-key">入库单号</div>
-                        <input type="text" value="aaaa" class="gd-val"></input>
+                        <input type="text" class="gd-val" id="storageNo">
                     </div>
                     <div class="gd-item">
                         <div class="gd-key">仓租起始日</div>
-                        <div class="gd-val" id='date'></div>
+                        <div class="gd-val" id='date' data-validateInfor="{strategy:isEmpty,msg:仓租起始日不能为空}"></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
 
-                    <div class="gd-item">
+                    <div class="gd-item" id="goTeam">
                         <div class="gd-key">装卸队伍</div>
-                        <div class="gd-val team"></div>
+                        <div class="gd-val team" id="serviceTeamText" data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
-                    <div class="gd-item">
+                    <div class="gd-item" id="showWorkType">
                         <div class="gd-key">作业方式</div>
-                        <div class="gd-val forklift"></div>
+                        <div class="gd-val forklift" id="workType" data-validateInfor="{strategy:isEmpty,msg:作业方式不能为空}"></div>
 
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
 
                     <div class="gd-item">
                         <div class="gd-key">入库类型</div>
-
-                        <input class="gd-val" value="生产入库" type="text" class="gd-val" placeholder=""></input>
+                        <div class="gd-val" id="storageType">生产入库</div>
                     </div>
 
                     <!-- <div class="gd-item">
@@ -68,7 +67,7 @@
                     <div class="gd-item last-gd-item">
                         <div class="gd-left">备注：</div>
                         <div class="gd-right">
-                            <textarea>1111</textarea>
+                            <textarea id="remarks"></textarea>
                         </div>
                     </div>
                     <div class="gd-item last-gd-item">
@@ -88,106 +87,11 @@
 
 
             <!--申请明细-->
-            <div class="yd-list" id="yd-list">
-                <div class="yd-item">
-                    <div class="yd-con" id="list">
+            <div class="yd-list" id="list"></div>
 
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- 添加库区 -->
-
-
-            <div class="gd-add">
-                <img class="gd-add-img" src="../img/1_33.png">
-            </div>
-
-
-            <div class="gd-infor" id='gd-infor'>
-                <div class="gd-list gd-list-item" data-applicationId="0">
-                    <div class="gd-item">
-                        <div class="gd-key">入库数量</div>
-                        <input type="text" class="gd-val inStock"
-                            data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">入库重量(吨)</div>
-                        <input type="text" class="gd-val inStock"
-                            data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
-                    </div>
-                    <div class="gd-item showPark">
-                        <div class="gd-key">所属园区</div>
-                        <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item showStoreroom">
-                        <div class="gd-key">所属库房</div>
-                        <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>
-
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-
-                    <div class="gd-item showReservoirArea">
-                        <div class="gd-key">入库库区</div>
-                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}">
-                        </div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-
-                    <div class="gd-item">
-                        <div class="gd-key">特别关注</div>
-                        <div class="gd-val reservoirAreaText">
-                            是
-                        </div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="gd-infor" id='gd-infor'>
-                <div class="gd-list gd-list-item">
-                    <div class="gd-item">
-                        <div class="gd-key">入库数量</div>
-                        <input type="text" class="gd-val" value="500">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">入库重量(吨)</div>
-                        <input type="text" class="gd-val" value="30">
-                    </div>
-                    <div class="gd-item ">
-                        <div class="gd-key">所属园区</div>
-                        <div class="gd-val showPark" ></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item ">
-                        <div class="gd-key ">所属库房</div>
-                        <div class="gd-val showStoreroom"></div>
-
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-
-                    <div class="gd-item">
-                        <div class="gd-key">入库库区</div>
-                        <div class="gd-val showReservoirArea"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-
-                    <div class="gd-item">
-                        <div class="gd-key">特别关注</div>
-                        <div class="gd-val attention"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="gd-btn">
-                保存
-            </div>
+            <div class="gd-btn" id="saveBtn">保存</div>
 
         </div>
-
 
         <!--大图-->
         <div class="preview-win" id="preview-win">
@@ -202,33 +106,26 @@
             <div class="maskcon maskcon2">
 
             </div>
+
             <div class="maskcon maskcon3">
-
-            </div>
-
-
-            <!-- 装卸队伍 -->
-            <div class="maskcon maskcon4">
 
             </div>
 
             <!-- 叉车作业 -->
             <div class="maskcon maskcon5">
 
-                <div class="maskcon-item">
-                    叉车作业
-                </div>
+                <div class="maskcon-item">叉车作业</div>
 
-                <div class="maskcon-item">
-                    人工作业
-                </div>
+                <div class="maskcon-item">人工作业</div>
 
-                <div class="maskcon-item">
-                    叉车+人工作业
-                </div>
+                <div class="maskcon-item">叉车+人工作业</div>
             </div>
+
             <!-- 特别关注 -->
-            <div class="maskcon maskcon6"></div>
+            <div class="maskcon maskcon6">
+                <div class="maskcon-item">是</div>
+                <div class="maskcon-item">否</div>
+            </div>
         </div>
 
     </div>
@@ -239,9 +136,9 @@
     <script src="../scripts/lib/validate.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-    <script src="../scripts/other/rksqAddrkydT.js"></script>
     <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
     <script src="../scripts/plugins/iosSelect/date.js"></script>
+    <script src="../scripts/other/rksqAddrkydT.js"></script>
 
     <script>
         setDateControl('#date');

@@ -12,21 +12,6 @@ body {
 
 	width: 100%;
 
-	.head-state {
-		position: absolute;
-		top: 0;
-		right: 20px;
-		z-index: 1;
-
-		display: block;
-
-		font-size: 28px;
-		color: @orange;
-		line-height: 80px;
-		letter-spacing: 0;
-		font-weight: normal;
-	}
-
 	.content {
 		position: relative;
 
@@ -34,9 +19,24 @@ body {
 
 		.gd-infor {
 
+
+			.gd-list-item {
+				padding-top: 25px;
+				border-bottom: 1px #ddd solid;
+			}
 			.gd-list {
 				width: 710px;
 				margin: 0 auto;
+
+				position: relative;
+
+				.gd-minus {
+					position: absolute;
+					right: -30px;
+					top: -10px;
+					z-index: 9;
+					padding: 20px;
+				}
 
 				.gd-item {
 					position: relative;
@@ -66,8 +66,24 @@ body {
 						margin: 0 20px;
 
 						color: #333;
+						background: #fff;
 
 						word-break: break-all;
+						font-size: 24px;
+					}
+
+					.gd-img {
+						position: absolute;
+						right: 20px;
+						top: 0;
+						bottom: 0;
+						margin: auto;
+					}
+
+
+
+					.gd-color {
+						color: orange;
 					}
 
 					.gd-dec {
@@ -107,6 +123,7 @@ body {
 				}
 
 				.last-gd-item {
+					
 
 					.gd-left {
 						width: 90px;
@@ -122,12 +139,16 @@ body {
 
 						flex: 1;
 
-						padding: 14px 0;
+						padding: 19px 0;
 						margin-left: 6px;
 
 						font-size: 26px;
 
+						.clearFix();
+
 						.preview-img {
+							float: left;
+
 							width: 100px;
 							height: 158px;
 						}
@@ -141,27 +162,51 @@ body {
 							font-size: 26px;
 							color: #333;
 						}
+
+
+						textarea {
+							font-size: 22px;
+						
+							width: 93%;
+
+							height: 100px;
+						}
+					}
+
+					.gd-right1 {
+
+						align-self: center;
+
+						img {
+							display: block;
+						}
 					}
 				}
 
-				.other-gd-item {
-					display: block;
-
-					height: 68px;
-
-					text-align: center;
-
+				.last-gd-item:last-child {
 					border-bottom: 1px solid #ddd;
 				}
+
+
 			}
 		}
 
+		.gd-btn {
+			background: linear-gradient(to right,#fdbe00,#f77d00);
+			line-height: 70px;
+			text-align: center;
+			border-radius: 35px;
+			color: #fff;
+			letter-spacing: 15px;
+			margin: 50px 80px 20px 80px;			
+		}
+
 		.yd-list {
-			display: none;
+			
 
 			width: 710px;
 			margin:0 auto;
-			padding: 20px 0 40px 0;
+			padding: 20px 0 0px 0;
 
 			.yd-item {
 				padding: 0;
@@ -173,10 +218,6 @@ body {
 					padding: 14px 0;
 
 					background: #fff;
-
-					&:last-child {
-						background: #f3f3f3;
-					}
 
 					.yd-child-item {
 						padding: 6px 30px;
@@ -231,84 +272,17 @@ body {
 			}
 		}
 
-		.review-wra {
-			padding: 20px 0 40px 0;
-
-			.review-title {
-				padding: 14px 0;
-
-				color: #ff8400;
-				font-size: 26px;
-				line-height: 40px;
-				text-align: center;
-			}
-
-			.review-list {
-				width: 710px;
-				margin: 20px auto 0 auto;
-
-				.review-item {
-					padding: 0;
-					margin-bottom: 25px;
-
-					border: 1px solid #ddd;
-
-					.review-child-item {
-						padding: 6px 30px;
-
-						.clearFix();
-
-						.review-child-dec {
-							display: flex;
-
-							float: left;
-
-							width: 100%;
-
-							font-size: 24px;
-							line-height: 40px;
-
-							&:last-child {
-								margin-left: 8px;
-
-							}
-
-							&:first-child {
-								margin-left: 0;
-
-							}
-
-							.review-child-key {
-
-								color: #999;
-							}
-
-							.review-child-val {
-								flex: 1;
-
-								color: #333;
-
-								.ellipsisNormal();
-							}
-						}
-
-						.double-find {
-							width: 270px;
-
-							&:last-child {
-								width: 370px;
-							}
-
-							.review-child-val {
-								flex: 1;
-
-								color: #333;
-							}
-						}
-					}
-				}
+		.gd-add {
+			
+			.gd-add-img {
+				display: block;
+				margin: auto;
+				margin-right: 20px;
 			}
 		}
+
+
+
 	}
 
 	.preview-win {
@@ -336,6 +310,55 @@ body {
 			max-height: 100%;
 
 			-webkit-transform: translate(-50%,-50%);
+		}
+	}
+
+
+	.mask {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 99;
+
+		background: rgba(0,0,0,.6);
+
+		display: none;
+
+		.maskcon {
+			position: absolute;
+			bottom: 0px;
+			left: 0;
+			right: 0px;
+
+			display: none;
+
+			font-size: 28px;
+			background: #fff;
+			color: #333;
+
+			.maskcon-item {
+				line-height: 100px;
+				text-align: center;
+				border-bottom: 1px #ddd solid;
+				letter-spacing: 5px;
+				font-weight: bold;
+			}
+
+			.maskcon-item:last-child {
+				border-bottom: none;
+			}
+
+			.after {
+				background: #ff8500;
+				color: #fff;
+			}
+
+			.disabled {
+				background: #999;
+				color: #fff;
+			}
 		}
 	}
 }

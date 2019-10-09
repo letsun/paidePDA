@@ -1,0 +1,21 @@
+<% for (var i = 0; i < result.actList.length; i++) { %>
+    <div class="review-item">
+        <div class="review-child-item">
+            <div class="review-child-dec">
+                <div class="review-child-key">审核意见：</div>
+                <div class="review-child-val"><%- result.actList[i].actComment %></div>
+            </div>
+        </div>
+
+        <div class="review-child-item">
+            <div class="review-child-dec double-find">
+                <div class="review-child-key">审核人：</div>
+                <div class="review-child-val"><%- result.actList[i].assigneeName %></div>
+            </div>
+            <div class="review-child-dec double-find">
+                <div class="review-child-key">审核时间：</div>
+                <div class="review-child-val"><%- result.actList[i].endTime %></div>
+            </div>
+        </div>
+    </div>
+<% } %>
