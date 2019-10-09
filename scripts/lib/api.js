@@ -8,7 +8,7 @@ var api = {
     rksqT: {
         findPageApi: ip + '/api/pda/storageFactoryApplyMain/findPageApi',     // 入库申请单列表
         findApplyMainDetail: ip + '/api/pda/storageFactoryApplyMain/findApplyMainDetail',     // 入库申请单详情
-        saveStorageFactoryApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
+        saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
     },
     rksqS: {
@@ -57,6 +57,7 @@ var api = {
         findList: ip + '/api/pda/baseZhaji/findList',     // 产品榨季列表
         findList2: ip + '/api/pda/baseProductLevel/findList',     // 产品等级列表
         findPageApi: ip + '/api/pda/baseProduct/findPageApi',     // 商品列表查询
+        findById: ip + '/api/pda/baseProduct/findById',     // 商品明细查询
     },
     yq: {
         findList: ip + '/api/pda/baseWarehouse/findList',     // 仓库

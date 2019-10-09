@@ -1,0 +1,32 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+    <a class="content-item" data-id="<%- result.list[i].id %>" href="javascript:void(0);">
+        <div class="content-item-header">
+            <%- result.list[i].productName %>
+        </div>
+
+        <div class="content-item-con">
+            <div class="con-item">
+                <div class="con-item-left">
+                    <span >包装规格：</span>
+                    <div><%- result.list[i].specificationName %></div>
+                </div>
+
+                <div class="con-item-right">
+                    <span>产品单位：</span>
+                    <div><%- result.list[i].unit %></div>
+                </div>
+            </div>
+            <div class="con-item">
+
+                <div class="con-item-left">
+                    <span>产品大类：</span>
+                    <div><%- result.list[i].productType %></div>
+                </div>
+                <div class="con-item-right">
+                    <span>产品品牌：</span>
+                    <div><%- result.list[i].productBrand %></div>
+                </div>
+            </div>
+        </div>
+    </a>
+<% } %>

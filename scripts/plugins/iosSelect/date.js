@@ -18,7 +18,8 @@ function setDateControl(element) {
     showDateDom.attr('data-month', nowMonth);
     showDateDom.attr('data-date', nowDate);
 
-    showDateDom.bind('click', function() {
+    $('.container').on('click',element, function() {
+        var self = $(this);
         var oneLevelId = showDateDom.attr('data-year');
         var twoLevelId = showDateDom.attr('data-month');
         var threeLevelId = showDateDom.attr('data-date');
@@ -33,8 +34,7 @@ function setDateControl(element) {
             showAnimate: true,
             showLoading: true,
             callback: function(selectOneObj, selectTwoObj,selectThreeObj) {
-                $('#date').addClass('active');
-                showDateDom.text(selectOneObj.id + '-' + FormatDate(selectTwoObj.id) + '-' + FormatDate(selectThreeObj.id));
+                self.html(selectOneObj.id + '-' + FormatDate(selectTwoObj.id) + '-' + FormatDate(selectThreeObj.id));
             }
         });
     });

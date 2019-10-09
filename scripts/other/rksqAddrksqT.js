@@ -1,63 +1,12 @@
 $(function () {
-    var id = Global.getUrlParam('id');
-    var serviceTeamId = Global.getUrlParam('zxdwId');
-    if (serviceTeamId != 'null') {
-        $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
-    }
-
-    var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
-    if (serviceTeamText != 'null') {
-        $('#serviceTeamText').html(serviceTeamText);
-    }
+    setDateControl('.produceTime');
 
     var applicationId = 0;
 
-    var storageFactoryWaybillItemList = [];
+    var storageFactoryApplyItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
-
-    getData('GET',api.rksqT.findApplyMainDetail,{
-        accountId: accountId,
-        id: id,
-    },function (res) {
-        if (res.code == 200) {
-            var data = res.data;
-            $('#applyNo').html(res.data.applyNo);
-            if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
-                    $('#list').append(template);
-                    $('.gd-list-item').each(function (i,item) {
-                        $(item).attr('data-applicationId',applicationId);
-                        applicationId++;
-                    })
-                });
-            }
-        }
-
-    });
-
-
-    // 跳转到选择队伍页面
-    $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?id=' + id;
-    });
-
-
-    // 点击显示作业方式列表
-    $('#showWorkType').on('click',function () {
-        $('.maskcon').hide();
-        $('.maskcon5').show();
-        $('.mask').show();
-    });
-
-    // 选择作业方式
-    $('.maskcon5').on('click','.maskcon-item',function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
-        var workType = $(this).html();
-        var workTypeText = $(this).html();
-        $('.forklift').html(workTypeText);
-    });
 
     // 获取园区列表
     getData('GET',api.yq.findList2,{
@@ -243,22 +192,75 @@ $(function () {
     });
 
 
-    // 点击显示特别关注列表
-    $('.container').on('click','.showFocusFlag',function () {
-        $(this).addClass('after').siblings().removeClass('after');
+    // 点击显示产品等级
+    $('.container').on('click','.showProductLevel',function () {
         applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        $('.maskcon').hide();
-        $('.maskcon6').show();
-        $('.mask').show();
+        // 获取产品等级列表
+        getData('GET',api.sp.findList2,{
+            accountId: accountId,
+        },function (res) {
+            if (res.code == 200) {
+                var list = res.data;
+                var html_5 = '';
+                for (var i = 0; i < list.length; i++) {
+                    html_5 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
+                }
+
+                $('.maskcon5').html(html_5);
+                $('.maskcon').hide();
+                $('.maskcon5').show();
+                $('.mask').show();
+            }
+        });
     });
 
-    // 选择特别关注
-    $('.maskcon6').on('click','.maskcon-item',function (e) {
-        var focusFlagText = $(this).html();
+    // 选择产品等级
+    $('.maskcon5').on('click','.maskcon-item',function () {
+        var productLevel = $(this).html();
+        var productLevelId = $(this).attr('data-id');
         $('.gd-list-item').each(function (i,item) {
             var itemId = $(item).attr('data-applicationId');
             if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.focusFlagText').html(focusFlagText);
+                $('.gd-list-item').eq(i).find('.productLevel').html(productLevel).attr('data-id',productLevelId);
+                $('.maskcon').hide();
+                $('.mask').hide();
+                return;
+            }
+        });
+
+    });
+
+
+    // 点击显示产品榨季
+    $('.container').on('click','.showZhaji',function () {
+        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
+        // 获取产品等级列表
+        getData('GET',api.sp.findList,{
+            accountId: accountId,
+        },function (res) {
+            if (res.code == 200) {
+                var list = res.data;
+                var html_6 = '';
+                for (var i = 0; i < list.length; i++) {
+                    html_6 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
+                }
+
+                $('.maskcon6').html(html_6);
+                $('.maskcon').hide();
+                $('.maskcon6').show();
+                $('.mask').show();
+            }
+        });
+    });
+
+    // 选择产品榨季
+    $('.maskcon6').on('click','.maskcon-item',function () {
+        var zhaji = $(this).html();
+        var zhajiId = $(this).attr('data-id');
+        $('.gd-list-item').each(function (i,item) {
+            var itemId = $(item).attr('data-applicationId');
+            if (applicationId == itemId) {
+                $('.gd-list-item').eq(i).find('.zhaji').html(zhaji).attr('data-id',zhajiId);
                 $('.maskcon').hide();
                 $('.mask').hide();
                 return;
@@ -278,44 +280,75 @@ $(function () {
     $('.container').on('click','.gd-add-img',function () {
         var html = '';
         applicationId ++;
+        
         html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
         html += '<img class="gd-minus" src="../img/1_31.png">';
-        /*html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库数量</div>';
-        html += '<input type="text" class="gd-val quantity" data-validateInfor="{strategy:isEmpty,msg:入库数量不能为空}|{strategy:isNumber,msg:入库数量需为数字}">';
-        html += '</div>';*/
-
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库重量(吨)</div>';
-        html += '<input type="text" class="gd-val weight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
+        html += '<div class="gd-item showProd">';
+        html += '<div class="gd-key">产品名称</div>';
+        html += '<div class="gd-val productName" data-validateInfor="{strategy:isEmpty,msg:产品名称不能为空}"></div>';
+        html += '<img class="gd-img" src="../img/1_34.png">';
         html += '</div>';
-
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">生产批次</div>';
+        html += '<input type="text" class="gd-val produceBatch" data-validateInfor="{strategy:isEmpty,msg:生产批次不能为空}">';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">生产日期</div>';
+        html += '<div class="gd-val produceTime" data-validateInfor="{strategy:isEmpty,msg:生产日期不能为空}"></div>';
+        html += '<img class="gd-img" src="../img/1_34.png">';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">包装规格</div>';
+        html += '<div class="gd-val specificationName"></div>';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">产品单位</div>';
+        html += '<div class="gd-val unit"></div>';
+        html += '</div>';
+        html += '<div class="gd-item showProductLevel">';
+        html += '<div class="gd-key">产品等级</div>';
+        html += '<div class="gd-val productLevel" data-validateInfor="{strategy:isEmpty,msg:产品等级不能为空}"></div>';
+        html += '<img class="gd-img" src="../img/1_34.png">';
+        html += '</div>';
+        html += '<div class="gd-item showZhaji">';
+        html += '<div class="gd-key">产品榨季</div>';
+        html += '<div class="gd-val zhaji" data-validateInfor="{strategy:isEmpty,msg:产品榨季不能为空}"></div>';
+        html += '<img class="gd-img" src="../img/1_34.png">';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">产品大类</div>';
+        html += '<div class="gd-val productType"></div>';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">产品品牌</div>';
+        html += '<div class="gd-val productBrand"></div>';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">申请库存(吨)</div>';
+        html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">';
+        html += '</div>';
+        html += '<div class="gd-item">';
+        html += '<div class="gd-key">质检信息</div>';
+        html += '<input type="text" class="gd-val">';
+        html += '</div>';
         html += '<div class="gd-item showPark">';
         html += '<div class="gd-key">所属园区</div>';
         html += '<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>';
         html += '<img class="gd-img" src="../img/1_34.png">';
         html += '</div>';
-
         html += '<div class="gd-item showStoreroom">';
         html += '<div class="gd-key">所属库房</div>';
         html += '<div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>';
-        html += '<img class="gd-img " src="../img/1_34.png" >';
+        html += '<img class="gd-img" src="../img/1_34.png">';
         html += '</div>';
-
         html += '<div class="gd-item showReservoirArea">';
-        html += '<div class="gd-key">入库库区</div>';
-        html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png" >';
-        html += '</div>';
-
-        html += '<div class="gd-item showFocusFlag">';
-        html += '<div class="gd-key">特别关注</div>';
-        html += '<div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png" >';
+        html += '<div class="gd-key">所属库区</div>';
+        html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>';
+        html += '<img class="gd-img" src="../img/1_34.png">';
         html += '</div>';
         html += '</div>';
 
-        $(this).parents('.yd-item').find('.gd-infor').append(html);
+        $('.gd-wra').append(html);
     });
 
 
@@ -327,7 +360,6 @@ $(function () {
                 if (text == allWarehouseArea[i]) {
                     allWarehouseArea.splice(i,1);
                 }
-
             }
         }
 
@@ -343,44 +375,40 @@ $(function () {
         }
 
         var applyNo = $('#applyNo').val();
+        var images = '';
         var remarks = $('#remarks').val();
-        var rentStartTime = $('#date').html();
-        var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
-        var storageNo = $('#storageNo').val();
-        var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var teamName = $('#teamName').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).parents('.yd-item').attr('data-applyItemId');
-            obj.focusFlag = $(item).find('.focusFlagText').html();
+            obj.applyWeight = $(item).find('.applyWeight').val();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
-            obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
-            /*obj.quantity = $(item).find('.quantity').val();*/
+            obj.produceBatch = {};
+            obj.produceBatch.produceBatchNo = $(item).find('.produceBatch').val();
+            obj.produceBatch.productLevel = {};
+            obj.produceBatch.productLevel.id = $(item).find('.productLevel').attr('data-id');
+            obj.produceBatch.productLevel.name = $(item).find('.productLevel').html();
+            obj.produceBatch.zhaji = $(item).find('.zhaji').html();
+            obj.produceBatch.zhajiId = $(item).find('.zhaji').attr('data-id');
+            obj.produceTime = $(item).find('.produceTime').html();
+            obj.productId = $(item).find('.productName').attr('data-id');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            obj.weight = $(item).find('.weight').val();
-            storageFactoryWaybillItemList.push(obj);
+            storageFactoryApplyItemList.push(obj);
         });
 
         var data2 = {
             applyNo: applyNo,
-            factoryApplyId: id,
+            images: images,
             remarks: remarks,
-            rentStartTime: rentStartTime,
-            serviceTeamId: serviceTeamId,
-            storageNo: storageNo,
-            storageType: storageType,
-            workType: workType,
-            storageFactoryWaybillItemList: storageFactoryWaybillItemList,
+            teamName: teamName,
+            storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
 
         console.log(data2);
 
         // 提交数据
-        getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
+        getData('POST',api.rksqT.saveStorageFactoryApplyMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
@@ -399,5 +427,139 @@ $(function () {
                 })
             }
         });
+    })
+
+
+    var scrollWra = new BScroll('#scrollWra', {
+        scrollbar: {
+            fade: true
+        },
+        click: true,
+        pullUpLoad: {
+            threshold: 0
+        }
+    });
+
+    var productName = '';
+    var totalPage = 1;     // 总页数;
+    var page = 1;          // 第一页;
+
+    getData('GET', api.sp.findPageApi, {
+        accountId: accountId,
+        pageNo: page,
+        pageSize: 10,
+        productName: productName,
+    }, function (res) {
+        if (res.code == 200) {
+            if (res.data.list.length > 0) {
+                totalPage = res.data.totalPage;
+                var data = res.data.list;
+                renderData(data);
+            } else {
+                $('.loadText').text('暂无数据');
+            }
+        }
+    });
+
+    scrollWra.on('pullingUp', function () {
+        if (totalPage == page) {
+            $('.loadText').text('没有更多数据了');
+            return false;
+        }
+
+        page++;
+        getData('GET', api.sp.findPageApi, {
+            accountId: accountId,
+            pageNo: page,
+            pageSize: 10,
+            productName: productName,
+        }, function (res) {
+            if (res.code == 200) {
+                if (res.data.list.length > 0) {
+                    totalPage = res.data.totalPage;
+                    var data = res.data.list;
+                    renderData(data);
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+    });
+
+
+    function renderData(data) {
+        $('.loadText').text('正在加载中...');
+        Global.requestTempByAjax('../temp/sp/spList.html', {
+            list: data,
+        }, function (template) {
+            $('#list').append(template);
+            scrollWra.finishPullUp();
+            scrollWra.refresh();
+            $('.loadText').text('上滑加载更多...');
+        });
+    }
+
+
+    // 点击搜索
+    $('#scarchBtn').on('click', function () {
+        page = 1;
+        $('#list').html('');
+        productName = $('#productName').val();
+        getData('GET', api.sp.findPageApi, {
+            accountId: accountId,
+            pageNo: page,
+            pageSize: 10,
+            productName: productName,
+        }, function (res) {
+            if (res.code == 200) {
+                if (res.data.list.length > 0) {
+                    totalPage = res.data.totalPage;
+                    var data = res.data.list;
+                    renderData(data);
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+    });
+
+    // 点击显示商品弹窗
+    $('.container').on('click','.showProd',function () {
+        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
+        $('#product-win').fadeIn();
+    });
+    
+    
+    // 点击关闭商品弹窗
+    $('#product-win').on('click',function () {
+        $(this).fadeOut();
+    });
+    
+    
+    // 点击选择商品
+    $('#list').on('click','.content-item',function () {
+        var productId = $(this).attr('data-id');
+        if (productId != 'null') {
+            getData('GET',api.sp.findById,{
+                id: productId,
+            },function (res) {
+                if (res.code == 200) {
+                    var data = res.data.list[0];
+                    $('.gd-list-item').each(function (i,item) {
+                        var itemId = $(item).attr('data-applicationId');
+                        if (applicationId == itemId) {
+                            $(item).find('.productName').html(data.productName).attr('data-id',data.id);
+                            $(item).find('.specificationName').html(data.specificationName);
+                            $(item).find('.unit').html(data.unit);
+                            $(item).find('.productType').html(data.productType);
+                            $(item).find('.productBrand').html(data.productBrand);
+                            $('#product-win').fadeOut();
+                        }
+                    });
+
+                }
+            });
+        }
     })
 });

@@ -1,62 +1,31 @@
 $(function () {
     var id = Global.getUrlParam('id');
-    var serviceTeamId = Global.getUrlParam('zxdwId');
-    if (serviceTeamId != 'null') {
-        $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
-    }
-
-    var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
-    if (serviceTeamText != 'null') {
-        $('#serviceTeamText').html(serviceTeamText);
-    }
 
     var applicationId = 0;
 
-    var storageFactoryWaybillItemList = [];
+    var storageFactoryApplyItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
-
-    getData('GET',api.rksqT.findApplyMainDetail,{
-        accountId: accountId,
+    // 获取产品信息
+    getData('GET',api.rkybt.findDetailById,{
         id: id,
     },function (res) {
         if (res.code == 200) {
             var data = res.data;
-            $('#applyNo').html(res.data.applyNo);
-            if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
-                    $('#list').append(template);
-                    $('.gd-list-item').each(function (i,item) {
-                        $(item).attr('data-applicationId',applicationId);
-                        applicationId++;
-                    })
-                });
-            }
+            $('#produceBatchNo').html(res.data.produceBatchNo);
+            $('#produceTime').html(res.data.produceTime);
+            $('#productBrand').html(res.data.productBrand);
+            $('#productLevel').html(res.data.productLevel);
+            $('#productName').html(res.data.productName);
+            $('#productType').html(res.data.productType);
+            $('#specification').html(res.data.specification);
+            $('#totalQuantity').html(res.data.totalQuantity);
+            $('#totalWeight').html(res.data.totalWeight);
+            $('#unit').html(res.data.unit);
+            $('#zhaji').html(res.data.zhaji);
+            $('#checkStatus').html(res.data.checkStatus);
         }
-
-    });
-
-
-    // 跳转到选择队伍页面
-    $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?id=' + id;
-    });
-
-
-    // 点击显示作业方式列表
-    $('#showWorkType').on('click',function () {
-        $('.maskcon').hide();
-        $('.maskcon5').show();
-        $('.mask').show();
-    });
-
-    // 选择作业方式
-    $('.maskcon5').on('click','.maskcon-item',function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
-        var workType = $(this).html();
-        var workTypeText = $(this).html();
-        $('.forklift').html(workTypeText);
     });
 
     // 获取园区列表
@@ -243,31 +212,6 @@ $(function () {
     });
 
 
-    // 点击显示特别关注列表
-    $('.container').on('click','.showFocusFlag',function () {
-        $(this).addClass('after').siblings().removeClass('after');
-        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        $('.maskcon').hide();
-        $('.maskcon6').show();
-        $('.mask').show();
-    });
-
-    // 选择特别关注
-    $('.maskcon6').on('click','.maskcon-item',function (e) {
-        var focusFlagText = $(this).html();
-        $('.gd-list-item').each(function (i,item) {
-            var itemId = $(item).attr('data-applicationId');
-            if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.focusFlagText').html(focusFlagText);
-                $('.maskcon').hide();
-                $('.mask').hide();
-                return;
-            }
-        });
-
-    });
-
-
     // 点击关闭弹窗
     $('.mask').on('click',function () {
         $('.maskcon').hide();
@@ -275,52 +219,48 @@ $(function () {
     });
 
     // 添加申请记录
-    $('.container').on('click','.gd-add-img',function () {
+    $('.gd-add-img').on('click', function () {
         var html = '';
         applicationId ++;
         html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
         html += '<img class="gd-minus" src="../img/1_31.png">';
-        /*html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库数量</div>';
-        html += '<input type="text" class="gd-val quantity" data-validateInfor="{strategy:isEmpty,msg:入库数量不能为空}|{strategy:isNumber,msg:入库数量需为数字}">';
-        html += '</div>';*/
-
         html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库重量(吨)</div>';
-        html += '<input type="text" class="gd-val weight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
-        html += '</div>';
+        html += ' <div class="gd-key">申请库存(吨)</div>';
+        html += ' <input type="text" class="gd-val inStock" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">';
 
+
+        html += '</div>';
         html += '<div class="gd-item showPark">';
         html += '<div class="gd-key">所属园区</div>';
         html += '<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png">';
-        html += '</div>';
 
+        html += '<img class="gd-img" src="../img/1_34.png" >';
+        html += '</div>';
         html += '<div class="gd-item showStoreroom">';
         html += '<div class="gd-key">所属库房</div>';
         html += '<div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>';
+
         html += '<img class="gd-img " src="../img/1_34.png" >';
         html += '</div>';
 
         html += '<div class="gd-item showReservoirArea">';
-        html += '<div class="gd-key">入库库区</div>';
-        html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png" >';
-        html += '</div>';
+        html += '<div class="gd-key">所属库区</div>';
+        html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>';
 
-        html += '<div class="gd-item showFocusFlag">';
-        html += '<div class="gd-key">特别关注</div>';
-        html += '<div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>';
         html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
         html += '</div>';
 
-        $(this).parents('.yd-item').find('.gd-infor').append(html);
+
+        $('#gd-infor').append(html)
     });
 
 
     // 点击删除申请记录
     $('.container').on('click','.gd-minus',function () {
+
+        // debugger
+
         var text = $(this).parents('.gd-list-item').attr('data-warehouseAreaId');
         if (text != '') {
             for (var i = 0; i < allWarehouseArea.length; i++) {
@@ -343,45 +283,28 @@ $(function () {
         }
 
         var applyNo = $('#applyNo').val();
-        var remarks = $('#remarks').val();
-        var rentStartTime = $('#date').html();
-        var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
-        var storageNo = $('#storageNo').val();
-        var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var teamName = $('#teamName').val();
+        var remark = $('#remark').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).parents('.yd-item').attr('data-applyItemId');
-            obj.focusFlag = $(item).find('.focusFlagText').html();
+            obj.applyWeight = $(item).find('.inStock').val();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
-            obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
-            /*obj.quantity = $(item).find('.quantity').val();*/
-            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            obj.weight = $(item).find('.weight').val();
-            storageFactoryWaybillItemList.push(obj);
+            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
+            storageFactoryApplyItemList.push(obj);
         });
 
         var data2 = {
+            id: id,
             applyNo: applyNo,
-            factoryApplyId: id,
-            remarks: remarks,
-            rentStartTime: rentStartTime,
-            serviceTeamId: serviceTeamId,
-            storageNo: storageNo,
-            storageType: storageType,
-            workType: workType,
-            storageFactoryWaybillItemList: storageFactoryWaybillItemList,
+            remarks: remark,
+            teamName: teamName,
+            storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
 
-        console.log(data2);
-
         // 提交数据
-        getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
-            accountId: accountId,
+        getData('POST',api.rkybt.saveStorageFactoryApplyMain,{
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
