@@ -2,25 +2,25 @@
 
 <div class="content-item" data-id="<%- result.list[i].id %>">
     <% if (result.list[i].storageStatus == 0 && result.list[i].status == 1) { %>
-        <div class="content-item-btn btn1">
-            确认完成
-        </div>
+    <div class="content-item-btn btn1">
+        确认完成
+    </div>
     <% } else if (result.list[i].storageStatus == 0 && result.list[i].status == 0) { %>
-        <div class="content-item-btn btn2" data-id="<%- result.list[i].id %>">
-            编辑
-        </div>
+    <div class="content-item-btn btn2" data-id="<%- result.list[i].id %>">
+        编辑
+    </div>
     <% } else if (result.list[i].storageStatus == 0 && result.list[i].status == 2) { %>
-        <div class="content-item-btn btn3">
-            审核不通过
-        </div>
+    <div class="content-item-btn btn3">
+        审核不通过
+    </div>
     <% } else if (result.list[i].storageStatus == 1) { %>
-        <div class="content-item-btn btn3">
-            已入库
-        </div>
+    <div class="content-item-btn btn3">
+        已入库
+    </div>
     <% } %>
 
-    <div class="content-item-header">
-        OC201907230001
+    <div class="content-item-header storageNo" >
+        <%- result.list[i].storageNo %>
     </div>
 
     <div class="content-item-con">

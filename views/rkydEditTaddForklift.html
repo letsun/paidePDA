@@ -7,7 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rkydListT.css">
+    <link rel="stylesheet" href="../css/rkydEditTaddForklift.css">
 </head>
 
 <body>
@@ -16,17 +16,18 @@
 
         <div class="header">
 
-            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
-            入库运单
+            <div class="return"> <img src="../img/1_40.png"></div>
+            选择装卸队伍
         </div>
 
         <div class="search">
-            <input type="text" placeholder="输入出库单号/装卸队伍搜索"> <label id="scarchBtn">搜索</label>
+            <input type="text" placeholder="输入队伍名称/联系人搜索" id="name"> <label>搜索</label>
 
             <img src="../img/1_28.png">
         </div>
 
         <div class="content">
+
             <div class="scroll-wra" id="scrollWra">
                 <div class="wrapper">
                     <div class="list" id="list"></div>
@@ -38,16 +39,16 @@
         </div>
 
     </div>
-
-
-
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+
     <script>
+        var id = Global.getUrlParam('id');
+
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
                 fade: true
@@ -58,17 +59,17 @@
             }
         });
 
-        var storageNo = '';
+        var name = '';
 
         var totalPage = 1;     // 总页数;
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET', api.rkydT.findPageApi, {
+        getData('GET', api.yq.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
-            storageNo: storageNo,
+            name: name,
         }, function (res) {
             if (res.code == 200) {
                 if (res.data.list.length > 0) {
@@ -88,11 +89,11 @@
             }
 
             page++;
-            getData('GET', api.rkydT.findPageApi, {
+            getData('GET', api.yq.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
-                storageNo: storageNo,
+                name: name,
             }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
@@ -110,7 +111,10 @@
 
         function renderData(data) {
             $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rkyd/list.html', { list: data }, function (template) {
+            Global.requestTempByAjax('../temp/rkyd/zxdw.html', {
+                list: data,
+                id: id,
+            }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
@@ -123,12 +127,12 @@
         $('#scarchBtn').on('click', function () {
             page = 1;
             $('#list').html('');
-            storageNo = $('#storageNo').val();
-            getData('GET', api.rkydT.findPageApi, {
+            name = $('#name').val();
+            getData('GET', api.yq.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
-                storageNo: storageNo,
+                name: name,
             }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
@@ -138,64 +142,9 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
-
-                    // if (res.data.pageNo == res.data.totalPage) {
-                    //     $('.loadText').text('没有更多数据了');
-                    // }
                 }
             });
         });
-
-
-        /*点击进入详情*/
-        $('.container').on('click', '.content-item', function () {
-            var id = $(this).attr('data-id');
-            window.location.href = './rkydDetailT.html?id=' + id;
-        });
-
-
-        // 编辑运单
-        $('.container').on('click', '.btn2', function (e) {
-            e.stopPropagation();
-            var id = $(this).attr('data-id');
-            window.location.href = './rkydEditT.html?id=' + id;
-        });
-
-
-        /*点击确认完成*/
-
-        $('.container').on('click', '.btn1', function (e) {
-            var that = this;
-            var id = $(that).parent().attr('data-id') //运单id
-          
-            e.stopPropagation();
-            common.alert({
-                mask: true,
-                title: '提示',
-                content: '运单已作业完成,同步生成出库运单?',
-                dialog: true,
-                ok: function (reg) {
-                    getData('GET',api.rkydT.saveStorage,{
-                        accountId:accountId,
-                        id:id,
-                    },function(res){
-                        if (res.code==200){
-                            $(that).removeClass('btn1').addClass('btn3').text('已入库')
-                        }else{
-                            common.alert({
-                                mask:true,
-                                content:res.msg
-                            })
-                        }                    
-                    })
-
-                    
-                }
-            });
-        })
-
-
-
     </script>
 </body>
 
