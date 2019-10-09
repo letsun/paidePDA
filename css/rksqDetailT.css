@@ -253,9 +253,6 @@ body {
   padding: 14px 0;
   background: #fff;
 }
-.container .content .yd-list .yd-item .yd-con:last-child {
-  background: #f3f3f3;
-}
 .container .content .yd-list .yd-item .yd-con .yd-child-item {
   padding: 6px 30px;
 }
@@ -296,6 +293,10 @@ body {
 .container .content .yd-list .yd-item .yd-con .yd-child-item .double-find .yd-child-val {
   flex: 1;
   color: #333;
+}
+.container .content .yd-list .yd-item .yd-con1 {
+  background: #f3f3f3;
+  margin-top: 10px;
 }
 .container .content .review-wra {
   padding: 20px 0 40px 0;

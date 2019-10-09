@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/rkydEditT.css">
+
+    <link rel="stylesheet" href="../scripts/plugins/iosSelect/iosSelect.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            入库运单编辑
+        </div>
+
+        <div class="content">
+
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">关联申请单</div>
+                        <div class="gd-val" id="applyNo"></div>
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">入库单号</div>
+
+                        <input type="text" class="gd-val" id="storageNo">
+                        <!-- <div class="gd-val" id="storageNo"></div> -->
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">合租起始日</div>
+
+                        <!-- <div type="text" class="gd-val" id="date" ></div> -->
+                        <div class="gd-val" id="rentStartTime"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">装卸队伍</div>
+                        <div class="gd-val" id="serviceTeamName">1111</div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">作业方式</div>
+                        <div class="gd-val forklift" id="workType"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">入库类型</div>
+                        <div class="gd-val" id="storageType"></div>
+                    </div>
+                    <div class="gd-item last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remarks"></textarea>
+                        </div>
+                    </div>
+                    <div class="gd-item last-gd-item">
+                        <div class="gd-left">附件：</div>
+                        <div class="gd-right">
+                            <img class="preview-img" src="../img/1_100.png" alt="">
+                            <div class="preview-btn" id="preview-btn">(点击查看大图)</div>
+                        </div>
+                    </div>
+                    <div class="gd-item other-gd-item">
+                        <div class="gd-dec active">
+                            <img class="icon-down" src="../img/1_29.png">
+                            <div class="gd-text">展开入库明细</div>
+                        </div>
+                        <div class="gd-dec">
+                            <img class="icon-down" src="../img/1_30.png">
+                            <div class="gd-text">收起入库明细</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--入库明细-->
+            <div class="yd-list" id="list"></div>
+
+            <!--审核记录-->
+            <div class="review-wra">
+                <div class="review-title">审核记录</div>
+                <div class="review-list" id="review-list"></div>
+            </div>
+
+        </div>
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+
+        <div class="mask">
+
+            <!-- 叉车作业 -->
+            <div class="maskcon">
+
+                <div class="maskcon-item">叉车作业</div>
+
+                <div class="maskcon-item">人工作业</div>
+
+                <div class="maskcon-item">叉车+人工作业</div>
+            </div>
+
+
+        </div>
+
+
+        <div class="tfooter"></div>
+        <div class="footer">
+            确认完成
+        </div>
+    </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/other/rkydEditT.js"></script>
+    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+    <script src="../scripts/plugins/iosSelect/date.js"></script>
+
+    <script>
+        setDateControl('#rentStartTime');
+    </script>
+</body>
+
+</html>
