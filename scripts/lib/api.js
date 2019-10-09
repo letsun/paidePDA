@@ -27,7 +27,7 @@ var api = {
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryWaybillMain/saveStorageFactoryWaybillMain',     // 入库运单修改保存
     },
     rkybs: {
-        findPageApi: ip + '/api/pda/storageFactoryForecastMain/findPageApi',     // 入库预报列表
+        findPageApi: ip + '/api/pda/storageWarehouseForecastMain/findPageApi',     // 入库预报列表
         findApplyMainDetail: ip + '/api/pda/storageFactoryForecastMain/findApplyMainDetail',     // 入库申请详情
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryForecastMain/saveStorageFactoryApplyMain',     // 新增入库单保存
         findDetailById: ip + '/api/pda/storageFactoryForecastMain/findDetailById',     // 新增入库申请预报明细接口
@@ -62,6 +62,6 @@ var api = {
         index: '/pda/park/index',     // 园区排队信息总览
         findList2: ip + '/api/pda/basePark/findList',     // 查询园区
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
-        findList4: ip + '/api/pda/baseServiceTeam/findList',     // 查询装卸队伍
+        findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
     },
 };

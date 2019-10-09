@@ -1,10 +1,10 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
-    <div class="yd-item">
+    <div class="yd-item" data-applyItemId="<%- result.list[i].applyItemId %>">
         <div class="yd-con">
             <div class="yd-child-item">
                 <div class="yd-child-dec">
                     <div class="yd-child-key">产品名称：</div>
-                    <div class="yd-child-val"><%- result.list[i].productName %></div>
+                    <div class="yd-child-val productName" data-productId="<%- result.list[i].productId %>"><%- result.list[i].productName %></div>
                 </div>
             </div>
             <div class="yd-child-item">
@@ -20,7 +20,7 @@
             <div class="yd-child-item">
                 <div class="yd-child-dec double-find">
                     <div class="yd-child-key">生产批次：</div>
-                    <div class="yd-child-val"><%- result.list[i].produceBatchNo %></div>
+                    <div class="yd-child-val produceBatch" data-produceBatchId="<%- result.list[i].produceBatchId %>"><%- result.list[i].produceBatchNo %></div>
                 </div>
                 <div class="yd-child-dec double-find">
                     <div class="yd-child-key">生产日期：</div>
@@ -57,34 +57,57 @@
                     <div class="yd-child-val"><%- result.list[i].productBrand %></div>
                 </div>
             </div>
-        </div>
-        <div class="yd-con">
-            <div class="yd-child-item">
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">所属园区：</div>
-                    <div class="yd-child-val"><%- result.list[i].baseParkName %></div>
-                </div>
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">所属库房：</div>
-                    <div class="yd-child-val"><%- result.list[i].baseWarehouseName %></div>
-                </div>
-            </div>
-            <div class="yd-child-item">
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">入库库区：</div>
-                    <div class="yd-child-val"><%- result.list[i].baseWarehouseAreaName %></div>
-                </div>
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">入库数量：</div>
-                    <div class="yd-child-val"><%- result.list[i].quantity %></div>
-                </div>
-            </div>
             <div class="yd-child-item">
                 <div class="yd-child-dec">
-                    <div class="yd-child-key">入库重量(吨)：</div>
-                    <div class="yd-child-val"><%- result.list[i].weight %></div>
+                    <div class="yd-child-key">质检信息：</div>
+                    <div class="yd-child-val"><%- result.list[i].checkStatus %></div>
                 </div>
             </div>
         </div>
-</div>
+
+        <!-- 添加库区 -->
+        <div class="gd-add">
+            <img class="gd-add-img" src="../img/1_33.png">
+        </div>
+
+        <div class="gd-infor">
+            <div class="gd-list gd-list-item" data-applicationId="0">
+                <!--<div class="gd-item">
+                    <div class="gd-key">入库数量</div>
+                    <input type="text" class="gd-val quantity"
+                           data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:入库数量需为数字}">
+                </div>-->
+                <div class="gd-item">
+                    <div class="gd-key">入库重量(吨)</div>
+                    <input type="text" class="gd-val weight"
+                           data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:入库重量需为数字}">
+                </div>
+                <div class="gd-item showPark">
+                    <div class="gd-key">所属园区</div>
+                    <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
+                    <img class="gd-img" src="../img/1_34.png">
+                </div>
+                <div class="gd-item showStoreroom">
+                    <div class="gd-key">所属库房</div>
+                    <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>
+
+                    <img class="gd-img" src="../img/1_34.png">
+                </div>
+
+                <div class="gd-item showReservoirArea">
+                    <div class="gd-key">入库库区</div>
+                    <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}">
+                    </div>
+                    <img class="gd-img" src="../img/1_34.png">
+                </div>
+
+                <div class="gd-item showFocusFlag">
+                    <div class="gd-key">特别关注</div>
+                    <div class="gd-val focusFlagText"></div>
+                    <img class="gd-img" src="../img/1_34.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
 <% } %>

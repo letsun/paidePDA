@@ -181,7 +181,6 @@ $(function () {
 
             $('.gd-list-item').each(function (i,item) {
                 var itemId = $(item).attr('data-applicationId');
-                debugger
                 if (applicationId == itemId) {
                     if ($(item).attr('data-warehouseAreaId')) {
                         for (var j = 0; j < allWarehouseArea.length; j++) {
@@ -243,7 +242,7 @@ $(function () {
         html += '<img class="gd-img " src="../img/1_34.png" >';
         html += '</div>';
 
-        html += '<div class="gd-item  showReservoirArea">';
+        html += '<div class="gd-item showReservoirArea">';
         html += '<div class="gd-key">所属库区</div>';
         html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>';
 

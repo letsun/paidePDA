@@ -7,7 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rkybListT.css">
+    <link rel="stylesheet" href="../css/rksqListaddForklift.css">
 </head>
 
 <body>
@@ -17,17 +17,17 @@
         <div class="header">
 
             <div class="return"> <img src="../img/1_40.png"></div>
-            入库预报
+            选择装卸队伍
         </div>
 
         <div class="search">
-            <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
+            <input type="text" placeholder="输入队伍名称/联系人搜索" id="name"> <label>搜索</label>
 
             <img src="../img/1_28.png">
         </div>
 
-
         <div class="content">
+
             <div class="scroll-wra" id="scrollWra">
                 <div class="wrapper">
                     <div class="list" id="list"></div>
@@ -35,17 +35,20 @@
                     <div class="loadText">上滑加载更多</div>
                 </div>
             </div>
+
         </div>
 
     </div>
-
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+
     <script>
+        var id = Global.getUrlParam('id');
+
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
                 fade: true
@@ -56,17 +59,17 @@
             }
         });
 
-        var productName = '';
+        var name = '';
 
         var totalPage = 1;     // 总页数;
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET', api.rkybt.findPageApi, {
+        getData('GET', api.yq.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
-            productName: productName,
+            name: name,
         }, function (res) {
             if (res.code == 200) {
                 if (res.data.list.length > 0) {
@@ -86,11 +89,11 @@
             }
 
             page++;
-            getData('GET', api.rkybt.findPageApi, {
+            getData('GET', api.yq.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
-                productName: productName,
+                name: name,
             }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
@@ -108,7 +111,10 @@
 
         function renderData(data) {
             $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rkyb/rkybT/list.html', { list: data }, function (template) {
+            Global.requestTempByAjax('../temp/rkyd/zxdw.html', {
+                list: data,
+                id: id,
+            }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
@@ -121,12 +127,12 @@
         $('#scarchBtn').on('click', function () {
             page = 1;
             $('#list').html('');
-            productName = $('#productName').val();
-            getData('GET', api.rkybt.findPageApi, {
+            name = $('#name').val();
+            getData('GET', api.yq.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
-                productName: productName,
+                name: name,
             }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
@@ -136,10 +142,6 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
-
-                    // if (res.data.pageNo == res.data.totalPage) {
-                    //     $('.loadText').text('没有更多数据了');
-                    // }
                 }
             });
         });
