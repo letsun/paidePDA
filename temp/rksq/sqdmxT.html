@@ -2,9 +2,14 @@
 <div class="yd-item">
     <div class="yd-con">
         <div class="yd-child-item" data-id='<%- result.list[i].id %>'>
-            <div class="yd-child-dec">
+            <div class="yd-child-dec double-find">
                 <div class="yd-child-key">产品名称：</div>
                 <div class="yd-child-val"><%- result.list[i].productName %></div>
+            </div>
+
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">质检信息：</div>
+                <div class="yd-child-val"><%- result.list[i].checkStatus %></div>
             </div>
         </div>
         <div class="yd-child-item">
@@ -78,12 +83,6 @@
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">申请库存(吨)：</div>
                 <div class="yd-child-val"><%- result.list[i].productList[a].applyQuantity %></div>
-            </div>
-        </div>
-        <div class="yd-child-item">
-            <div class="yd-child-dec">
-                <div class="yd-child-key">质检信息：</div>
-                <div class="yd-child-val"><%- result.list[i].productList[a].checkStatus %></div>
             </div>
         </div>
     </div>

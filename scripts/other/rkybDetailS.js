@@ -20,7 +20,7 @@ $(function () {
     });
 
     // 获取产品信息
-    getData('GET', api.rkybs.findApplyMainDetail, {
+    getData('GET', api.rkybS.findApplyMainDetail, {
         
         accountId: accountId,
         id: id,
