@@ -36,6 +36,12 @@ $(function () {
             }else {
                 $('#head-state').html('审核不通过');
             }
+
+            if (res.data.actList.length > 0) {
+                Global.requestTempByAjax('../temp/rkyd/auditRecord.html', {actList:res.data.actList}, function(template) {
+                    $('#review-list').append(template);
+                });
+            }
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rksq/sqdmxS.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
