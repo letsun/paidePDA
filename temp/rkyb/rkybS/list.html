@@ -1,68 +1,86 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
-    <div class="content-item" data-id="<%- result.list[i].id %>">
-    <a class="content-item-btn btn1" href="./rkybAddrksqS.html?id=<%- result.list[i].id %>">
-        新增申请
-    </a>
+<div class="content-item" data-id="<%- result.list[i].id %>">
+	<a class="content-item-btn btn1" href="./rkybAddrksqS.html?id=<%- result.list[i].id %>">
+		新增申请
+	</a>
 
-    <div class="content-item-con">
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>预报单号：</span>
-                <div><%- result.list[i].forecastNo %></div>
-            </div>
-        </div>
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>关联单据：</span>
-                <div><%- result.list[i].relationNo %></div>
-            </div>
+	<div class="content-item-con">
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>预报单号：</span>
+				<div>
+					<%- result.list[i].forecastNo %>
+				</div>
+			</div>
+		</div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>关联单据：</span>
+				<div>
+					<%- result.list[i].relationNo %>
+				</div>
+			</div>
 
-        </div>
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>预报数量：</span>
-                <div><%- result.list[i].totalQuantity %></div>
-            </div>
+		</div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>预报数量：</span>
+				<div>
+					<%- result.list[i].totalQuantity %>
+				</div>
+			</div>
 
-            <div class="con-item-right">
-                <span>预报重量(吨)：</span>
-                <div><%- result.list[i].totalWeight %></div>
-            </div>
-        </div>
+			<div class="con-item-right">
+				<span>预报重量(吨)：</span>
+				<div>
+					<%- result.list[i].totalWeight %>
+				</div>
+			</div>
+		</div>
 
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>预报来源：</span>
-                <div class="overflow"><%- result.list[i].customerName %></div>
-            </div>
-        </div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>预报来源：</span>
+				<div class="overflow">
+					<%- result.list[i].customerName %>
+				</div>
+			</div>
+		</div>
 
 
 
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>运输司机：</span>
-                <div><%- result.list[i].driverName %></div>
-            </div>
-            <div class="con-item-right">
-                <span>车牌号码：</span>
-                <div><%- result.list[i].plateNumber %></div>
-            </div>
-        </div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>运输司机：</span>
+				<div>
+					<%- result.list[i].driverName %>
+				</div>
+			</div>
+			<div class="con-item-right">
+				<span>车牌号码：</span>
+				<div>
+					<%- result.list[i].plateNumber %>
+				</div>
+			</div>
+		</div>
 
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>联系电话：</span>
-                <div><%- result.list[i].contactPhone %></div>
-            </div>
-        </div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>联系电话：</span>
+				<div>
+					<%- result.list[i].contactPhone %>
+				</div>
+			</div>
+		</div>
 
-        <div class="con-item">
-            <div class="con-item-left">
-                <span>产品名称：</span>
-                <div><%- result.list[i].productName %></div>
-            </div>
-        </div>
-    </div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品名称：</span>
+				<div>
+					<%- result.list[i].productName %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <% } %>

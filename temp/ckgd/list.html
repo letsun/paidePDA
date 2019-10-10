@@ -1,0 +1,59 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="content-item" data-outWorkNo="<%- result.list[i].outWorkNo %>">
+	<div class="content-item-header">
+		<%- result.list[i].outWorkNo %>
+	</div>
+
+	<div class="content-item-con">
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>装卸队伍：</span>
+				<div class="overflow"><%- result.list[i].serviceTeam %></div>
+			</div>
+			<div class="con-item-right">
+				<span>完成日期：</span>
+				<div><%- result.list[i].finishTime %></div>
+			</div>
+		</div>
+		<div class="con-item">
+			<div class="con-item-left ">
+				<span class="span">联系人：</span>
+				<div class="overflow"><%- result.list[i].serviceTeamContracter %></div>
+			</div>
+			<div class="con-item-right">
+				<span>联系电话：</span>
+				<div><%- result.list[i].serviceTeamPhone %></div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>劳务公司：</span>
+				<div class="overflow1"><%- result.list[i].serviceCompany %></div>
+			</div>
+		</div>
+		
+		<div class="con-item">
+			<div class="con-item-left ">
+				<span class="span">联系人：</span>
+				<div class="overflow"><%- result.list[i].serviceCompanyContracter %></div>
+			</div>
+			<div class="con-item-right">
+				<span>联系电话：</span>
+				<div><%- result.list[i].serviceCompanyPhone %></div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品数量：</span>
+				<div><%- result.list[i].workQuantity %></div>
+			</div>
+			<div class="con-item-right">
+				<span>产品重量(吨)：</span>
+				<div><%- result.list[i].workWeight %></div>
+			</div>
+		</div>
+	</div>
+</div>
+<% } %>

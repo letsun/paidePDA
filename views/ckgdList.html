@@ -1,79 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title></title>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/ckgdList.css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=750, user-scalable=no">
+		<link rel="stylesheet" href="../css/ckgdList.css">
+	</head>
 
-    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-</head>
+	<body>
 
-<body>
+		<div class="container">
 
-    <div class="container">
+			<div class="header">
 
-        <div class="header">
+				<div class="return"> <img src="../img/1_40.png"></div>
+				出库工单
+			</div>
 
-            <div class="return"> <img src="../img/1_40.png"></div>
-            出库工单
-        </div>
+			<div class="search">
+				<input type="text" id="inputInf" placeholder="输入出库单号/装卸队伍搜索"> <label id="scarchBtn">搜索</label>
 
-        <div class="search">
-            <input type="text" placeholder="输入出库单号/装卸队伍搜索"> <label>搜索</label>
+				<img src="../img/1_28.png">
+			</div>
 
-            <img src="../img/1_28.png">
-        </div>
+			<div class="content">
 
-        <div class="content">
+				<div class="scroll-wra" id="scrollWra">
+					<div class="wrapper">
+						<div class="list" id="list"></div>
+				
+						<div class="loadText">上滑加载更多</div>
+					</div>
+				</div>
 
-            <div class="content-item">
-                <div class="content-item-header">
-                    OC201907230001
-                </div>
+			</div>
 
-                <div class="content-item-con">
-                    <div class="con-item">
-                        <div class="con-item-left">
-                            <span>装卸队伍：</span> <div class="overflow"> 蓝天劳务队伍1</div>
-                        </div>
-                        <div class="con-item-right">
-                            <span>完成日期：</span> <div> 2019-09-11</div>
-                        </div>
-                    </div>
-                    <div class="con-item">
-                        <div class="con-item-left ">
-                            <span class="span">联系人：</span> <div class="overflow">奥术大师多</div> 
-                        </div>
-                        <div class="con-item-right">
-                            <span>联系电话：</span> <div>18521041200</div> 
-                        </div>
-                    </div>
+		</div>
+		<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+		<script src="../scripts/lib/ejs.min.js"></script>
+		<script src="../scripts/lib/common.js"></script>
+		<script src="../scripts/lib/commonFunc.js"></script>
+		<script src="../scripts/lib/api.js"></script>
+		<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+		<script>
+			var scrollWra = new BScroll('#scrollWra', {
+				scrollbar: {
+					fade: true
+				},
+				click: true,
+				pullUpLoad: {
+					threshold: 0
+				}
+			});
 
-                    <div class="con-item">
-                        <div class="con-item-left">
-                            <span>劳务公司：</span><div class="overflow1">蓝天劳务股份有限公司</div> 
-                        </div>
-                    </div>
+			var inputInf = '';
 
-                    <div class="con-item">
-                        <div class="con-item-left">
-                            <span>产品数量：</span> <div>600</div> 
-                        </div>
-                        <div class="con-item-right">
-                            <span>产品重量(吨)：</span> <div>30.00</div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
+			var totalPage = 1; // 总页数;
+			var page = 1; // 第一页;
+			var html = '';
 
-        </div>
+			getData('GET', api.ckgd.findPageApi, {
+				accountId: accountId,
+				pageNo: page,
+				pageSize: 10,
+				inputInf: inputInf,
+			}, function(res) {
+				if (res.code == 200) {
+					if (res.data.list.length > 0) {
+						totalPage = res.data.totalPage;
+						var data = res.data.list;
+						renderData(data);
+					} else {
+						$('.loadText').text('暂无数据');
+					}
+				}
+			});
 
-    </div>
+			scrollWra.on('pullingUp', function() {
+				if (totalPage == page) {
+					$('.loadText').text('没有更多数据了');
+					return false;
+				}
 
-</body>
+				page++;
+				getData('GET', api.ckgd.findPageApi, {
+					accountId: accountId,
+					pageNo: page,
+					pageSize: 10,
+					inputInf: inputInf,
+				}, function(res) {
+					if (res.code == 200) {
+						if (res.data.list.length > 0) {
+							totalPage = res.data.totalPage;
+							var data = res.data.list;
+							renderData(data);
+						} else {
+							$('.loadText').text('暂无数据');
+						}
+					}
+				});
+
+			});
+
+
+			function renderData(data) {
+				$('.loadText').text('正在加载中...');
+				Global.requestTempByAjax('../temp/ckgd/list.html', {
+					list: data
+				}, function(template) {
+					$('#list').append(template);
+					scrollWra.finishPullUp();
+					scrollWra.refresh();
+					$('.loadText').text('上滑加载更多...');
+				});
+			}
+
+
+			// 点击搜索
+			$('#scarchBtn').on('click', function() {
+				page = 1;
+				$('#list').html('');
+				inputInf = $('#inputInf').val();
+				getData('GET', api.ckgd.findPageApi, {
+					accountId: accountId,
+					pageNo: page,
+					pageSize: 10,
+					inputInf: inputInf,
+				}, function(res) {
+					if (res.code == 200) {
+						if (res.data.list.length > 0) {
+							totalPage = res.data.totalPage;
+							var data = res.data.list;
+							renderData(data);
+						} else {
+							$('.loadText').text('暂无数据');
+						}
+
+					}
+				});
+			});
+
+
+			// 点击进入详情
+			$('.container').on('click', '.content-item', function() {
+				var outWorkNo = $(this).attr('data-outWorkNo');
+				window.location.href = './ckgdDetail.html?outWorkNo=' + outWorkNo;
+			})
+		</script>
+	</body>
 
 </html>

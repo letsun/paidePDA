@@ -168,4 +168,5 @@ var accountId = '1';
         }
         callback();
     };
+
 })(jQuery);
