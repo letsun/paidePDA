@@ -66,7 +66,7 @@
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET', api.rkybs.findPageApi, {
+        getData('GET', api.rkybS.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -90,7 +90,7 @@
             }
 
             page++;
-            getData('GET', api.rkybs.findPageApi, {
+            getData('GET', api.rkybS.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
@@ -126,7 +126,7 @@
             page = 1;
             $('#list').html('');
             productName = $('#productName').val();
-            getData('GET', api.rkybs.findPageApi, {
+            getData('GET', api.rkybS.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
@@ -142,6 +142,12 @@
                     }
                 }
             });
+        });
+
+        /*点击进入详情*/
+        $('.container').on('click', '.content-item', function () {
+            var id = $(this).attr('data-id');
+            window.location.href = './rkybDetailS.html?id=' + id;
         });
     </script>
 </body>

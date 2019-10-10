@@ -29,7 +29,7 @@ var api = {
         findDetail: ip + '/api/pda/storageFactoryWaybillMain/findDetail',     // 入库运单申请详情
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryWaybillMain/saveStorageFactoryWaybillMain',     // 入库运单修改保存
     },
-    rkybs: {
+    rkybS: {
         findPageApi: ip + '/api/pda/storageWarehouseForecastMain/findPageApi',     // 入库预报列表
         findApplyMainDetail: ip + '/api/pda/storageWarehouseForecastMain/findApplyMainDetail',     // 入库申请详情
         saveWarehouseApplyMain: ip + '/api/pda/storageWarehouseForecastMain/saveWarehouseApplyMain',     // 新增入库单保存
