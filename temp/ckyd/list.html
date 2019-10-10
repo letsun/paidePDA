@@ -1,0 +1,139 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="content-item" data-id="<%- result.list[i].id %>">
+	<div class="content-item-btn btn1">
+		确认完成
+	</div>
+
+	<div class="content-item-header">
+		<%- result.list[i].applyNo %>
+	</div>
+
+	<div class="content-item-con">
+		<div class="con-item">
+
+			<div class="con-item-left">
+				<span>装卸队伍：</span>
+				<div class="overflow"><%- result.list[i].serviceTeamName %></div>
+			</div>
+		</div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>出库数量：</span>
+				<div><%- result.list[i].totalQuantity %></div>
+			</div>
+			<div class="con-item-right">
+				<span>出库重量(吨)：</span>
+				<div><%- result.list[i].totalInventory %></div>
+			</div>
+		</div>
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>货主名称：</span>
+				<div class="overflow1"><%- result.list[i].customerName %></div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品名称：</span>
+				<div><%- result.list[i].productName %></div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品等级：</span>
+				<div><%- result.list[i].productLevelName %></div>
+			</div>
+			<div class="con-item-right">
+				<span>产品榨季：</span>
+				<div><%- result.list[i].zhajiName %></div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品大类：</span>
+				<div><%- result.list[i].productTypeName %></div>
+			</div>
+			<div class="con-item-right">
+				<span>产品品牌：</span>
+				<div><%- result.list[i].productBrandName %></div>
+			</div>
+		</div>
+
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>出库库区：</span>
+				<div><%- result.list[i].warehouseAreaName %></div>
+			</div>
+		</div>
+	</div>
+</div>
+<% } %>
+
+<!-- <div class="content-item">
+	<div class="content-item-btn btn2">
+		编辑
+	</div>
+
+	<div class="content-item-header">
+		OC201907230001
+	</div>
+
+	<div class="content-item-con">
+		<div class="con-item">
+
+			<div class="con-item-left">
+
+				<span>申请时间：</span> 蓝天劳务队伍1
+			</div>
+		</div>
+		<div class="con-item">
+
+			<div class="con-item-left">
+
+				<span>装卸队伍：</span> 蓝天劳务队伍1
+			</div>
+			<div class="con-item-right">
+				<span>完成如期：</span> 2019-09-11
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="content-item">
+	<div class="content-item-btn btn3">
+		已出库
+	</div>
+
+	<div class="content-item-header">
+		OC201907230001
+	</div>
+
+	<div class="content-item-con">
+		<div class="con-item">
+
+			<div class="con-item-left">
+
+				<span>申请时间：</span> 蓝天劳务队伍1
+			</div>
+		</div>
+		<div class="con-item">
+
+			<div class="con-item-left">
+
+				<span>装卸队伍：</span> 蓝天劳务队伍1
+			</div>
+			<div class="con-item-right">
+				<span>完成如期：</span> 2019-09-11
+			</div>
+		</div>
+
+
+	</div>
+</div>
+ -->
