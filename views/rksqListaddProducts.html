@@ -20,84 +20,21 @@
         </div>
 
         <div class="search">
-            <input type="text" placeholder="输入产品名称搜索"> <label>搜索</label>
+            <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
 
             <img src="../img/1_28.png">
         </div>
 
         <div class="content">
+            <div class="scroll-wra" id="scrollWra">
+                <div class="wrapper">
+                    <div class="list" id="list"></div>
 
-
-            <div class="content-item after">
-
-                <!-- 编号 -->
-                <div class="content-item-header">
-                    华糖牌白糖
-                </div>
-
-                <div class="content-item-con">
-                    <div class="con-item">
-
-                        <div class="con-item-left">
-                            <span >包装规格：</span>
-                            <div>50KG/包</div>
-                        </div>
-
-                        <div class="con-item-right">
-                            <span>产品单位：</span>
-                            <div>50KG/包</div>
-                        </div>
-                    </div>
-                    <div class="con-item">
-
-                        <div class="con-item-left">
-                            <span>产品大类：</span>
-                            <div>白糖类</div>
-                        </div>
-                        <div class="con-item-right">
-                            <span>产品品牌：</span>
-                            <div>华糖牌</div>
-                        </div>
-                    </div>
-
-
+                    <div class="loadText">上滑加载更多</div>
                 </div>
             </div>
-            <div class="content-item">
-
-                <!-- 编号 -->
-                <div class="content-item-header">
-                    华糖牌白糖
-                </div>
-
-                <div class="content-item-con">
-                    <div class="con-item">
-
-                        <div class="con-item-left">
-                            <span >包装规格：</span>
-                            <div>50KG/包</div>
-                        </div>
-
-                        <div class="con-item-right">
-                            <span>产品单位：</span>
-                            <div>50KG/包</div>
-                        </div>
-                    </div>
-                    <div class="con-item">
-
-                        <div class="con-item-left">
-                            <span>产品大类：</span>
-                            <div>白糖类</div>
-                        </div>
-                        <div class="con-item-right">
-                            <span>产品品牌：</span>
-                            <div>华糖牌</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
 
     </div>
 
@@ -107,7 +44,6 @@
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-
 </body>
 
 </html>

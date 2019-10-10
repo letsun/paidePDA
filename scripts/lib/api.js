@@ -8,13 +8,14 @@ var api = {
     rksqT: {
         findPageApi: ip + '/api/pda/storageFactoryApplyMain/findPageApi',     // 入库申请单列表
         findApplyMainDetail: ip + '/api/pda/storageFactoryApplyMain/findApplyMainDetail',     // 入库申请单详情
-        saveStorageFactoryApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
+        saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
     },
     rksqS: {
         findPageApi: ip + '/api/pda/storageWarehouseApplyMain/findPageApi',     // 入库申请单列表
         findApplyMainDetail: ip + '/api/pda/storageWarehouseApplyMain/findApplyMainDetail',     // 入库申请单详情
-        saveStorageFactoryApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
+        saveApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
+        saveWaybillMain: ip + '/api/pda/storageWarehouseApplyMain/saveWaybillMain',     // 入库运单保存
     },
     rkyds: {
         findPageApi: ip + '/api/pda/storageWarehouseWaybillMain/findPageApi',     // 入库运单列表
@@ -23,14 +24,15 @@ var api = {
     },
     rkydT: {
         findPageApi: ip + '/api/pda/storageFactoryWaybillMain/findPageApi',     // 入库运单列表
+        saveStorage: ip + '/api/pda/storageFactoryWaybillMain/saveStorage',    //入库运单列表确认完成
         findDetail: ip + '/api/pda/storageFactoryWaybillMain/findDetail',     // 入库运单申请详情
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryWaybillMain/saveStorageFactoryWaybillMain',     // 入库运单修改保存
     },
     rkybs: {
         findPageApi: ip + '/api/pda/storageWarehouseForecastMain/findPageApi',     // 入库预报列表
-        findApplyMainDetail: ip + '/api/pda/storageFactoryForecastMain/findApplyMainDetail',     // 入库申请详情
-        saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryForecastMain/saveStorageFactoryApplyMain',     // 新增入库单保存
-        findDetailById: ip + '/api/pda/storageFactoryForecastMain/findDetailById',     // 新增入库申请预报明细接口
+        findApplyMainDetail: ip + '/api/pda/storageWarehouseForecastMain/findApplyMainDetail',     // 入库申请详情
+        saveWarehouseApplyMain: ip + '/api/pda/storageWarehouseForecastMain/saveWarehouseApplyMain',     // 新增入库单保存
+        findDetailById: ip + '/api/pda/storageWarehouseForecastMain/findDetailById',     // 新增入库申请预报明细接口
     },
     rkybt: {
         findPageApi: ip + '/api/pda/storageFactoryForecastMain/findPageApi',     // 入库预报列表
@@ -56,6 +58,7 @@ var api = {
         findList: ip + '/api/pda/baseZhaji/findList',     // 产品榨季列表
         findList2: ip + '/api/pda/baseProductLevel/findList',     // 产品等级列表
         findPageApi: ip + '/api/pda/baseProduct/findPageApi',     // 商品列表查询
+        findById: ip + '/api/pda/baseProduct/findById',     // 商品明细查询
     },
     yq: {
         findList: ip + '/api/pda/baseWarehouse/findList',     // 仓库

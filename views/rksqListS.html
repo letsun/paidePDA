@@ -7,7 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rksqListT.css">
+    <link rel="stylesheet" href="../css/rksqListS.css">
 
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
 </head>
@@ -21,7 +21,7 @@
             <div class="return"> <img src="../img/1_40.png"></div>
             入库申请
 
-            <div class="setup"> <img src="../img/1_41.png"></div>
+            <a class="setup" id="setup" href="./rksqAddrksqS.html"> <img src="../img/1_41.png"></a>
         </div>
 
         <div class="search">
@@ -119,16 +119,6 @@
             });
 
         }
-        function renderData(data) {
-            $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rksq/list.html', { list: data }, function (template) {
-                $('#list').append(template);
-                scrollWra.finishPullUp();
-                scrollWra.refresh();
-                $('.loadText').text('上滑加载更多...');
-            });
-        }
-
 
         // 点击搜索
         $('#scarchBtn').on('click', function(){
@@ -153,16 +143,12 @@
                 }
             })
 
-        })
-
-         
-        
-
+        });
 
         // 点击进入详情
         $('.container').on('click','.content-item',function () {
             var id = $(this).attr('data-id');
-            window.location.href = './rksqDetailT.html?id=' + id;
+            window.location.href = './rksqDetailS.html?id=' + id;
         });
 
 

@@ -3,27 +3,28 @@ $(function () {
 
     var applicationId = 0;
 
-    var storageWarehouseApplyItemList = [];
+    var storageFactoryApplyItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
     // 获取产品信息
-    getData('GET',api.rkybs.findDetailById,{
+    getData('GET',api.rkybt.findDetailById,{
         id: id,
     },function (res) {
         if (res.code == 200) {
-            var data = res.data.list[0];
-            $('#produceBatchNo').html(data.produceBatchNo);
-            $('#produceTime').html(data.produceTime);
-            $('#productBrand').html(data.productBrand);
-            $('#productLevel').html(data.productLevel);
-            $('#productName').html(data.productName);
-            $('#productType').html(data.productType);
-            $('#specification').html(data.specification);
-            $('#quantity').html(data.quantity);
-            $('#weight').html(data.weight);
-            $('#unit').html(data.unit);
-            $('#zhaji').html(data.zhaji);
+            var data = res.data;
+            $('#produceBatchNo').html(res.data.produceBatchNo);
+            $('#produceTime').html(res.data.produceTime);
+            $('#productBrand').html(res.data.productBrand);
+            $('#productLevel').html(res.data.productLevel);
+            $('#productName').html(res.data.productName);
+            $('#productType').html(res.data.productType);
+            $('#specification').html(res.data.specification);
+            $('#totalQuantity').html(res.data.totalQuantity);
+            $('#totalWeight').html(res.data.totalWeight);
+            $('#unit').html(res.data.unit);
+            $('#zhaji').html(res.data.zhaji);
+            $('#checkStatus').html(res.data.checkStatus);
         }
     });
 
@@ -291,7 +292,7 @@ $(function () {
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
-            storageWarehouseApplyItemList.push(obj);
+            storageFactoryApplyItemList.push(obj);
         });
 
         var data2 = {
@@ -299,11 +300,11 @@ $(function () {
             applyNo: applyNo,
             remarks: remark,
             teamName: teamName,
-            storageWarehouseApplyItemList: storageWarehouseApplyItemList,
+            storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
 
         // 提交数据
-        getData('POST',api.rkybs.saveWarehouseApplyMain,{
+        getData('POST',api.rkybt.saveStorageFactoryApplyMain,{
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
