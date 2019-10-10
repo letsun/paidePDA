@@ -28,9 +28,11 @@
                         <div class="gd-key">申请单号</div>
                         <input type="text" id="applyNo" class="gd-val">
                     </div>
-                    <div class="gd-item">
-                        <div class="gd-key">工作班次</div>
-                        <input type="text" class="gd-val" id="teamName" data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}">
+
+                    <div class="gd-item" id="goContract">
+                        <div class="gd-key">合同编号</div>
+                        <div type="text" class="gd-val" id="contractId" data-validateInfor="{strategy:isEmpty,msg:合同编号不能为空}"></div>
+                        <img class="gd-img" src="../img/1_34.png">
                     </div>
 
 
@@ -114,6 +116,12 @@
                             <div class="yd-child-dec double-find">
                                 <div class="yd-child-key">产品品牌：</div>
                                 <div class="yd-child-val" id="productBrand"></div>
+                            </div>
+                        </div>
+                        <div class="yd-child-item">
+                            <div class="yd-child-dec">
+                                <div class="yd-child-key">质检信息：</div>
+                                <div class="yd-child-val" id="checkStatus"></div>
                             </div>
                         </div>
                     </div>

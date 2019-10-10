@@ -7,23 +7,38 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
+
+    // 进入合同列表
+    $('#goContract').on('click',function () {
+        window.location.href = './rkybaddContract.html?id=' + id;
+    });
+
+
+    var contractCode = Global.getUrlParam('contractCode');
+    var contractId = Global.getUrlParam('contractId');
+
+    if (contractId != 'null') {
+        $('#goContract').find('.gd-val').attr('data-contractId',contractId).html(contractCode);
+    }
+
     // 获取产品信息
     getData('GET',api.rkybS.findDetailById,{
         id: id,
     },function (res) {
         if (res.code == 200) {
             var data = res.data.list[0];
-            $('#produceBatchNo').html(data.produceBatchNo);
+            $('#produceBatchNo').html(data.produceBatchNo).attr('data-produceBatchId',data.productBatchId);
             $('#produceTime').html(data.produceTime);
             $('#productBrand').html(data.productBrand);
             $('#productLevel').html(data.productLevel);
-            $('#productName').html(data.productName);
+            $('#productName').html(data.productName).attr('data-productId',data.productId);
             $('#productType').html(data.productType);
             $('#specification').html(data.specification);
             $('#quantity').html(data.quantity);
             $('#weight').html(data.weight);
             $('#unit').html(data.unit);
             $('#zhaji').html(data.zhaji);
+            $('#checkStatus').html(data.checkStatus);
         }
     });
 
@@ -258,8 +273,6 @@ $(function () {
     // 点击删除申请记录
     $('.container').on('click','.gd-minus',function () {
 
-        // debugger
-
         var text = $(this).parents('.gd-list-item').attr('data-warehouseAreaId');
         if (text != '') {
             for (var i = 0; i < allWarehouseArea.length; i++) {
@@ -282,12 +295,16 @@ $(function () {
         }
 
         var applyNo = $('#applyNo').val();
+        var contractId = $('#contractId').attr('data-contractId');
         var teamName = $('#teamName').val();
         var remark = $('#remark').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.applyWeight = $(item).find('.inStock').val();
+            obj.productId = $('#productName').attr('data-productId');
+            obj.produceBatchId = $('#produceBatchNo').attr('data-produceBatchId');
+            debugger
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
@@ -297,10 +314,13 @@ $(function () {
         var data2 = {
             id: id,
             applyNo: applyNo,
+            contractId: contractId,
             remarks: remark,
             teamName: teamName,
             storageWarehouseApplyItemList: storageWarehouseApplyItemList,
         };
+
+        console.log(data2)
 
         // 提交数据
         getData('POST',api.rkybS.saveWarehouseApplyMain,{

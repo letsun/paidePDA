@@ -1,4 +1,4 @@
-var ip = 'http://192.168.1.11:8899';
+var ip = 'http://192.168.1.20:8899';
 
 var api = {
     rkgd: {
@@ -67,5 +67,8 @@ var api = {
         findList2: ip + '/api/pda/basePark/findList',     // 查询园区
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
         findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
+    },
+    ht: {
+        findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表
     },
 };

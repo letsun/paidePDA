@@ -8,16 +8,16 @@ $(function () {
     var allWarehouseArea = [];      // 已选库区
 
     // 获取产品信息
-    getData('GET',api.rkybt.findDetailById,{
+    getData('GET',api.rkybT.findDetailById,{
         id: id,
     },function (res) {
         if (res.code == 200) {
             var data = res.data;
-            $('#produceBatchNo').html(res.data.produceBatchNo);
+            $('#produceBatchNo').html(res.data.produceBatchNo).attr('data-produceBatchId',res.data.produceBatchId);
             $('#produceTime').html(res.data.produceTime);
             $('#productBrand').html(res.data.productBrand);
             $('#productLevel').html(res.data.productLevel);
-            $('#productName').html(res.data.productName);
+            $('#productName').html(res.data.productName).attr('data-productId',res.data.productId);
             $('#productType').html(res.data.productType);
             $('#specification').html(res.data.specification);
             $('#totalQuantity').html(res.data.totalQuantity);
@@ -289,7 +289,9 @@ $(function () {
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.applyWeight = $(item).find('.inStock').val();
-            obj.parkId = $(item).find('.parkText').attr('data-parkId');
+            obj.parkId = $(item).find('.productName').attr('data-parkId');
+            obj.productId = $('#productName').attr('data-productId');
+            obj.produceBatchId = $('#produceBatchNo').attr('data-produceBatchId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             storageFactoryApplyItemList.push(obj);
@@ -304,7 +306,7 @@ $(function () {
         };
 
         // 提交数据
-        getData('POST',api.rkybt.saveStorageFactoryApplyMain,{
+        getData('POST',api.rkybT.saveStorageFactoryApplyMain,{
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {

@@ -65,7 +65,6 @@ $(function () {
                 }, function (template) {
                     $('#list').append(template);
                     $('.gd-list-item').each(function (i,item) {
-                        $(item).attr('data-applicationId',applicationId);
                         applicationId++;
                         allWarehouseArea.push($(item).attr('data-warehouseareaId'));
                     })

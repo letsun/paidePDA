@@ -28,13 +28,11 @@ $(function () {
                 Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
                     $('.gd-list-item').each(function (i,item) {
-                        $(item).attr('data-applicationId',applicationId);
                         applicationId++;
-                    })
+                        if ($(item).attr('data-applicationId',applicationId)) {
+                            allWarehouseArea.push($(item).attr('data-warehouseareaId'));
+                        }
 
-                    $('.gd-list-item').each(function (i,item) {
-                        $(item).attr('data-applicationId',applicationId);
-                        applicationId++;
                     })
                 });
             }
