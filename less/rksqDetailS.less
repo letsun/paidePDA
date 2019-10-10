@@ -12,6 +12,21 @@ body {
 
 	width: 100%;
 
+	.head-state {
+		position: absolute;
+		top: 0;
+		right: 20px;
+		z-index: 1;
+
+		display: block;
+
+		font-size: 28px;
+		color: @orange;
+		line-height: 80px;
+		letter-spacing: 0;
+		font-weight: normal;
+	}
+
 	.content {
 		position: relative;
 
@@ -112,11 +127,7 @@ body {
 
 						font-size: 26px;
 
-						.clearFix();
-
 						.preview-img {
-							float: left;
-
 							width: 100px;
 							height: 158px;
 						}
@@ -163,9 +174,6 @@ body {
 
 					background: #fff;
 
-					&:last-child {
-						background: #f3f3f3;
-					}
 
 					.yd-child-item {
 						padding: 6px 30px;
@@ -210,6 +218,90 @@ body {
 							width: 320px;
 
 							.yd-child-val {
+								flex: 1;
+
+								color: #333;
+							}
+						}
+					}
+				}
+
+				.yd-con1 {
+					background: #f3f3f3;
+					margin-top: 10px;
+                }
+			}
+		}
+
+		.review-wra {
+			padding: 20px 0 40px 0;
+
+			.review-title {
+				padding: 14px 0;
+
+				color: #ff8400;
+				font-size: 26px;
+				line-height: 40px;
+				text-align: center;
+			}
+
+			.review-list {
+				width: 710px;
+				margin: 20px auto 0 auto;
+
+				.review-item {
+					padding: 0;
+					margin-bottom: 25px;
+
+					border: 1px solid #ddd;
+
+					.review-child-item {
+						padding: 6px 30px;
+
+						.clearFix();
+
+						.review-child-dec {
+							display: flex;
+
+							float: left;
+
+							width: 100%;
+
+							font-size: 24px;
+							line-height: 40px;
+
+							&:last-child {
+								margin-left: 8px;
+
+							}
+
+							&:first-child {
+								margin-left: 0;
+
+							}
+
+							.review-child-key {
+
+								color: #999;
+							}
+
+							.review-child-val {
+								flex: 1;
+
+								color: #333;
+
+								.ellipsisNormal();
+							}
+						}
+
+						.double-find {
+							width: 270px;
+
+							&:last-child {
+								width: 370px;
+							}
+
+							.review-child-val {
 								flex: 1;
 
 								color: #333;

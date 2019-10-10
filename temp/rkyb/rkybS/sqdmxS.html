@@ -1,25 +1,20 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="yd-item">
     <div class="yd-con">
-        <div class="yd-child-item" data-id='<%- result.list[i].id %>'>
-            <div class="yd-child-dec double-find">
+        <div class="yd-child-item">
+            <div class="yd-child-dec">
                 <div class="yd-child-key">产品名称：</div>
                 <div class="yd-child-val"><%- result.list[i].productName %></div>
-            </div>
-
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">质检信息：</div>
-                <div class="yd-child-val"><%- result.list[i].checkStatus %></div>
             </div>
         </div>
         <div class="yd-child-item">
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">预报数量：</div>
-                <div class="yd-child-val"><%- result.list[i].forecastTotalQuantity %></div>
+                <div class="yd-child-val"><%- result.list[i].quantity %></div>
             </div>
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">预报重量(吨)：</div>
-                <div class="yd-child-val"><%- result.list[i].forecastTotalWeight %></div>
+                <div class="yd-child-val"><%- result.list[i].weight %></div>
             </div>
         </div>
         <div class="yd-child-item">
@@ -35,7 +30,7 @@
         <div class="yd-child-item">
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">包装规格：</div>
-                <div class="yd-child-val"><%- result.list[i].specificationName %></div>
+                <div class="yd-child-val"><%- result.list[i].specification %></div>
             </div>
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">产品单位：</div>
@@ -63,30 +58,6 @@
             </div>
         </div>
     </div>
-    <% for (var a = 0; a < result.list[i].productList.length; a++) { %>
-    <div class="yd-con yd-con1">
-        <div class="yd-child-item">
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">所属园区：</div>
-                <div class="yd-child-val"><%- result.list[i].productList[a].parkName %></div>
-            </div>
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">所属库房：</div>
-                <div class="yd-child-val"><%- result.list[i].productList[a].warehouseName %></div>
-            </div>
-        </div>
-        <div class="yd-child-item">
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">申请库区：</div>
-                <div class="yd-child-val"><%- result.list[i].productList[a].warehouseAreaName %></div>
-            </div>
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">申请库存(吨)：</div>
-                <div class="yd-child-val"><%- result.list[i].productList[a].applyQuantity %></div>
-            </div>
-        </div>
-    </div>
 
-    <% } %>
 </div>
 <% } %>

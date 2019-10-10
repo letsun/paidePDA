@@ -15,37 +15,37 @@ $(function () {
 
     // 点击关闭大图
     $('#preview-win').on('click', function () {
+        debugger
         $('#preview-win').fadeOut();
     });
 
     // 获取产品信息
-    getData('GET', api.rkydT.findDetail, {
+    getData('GET', api.rkybS.findApplyMainDetail, {
+        
         accountId: accountId,
         id: id,
     }, function (res) {
         if (res.code == 200) {
             var data = res.data;
-            $('#applyNo').html(res.data.applyNo);
-            $('#storageNo').html(res.data.storageNo);
-            $('#rentStartTime').html(res.data.rentStartTime);
-            $('#serviceTeamName').html(res.data.serviceTeamName);
-            $('#workType').html(res.data.workType);
-            $('#storageType').html(res.data.storageType);
+            $('#forecastNo').html(res.data.forecastNo);
+            $('#customerName').html(res.data.customerName);
+            $('#driverName').html(res.data.driverName);
+            $('#plateNumber').html(res.data.plateNumber);
+            $('#contactPhone').html(res.data.contactPhone);
             $('#remarks').html(res.data.remarks);
-            if(res.data.status == 0) {
-                $('#head-state').html('审核中');
-            }else if (res.data.status == 1) {
-                $('#head-state').html('已审核');
-            }else {
-                $('#head-state').html('审核不通过');
-            }
 
+            if (res.data.status == 0) {
+                $('#status').html('审核中')
+            }else if (res.data.status == 1) {
+                $('#status').html('已审核')
+            }else {
+                $('#status').html('审核不通过')
+            }
             if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/sqdmxT.html', { list: res.data.list }, function (template) {
+                Global.requestTempByAjax('../temp/rkyb/rkybS/sqdmxS.html', { list: res.data.list }, function (template) {
                     $('#list').append(template);
                 });
             }
-
             if (res.data.actList.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/auditRecord.html', { actList: res.data.actList }, function (template) {
                     $('#review-list').append(template);

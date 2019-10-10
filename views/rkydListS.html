@@ -66,7 +66,8 @@
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET', api.rkydS.findPageApi, {
+
+        getData('GET', api.rkydS.findPageApi,{
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -90,7 +91,10 @@
             }
 
             page++;
+
+
             getData('GET', api.rkydS.findPageApi, {
+
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
@@ -117,8 +121,53 @@
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
                 $('.loadText').text('上滑加载更多...');
+
             });
         }
+
+
+        // 点击搜索
+        $('#scarchBtn').on('click', function () {
+            page = 1;
+            $('#list').html('');
+            storageNo = $('#storageNo').val();
+            getData('GET', api.rkyds.findPageApi, {
+                accountId: accountId,
+                pageNo: page,
+                pageSize: 10,
+                storageNo: storageNo,
+            }, function (res) {
+                if (res.code == 200) {
+                    if (res.data.list.length > 0) {
+                        totalPage = res.data.totalPage;
+                        var data = res.data.list;
+                        renderData(data);
+                    } else {
+                        $('.loadText').text('暂无数据');
+                    }
+
+                    // if (res.data.pageNo == res.data.totalPage) {
+                    //     $('.loadText').text('没有更多数据了');
+                    // }
+                }
+            });
+        });
+
+        
+        /*点击进入详情*/
+        $('.container').on('click', '.content-item', function () {
+            var id = $(this).attr('data-id');
+            window.location.href = './rkydDetailS.html?id=' + id;
+        });
+
+            // 点击进入详情
+            // $('.container').on('click','.content-item',function () {
+            //     var id = $(this).attr('data-id');
+            //     window.location.href = './rkybDetailT.html?id=' + id;
+            // })
+
+        //     });
+        // }
 
 
         // 点击搜索
