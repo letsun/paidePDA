@@ -12,7 +12,7 @@ $(function () {
 
     var applicationId = 0;
 
-    var storageFactoryWaybillItemList = [];
+    var storageWarehouseWaybillItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
@@ -30,6 +30,9 @@ $(function () {
                     $('.gd-list-item').each(function (i,item) {
                         $(item).attr('data-applicationId',applicationId);
                         applicationId++;
+                        if ($(item).attr('data-warehouseareaId')) {
+                            allWarehouseArea.push($(item).attr('data-warehouseareaId'));
+                        }
                     })
                 });
             }
@@ -40,7 +43,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=ck&id=' + id;
     });
 
 
@@ -352,8 +355,8 @@ $(function () {
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).parents('.yd-item').attr('data-applyItemId');
+            obj.warehouseApplyId = id;
+            obj.warehouseApplyItemId = $(item).parents('.yd-item').attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
             obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
@@ -362,19 +365,19 @@ $(function () {
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.weight = $(item).find('.weight').val();
-            storageFactoryWaybillItemList.push(obj);
+            storageWarehouseWaybillItemList.push(obj);
         });
 
         var data2 = {
             applyNo: applyNo,
-            factoryApplyId: id,
+            applyId: id,
             remarks: remarks,
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
             storageNo: storageNo,
             storageType: storageType,
             workType: workType,
-            storageFactoryWaybillItemList: storageFactoryWaybillItemList,
+            storageWarehouseWaybillItemList: storageWarehouseWaybillItemList,
         };
 
         console.log(data2);

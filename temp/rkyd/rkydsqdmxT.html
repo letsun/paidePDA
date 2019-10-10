@@ -1,7 +1,7 @@
 
     <% for (var i = 0; i < result.list.length; i++) { %>
         <% var productList = result.list[i].productList %>
-        <div class="yd-item" data-applyItemId="<%- result.list[i].applyItemId %>">
+        <div class="yd-item">
             <div class="yd-con">
                 <div class="yd-child-item">
                     <div class="yd-child-dec">
@@ -75,7 +75,7 @@
             <div class="gd-infor">
                 <% if (productList.length > 0) { %>
                     <% for (var j = 0; j < productList.length; j++) { %>
-                        <div class="gd-list gd-list-item" data-applicationId="0" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-itemId="<%- productList[j].itemId %>">
+                        <div class="gd-list gd-list-item" data-applicationId="0" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
                             <img class="gd-minus" src="../img/1_31.png">
                             <div class="gd-item">
                                 <div class="gd-key">入库重量(吨)</div>

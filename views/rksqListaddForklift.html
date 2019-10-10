@@ -48,6 +48,7 @@
 
     <script>
         var id = Global.getUrlParam('id');
+        var type = Global.getUrlParam('type');
 
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
@@ -114,6 +115,7 @@
             Global.requestTempByAjax('../temp/rkyd/zxdw.html', {
                 list: data,
                 id: id,
+                type: type,
             }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
