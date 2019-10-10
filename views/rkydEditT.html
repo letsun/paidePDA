@@ -44,8 +44,7 @@
                     </div>
                     <div class="gd-item" id="goTeam">
                         <div class="gd-key">装卸队伍</div>
-                        <!-- <div class="gd-val" id="serviceTeamName">1111</div> -->
-                        <div class="gd-val" id="serviceTeamText"></div>
+                         <div class="gd-val" id="serviceTeamName">1111</div>
                         
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
@@ -95,6 +94,9 @@
                 <div class="review-list" id="review-list"></div>
             </div>
 
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+
         </div>
 
         <!--大图-->
@@ -105,8 +107,19 @@
 
         <div class="mask">
 
+            <div class="maskcon maskcon1">
+
+            </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+
+            <div class="maskcon maskcon3">
+
+            </div>
+
             <!-- 叉车作业 -->
-            <div class="maskcon">
+            <div class="maskcon maskcon5">
 
                 <div class="maskcon-item">叉车作业</div>
 
@@ -115,23 +128,24 @@
                 <div class="maskcon-item">叉车+人工作业</div>
             </div>
 
-
-        </div>
-
-
-        <div class="tfooter"></div>
-        <div class="footer">
-            确认完成
+            <!-- 特别关注 -->
+            <div class="maskcon maskcon6">
+                <div class="maskcon-item">是</div>
+                <div class="maskcon-item">否</div>
+            </div>
         </div>
     </div>
+
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
     <script src="../scripts/lib/api.js"></script>
-    <script src="../scripts/other/rkydEditT.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
     <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
     <script src="../scripts/plugins/iosSelect/date.js"></script>
+    <script src="../scripts/other/rkydEditT.js"></script>
 
     <script>
         setDateControl('#rentStartTime');

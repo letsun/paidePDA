@@ -31,6 +31,11 @@ $(function () {
                         $(item).attr('data-applicationId',applicationId);
                         applicationId++;
                     })
+
+                    $('.gd-list-item').each(function (i,item) {
+                        $(item).attr('data-applicationId',applicationId);
+                        applicationId++;
+                    })
                 });
             }
         }
@@ -278,7 +283,7 @@ $(function () {
     $('.container').on('click','.gd-add-img',function () {
         var html = '';
         applicationId ++;
-        html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
+        html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '" data-itemId="">';
         html += '<img class="gd-minus" src="../img/1_31.png">';
         /*html += '<div class="gd-item">';
         html += '<div class="gd-key">入库数量</div>';

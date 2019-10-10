@@ -8,7 +8,7 @@ $(function () {
     var allWarehouseArea = [];      // 已选库区
 
     // 获取产品信息
-    getData('GET',api.rkybs.findDetailById,{
+    getData('GET',api.rkybS.findDetailById,{
         id: id,
     },function (res) {
         if (res.code == 200) {
@@ -303,7 +303,7 @@ $(function () {
         };
 
         // 提交数据
-        getData('POST',api.rkybs.saveWarehouseApplyMain,{
+        getData('POST',api.rkybS.saveWarehouseApplyMain,{
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
