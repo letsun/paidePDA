@@ -1,0 +1,33 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+    <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rkydEditT.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>">
+
+        <!-- 编号 -->
+        <div class="content-item-header">
+            <%- result.list[i].name %>
+        </div>
+
+        <div class="content-item-con">
+            <div class="con-item ">
+
+                <div class="con-item-left">
+
+                    <span >所属公司：</span>
+                    <div class="overflow1"><%- result.list[i].serviceCompang %></div>
+                </div>
+            </div>
+            <div class="con-item">
+
+                <div class="con-item-left">
+
+                    <span class="span">联系人：</span>
+                    <div><%- result.list[i].contacter %></div>
+                </div>
+                <div class="con-item-right">
+                    <span>联系电话:</span>
+                    <div><%- result.list[i].contacterPhone %></div>
+                </div>
+            </div>
+
+        </div>
+    </a>
+<% } %>

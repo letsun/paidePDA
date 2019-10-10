@@ -2,6 +2,11 @@ $(function () {
     var id = Global.getUrlParam('id');
     console.log(id)
 
+    var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
+    if (serviceTeamText != 'null') {
+        $('#serviceTeamText').html(serviceTeamText);
+    }
+
     // 显示隐藏运单列表
     $('.gd-dec').on('click', function () {
         $(this).removeClass('active').siblings().addClass('active');
@@ -32,11 +37,11 @@ $(function () {
         var workType = $(this).html();
         var workTypeText = $(this).html();
         $('.forklift').html(workTypeText);
-        
+
     });
 
-        // 点击关闭弹窗
-    $('.mask').on('click',function () {
+    // 点击关闭弹窗
+    $('.mask').on('click', function () {
         $('.maskcon').hide();
         $(this).fadeOut();
     });
@@ -52,7 +57,9 @@ $(function () {
             $('#applyNo').html(res.data.applyNo);
             $('#storageNo').val(res.data.storageNo);
             $('#rentStartTime').html(res.data.rentStartTime);
-            $('#serviceTeamName').html(res.data.serviceTeamName);
+            $('#serviceTeamText').html(res.data.serviceTeamText);
+
+
             $('#workType').html(res.data.workType);
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
@@ -69,5 +76,10 @@ $(function () {
             }
         }
 
+    });
+
+    // 跳转到选择队伍页面
+    $('#goTeam').on('click', function () {
+        window.location.href = './rkydEditTaddForklift.html?id=' + id;
     });
 })
