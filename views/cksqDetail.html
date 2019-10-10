@@ -178,7 +178,7 @@
 					$(".tmsShippingMethod").html(data.tmsShippingMethod);
 					$(".shippingAddress").html(data.shippingAddress);
 					$(".remarks").html(data.remarks);
-					$(".preview-img").attr("src",images);
+					$(".preview-img").attr("src",data.images);
 					
 					renderData(data);
 				}
@@ -186,7 +186,7 @@
 			
 			function renderData(data) {
 				Global.requestTempByAjax('../temp/cksq/detail.html', {
-					list: data
+					list: data.productList
 				}, function(template) {
 					$('#yd-list').append(template);
 					

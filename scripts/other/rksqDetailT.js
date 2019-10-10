@@ -43,6 +43,13 @@ $(function () {
                     $('#list').append(template);
                 });
             }
+
+
+            if (res.data.actList.length > 0) {
+                Global.requestTempByAjax('../temp/rkyd/auditRecord.html', {actList:res.data.actList}, function(template) {
+                    $('#review-list').append(template);
+                });
+            }
         }
 
     });
