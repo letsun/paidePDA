@@ -29,7 +29,13 @@ $(function () {
             $('#contractNo').html(res.data.contractNo);
             $('#applyTime').html(res.data.applyTime);
             $('#remarks').html(res.data.remarks);
-            $('#head-state').html();
+            if(res.data.status == 0) {
+                $('#head-state').html('审核中');
+            }else if (res.data.status == 1) {
+                $('#head-state').html('已审核');
+            }else {
+                $('#head-state').html('审核不通过');
+            }
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rksq/sqdmxS.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);

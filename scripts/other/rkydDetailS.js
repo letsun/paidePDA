@@ -19,7 +19,7 @@ $(function () {
     });
 
     // 获取产品信息
-    getData('GET', api.rkyds.findDetail, {
+    getData('GET', api.rkydS.findDetail, {
         accountId: accountId,
         id: id,
     }, function (res) {
@@ -32,6 +32,14 @@ $(function () {
             $('#workType').html(res.data.workType);
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
+            if(res.data.status == 0) {
+                $('#head-state').html('审核中');
+            }else if (res.data.status == 1) {
+                $('#head-state').html('已审核');
+            }else {
+                $('#head-state').html('审核不通过');
+            }
+
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/sqdmxS.html', { list: res.data.list }, function (template) {
                     $('#list').append(template);
