@@ -45,7 +45,6 @@ $(function () {
 
 
     // 获取产品信息
->>>>>>> c362aff331bef3f512d3d2722d9fb4fb511e73f5
     getData('GET', api.rkydT.findDetail, {
         accountId: accountId,
         id: id,
@@ -444,5 +443,5 @@ $(function () {
             }
         });
     })
-    
+
 })
