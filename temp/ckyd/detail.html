@@ -1,67 +1,89 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="yd-item">
 	<div class="yd-con">
-		<div class="yd-child-item">
+		<div class="yd-child-item first-bottom-item">
 			<div class="yd-child-dec">
 				<div class="yd-child-key">产品名称：</div>
-				<div class="yd-child-val"><%- result.list[i].productName %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].productName %>
+				</div>
 			</div>
 		</div>
-		<div class="yd-child-item double-find">
+		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
-				<div class="yd-child-key">账面库存：</div>
-				<div class="yd-child-val"><%- result.list[i].inventory %></div>
+				<div class="yd-child-key">申请数量：</div>
+				<div class="yd-child-val">
+					<%- result.list[i].outApplyQuantity %>
+				</div>
 			</div>
 			<div class="yd-child-dec double-find">
-				<div class="yd-child-key">实物库存(吨)：</div>
-				<div class="yd-child-val"><%- result.list[i].realInventory %></div>
+				<div class="yd-child-key">申请重量(吨)：</div>
+				<div class="yd-child-val">
+					<%- result.list[i].outApplyWeight %>
+				</div>
 			</div>
 		</div>
 		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">生产批次：</div>
-				<div class="yd-child-val"><%- result.list[i].productBatch %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].produceBatch %>
+				</div>
 			</div>
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">生产日期：</div>
-				<div class="yd-child-val"><%- result.list[i].productTime %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].productTime %>
+				</div>
 			</div>
 		</div>
 		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">包装规格：</div>
-				<div class="yd-child-val"><%- result.list[i].specification %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].specification %>
+				</div>
 			</div>
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">产品单位：</div>
-				<div class="yd-child-val"><%- result.list[i].unit %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].unit %>
+				</div>
 			</div>
 		</div>
 		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">产品等级：</div>
-				<div class="yd-child-val"><%- result.list[i].productLevel %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].productLevel %>
+				</div>
 			</div>
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">产品榨季：</div>
-				<div class="yd-child-val"><%- result.list[i].zhaji %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].zhaji %>
+				</div>
 			</div>
 		</div>
 		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">产品大类：</div>
-				<div class="yd-child-val"><%- result.list[i].productType %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].productType %>
+				</div>
 			</div>
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">产品品牌：</div>
-				<div class="yd-child-val"><%- result.list[i].productBrand %></div>
+				<div class="yd-child-val">
+					<%- result.list[i].productBrand %>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<% for (var a = 0; a < result.list[i].warehouseList.length; a++) { %>
 	<div class="yd-con yd-con1">
-		<div class="yd-child-item">
+		<div class="yd-child-item double-find">
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">所属园区：</div>
 				<div class="yd-child-val"><%- result.list[i].warehouseList[a].park %></div>
@@ -73,22 +95,22 @@
 		</div>
 		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
-				<div class="yd-child-key">申请库区：</div>
+				<div class="yd-child-key">出库库区：</div>
 				<div class="yd-child-val"><%- result.list[i].warehouseList[a].warehouseArea %></div>
 			</div>
 			<div class="yd-child-dec double-find">
-				<div class="yd-child-key">申请数量：</div>
+				<div class="yd-child-key">出库数量：</div>
 				<div class="yd-child-val"><%- result.list[i].warehouseList[a].projectQuantity %></div>
 			</div>
 		</div>
 		<div class="yd-child-item">
-			<div class="yd-child-dec">
-				<div class="yd-child-key">申请库存(吨)：</div>
-				<div class="yd-child-val"><%- result.list[i].warehouseList[a].applyInventory %></div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">出库重量(吨)：</div>
+				<div class="yd-child-val"><%- result.list[i].warehouseList[a].projectWeight %></div>
 			</div>
 		</div>
+
 	</div>
 	<% } %>
 </div>
 <% } %>
-
