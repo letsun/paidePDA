@@ -134,11 +134,7 @@ body {
   position: relative;
   width: 100%;
 }
-.container .content {
-  position: relative;
-  padding-top: 40px;
-}
-.container .content .head-state {
+.container .head-state {
   position: absolute;
   top: 0;
   right: 20px;
@@ -149,6 +145,10 @@ body {
   line-height: 80px;
   letter-spacing: 0;
   font-weight: normal;
+}
+.container .content {
+  position: relative;
+  padding-top: 40px;
 }
 .container .content .gd-infor .gd-list {
   width: 710px;
