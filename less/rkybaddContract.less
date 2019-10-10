@@ -45,8 +45,6 @@ body {
     }
 
     .content {
-       
-
         position: absolute;
         left: 0;
         top: 177px;
@@ -54,7 +52,7 @@ body {
         z-index: 1;
         right: 0;
 
-        
+
         .scroll-wra {
             position: relative;
 
@@ -71,24 +69,21 @@ body {
 
                 text-align: center;
             }
+
+        }
+
+        .after {
+            box-shadow: 0px 0px 10px 0px #ddd;
+            border-radius: 10px;
         }
 
         .content-item {
-            padding: 20px 30px 20px 30px;
-            border-bottom: #ccc 1px solid;
-            position: relative;
+            display: block;
 
-            .content-item-btn {
-                position: absolute;
-                top: 30px;
-                right: 30px;
-                z-index: 5;
-                display: inline-block;               
-                font-size: 24px;
-                padding: 5px 20px 5px 20px; 
-                border-radius: 30px;
-                z-index: 5;
-            }
+            margin: 20px 30px 20px 30px;
+            padding: 20px; 
+            position: relative;
+            border-bottom: 1px #ccc solid;
 
             .btn1 {
                 background: linear-gradient(to right,#f9bb04,#f68100);
@@ -106,6 +101,7 @@ body {
             .content-item-header {
                 font-weight: bold;
                 font-size: 26px;
+                padding-bottom: 10px;
             }
 
 
@@ -115,6 +111,11 @@ body {
                     position: relative;
                     span {
                         color: #999;
+                    }
+
+                    .span {
+                        width: 120px;
+                        text-align: right;
                     }
 
                     .overflow {
@@ -128,7 +129,7 @@ body {
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-                        width: 570px;
+                        width: 530px;
                     }
 
                     .con-item-left {
@@ -138,7 +139,7 @@ body {
                     .con-item-right {
                         position: absolute;
                         top: 0px;
-                        left: 430px; 
+                        left: 380px; 
                         display: flex; 
                     }
                 }

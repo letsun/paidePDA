@@ -68,4 +68,7 @@ var api = {
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
         findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
     },
+    ht: {
+        findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表
+    },
 };
