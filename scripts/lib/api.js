@@ -17,10 +17,11 @@ var api = {
         saveApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
         saveWaybillMain: ip + '/api/pda/storageWarehouseApplyMain/saveWaybillMain',     // 入库运单保存
     },
-    rkyds: {
+    rkydS: {
         findPageApi: ip + '/api/pda/storageWarehouseWaybillMain/findPageApi',     // 入库运单列表
         findDetail: ip + '/api/pda/storageWarehouseWaybillMain/findDetail',     // 入库运单申请详情
-        saveStorageFactoryWaybillMain: ip + '/api/pda/storageWarehouseWaybillMain/saveWaybillMain',     // 入库运单修改保存
+        saveStorage: ip + '/api/pda/storageWarehouseWaybillMain/saveStorage',     // 入库运单确认完成
+        saveWaybillMain: ip + '/api/pda/storageWarehouseWaybillMain/saveWaybillMain',     // 入库运单修改保存
     },
     rkydT: {
         findPageApi: ip + '/api/pda/storageFactoryWaybillMain/findPageApi',     // 入库运单列表
@@ -34,7 +35,7 @@ var api = {
         saveWarehouseApplyMain: ip + '/api/pda/storageWarehouseForecastMain/saveWarehouseApplyMain',     // 新增入库单保存
         findDetailById: ip + '/api/pda/storageWarehouseForecastMain/findDetailById',     // 新增入库申请预报明细接口
     },
-    rkybt: {
+    rkybT: {
         findPageApi: ip + '/api/pda/storageFactoryForecastMain/findPageApi',     // 入库预报列表
         findApplyMainDetail: ip + '/api/pda/storageFactoryForecastMain/findApplyMainDetail',     // 入库申请详情
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryForecastMain/saveStorageFactoryApplyMain',     // 新增入库单保存
