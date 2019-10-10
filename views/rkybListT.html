@@ -62,7 +62,7 @@
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET', api.rkybt.findPageApi, {
+        getData('GET', api.rkybT.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -86,7 +86,7 @@
             }
 
             page++;
-            getData('GET', api.rkybt.findPageApi, {
+            getData('GET', api.rkybT.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
@@ -122,7 +122,7 @@
             page = 1;
             $('#list').html('');
             productName = $('#productName').val();
-            getData('GET', api.rkybt.findPageApi, {
+            getData('GET', api.rkybT.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
