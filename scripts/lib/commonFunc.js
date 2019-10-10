@@ -100,7 +100,8 @@ var Global = {};
 		var validate = null;
 		var validField = null; // 需要验证的表单域的JQ对象
 		var element = $(element);
-		var validateDom = 'div[data-validateInfor],select[data-validateInfor],textarea[data-validateInfor],input[data-validateInfor]';
+		var validateDom =
+			'div[data-validateInfor],select[data-validateInfor],textarea[data-validateInfor],input[data-validateInfor]';
 		validate = new Validate();
 		validField = element.find(validateDom);
 
@@ -140,7 +141,7 @@ var Global = {};
 			}
 		} else if (typeof msg !== 'undefined') {
 			common.alert({
-                mask: true,
+				mask: true,
 				content: msg
 			});
 			return false;
@@ -324,51 +325,49 @@ var Global = {};
 		}
 	}
 
-    /**
-     * 加载图片
-     * @param  object 	dom 	dom元素
-     * @return null
-     */
-    Global.loadImage = function (src, callback) {
-        var image = new Image();
-        image.onload = function () {
-            if (typeof callback !== 'undefined') {
-                callback();
-            }
-        };
-        image.src = src;
-    }
+	/**
+	 * 加载图片
+	 * @param  object 	dom 	dom元素
+	 * @return null
+	 */
+	Global.loadImage = function(src, callback) {
+		var image = new Image();
+		image.onload = function() {
+			if (typeof callback !== 'undefined') {
+				callback();
+			}
+		};
+		image.src = src;
+	}
 
 })(jQuery);
 
 /*ajax请求方法
-* type   类型
-* url   接口url
-* data 数据
-* callbackSuc  成功回调
-* callbackErr  失败回调
-*
-*
-* */
-function getData (type,url,data,callbackSuc,callbackErr) {
-    $.ajax({
-        type: type,
-        url: url,
-        data: data,
-        dataType: "json",
+ * type   类型
+ * url   接口url
+ * data 数据
+ * callbackSuc  成功回调
+ * callbackErr  失败回调
+ *
+ *
+ * */
+function getData(type, url, data, callbackSuc, callbackErr) {
+	$.ajax({
+		type: type,
+		url: url,
+		data: data,
+		dataType: "json",
 		header: {
-            Authorization: '1111',
+			Authorization: '1111',
 		},
-        success: function (res) {
-            callbackSuc(res);
-        },
-        error: function (res) {
-            common.alert({
-                mask: true,
-                content: res.msg
-            })
-        }
-    });
+		success: function(res) {
+			callbackSuc(res);
+		},
+		error: function(res) {
+			common.alert({
+				mask: true,
+				content: res.msg
+			})
+		}
+	});
 }
-
-
