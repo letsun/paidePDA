@@ -223,7 +223,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 260px;
+  width: 140px;
 }
 .container .content .content-item .content-item-con .con-item .overflow1 {
   overflow: hidden;

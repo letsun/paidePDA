@@ -289,7 +289,7 @@ $(function () {
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.applyWeight = $(item).find('.inStock').val();
-            obj.parkId = $(item).find('.productName').attr('data-parkId');
+            obj.parkId = $(item).find('.parkText').attr('data-parkId');
             obj.productId = $('#productName').attr('data-productId');
             obj.produceBatchId = $('#produceBatchNo').attr('data-produceBatchId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
@@ -305,8 +305,11 @@ $(function () {
             storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
 
+        
+        console.log(data2)
         // 提交数据
         getData('POST',api.rkybT.saveStorageFactoryApplyMain,{
+            accountId:accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
