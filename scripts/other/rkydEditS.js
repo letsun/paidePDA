@@ -1,22 +1,44 @@
 $(function () {
     var id = Global.getUrlParam('id');
     var serviceTeamId = Global.getUrlParam('zxdwId');
-    if (serviceTeamId != 'null') {
-        $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
-    }
-
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
-    if (serviceTeamText != 'null') {
-        $('#serviceTeamText').html(serviceTeamText);
-    }
+
+    // 显示隐藏运单列表
+    $('.gd-dec').on('click', function () {
+        $(this).removeClass('active').siblings().addClass('active');
+        $('#list').toggle();
+    });
+
+
+    // 点击查看大图
+    $('#preview-btn').on('click', function () {
+        $('#preview-win').fadeIn();
+    });
 
     var applicationId = 0;
 
-    var storageFactoryWaybillItemList = [];
+    var storageWarehouseWaybillItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
-    getData('GET', api.rkydT.findDetail, {
+    // // 选择作业方式
+    $('.maskcon').on('click', '.maskcon-item', function (e) {
+        $(this).addClass('after').siblings().removeClass('after');
+        var workType = $(this).html();
+        var workTypeText = $(this).html();
+        $('.forklift').html(workTypeText);
+
+    });
+
+    // 点击关闭弹窗
+    $('.mask').on('click', function () {
+        $('.maskcon').hide();
+        $(this).fadeOut();
+    });
+
+
+    // 获取产品信息
+    getData('GET', api.rkydS.findDetail, {
         accountId: accountId,
         id: id,
     }, function (res) {
@@ -26,11 +48,15 @@ $(function () {
             $('#storageNo').val(res.data.storageNo);
             $('#rentStartTime').html(res.data.rentStartTime);
             $('#serviceTeamName').html(res.data.serviceTeamName).attr('data-serviceTeamId',res.data.serviceTeamId);
+            if (serviceTeamId && serviceTeamId != 'null') {
+                $('#serviceTeamName').attr('data-serviceTeamId',serviceTeamId);
+                $('#serviceTeamName').html(serviceTeamText);
+            }
             $('#workType').html(res.data.workType);
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
             if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {
+                Global.requestTempByAjax('../temp/rkyd/rkydEditSqdmxT.html', {
                     list: res.data.list,
                     type: 'edit',
                 }, function (template) {
@@ -38,7 +64,9 @@ $(function () {
                     $('.gd-list-item').each(function (i,item) {
                         $(item).attr('data-applicationId',applicationId);
                         applicationId++;
-                        allWarehouseArea.push($(item).attr('data-warehouseareaId'));
+                        if ($(item).attr('data-warehouseareaId')) {
+                            allWarehouseArea.push($(item).attr('data-warehouseareaId'));
+                        }
                     })
                 });
             }
@@ -54,7 +82,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=ck&func=edit&id=' + id;
     });
 
 
@@ -356,10 +384,10 @@ $(function () {
             return;
         }
 
-        var applyNo = $('#applyNo').val();
+        var applyNo = $('#applyNo').html();
         var remarks = $('#remarks').val();
         var rentStartTime = $('#rentStartTime').html();
-        var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
+        var serviceTeamId = $('#serviceTeamName').attr('data-serviceTeamId');
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
         var workType = $('#workType').html();
@@ -367,7 +395,7 @@ $(function () {
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).parents('.yd-item').attr('data-applyItemId');
+            obj.factoryApplyItemId = $(item).attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.id = $(item).attr('data-itemId');
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
@@ -376,29 +404,30 @@ $(function () {
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.weight = $(item).find('.weight').val();
-            storageFactoryWaybillItemList.push(obj);
+            storageWarehouseWaybillItemList.push(obj);
         });
 
         var data2 = {
             applyNo: applyNo,
-            factoryApplyId: id,
+            applyId: id,
             remarks: remarks,
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
             storageNo: storageNo,
             storageType: storageType,
             workType: workType,
-            storageFactoryWaybillItemList: storageFactoryWaybillItemList,
+            storageWarehouseWaybillItemList: storageWarehouseWaybillItemList,
         };
 
         console.log(data2);
 
         // 提交数据
-        getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
+        /*getData('POST',api.rkydS.saveWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                storageWarehouseWaybillItemList = [];
                 common.alert({
                     mask: true,
                     content: '提交成功',
@@ -412,6 +441,7 @@ $(function () {
                     content: res.msg,
                 })
             }
-        });
+        });*/
     })
+
 })
