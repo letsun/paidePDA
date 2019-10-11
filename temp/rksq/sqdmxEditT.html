@@ -11,11 +11,11 @@
                 </div>
                 <div class="yd-child-item">
                     <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">申请数量：</div>
+                        <div class="yd-child-key">预报数量：</div>
                         <div class="yd-child-val"><%- result.list[i].totalApplyQuantity %></div>
                     </div>
                     <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">申请重量(吨)：</div>
+                        <div class="yd-child-key">预报重量(吨)：</div>
                         <div class="yd-child-val"><%- result.list[i].totalApplyWeight %></div>
                     </div>
                 </div>
@@ -73,69 +73,29 @@
             </div>
 
             <div class="gd-infor">
-                <% if (productList.length > 0) { %>
-                    <% for (var j = 0; j < productList.length; j++) { %>
-                        <div class="gd-list gd-list-item" data-applicationId="0" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
-                            <img class="gd-minus" src="../img/1_31.png">
-                            <div class="gd-item">
-                                <div class="gd-key">入库重量(吨)</div>
-                                <input type="text" class="gd-val weight" value="<%- productList[j].applyWeight %>"
-                                       data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:入库重量需为数字}">
-                            </div>
-                            <div class="gd-item showPark">
-                                <div class="gd-key">所属园区</div>
-                                <div class="gd-val parkText" data-parkId="<%- productList[j].parkId %>" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"><%- productList[j].parkName %></div>
-                                <img class="gd-img" src="../img/1_34.png">
-                            </div>
-                            <div class="gd-item showStoreroom">
-                                <div class="gd-key">所属库房</div>
-                                <div class="gd-val storeroomText" data-warehouseId="<%- productList[j].warehouseId %>" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"><%- productList[j].warehouseName %></div>
-
-                                <img class="gd-img" src="../img/1_34.png">
-                            </div>
-
-                            <div class="gd-item showReservoirArea">
-                                <div class="gd-key">入库库区</div>
-                                <div class="gd-val reservoirAreaText" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"><%- productList[j].warehouseAreaName %></div>
-                                <img class="gd-img" src="../img/1_34.png">
-                            </div>
-
-                            <div class="gd-item showFocusFlag">
-                                <div class="gd-key">特别关注</div>
-                                <div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>
-                                <img class="gd-img" src="../img/1_34.png">
-                            </div>
-                        </div>
-                    <% } %>
-                <% } else { %>
-                    <div class="gd-list gd-list-item" data-applicationId="0">
+                <% for (var j = 0; j < productList.length; j++) { %>
+                    <div class="gd-list gd-list-item" data-applicationId="0" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
                         <img class="gd-minus" src="../img/1_31.png">
                         <div class="gd-item">
-                            <div class="gd-key">入库重量(吨)</div>
-                            <input type="text" class="gd-val weight"
+                            <div class="gd-key">申请库存(吨)</div>
+                            <input type="text" class="gd-val weight" value="<%- productList[j].applyWeight %>"
                                    data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:入库重量需为数字}">
                         </div>
                         <div class="gd-item showPark">
                             <div class="gd-key">所属园区</div>
-                            <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
+                            <div class="gd-val parkText" data-parkId="<%- productList[j].parkId %>" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"><%- productList[j].parkName %></div>
                             <img class="gd-img" src="../img/1_34.png">
                         </div>
                         <div class="gd-item showStoreroom">
                             <div class="gd-key">所属库房</div>
-                            <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>
+                            <div class="gd-val storeroomText" data-warehouseId="<%- productList[j].warehouseId %>" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"><%- productList[j].warehouseName %></div>
 
                             <img class="gd-img" src="../img/1_34.png">
                         </div>
 
                         <div class="gd-item showReservoirArea">
                             <div class="gd-key">入库库区</div>
-                            <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"></div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-
-                        <div class="gd-item showFocusFlag">
-                            <div class="gd-key">特别关注</div>
-                            <div class="gd-val focusFlagText"></div>
+                            <div class="gd-val reservoirAreaText" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"><%- productList[j].warehouseAreaName %></div>
                             <img class="gd-img" src="../img/1_34.png">
                         </div>
                     </div>

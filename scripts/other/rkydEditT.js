@@ -1,14 +1,7 @@
 $(function () {
     var id = Global.getUrlParam('id');
     var serviceTeamId = Global.getUrlParam('zxdwId');
-    if (serviceTeamId != 'null') {
-        $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
-    }
-
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
-    if (serviceTeamText != 'null') {
-        $('#serviceTeamText').html(serviceTeamText);
-    }
 
     // 显示隐藏运单列表
     $('.gd-dec').on('click', function () {
@@ -55,18 +48,25 @@ $(function () {
             $('#storageNo').val(res.data.storageNo);
             $('#rentStartTime').html(res.data.rentStartTime);
             $('#serviceTeamName').html(res.data.serviceTeamName).attr('data-serviceTeamId',res.data.serviceTeamId);
+            if (serviceTeamId && serviceTeamId != 'null') {
+                $('#serviceTeamName').attr('data-serviceTeamId',serviceTeamId);
+                $('#serviceTeamName').html(serviceTeamText);
+            }
             $('#workType').html(res.data.workType);
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
             if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {
+                Global.requestTempByAjax('../temp/rkyd/rkydEditSqdmxT.html', {
                     list: res.data.list,
                     type: 'edit',
                 }, function (template) {
                     $('#list').append(template);
                     $('.gd-list-item').each(function (i,item) {
+                        $(item).attr('data-applicationId',applicationId);
                         applicationId++;
-                        allWarehouseArea.push($(item).attr('data-warehouseareaId'));
+                        if ($(item).attr('data-warehouseareaId')) {
+                            allWarehouseArea.push($(item).attr('data-warehouseareaId'));
+                        }
                     })
                 });
             }
@@ -82,7 +82,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=tc&func=edit&id=' + id;
     });
 
 
@@ -384,10 +384,10 @@ $(function () {
             return;
         }
 
-        var applyNo = $('#applyNo').val();
+        var applyNo = $('#applyNo').html();
         var remarks = $('#remarks').val();
         var rentStartTime = $('#rentStartTime').html();
-        var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
+        var serviceTeamId = $('#serviceTeamName').attr('data-serviceTeamId');
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
         var workType = $('#workType').html();
@@ -395,7 +395,7 @@ $(function () {
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).parents('.yd-item').attr('data-applyItemId');
+            obj.factoryApplyItemId = $(item).attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.id = $(item).attr('data-itemId');
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
@@ -427,6 +427,7 @@ $(function () {
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                storageFactoryWaybillItemList = [];
                 common.alert({
                     mask: true,
                     content: '提交成功',
