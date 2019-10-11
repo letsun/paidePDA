@@ -1,8 +1,41 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="content-item" data-outWaybillNo="<%- result.list[i].outWaybillNo %>">
-	<div class="content-item-btn btn1">
-		确认完成
-	</div>
+
+	<% if (result.list[i].outedTotalWeight == result.list[i].totalInventory) { %>
+		<div class="content-item-btn btn2">
+			确认完成
+		</div>
+	<% } %>
+	
+	<% if (result.list[i].waybillStatus == 1) { %>
+		<div class="content-item-btn btn1">
+			待出库
+		</div>
+	<% } %>
+	
+	<% if (result.list[i].waybillStatus == 2) { %>
+		<div class="content-item-btn btn3">
+			已完成
+		</div>
+	<% } %>
+	
+	<% if (result.list[i].waybillStatus == 3) { %>
+		<div class="content-item-btn btn3">
+			已装车
+		</div>
+	<% } %>
+	
+	<% if (result.list[i].waybillStatus == 4) { %>
+		<div class="content-item-btn btn1">
+			已出场地
+		</div>
+	<% } %>
+	
+	<% if (result.list[i].waybillStatus == 5) { %>
+		<div class="content-item-btn btn3">
+			已送达
+		</div>
+	<% } %>
 
 	<div class="content-item-header">
 		<%- result.list[i].applyNo %>

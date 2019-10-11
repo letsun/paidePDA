@@ -16,7 +16,7 @@
 
         <div class="header">
 
-            <div class="return"> <img src="../img/1_40.png"></div>
+            <div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
             出库工单详情
         </div>
 
@@ -93,6 +93,13 @@
             <div class="yd-list" id="yd-list">
                 
             </div>
+			
+			<!--审核记录-->
+			<div class="review-wra">
+			    <div class="review-title">审核记录</div>
+			    <div class="review-list" id="review-list"></div>
+			</div>
+			
         </div>
 
 
@@ -115,7 +122,7 @@
 			outWorkNo: outWorkNo,
 		}, function(res) {
 			if (res.code == 200) {
-				var data = res.data.list;
+				var data = res.data;
 		
 				$(".outWorkNo").html(data.outWorkNo);
 				$(".createBy").html(data.createBy);
@@ -128,13 +135,18 @@
 				$(".serviceTeamPhone").html(data.serviceTeamPhone);
 				$(".remarks").html(data.remarks);
 				
+				//审核记录
+				Global.requestTempByAjax('../temp/rkyd/auditRecord.html', {actList:res.data.actList}, function(template) {
+					$('#review-list').append(template);
+				});
+				
 				renderData(data);
 			}
 		});
 		
 		function renderData(data) {
 			Global.requestTempByAjax('../temp/ckgd/detail.html', {
-				list: data.outWayBillItemList
+				list: data.outWaybillProductList
 			}, function(template) {
 				$('#yd-list').append(template);
 				

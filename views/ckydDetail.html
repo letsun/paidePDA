@@ -16,8 +16,9 @@
 
         <div class="header">
 
-            <div class="return"> <img src="../img/1_40.png"></div>
+            <div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
             出库运单详情
+			<span class="head-state" id="head-state"></span>
         </div>
 
         <div class="content">
@@ -130,7 +131,15 @@
 
 			<!--运单表单-->
 			<div class="yd-list" id="yd-list"></div>
+			
+			<!--审核记录-->
+			<div class="review-wra">
+			    <div class="review-title">审核记录</div>
+			    <div class="review-list" id="review-list"></div>
+			</div>
             
+			<!-- 确认完成按钮 -->
+			<div class="confirm-btn" id="confirm-btn">确认完成</div>
         </div>
 
 
@@ -177,6 +186,19 @@
 				$(".remarks").html(data.remarks);
 				$(".images").attr("src",data.images);
 				
+				if(res.data.status == 0) {
+				    $('#head-state').html('审核中');
+				}else if (res.data.status == 1) {
+				    $('#head-state').html('审核通过');
+				}else {
+				    $('#head-state').html('审核拒绝');
+				}
+				
+				//审核记录
+				Global.requestTempByAjax('../temp/rkyd/auditRecord.html', {actList:res.data.actList}, function(template) {
+					$('#review-list').append(template);
+				});
+				
 				renderData(data);
 			}
 		});
@@ -189,6 +211,19 @@
 				
 			});
 		}
+		
+		//点击确认完成按钮
+		$("#confirm-btn").click(function(){
+			getData('GET', api.ckyd.saveOutWaybill, {
+				accountId: accountId,
+				outWaybillNo: outWaybillNo,
+			}, function(res) {
+				if (res.code == 200) {
+					var data = res.data;
+
+				}
+			});
+		})
 
         // 显示隐藏运单列表
         $('.gd-dec').on('click',function () {
@@ -206,6 +241,7 @@
         $('#preview-win').on('click',function () {
             $('#preview-win').fadeOut();
         });
+		
     </script>
 </body>
 
