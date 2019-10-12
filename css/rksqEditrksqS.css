@@ -253,6 +253,7 @@ body {
   color: #333;
 }
 .container .content .gd-infor .gd-list .last-gd-item .gd-right textarea {
+  display: block;
   font-size: 22px;
   width: 93%;
   height: 100px;

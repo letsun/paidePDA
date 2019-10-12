@@ -10,7 +10,7 @@ $(function () {
 
     var applicationId = 0;
 
-    var storageFactoryWaybillItemList = [];
+    var outWaybillItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
@@ -22,8 +22,25 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
-            if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/ckyd/ckydsqdmxT.html', {list:res.data.list}, function(template) {
+            $('#rentalEndTime').html(res.data.rentalEndTime);
+            $('#contractId').html(res.data.contractId);
+            $('#customerName').html(res.data.customerName);
+            $('#driverName').html(res.data.driverName);
+            $('#plateNo').html(res.data.plateNo);
+            $('#driverPhone').html(res.data.driverPhone);
+            $('#idcard').html(res.data.idcard);
+            $('#transportFee').html(res.data.transportFee);
+            $('#transferGroup').html(res.data.transferGroup);
+            $('#transferCompany').html(res.data.transferCompany);
+            $('#tmsCarrier').html(res.data.tmsCarrier);
+            $('#tmsSite').html(res.data.tmsSite);
+            $('#tmsShippingMethod').html(res.data.tmsShippingMethod);
+            $('#shippingAddress').html(res.data.shippingAddress);
+            $('#applyNo').html(res.data.applyNo);
+            $('#applyNo').html(res.data.applyNo);
+            $('#applyNo').html(res.data.applyNo);
+            if (res.data.productList.length > 0) {
+                Global.requestTempByAjax('../temp/ckyd/ckydsqdmxT.html', {list:res.data.productList}, function(template) {
                     $('#list').append(template);
                     $('.gd-list-item').each(function (i,item) {
                         $(item).attr('data-applicationId',applicationId);
@@ -244,31 +261,6 @@ $(function () {
     });
 
 
-    // 点击显示特别关注列表
-    $('.container').on('click','.showFocusFlag',function () {
-        $(this).addClass('after').siblings().removeClass('after');
-        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        $('.maskcon').hide();
-        $('.maskcon6').show();
-        $('.mask').show();
-    });
-
-    // 选择特别关注
-    $('.maskcon6').on('click','.maskcon-item',function (e) {
-        var focusFlagText = $(this).html();
-        $('.gd-list-item').each(function (i,item) {
-            var itemId = $(item).attr('data-applicationId');
-            if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.focusFlagText').html(focusFlagText);
-                $('.maskcon').hide();
-                $('.mask').hide();
-                return;
-            }
-        });
-
-    });
-
-
     // 点击关闭弹窗
     $('.mask').on('click',function () {
         $('.maskcon').hide();
@@ -279,16 +271,12 @@ $(function () {
     $('.container').on('click','.gd-add-img',function () {
         var html = '';
         applicationId ++;
-        html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '" data-itemId="">';
+        html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
         html += '<img class="gd-minus" src="../img/1_31.png">';
-        /*html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库数量</div>';
-        html += '<input type="text" class="gd-val quantity" data-validateInfor="{strategy:isEmpty,msg:入库数量不能为空}|{strategy:isNumber,msg:入库数量需为数字}">';
-        html += '</div>';*/
 
         html += '<div class="gd-item">';
         html += '<div class="gd-key">入库重量(吨)</div>';
-        html += '<input type="text" class="gd-val weight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
+        html += '<input type="text" class="gd-val projectWeight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
         html += '</div>';
 
         html += '<div class="gd-item showPark">';
@@ -308,17 +296,10 @@ $(function () {
         html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"></div>';
         html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
-
-        html += '<div class="gd-item showFocusFlag">';
-        html += '<div class="gd-key">特别关注</div>';
-        html += '<div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png" >';
-        html += '</div>';
         html += '</div>';
 
         $(this).parents('.yd-item').find('.gd-infor').append(html);
     });
-
 
     // 点击删除申请记录
     $('.container').on('click','.gd-minus',function () {
@@ -344,49 +325,40 @@ $(function () {
         }
 
         var applyNo = $('#applyNo').html();
+        var outWaybillNo = $('#outWaybillNo').val();
         var remarks = $('#remarks').val();
-        var rentStartTime = $('#date').html();
+        var images = '111';
         var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
-        var storageNo = $('#storageNo').val();
-        var storageType = $('#storageType').html();
         var workType = $('#workType').html();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).attr('data-applyItemId');
-            obj.focusFlag = $(item).find('.focusFlagText').html();
+            obj.applyItemId = $(item).attr('data-applyItemId');
+            obj.specificationValue = $(item).parents('.yd-item').find('.productName').attr('data-specificationValue');
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
-            obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
-            /*obj.quantity = $(item).find('.quantity').val();*/
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            obj.weight = $(item).find('.weight').val();
-            storageFactoryWaybillItemList.push(obj);
+            obj.projectWeight = $(item).find('.projectWeight').val();
+            outWaybillItemList.push(obj);
         });
 
         var data2 = {
+            accountId: accountId,
             applyNo: applyNo,
-            factoryApplyId: id,
+            outWaybillNo: outWaybillNo,
             remarks: remarks,
-            rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
-            storageNo: storageNo,
-            storageType: storageType,
+            images: images,
             workType: workType,
-            storageFactoryWaybillItemList: storageFactoryWaybillItemList,
+            outWaybillItemList: outWaybillItemList,
         };
 
         console.log(data2);
 
         // 提交数据
-        getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
-            accountId: accountId,
-            jsonData: JSON.stringify(data2),
-        },function (res) {
+        /*getData('POST',api.ckyd.addOutWaybillMain,JSON.stringify(data2),function (res) {
             if (res.code == 200) {
-                storageFactoryWaybillItemList = [];
+                outWaybillItemList = [];
                 common.alert({
                     mask: true,
                     content: '提交成功',
@@ -395,6 +367,31 @@ $(function () {
                     }
                 })
             } else {
+                common.alert({
+                    mask: true,
+                    content: res.msg,
+                })
+            }
+        });*/
+
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            url: api.ckyd.addOutWaybillMain,
+            data: JSON.stringify(data2),
+            header: {
+                Authorization: '1111',
+            },
+            success: function(res) {
+                common.alert({
+                    mask: true,
+                    content: '提交成功',
+                    ok:function () {
+                        location.reload();
+                    }
+                })
+            },
+            error: function(res) {
                 common.alert({
                     mask: true,
                     content: res.msg,

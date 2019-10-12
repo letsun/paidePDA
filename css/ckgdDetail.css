@@ -208,16 +208,7 @@ body {
   margin-left: 6px;
   font-size: 26px;
 }
-.container .content .gd-infor .gd-list .last-gd-item .gd-right:before,
-.container .content .gd-infor .gd-list .last-gd-item .gd-right:after {
-  content: " ";
-  display: table;
-}
-.container .content .gd-infor .gd-list .last-gd-item .gd-right:after {
-  clear: both;
-}
 .container .content .gd-infor .gd-list .last-gd-item .gd-right .preview-img {
-  float: left;
   width: 100px;
   height: 158px;
 }
