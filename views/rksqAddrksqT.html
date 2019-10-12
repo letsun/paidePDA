@@ -16,7 +16,7 @@
 <div class="container">
 
     <div class="header">
-        <div class="return"> <img src="../img/1_40.png"> </div>
+        <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
         新增入库申请
     </div>
 
@@ -115,10 +115,10 @@
                         <div class="gd-key">申请库存(吨)</div>
                         <input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
                     </div>
-                    <div class="gd-item">
+                    <!-- <div class="gd-item">
                         <div class="gd-key">质检信息</div>
                         <input type="text" class="gd-val">
-                    </div>
+                    </div> -->
                     <div class="gd-item showPark">
                         <div class="gd-key">所属园区</div>
                         <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
