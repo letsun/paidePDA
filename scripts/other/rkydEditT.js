@@ -1,5 +1,6 @@
 $(function () {
     var id = Global.getUrlParam('id');
+    console.log(id)
     var serviceTeamId = Global.getUrlParam('zxdwId');
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
 
@@ -394,7 +395,7 @@ $(function () {
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
+            obj.factoryApplyId = $(item).attr('data-factoryApplyId');;
             obj.factoryApplyItemId = $(item).attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.id = $(item).attr('data-itemId');
@@ -407,9 +408,13 @@ $(function () {
             storageFactoryWaybillItemList.push(obj);
         });
 
+
+        var factoryApplyId = $('.gd-list-item').attr('data-factoryApplyId')
+
         var data2 = {
+            id:id,
             applyNo: applyNo,
-            factoryApplyId: id,
+            factoryApplyId: factoryApplyId,
             remarks: remarks,
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,

@@ -39,6 +39,8 @@ $(function () {
             $('#unit').html(data.unit);
             $('#zhaji').html(data.zhaji);
             $('#checkStatus').html(data.checkStatus);
+            $('#itemId').attr('data-itemId',data.itemId)
+           
         }
     });
 
@@ -304,11 +306,15 @@ $(function () {
             obj.applyWeight = $(item).find('.inStock').val();
             obj.productId = $('#productName').attr('data-productId');
             obj.produceBatchId = $('#produceBatchNo').attr('data-produceBatchId');
-            debugger
+
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
+            // obj.warehouseForecastItemId = $('#itemId').attr('data-itemId');
+            obj.warehouseForecastMainId = id,
             storageWarehouseApplyItemList.push(obj);
+            
+           
         });
 
         var data2 = {
@@ -324,6 +330,7 @@ $(function () {
 
         // 提交数据
         getData('POST',api.rkybS.saveWarehouseApplyMain,{
+            accountId:accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {

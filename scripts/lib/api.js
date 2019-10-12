@@ -1,4 +1,4 @@
-var ip = 'http://192.168.1.20:8899';
+var ip = 'http://192.168.1.11:8899';
 
 var api = {
     rkgd: {
@@ -56,6 +56,7 @@ var api = {
         findPageApi: ip + '/api/pda/outWaybillMain/findPageApi',     // 出库运单列表
         findWaybillDetail: ip + '/api/pda/outWaybillMain/findWaybillDetail',     // 出库运单详情
         addOutWaybillMain: ip + '/api/pda/outWaybillMain/addOutWaybillMain',     // 生成出库运单接口
+		saveOutWaybill: ip + '/api/pda/outWaybillMain/saveOutWaybill',     // 点击确认完成按钮
     },
     sp: {
         findList: ip + '/api/pda/baseZhaji/findList',     // 产品榨季列表

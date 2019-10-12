@@ -394,7 +394,7 @@ $(function () {
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
+            obj.factoryApplyId = $(item).attr('data-factoryApplyId');
             obj.factoryApplyItemId = $(item).attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.id = $(item).attr('data-itemId');
@@ -407,9 +407,12 @@ $(function () {
             storageWarehouseWaybillItemList.push(obj);
         });
 
+
+        var applyId = $('.gd-list-item').attr('data-factoryApplyId')
         var data2 = {
+            id:id,
             applyNo: applyNo,
-            applyId: id,
+            applyId: applyId,
             remarks: remarks,
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
@@ -422,7 +425,7 @@ $(function () {
         console.log(data2);
 
         // 提交数据
-        /*getData('POST',api.rkydS.saveWaybillMain,{
+        getData('POST',api.rkydS.saveWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
@@ -441,7 +444,7 @@ $(function () {
                     content: res.msg,
                 })
             }
-        });*/
+        });
     })
 
 })
