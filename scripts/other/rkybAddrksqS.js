@@ -7,6 +7,11 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
+    Global.requestTempByAjax('../temp/loading/loading.html', {
+    }, function (template) {
+        $('.container').append(template);
+    });
+
 
     // 进入合同列表
     $('#goContract').on('click',function () {
@@ -327,13 +332,14 @@ $(function () {
         };
 
         console.log(data2)
-
+        $('#loadingWrapper').show()
         // 提交数据
         getData('POST',api.rkybS.saveWarehouseApplyMain,{
             accountId:accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: '提交成功',
@@ -343,6 +349,7 @@ $(function () {
                     }
                 })
             } else {
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: res.msg,
