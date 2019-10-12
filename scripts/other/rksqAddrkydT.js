@@ -15,6 +15,12 @@ $(function () {
     var allWarehouseArea = [];      // 已选库区
 
 
+
+    Global.requestTempByAjax('../temp/loading/loading.html', {
+    }, function (template) {
+        $('.container').append(template);
+    });
+
     getData('GET',api.rksqT.findApplyMainDetail,{
         accountId: accountId,
         id: id,
@@ -339,6 +345,9 @@ $(function () {
 
     // 点击保存
     $('#saveBtn').on('click',function () {
+       
+
+
         var flag = Global.initValidate('.container');
         if (!flag) {
             return;
@@ -380,13 +389,15 @@ $(function () {
         };
 
         console.log(data2);
-
+        $('#loadingWrapper').show()
         // 提交数据
         getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                $('#loadingWrapper').hide()
+
                 storageFactoryWaybillItemList = [];
                 common.alert({
                     mask: true,
@@ -397,6 +408,8 @@ $(function () {
                     }
                 })
             } else {
+                $('#loadingWrapper').hide()
+
                 common.alert({
                     mask: true,
                     content: res.msg,
