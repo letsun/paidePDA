@@ -437,7 +437,8 @@ $(function () {
                     mask: true,
                     content: '提交成功',
                     ok:function () {
-                        location.reload();
+                        // location.reload();
+                        window.location.href ="./rkydListT.html";
                     }
                 })
             } else {
