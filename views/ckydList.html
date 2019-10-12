@@ -151,6 +151,51 @@
 				var id = $(this).attr('data-outWaybillNo');
 				window.location.href = './ckydDetail.html?outWaybillNo=' + id;
 			})
+			
+			/*点击确认完成*/
+			
+			$('.container').on('click', '.btn1', function (e) {
+			    var that = this;
+			    var id = $(that).parent().attr('data-id') //运单id
+			  
+			    e.stopPropagation();
+			    common.alert({
+			        mask: true,
+			        title: '提示',
+			        content: '运单已作业完成，同步生成出库工单？',
+			        dialog: true,
+			        ok: function (reg) {
+			            getData('GET',api.rkydT.saveStorage,{
+			                accountId:accountId,
+			                id:id,
+			            },function(res){
+			                if (res.code==200){
+			                    $(that).removeClass('btn1').addClass('btn3').text('已入库')
+			                }else{
+			                    common.alert({
+			                        mask:true,
+			                        content:res.msg
+			                    })
+			                }                    
+			            })    
+			        },
+					cancel: function (reg) {
+					    getData('GET',api.rkydT.saveStorage,{
+					        accountId:accountId,
+					        outWaybillNo:outWaybillNo,
+					    },function(res){
+					        if (res.code==200){
+					            $(that).removeClass('btn1').addClass('btn3').text('已入库')
+					        }else{
+					            common.alert({
+					                mask:true,
+					                content:res.msg
+					            })
+					        }                    
+					    })    
+					}
+			    });
+			})
 		</script>
 	</body>
 
