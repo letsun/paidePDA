@@ -29,14 +29,7 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
-    // // 选择作业方式
-    $('.maskcon').on('click', '.maskcon-item', function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
-        var workType = $(this).html();
-        var workTypeText = $(this).html();
-        $('.forklift').html(workTypeText);
-
-    });
+    
 
     // 点击关闭弹窗
     $('.mask').on('click', function () {
@@ -95,18 +88,21 @@ $(function () {
 
 
     // 点击显示作业方式列表
-    $('#showWorkType').on('click',function () {
+    $('.forklift').on('click',function () {
         $('.maskcon').hide();
         $('.maskcon5').show();
         $('.mask').show();
     });
 
-    // 选择作业方式
-    $('.maskcon5').on('click','.maskcon-item',function (e) {
+
+
+    // // 选择作业方式
+    $('.maskcon5').on('click', '.maskcon-item', function (e) {
         $(this).addClass('after').siblings().removeClass('after');
         var workType = $(this).html();
         var workTypeText = $(this).html();
         $('.forklift').html(workTypeText);
+
     });
 
     // 获取园区列表
@@ -398,7 +394,7 @@ $(function () {
         var serviceTeamId = $('#serviceTeamName').attr('data-serviceTeamId');
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var workType = $('.forklift').html();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -433,7 +429,7 @@ $(function () {
 
         console.log(data2);
         $('#loadingWrapper').show()
-        // 提交数据
+        //提交数据
         getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
