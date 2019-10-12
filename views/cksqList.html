@@ -153,7 +153,14 @@
 			$('.container').on('click', '.content-item', function() {
 				var applyNo = $(this).attr('data-applyNo');
 				window.location.href = './cksqDetail.html?applyNo=' + applyNo;
-			})
+			});
+
+            // 点击进入详情
+            $('.container').on('click', '.btn1', function(e) {
+                e.stopPropagation();
+                var applyNo = $(this).attr('data-applyNo');
+                window.location.href = './ckydAdd.html?applyNo=' + applyNo;
+            });
 		</script>
 	</body>
 
