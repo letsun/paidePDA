@@ -138,17 +138,28 @@ body {
   position: relative;
   padding-top: 40px;
 }
+.container .content .gd-infor .gd-list-item {
+  padding-top: 25px;
+  border-bottom: 1px #ddd solid;
+}
 .container .content .gd-infor .gd-list {
   width: 710px;
   margin: 0 auto;
+  position: relative;
+}
+.container .content .gd-infor .gd-list .gd-minus {
+  position: absolute;
+  right: -30px;
+  top: -10px;
+  z-index: 9;
+  padding: 20px;
 }
 .container .content .gd-infor .gd-list .gd-item {
   position: relative;
   display: flex;
   line-height: 40px;
   font-size: 26px;
-  border: 1px solid #ddd;
-  border-bottom: none;
+  border-top: 1px solid #ddd;
 }
 .container .content .gd-infor .gd-list .gd-item .gd-key {
   width: 170px;
@@ -216,7 +227,7 @@ body {
 .container .content .gd-infor .gd-list .last-gd-item .gd-right {
   position: relative;
   flex: 1;
-  padding: 14px 0;
+  padding: 19px 0;
   margin-left: 6px;
   font-size: 26px;
 }
@@ -265,10 +276,9 @@ body {
   margin: 50px 80px 20px 80px;
 }
 .container .content .yd-list {
-  display: none;
   width: 710px;
   margin: 0 auto;
-  padding: 20px 0 40px 0;
+  padding: 20px 0 0px 0;
 }
 .container .content .yd-list .yd-item {
   padding: 0;
@@ -278,9 +288,6 @@ body {
 .container .content .yd-list .yd-item .yd-con {
   padding: 14px 0;
   background: #f3f3f3;
-}
-.container .content .yd-list .yd-item .yd-con:last-child {
-  background: #fff;
 }
 .container .content .yd-list .yd-item .yd-con .yd-child-item {
   padding: 6px 30px;
@@ -323,6 +330,13 @@ body {
   flex: 1;
   color: #333;
 }
+.container .content .gd-add {
+  margin-top: 25px;
+}
+.container .content .gd-add .gd-add-img {
+  display: block;
+  margin: auto 20px auto auto;
+}
 .container .preview-win {
   position: fixed;
   left: 0;
@@ -349,6 +363,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 99;
   background: rgba(0, 0, 0, 0.6);
   display: none;
 }
@@ -357,6 +372,7 @@ body {
   bottom: 0px;
   left: 0;
   right: 0px;
+  display: none;
   font-size: 28px;
   background: #fff;
   color: #333;
@@ -373,5 +389,9 @@ body {
 }
 .container .mask .maskcon .after {
   background: #ff8500;
+  color: #fff;
+}
+.container .mask .maskcon .disabled {
+  background: #999;
   color: #fff;
 }

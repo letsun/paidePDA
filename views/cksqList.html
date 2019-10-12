@@ -158,7 +158,7 @@
             // 点击进入详情
             $('.container').on('click', '.btn1', function(e) {
                 e.stopPropagation();
-                var applyNo = $(this).attr('data-applyNo');
+                var applyNo = $(this).parents('.content-item').attr('data-applyNo');
                 window.location.href = './ckydAdd.html?applyNo=' + applyNo;
             });
 		</script>
