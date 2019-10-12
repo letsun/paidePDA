@@ -6,7 +6,7 @@
                 <div class="yd-child-item">
                     <div class="yd-child-dec">
                         <div class="yd-child-key">产品名称：</div>
-                        <div class="yd-child-val productName" data-productId="<%- result.list[i].productId %>"><%- result.list[i].productName %></div>
+                        <div class="yd-child-val productName" data-productId="<%- result.list[i].productId %>" data-factoryForecastMainId="<%- result.list[i].factoryForecastMainId %>" data-parentFactoryForecastMainId="<%- result.list[i].parentFactoryForecastMainId %>"><%- result.list[i].productName %></div>
                     </div>
                 </div>
                 <div class="yd-child-item">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="yd-child-dec double-find">
                         <div class="yd-child-key">生产日期：</div>
-                        <div class="yd-child-val"><%- result.list[i].produceTime %></div>
+                        <div class="yd-child-val produceTime"><%- result.list[i].produceTime %></div>
                     </div>
                 </div>
                 <div class="yd-child-item">
@@ -42,11 +42,11 @@
                 <div class="yd-child-item">
                     <div class="yd-child-dec double-find">
                         <div class="yd-child-key">产品等级：</div>
-                        <div class="yd-child-val"><%- result.list[i].productLevel %></div>
+                        <div class="yd-child-val productLevel" data-id="<%- result.list[i].productLevelId %>"><%- result.list[i].productLevel %></div>
                     </div>
                     <div class="yd-child-dec double-find">
                         <div class="yd-child-key">产品榨季：</div>
-                        <div class="yd-child-val"><%- result.list[i].zhaji %></div>
+                        <div class="yd-child-val zhaji" data-id="<%- result.list[i].zhajiId %>"><%- result.list[i].zhaji %></div>
                     </div>
                 </div>
                 <div class="yd-child-item">
@@ -74,11 +74,11 @@
 
             <div class="gd-infor">
                 <% for (var j = 0; j < productList.length; j++) { %>
-                    <div class="gd-list gd-list-item" data-applicationId="0" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
+                    <div class="gd-list gd-list-item" data-applicationId="0" data-parentWarehouseForecastItemId="<%- productList[j].parentWarehouseForecastItemId %>" data-warehouseForecastItemId="<%- productList[j].warehouseForecastItemId %>" data-warehouseForecastMainId="<%- productList[j].warehouseForecastMainId %>" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
                         <img class="gd-minus" src="../img/1_31.png">
                         <div class="gd-item">
                             <div class="gd-key">申请库存(吨)</div>
-                            <input type="text" class="gd-val weight" value="<%- productList[j].applyWeight %>"
+                            <input type="text" class="gd-val applyWeight" value="<%- productList[j].applyWeight %>"
                                    data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:入库重量需为数字}">
                         </div>
                         <div class="gd-item showPark">

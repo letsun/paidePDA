@@ -10,12 +10,14 @@ var api = {
         findApplyMainDetail: ip + '/api/pda/storageFactoryApplyMain/findApplyMainDetail',     // 入库申请单详情
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
+        editStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/editStorageFactoryApplyMain',     // 入库申请单编辑
     },
     rksqS: {
         findPageApi: ip + '/api/pda/storageWarehouseApplyMain/findPageApi',     // 入库申请单列表
         findApplyMainDetail: ip + '/api/pda/storageWarehouseApplyMain/findApplyMainDetail',     // 入库申请单详情
         saveApplyMain: ip + '/api/pda/storageWarehouseApplyMain/saveApplyMain',     // 入库申请单保存
         saveWaybillMain: ip + '/api/pda/storageWarehouseApplyMain/saveWaybillMain',     // 入库运单保存
+        editApplyMain: ip + '/api/pda/storageWarehouseApplyMain/editApplyMain',     // 入库申请单编辑
     },
     rkydS: {
         findPageApi: ip + '/api/pda/storageWarehouseWaybillMain/findPageApi',     // 入库运单列表

@@ -1,15 +1,9 @@
 $(function () {
     var id = Global.getUrlParam('id');
-    var serviceTeamId = Global.getUrlParam('zxdwId');
-    var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
-    if (serviceTeamId && serviceTeamId != 'null') {
-        $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
-        $('#serviceTeamText').html(serviceTeamText);
-    }
 
     var applicationId = 0;
 
-    var storageWarehouseWaybillItemList = [];
+    var storageWarehouseApplyItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
@@ -21,8 +15,11 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
+            $('#contractNo').html(res.data.contractNo);
+            $('#applyTime').html(res.data.applyTime);
+            $('#remarks').val(res.data.remarks);
             if (res.data.list.length > 0) {
-                Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
+                Global.requestTempByAjax('../temp/rksq/sqdmxEditT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
                     $('.gd-list-item').each(function (i,item) {
                         $(item).attr('data-applicationId',applicationId);
@@ -30,33 +27,12 @@ $(function () {
                         if ($(item).attr('data-warehouseareaId')) {
                             allWarehouseArea.push($(item).attr('data-warehouseareaId'));
                         }
+
                     })
                 });
             }
         }
 
-    });
-
-
-    // 跳转到选择队伍页面
-    $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=ck&func=add&id=' + id;
-    });
-
-
-    // 点击显示作业方式列表
-    $('#showWorkType').on('click',function () {
-        $('.maskcon').hide();
-        $('.maskcon5').show();
-        $('.mask').show();
-    });
-
-    // 选择作业方式
-    $('.maskcon5').on('click','.maskcon-item',function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
-        var workType = $(this).html();
-        var workTypeText = $(this).html();
-        $('.forklift').html(workTypeText);
     });
 
     // 获取园区列表
@@ -243,31 +219,6 @@ $(function () {
     });
 
 
-    // 点击显示特别关注列表
-    $('.container').on('click','.showFocusFlag',function () {
-        $(this).addClass('after').siblings().removeClass('after');
-        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        $('.maskcon').hide();
-        $('.maskcon6').show();
-        $('.mask').show();
-    });
-
-    // 选择特别关注
-    $('.maskcon6').on('click','.maskcon-item',function (e) {
-        var focusFlagText = $(this).html();
-        $('.gd-list-item').each(function (i,item) {
-            var itemId = $(item).attr('data-applicationId');
-            if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.focusFlagText').html(focusFlagText);
-                $('.maskcon').hide();
-                $('.mask').hide();
-                return;
-            }
-        });
-
-    });
-
-
     // 点击关闭弹窗
     $('.mask').on('click',function () {
         $('.maskcon').hide();
@@ -278,16 +229,12 @@ $(function () {
     $('.container').on('click','.gd-add-img',function () {
         var html = '';
         applicationId ++;
-        html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
+        html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '" data-itemId="">';
         html += '<img class="gd-minus" src="../img/1_31.png">';
-        /*html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库数量</div>';
-        html += '<input type="text" class="gd-val quantity" data-validateInfor="{strategy:isEmpty,msg:入库数量不能为空}|{strategy:isNumber,msg:入库数量需为数字}">';
-        html += '</div>';*/
 
         html += '<div class="gd-item">';
-        html += '<div class="gd-key">入库重量(吨)</div>';
-        html += '<input type="text" class="gd-val weight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
+        html += '<div class="gd-key">申请库存(吨)</div>';
+        html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
         html += '</div>';
 
         html += '<div class="gd-item showPark">';
@@ -308,11 +255,6 @@ $(function () {
         html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
 
-        html += '<div class="gd-item showFocusFlag">';
-        html += '<div class="gd-key">特别关注</div>';
-        html += '<div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png" >';
-        html += '</div>';
         html += '</div>';
 
         $(this).parents('.yd-item').find('.gd-infor').append(html);
@@ -343,51 +285,62 @@ $(function () {
         }
 
         var applyNo = $('#applyNo').html();
+        var images = '';
         var remarks = $('#remarks').val();
-        var rentStartTime = $('#date').html();
-        var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
-        var serviceTeamName = $('#serviceTeamText').html();
-        var storageNo = $('#storageNo').val();
-        var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var teamName = $('#teamName').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.warehouseApplyId = id;
-            obj.warehouseApplyItemId = $(item).attr('data-applyItemId');
-            obj.focusFlag = $(item).find('.focusFlagText').html();
+            obj.applyWeight = $(item).find('.applyWeight').val();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
+            if ($(item).attr('data-parentWarehouseForecastItemId')) {
+                obj.parentWarehouseForecastItemId = $(item).attr('data-parentWarehouseForecastItemId');
+            } else {
+                obj.parentWarehouseForecastItemId = '';
+            }
+
+            if ($(item).attr('data-warehouseForecastItemId')) {
+                obj.warehouseForecastItemId = $(item).attr('data-warehouseForecastItemId');
+            } else {
+                obj.warehouseForecastItemId = '';
+            }
+
+            if ($(item).attr('data-warehouseForecastMainId')) {
+                obj.warehouseForecastMainId = $(item).attr('data-warehouseForecastMainId');
+            } else {
+                obj.warehouseForecastMainId = '';
+            }
+            obj.produceBatch = {};
+            obj.produceBatch.produceBatchNo = $(item).parents('.yd-item').find('.produceBatch').html();
+            obj.produceBatch.productLevel = {};
+            obj.produceBatch.productLevel.id = $(item).parents('.yd-item').find('.productLevel').attr('data-id');
+            obj.produceBatch.productLevel.name = $(item).parents('.yd-item').find('.productLevel').html();
+            obj.produceBatch.zhaji = $(item).parents('.yd-item').find('.zhaji').html();
+            obj.produceBatch.zhajiId = $(item).parents('.yd-item').find('.zhaji').attr('data-id');
+            obj.produceTime = $(item).parents('.yd-item').find('.produceTime').html();
             obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
-            /*obj.quantity = $(item).find('.quantity').val();*/
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            obj.weight = $(item).find('.weight').val();
-            storageWarehouseWaybillItemList.push(obj);
+            storageWarehouseApplyItemList.push(obj);
         });
 
         var data2 = {
+            id: id,
             applyNo: applyNo,
-            applyId: id,
+            images: images,
             remarks: remarks,
-            rentStartTime: rentStartTime,
-            serviceTeamId: serviceTeamId,
-            serviceTeamName: serviceTeamName,
-            storageNo: storageNo,
-            storageType: storageType,
-            workType: workType,
-            storageWarehouseWaybillItemList: storageWarehouseWaybillItemList,
+            storageWarehouseApplyItemList: storageWarehouseApplyItemList,
         };
 
         console.log(data2);
 
         // 提交数据
-        getData('POST',api.rksqS.saveWaybillMain,{
+        getData('POST',api.rksqS.editApplyMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
-                storageWarehouseWaybillItemList = [];
+                storageWarehouseApplyItemList = [];
                 common.alert({
                     mask: true,
                     content: '提交成功',

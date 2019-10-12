@@ -3,7 +3,7 @@ $(function () {
 
     var applicationId = 0;
 
-    var storageFactoryWaybillItemList = [];
+    var storageFactoryApplyItemList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
@@ -15,6 +15,7 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
+            $('#teamName').val(res.data.teamName);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rksq/sqdmxEditT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
@@ -231,7 +232,7 @@ $(function () {
 
         html += '<div class="gd-item">';
         html += '<div class="gd-key">申请库存(吨)</div>';
-        html += '<input type="text" class="gd-val weight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
+        html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
         html += '</div>';
 
         html += '<div class="gd-item showPark">';
@@ -282,38 +283,57 @@ $(function () {
         }
 
         var applyNo = $('#applyNo').html();
+        var images = '';
         var remarks = $('#remarks').val();
+        var teamName = $('#teamName').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
-            obj.factoryApplyId = id;
-            obj.factoryApplyItemId = $(item).attr('data-applyItemId');
+            obj.applyWeight = $(item).find('.applyWeight').val();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
+            if ($(item).parents('.yd-item').find('.productName').attr('data-factoryForecastMainId')) {
+                obj.factoryForecastMainId = $(item).parents('.yd-item').find('.productName').attr('data-factoryForecastMainId');
+            } else {
+                obj.factoryForecastMainId = '';
+            }
+
+            if ($(item).parents('.yd-item').find('.productName').attr('data-parentFactoryForecastMainId')) {
+                obj.parentFactoryForecastMainId = $(item).parents('.yd-item').find('.productName').attr('data-parentFactoryForecastMainId');
+            } else {
+                obj.parentFactoryForecastMainId = '';
+            }
+            obj.produceBatch = {};
+            obj.produceBatch.produceBatchNo = $(item).parents('.yd-item').find('.produceBatch').html();
+            obj.produceBatch.productLevel = {};
+            obj.produceBatch.productLevel.id = $(item).parents('.yd-item').find('.productLevel').attr('data-id');
+            obj.produceBatch.productLevel.name = $(item).parents('.yd-item').find('.productLevel').html();
+            obj.produceBatch.zhaji = $(item).parents('.yd-item').find('.zhaji').html();
+            obj.produceBatch.zhajiId = $(item).parents('.yd-item').find('.zhaji').attr('data-id');
+            obj.produceTime = $(item).parents('.yd-item').find('.produceTime').html();
             obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
-            /*obj.quantity = $(item).find('.quantity').val();*/
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            obj.weight = $(item).find('.weight').val();
-            storageFactoryWaybillItemList.push(obj);
+            storageFactoryApplyItemList.push(obj);
         });
 
         var data2 = {
+            id: id,
             applyNo: applyNo,
+            images: images,
             remarks: remarks,
-            storageNo: storageNo,
-            storageFactoryWaybillItemList: storageFactoryWaybillItemList,
+            teamName: teamName,
+            storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
 
         console.log(data2);
 
         // 提交数据
-        getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
+        getData('POST',api.rksqT.editStorageFactoryApplyMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
-                storageFactoryWaybillItemList = [];
+                storageFactoryApplyItemList = [];
                 common.alert({
                     mask: true,
                     content: '提交成功',

@@ -158,6 +158,13 @@
             window.location.href = './rksqAddrkydS.html?id=' + id;
         });
 
+        // 点击进入编辑入库申请单
+        $('.container').on('click','.btn2',function (e) {
+            e.stopPropagation();
+            var id = $(this).parent().attr('data-id');
+            window.location.href = './rksqEditrksqS.html?id=' + id;
+        });
+
     </script>
 </body>
 
