@@ -21,14 +21,7 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
-    // // 选择作业方式
-    $('.maskcon').on('click', '.maskcon-item', function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
-        var workType = $(this).html();
-        var workTypeText = $(this).html();
-        $('.forklift').html(workTypeText);
 
-    });
 
     // 点击关闭弹窗
     $('.mask').on('click', function () {
@@ -87,7 +80,7 @@ $(function () {
 
 
     // 点击显示作业方式列表
-    $('#showWorkType').on('click',function () {
+    $('.forklift').on('click',function () {
         $('.maskcon').hide();
         $('.maskcon5').show();
         $('.mask').show();
@@ -435,7 +428,8 @@ $(function () {
                     mask: true,
                     content: '提交成功',
                     ok:function () {
-                        location.reload();
+                        // location.reload();
+                        window.location.href ="./rkydListS.html";
                     }
                 })
             } else {

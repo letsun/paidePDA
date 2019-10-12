@@ -8,6 +8,13 @@ $(function () {
     var allWarehouseArea = [];      // 已选库区
 
 
+
+    Global.requestTempByAjax('../temp/loading/loading.html', {
+    }, function (template) {
+        $('.container').append(template);
+    });
+
+
     // 获取园区列表
     getData('GET',api.yq.findList2,{
         accountId: accountId,
@@ -327,10 +334,7 @@ $(function () {
         html += '<div class="gd-key">申请库存(吨)</div>';
         html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">';
         html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">质检信息</div>';
-        html += '<input type="text" class="gd-val">';
-        html += '</div>';
+
         html += '<div class="gd-item showPark">';
         html += '<div class="gd-key">所属园区</div>';
         html += '<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>';
@@ -369,6 +373,8 @@ $(function () {
 
     // 点击保存
     $('#saveBtn').on('click',function () {
+        $('#loadingWrapper').show()
+        
         var flag = Global.initValidate('.container');
         if (!flag) {
             return;
@@ -412,15 +418,19 @@ $(function () {
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
-            if (res.code == 200) {
+
+            if (res.code == 200) { 
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: '提交成功',
                     ok:function () {
-                        location.reload();
+                        // location.reload();
+                        window.location.href ="./rksqListT.html";
                     }
                 })
             } else {
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: res.msg,

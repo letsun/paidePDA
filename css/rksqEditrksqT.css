@@ -133,6 +133,7 @@ body {
 .container {
   position: relative;
   width: 100%;
+  overflow: hidden;
 }
 .container .content {
   position: relative;

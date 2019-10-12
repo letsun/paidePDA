@@ -327,10 +327,6 @@ $(function () {
         html += '<div class="gd-key">申请库存(吨)</div>';
         html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">';
         html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">质检信息</div>';
-        html += '<input type="text" class="gd-val">';
-        html += '</div>';
         html += '<div class="gd-item showPark">';
         html += '<div class="gd-key">所属园区</div>';
         html += '<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>';
@@ -417,7 +413,9 @@ $(function () {
                     mask: true,
                     content: '提交成功',
                     ok:function () {
-                        location.reload();
+                        // location.reload();
+
+                        window.location.href ="./rksqListS.html";
                     }
                 })
             } else {

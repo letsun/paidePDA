@@ -4,6 +4,13 @@ $(function () {
     var serviceTeamId = Global.getUrlParam('zxdwId');
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
 
+
+    Global.requestTempByAjax('../temp/loading/loading.html', {
+    }, function (template) {
+        $('.container').append(template);
+    });
+
+
     // 显示隐藏运单列表
     $('.gd-dec').on('click', function () {
         $(this).removeClass('active').siblings().addClass('active');
@@ -22,14 +29,7 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
-    // // 选择作业方式
-    $('.maskcon').on('click', '.maskcon-item', function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
-        var workType = $(this).html();
-        var workTypeText = $(this).html();
-        $('.forklift').html(workTypeText);
-
-    });
+    
 
     // 点击关闭弹窗
     $('.mask').on('click', function () {
@@ -88,18 +88,21 @@ $(function () {
 
 
     // 点击显示作业方式列表
-    $('#showWorkType').on('click',function () {
+    $('.forklift').on('click',function () {
         $('.maskcon').hide();
         $('.maskcon5').show();
         $('.mask').show();
     });
 
-    // 选择作业方式
-    $('.maskcon5').on('click','.maskcon-item',function (e) {
+
+
+    // // 选择作业方式
+    $('.maskcon5').on('click', '.maskcon-item', function (e) {
         $(this).addClass('after').siblings().removeClass('after');
         var workType = $(this).html();
         var workTypeText = $(this).html();
         $('.forklift').html(workTypeText);
+
     });
 
     // 获取园区列表
@@ -391,7 +394,7 @@ $(function () {
         var serviceTeamId = $('#serviceTeamName').attr('data-serviceTeamId');
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var workType = $('.forklift').html();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -425,22 +428,25 @@ $(function () {
         };
 
         console.log(data2);
-
-        // 提交数据
+        $('#loadingWrapper').show()
+        //提交数据
         getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                $('#loadingWrapper').hide()
                 storageFactoryWaybillItemList = [];
                 common.alert({
                     mask: true,
                     content: '提交成功',
                     ok:function () {
-                        location.reload();
+                        // location.reload();
+                        window.location.href ="./rkydListT.html";
                     }
                 })
             } else {
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: res.msg,

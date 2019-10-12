@@ -21,7 +21,7 @@
         </div>
 
         <div class="search">
-            <input type="text" placeholder="输入出库单号/装卸队伍搜索"> <label id="scarchBtn">搜索</label>
+            <input type="text" placeholder="输入出库单号/装卸队伍搜索" id="storageNo"> <label id="scarchBtn">搜索</label>
 
             <img src="../img/1_28.png">
         </div>
@@ -172,7 +172,9 @@
             common.alert({
                 mask: true,
                 title: '提示',
-                content: '运单已作业完成,同步生成出库运单?',
+                content: '运单已作业完成,同步生成出库工单?',
+                cancelValue:'暂不考虑',
+                okValue:'立即生成',
                 dialog: true,
                 ok: function (reg) {
                     getData('GET',api.rkydT.saveStorage,{
