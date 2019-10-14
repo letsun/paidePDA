@@ -1,0 +1,32 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+	<a class="content-item" href="./rksqAddrksqS.html?contractId=<%- result.list[i].id %>&contractCode=<%- result.list[i].code %>">
+		<div class="content-item-header">
+			<%- result.list[i].contractName %>
+		</div>
+
+		<div class="content-item-con">
+			<div class="con-item">
+				<div class="con-item-left">
+					<span >合同编号：</span>
+					<div><%- result.list[i].code %></div>
+				</div>
+
+				<div class="con-item-right">
+					<span>签约甲方：</span>
+					<div><%- result.list[i].partyaName %></div>
+				</div>
+			</div>
+			<div class="con-item">
+
+				<div class="con-item-left">
+					<span>签订时间：</span>
+					<div><%- result.list[i].signTime %></div>
+				</div>
+				<div class="con-item-right">
+					<span>创建时间：</span>
+					<div class="overflow"><%- result.list[i].createDate %></div>
+				</div>
+			</div>
+		</div>
+	</a>
+<% } %>

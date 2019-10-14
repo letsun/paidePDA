@@ -7,9 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rkybListS.css">
-
-    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <link rel="stylesheet" href="../css/rkybaddContract.css">
 </head>
 
 <body>
@@ -17,20 +15,14 @@
     <div class="container">
 
         <div class="header">
-
             <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
-            入库预报
+            选择合同
         </div>
 
         <div class="search">
-            <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
+            <input type="text" placeholder="输入产品名称搜索" id="contractName"> <label id="scarchBtn">搜索</label>
 
             <img src="../img/1_28.png">
-        </div>
-
-
-        <div class="content">
-
         </div>
 
         <div class="content">
@@ -43,13 +35,17 @@
             </div>
         </div>
     </div>
+
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+
     <script>
+        var id = Global.getUrlParam('id');
+
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
                 fade: true
@@ -60,17 +56,17 @@
             }
         });
 
-        var productName = '';
+        var contractName = '';
 
         var totalPage = 1;     // 总页数;
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET', api.rkybS.findPageApi, {
+        getData('GET', api.ht.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
-            productName: productName,
+            contractName: contractName,
         }, function (res) {
             if (res.code == 200) {
                 if (res.data.list.length > 0) {
@@ -90,11 +86,11 @@
             }
 
             page++;
-            getData('GET', api.rkybS.findPageApi, {
+            getData('GET', api.ht.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
-                productName: productName,
+                contractName: contractName,
             }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
@@ -112,7 +108,10 @@
 
         function renderData(data) {
             $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rkyb/rkybS/list.html', { list: data }, function (template) {
+            Global.requestTempByAjax('../temp/rksqAddrkydT/contractListS.html', {
+                list: data,
+                id: id,
+            }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
@@ -125,12 +124,12 @@
         $('#scarchBtn').on('click', function () {
             page = 1;
             $('#list').html('');
-            productName = $('#productName').val();
-            getData('GET', api.rkybS.findPageApi, {
+            contractName = $('#contractName').val();
+            getData('GET', api.ht.findPageApi, {
                 accountId: accountId,
                 pageNo: page,
                 pageSize: 10,
-                productName: productName,
+                contractName: contractName,
             }, function (res) {
                 if (res.code == 200) {
                     if (res.data.list.length > 0) {
@@ -142,12 +141,6 @@
                     }
                 }
             });
-        });
-
-        /*点击进入详情*/
-        $('.container').on('click', '.content-item', function () {
-            var id = $(this).attr('data-id');
-            window.location.href = './rkybDetailS.html?id=' + id;
         });
     </script>
 </body>

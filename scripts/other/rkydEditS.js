@@ -3,6 +3,12 @@ $(function () {
     var serviceTeamId = Global.getUrlParam('zxdwId');
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
 
+
+    Global.requestTempByAjax('../temp/loading/loading.html', {
+    }, function (template) {
+        $('.container').append(template);
+    });
+
     // 显示隐藏运单列表
     $('.gd-dec').on('click', function () {
         $(this).removeClass('active').siblings().addClass('active');
@@ -416,13 +422,14 @@ $(function () {
         };
 
         console.log(data2);
-
+        $('#loadingWrapper').show()
         // 提交数据
         getData('POST',api.rkydS.saveWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                $('#loadingWrapper').hide()
                 storageWarehouseWaybillItemList = [];
                 common.alert({
                     mask: true,
@@ -433,6 +440,7 @@ $(function () {
                     }
                 })
             } else {
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: res.msg,

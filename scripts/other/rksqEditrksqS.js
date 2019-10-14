@@ -7,6 +7,11 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
+    Global.requestTempByAjax('../temp/loading/loading.html', {
+    }, function (template) {
+        $('.container').append(template);
+    });
+
 
     getData('GET',api.rksqS.findApplyMainDetail,{
         accountId: accountId,
@@ -333,13 +338,14 @@ $(function () {
         };
 
         console.log(data2);
-
+        $('#loadingWrapper').show()
         // 提交数据
         getData('POST',api.rksqS.editApplyMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
+                $('#loadingWrapper').hide()
                 storageWarehouseApplyItemList = [];
                 common.alert({
                     mask: true,
@@ -350,6 +356,7 @@ $(function () {
                     }
                 })
             } else {
+                $('#loadingWrapper').hide()
                 common.alert({
                     mask: true,
                     content: res.msg,
