@@ -139,7 +139,7 @@
 			</div>
             
 			<!-- 确认完成按钮 -->
-			<div class="confirm-btn" id="confirm-btn">确认完成</div>
+			<!-- <div class="confirm-btn" id="confirm-btn">确认完成</div> -->
         </div>
 
 
@@ -156,6 +156,12 @@
 	<script src="../scripts/lib/api.js"></script>
     <script>
 		var outWaybillNo = Global.getUrlParam('outWaybillNo');
+		
+		//转圈圈
+		Global.requestTempByAjax('../temp/loading/loading.html', {
+		}, function (template) {
+		    $('.container').append(template);
+		});
 		
 		getData('GET', api.ckyd.findWaybillDetail, {
 			accountId: accountId,
@@ -184,8 +190,7 @@
 				$(".tmsShippingMethod").html(data.tmsShippingMethod);
 				$(".shippingAddress").html(data.shippingAddress);
 				$(".remarks").html(data.remarks);
-				$(".images").attr("src",data.images);
-				
+				//$(".images").attr("src",'https://up.enterdesk.com/edpic/32/bf/a1/32bfa1860568ba99f575f2b0c66cf7ae.jpg');
 				if(res.data.status == 0) {
 				    $('#head-state').html('审核中');
 				}else if (res.data.status == 1) {
@@ -213,17 +218,72 @@
 		}
 		
 		//点击确认完成按钮
-		$("#confirm-btn").click(function(){
-			getData('GET', api.ckyd.saveOutWaybill, {
-				accountId: accountId,
-				outWaybillNo: outWaybillNo,
-			}, function(res) {
-				if (res.code == 200) {
-					var data = res.data;
-
+		/* $("#confirm-btn").click(function(){
+			common.alert({
+			    mask: true,
+				dialog: true,
+				cancelValue: "暂不考虑",
+				okValue: "立即生成",
+			    content: '运单已作业完成，同步生成出库工单？',
+			    ok:function () {
+					$('#loadingWrapper').show();
+					getData('POST', api.ckgd.addOutWorkOrderMain, {
+						accountId: accountId,
+						outWaybillNo: outWaybillNo,
+					}, function(res) {
+						setTimeout(function(){
+							$('#loadingWrapper').hide();
+							
+							if (res.code == 200) {
+							
+								common.alert({
+									 mask: true,
+									content: res.msg
+								})
+							}else{
+								common.alert({
+									 mask: true,
+									content: res.msg
+								})
+							}
+							
+						},1500)
+						
+						
+					});
+			        
+			    },
+				cancel:function(){
+					$('#loadingWrapper').show();
+					getData('GET', api.ckyd.saveOutWaybill, {
+						accountId: accountId,
+						outWaybillNo: outWaybillNo,
+					}, function(res) {
+						setTimeout(function(){
+							$('#loadingWrapper').hide();
+							
+							if (res.code == 200) {
+								var data = res.data;
+								
+								common.alert({
+									content: "确认完成"
+								})
+							}else{
+								common.alert({
+									content: res.msg,
+									ok:function(){
+										
+									}
+								})
+							}
+						},1500)
+						
+						
+					});
 				}
-			});
-		})
+			})
+			
+		}) */
 
         // 显示隐藏运单列表
         $('.gd-dec').on('click',function () {

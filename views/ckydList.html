@@ -148,13 +148,13 @@
 
 			// 点击进入详情
 			$('.container').on('click', '.content-item', function() {
-				var id = $(this).attr('data-outWaybillNo');
-				window.location.href = './ckydDetail.html?outWaybillNo=' + id;
+				var outWaybillNo = $(this).attr('data-outWaybillNo');
+				window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillNo;
 			})
 			
 			/*点击确认完成*/
 			
-			$('.container').on('click', '.btn1', function (e) {
+			$('.container').on('click', '#btn2', function (e) {
 			    var that = this;
 			    var outWaybillNo = $(that).parent().attr('data-outwaybillno') //运单id
 			  
@@ -172,7 +172,7 @@
                             outWaybillNo:outWaybillNo,
                         },function(res){
                             if (res.code==200){
-                                $(that).removeClass('btn1').addClass('btn3').text('已入库');
+                                $(that).removeClass('btn2').addClass('btn3').text('已入库');
                             }else{
                                 common.alert({
                                     mask:true,
@@ -188,7 +188,7 @@
 					        outWaybillNo:outWaybillNo,
 					    },function(res){
 					        if (res.code==200){
-					            $(that).removeClass('btn1').addClass('btn3').text('已入库');
+					            $(that).removeClass('btn2').addClass('btn3').text('已入库');
 					        }else{
 					            common.alert({
 					                mask: true,

@@ -1,13 +1,13 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="content-item" data-outWaybillNo="<%- result.list[i].outWaybillNo %>">
 
-	<% if (result.list[i].outedTotalWeight == result.list[i].totalInventory) { %>
-		<div class="content-item-btn btn2">
+	<% if (result.list[i].outedTotalWeight == result.list[i].totalInventory && result.list[i].waybillStatus == 1) { %>
+		<div class="content-item-btn btn2" id="btn2">
 			确认完成
 		</div>
 	<% } %>
 	
-	<% if (result.list[i].waybillStatus == 1) { %>
+	<% if (result.list[i].outedTotalWeight < result.list[i].totalInventory && result.list[i].waybillStatus == 1) { %>
 		<div class="content-item-btn confirm-complete btn1">
 			待出库
 		</div>
