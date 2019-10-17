@@ -1,4 +1,9 @@
-var ip = 'http://192.168.1.11:8899';
+
+
+var dev = 'http://192.168.1.11:8899';          //本地
+var production = "https://wms.ebiaoji.com";  //线上
+
+var ip = production;
 
 var api = {
     rkgd: {
