@@ -112,7 +112,11 @@
 
         function renderData(data) {
             $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rkyb/rkybS/list.html', { list: data }, function (template) {
+            Global.requestTempByAjax('../temp/rkyb/rkybS/list.html', { 
+                list: data,
+                accountId: accountId,
+                
+             }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
@@ -147,7 +151,7 @@
         /*点击进入详情*/
         $('.container').on('click', '.content-item', function () {
             var id = $(this).attr('data-id');
-            window.location.href = './rkybDetailS.html?id=' + id;
+            window.location.href = './rkybDetailS.html?id=' + id  + '&accountId=' + accountId;
         });
     </script>
 </body>

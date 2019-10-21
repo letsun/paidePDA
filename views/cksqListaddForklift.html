@@ -49,6 +49,9 @@
     <script>
         var applyNo = Global.getUrlParam('applyNo');
         var func = Global.getUrlParam('func');
+        var accountId = Global.getUrlParam('accountId')
+
+        console.log(accountId)
 
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
@@ -116,6 +119,7 @@
                 list: data,
                 applyNo: applyNo,
                 func: func,
+                accountId:accountId,
             }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();

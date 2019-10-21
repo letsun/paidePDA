@@ -9,6 +9,8 @@ $(function() {
 	var serviceTeamId = Global.getUrlParam('zxdwId');
 	var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
 
+	var accountId = Global.getUrlParam('accountId');
+
 	if (serviceTeamId && serviceTeamId != 'null') {
 		$('#serviceTeamText').attr('data-serviceTeamId', serviceTeamId);
 		$('#serviceTeamText').html(serviceTeamText);
@@ -66,7 +68,7 @@ $(function() {
 
 	// 跳转到选择队伍页面
 	$('#goTeam').on('click', function() {
-		window.location.href = './cksqListaddForklift.html?func=add&applyNo=' + applyNo;
+		window.location.href = './cksqListaddForklift.html?func=add&applyNo=' + applyNo + '&accountId=' + accountId;
 	});
 
 

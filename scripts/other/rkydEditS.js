@@ -81,7 +81,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=ck&func=edit&id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=ck&func=edit&id=' + id  + '&accountId=' + accountId;
     });
 
 

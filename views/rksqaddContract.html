@@ -45,6 +45,9 @@
 
     <script>
         var id = Global.getUrlParam('id');
+        var accountId = Global.getUrlParam('accountId')
+
+        console.log(accountId)
 
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
@@ -111,6 +114,8 @@
             Global.requestTempByAjax('../temp/rksqAddrkydT/contractListS.html', {
                 list: data,
                 id: id,
+                accountId:accountId,
+                
             }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();

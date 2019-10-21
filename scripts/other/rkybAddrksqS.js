@@ -13,14 +13,19 @@ $(function () {
     });
 
 
-    // 进入合同列表
-    $('#goContract').on('click',function () {
-        window.location.href = './rkybaddContract.html?id=' + id;
-    });
+
 
 
     var contractCode = Global.getUrlParam('contractCode');
     var contractId = Global.getUrlParam('contractId');
+    var accountId = Global.getUrlParam('accountId');
+
+    console.log(accountId)
+
+    // 进入合同列表
+    $('#goContract').on('click',function () {
+        window.location.href = './rkybaddContract.html?id=' + id + '&accountId=' + accountId;
+    });
 
     if (contractId != 'null') {
         $('#goContract').find('.gd-val').attr('data-contractId',contractId).html(contractCode);

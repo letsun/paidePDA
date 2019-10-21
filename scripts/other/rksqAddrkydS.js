@@ -2,6 +2,8 @@ $(function () {
     var id = Global.getUrlParam('id');
     var serviceTeamId = Global.getUrlParam('zxdwId');
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
+
+    var accountId = Global.getUrlParam('accountId');
     if (serviceTeamId && serviceTeamId != 'null') {
         $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
         $('#serviceTeamText').html(serviceTeamText);
@@ -45,7 +47,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=ck&func=add&id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=ck&func=add&id=' + id + '&accountId='+ accountId;
     });
 
 

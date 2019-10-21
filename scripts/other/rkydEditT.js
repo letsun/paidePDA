@@ -1,6 +1,7 @@
 $(function () {
     var id = Global.getUrlParam('id');
-    console.log(id)
+    var accountId = Global.getUrlParam('accountId');
+    console.log(accountId)
     var serviceTeamId = Global.getUrlParam('zxdwId');
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
 
@@ -83,7 +84,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=tc&func=edit&id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=tc&func=edit&id=' + id + '&accountId=' + accountId;
     });
 
 

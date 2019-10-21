@@ -154,20 +154,9 @@
         });
 
         
-        /*点击进入详情*/
-        $('.container').on('click', '.content-item', function () {
-            var id = $(this).attr('data-id');
-            window.location.href = './rkydDetailS.html?id=' + id;
-        });
 
-            // 点击进入详情
-            // $('.container').on('click','.content-item',function () {
-            //     var id = $(this).attr('data-id');
-            //     window.location.href = './rkybDetailT.html?id=' + id;
-            // })
 
-        //     });
-        // }
+
 
 
         // 点击搜索
@@ -201,7 +190,7 @@
         /*点击进入详情*/
         $('.container').on('click', '.content-item', function () {
             var id = $(this).attr('data-id');
-            window.location.href = './rkydDetailS.html?id=' + id;
+            window.location.href = './rkydDetailS.html?id=' + id + '&accountId=' + accountId;
         });
 
 
@@ -209,7 +198,7 @@
         $('.container').on('click', '.btn2', function (e) {
             e.stopPropagation();
             var id = $(this).attr('data-id');
-            window.location.href = './rkydEditS.html?id=' + id;
+            window.location.href = './rkydEditS.html?id=' + id + '&accountId=' + accountId;
         });
 
 

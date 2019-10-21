@@ -149,7 +149,7 @@
 			// 点击进入详情
 			$('.container').on('click', '.content-item', function() {
 				var outWaybillNo = $(this).attr('data-outWaybillNo');
-				window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillNo;
+				window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillNo + '&accountId=' + accountId;
 			})
 			
 			/*点击确认完成*/
