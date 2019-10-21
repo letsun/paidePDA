@@ -352,7 +352,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rksqListS.html";
+                        window.location.href ="./rksqListS.html?accountId="+accountId;
                     }
                 })
             } else {

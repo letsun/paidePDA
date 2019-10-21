@@ -421,7 +421,7 @@ $(function() {
 						ok: function() {
 						
 							//window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillMainNo;
-							window.location.href = './cksqList.html';
+							window.location.href = './cksqList.html?accountId='+accountId;
 						}
 					})
 

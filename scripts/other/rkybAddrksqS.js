@@ -350,7 +350,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rkybListS.html";
+                        window.location.href ="./rkybListS.html?accountId="+accountId;
                     }
                 })
             } else {

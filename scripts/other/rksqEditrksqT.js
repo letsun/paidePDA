@@ -351,7 +351,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rksqListT.html";
+                        window.location.href ="./rksqListT.html?accountId="+accountId;
                     }
                 })
             } else {

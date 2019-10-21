@@ -443,7 +443,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rkydListT.html";
+                        window.location.href ="./rkydListT.html?accountId="+accountId;
                     }
                 })
             } else {

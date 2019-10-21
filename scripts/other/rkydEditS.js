@@ -436,7 +436,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rkydListS.html";
+                        window.location.href ="./rkydListS.html?accountId="+accountId;
                     }
                 })
             } else {

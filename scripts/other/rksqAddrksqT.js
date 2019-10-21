@@ -373,7 +373,7 @@ $(function () {
 
     // 点击保存
     $('#saveBtn').on('click',function () {
-        $('#loadingWrapper').show()
+        
         
         var flag = Global.initValidate('.container');
         if (!flag) {
@@ -412,7 +412,7 @@ $(function () {
         };
 
         console.log(data2);
-
+        $('#loadingWrapper').show()
         // 提交数据
         getData('POST',api.rksqT.saveStorageFactoryApplyMain,{
             accountId: accountId,
@@ -426,7 +426,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rksqListT.html";
+                        window.location.href ="./rksqListT.html?accountId="+accountId;
                     }
                 })
             } else {
