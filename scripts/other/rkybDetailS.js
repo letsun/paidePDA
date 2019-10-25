@@ -33,14 +33,7 @@ $(function () {
             $('#plateNumber').html(res.data.plateNumber);
             $('#contactPhone').html(res.data.contactPhone);
             $('#remarks').html(res.data.remarks);
-
-            if (res.data.status == 0) {
-                $('#status').html('审核中')
-            }else if (res.data.status == 1) {
-                $('#status').html('已审核')
-            }else {
-                $('#status').html('审核不通过')
-            }
+            $('#head-state').html(res.data.status);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyb/rkybS/sqdmxS.html', { list: res.data.list }, function (template) {
                     $('#list').append(template);

@@ -32,13 +32,9 @@ $(function () {
             $('#workType').html(res.data.workType);
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
-            if(res.data.status == 0) {
-                $('#head-state').html('审核中');
-            }else if (res.data.status == 1) {
-                $('#head-state').html('已审核');
-            }else {
-                $('#head-state').html('审核不通过');
-            }
+
+            $('#head-state').html(res.data.status);
+
 
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/sqdmxT.html', { list: res.data.list }, function (template) {

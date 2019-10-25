@@ -1,9 +1,24 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="content-item" data-id="<%- result.list[i].id %>">
-	<a class="content-item-btn btn1" href="./rkybAddrksqS.html?id=<%- result.list[i].id %>&accountId=<%- result.accountId %>">
+
+	<% if(result.list[i].forecastStatusValue==1){ %>
+
+
+	<a class="content-item-btn btn1"
+		href="./rkybAddrksqS.html?id=<%- result.list[i].id %>&accountId=<%- result.accountId %>">
 		新增申请
 	</a>
 
+	<a class="content-item-btn1">
+		确认完成
+	</a>
+
+	
+	<% } else{ %>
+
+	<a class="content-item-btn btn3">已完成</a>
+
+	<% } %>
 	<div class="content-item-con">
 		<div class="con-item">
 			<div class="con-item-left">
@@ -22,6 +37,15 @@
 			</div>
 
 		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>预报来源：</span>
+				<div class="overflow">
+					<%- result.list[i].customerName %>
+				</div>
+			</div>
+		</div>
 		<div class="con-item">
 			<div class="con-item-left">
 				<span>预报数量：</span>
@@ -38,14 +62,7 @@
 			</div>
 		</div>
 
-		<div class="con-item">
-			<div class="con-item-left">
-				<span>预报来源：</span>
-				<div class="overflow">
-					<%- result.list[i].customerName %>
-				</div>
-			</div>
-		</div>
+
 
 
 

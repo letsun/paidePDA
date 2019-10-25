@@ -41,12 +41,14 @@ var api = {
         findApplyMainDetail: ip + '/api/pda/storageWarehouseForecastMain/findApplyMainDetail',     // 入库申请详情
         saveWarehouseApplyMain: ip + '/api/pda/storageWarehouseForecastMain/saveWarehouseApplyMain',     // 新增入库单保存
         findDetailById: ip + '/api/pda/storageWarehouseForecastMain/findDetailById',     // 新增入库申请预报明细接口
+        forecastFinish: ip + '/api/pda/storageWarehouseForecastMain/forecastFinish',   //入库预报保存确认完成
     },
     rkybT: {
         findPageApi: ip + '/api/pda/storageFactoryForecastMain/findPageApi',     // 入库预报列表
         findApplyMainDetail: ip + '/api/pda/storageFactoryForecastMain/findApplyMainDetail',     // 入库申请详情
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryForecastMain/saveStorageFactoryApplyMain',     // 新增入库单保存
         findDetailById: ip + '/api/pda/storageFactoryForecastMain/findDetailById',     // 新增入库申请预报明细接口
+        forecastFinish: ip + '/api/pda/storageFactoryForecastMain/forecastFinish',   //入库预报保存确认完成
     },
     ckgd: {
         findPageApi: ip + '/api/pda/outWorkOrderMain/findPageApi',     // 出库工单列表
@@ -75,6 +77,7 @@ var api = {
         findList2: ip + '/api/pda/basePark/findList',     // 查询园区
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
         findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
+        findDict:ip + '/api/pda/baseServiceTeam/findDict', //查询作业方式
     },
     ht: {
         findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表

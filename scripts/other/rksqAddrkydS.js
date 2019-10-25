@@ -56,14 +56,32 @@ $(function () {
         $('.maskcon').hide();
         $('.maskcon5').show();
         $('.mask').show();
+
+        getData('GET',api.yq.findDict,{
+            parameter:'work_type', 
+        },function(res){
+
+            if(res.code == 200) {
+                var html_zy = '';
+                var data = res.data;
+                for (var i in data) {
+                    html_zy += '<div class="maskcon-item" data-value = "'+data[i].value+'"> '+data[i].label+'</div>';
+                }
+
+                $('.maskcon5').html(html_zy)
+            }
+
+        })
     });
 
     // 选择作业方式
     $('.maskcon5').on('click','.maskcon-item',function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
+        // $(this).addClass('after').siblings().removeClass('after');
         var workType = $(this).html();
         var workTypeText = $(this).html();
+        var value = $(this).attr('data-value');
         $('.forklift').html(workTypeText);
+        $('.forklift').attr('data-value',value)
     });
 
     // 获取园区列表
@@ -317,7 +335,7 @@ $(function () {
 
         html += '<div class="gd-item showFocusFlag">';
         html += '<div class="gd-key">特别关注</div>';
-        html += '<div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>';
+        html += '<div class="gd-val focusFlagText"></div>';
         html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
         html += '</div>';
@@ -356,7 +374,7 @@ $(function () {
         var serviceTeamName = $('#serviceTeamText').html();
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var workType = $('#workType').attr('data-value');
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};

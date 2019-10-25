@@ -34,6 +34,7 @@ $(function () {
             $('#serviceTeamContacter').html(res.data.serviceTeamContacter);
             $('#serviceTeamPhone').html(res.data.serviceTeamPhone);
             $('#remarks').html(res.data.remarks);
+            $('#head-state').html(res.data.status)
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkgd/gdmx.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);

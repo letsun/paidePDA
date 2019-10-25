@@ -222,7 +222,7 @@
                         id:id,
                     },function(res){
                         if (res.code==200){
-                            $(that).removeClass('btn1').addClass('btn3').text('已入库')
+                            $(that).removeClass('btn1').addClass('btn3').text(res.data.storageStatus)
                         }else{
                             common.alert({
                                 mask:true,
