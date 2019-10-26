@@ -221,7 +221,6 @@ body {
 }
 .container .content .gd-infor .gd-list .last-gd-item {
   border: 1px #ccc solid;
-  border-bottom: none;
   display: flex;
 }
 .container .content .gd-infor .gd-list .last-gd-item .gd-left {
@@ -268,9 +267,6 @@ body {
 }
 .container .content .gd-infor .gd-list .last-gd-item .gd-right1 img {
   display: block;
-}
-.container .content .gd-infor .gd-list .last-gd-item:last-child {
-  border-bottom: 1px solid #ccc;
 }
 .container .content .gd-btn {
   background: linear-gradient(to right, #fdbe00, #f77d00);
@@ -390,9 +386,6 @@ body {
   border-bottom: 1px #ccc solid;
   letter-spacing: 5px;
   font-weight: bold;
-}
-.container .mask .maskcon .maskcon-item:last-child {
-  border-bottom: none;
 }
 .container .mask .maskcon .after {
   background: #ff8500;

@@ -221,7 +221,6 @@ body {
 }
 .container .content .gd-infor .gd-list .last-gd-item {
   border: 1px #ccc solid;
-  border-bottom: none;
   display: flex;
 }
 .container .content .gd-infor .gd-list .last-gd-item .gd-left {
@@ -460,9 +459,6 @@ body {
   border-bottom: 1px #ccc solid;
   letter-spacing: 5px;
   font-weight: bold;
-}
-.container .mask .maskcon .maskcon-item:last-child {
-  border-bottom: none;
 }
 .container .mask .maskcon .after {
   background: #ff8500;

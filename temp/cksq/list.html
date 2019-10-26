@@ -2,10 +2,10 @@
 <div class="content-item" data-applyNo="<%- result.list[i].applyNo %>">
 	<!-- 新增运单 -->
 
-	<% if (result.list[i].outedTotalWeight > result.list[i].totalWeight) { %>
-		<div class="content-item-btn btn1">
-			新增运单
-		</div>
+	<% if (result.list[i].outedTotalWeight < result.list[i].totalWeight) { %>
+	<div class="content-item-btn btn1">
+		新增运单
+	</div>
 	<% } %>
 
 	<!-- 编号 -->
@@ -37,6 +37,24 @@
 				<span>申请重量(吨)：</span>
 				<div>
 					<%- result.list[i].totalWeight %>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="con-item">
+
+			<div class="con-item-left">
+
+				<span>已申请数量：</span>
+				<div>
+					<%- result.list[i].outedTotalQuantity %>
+				</div>
+			</div>
+			<div class="con-item-right">
+				<span>已申请重量(吨)：</span>
+				<div>
+					<%- result.list[i].outedTotalWeight %>
 				</div>
 			</div>
 		</div>

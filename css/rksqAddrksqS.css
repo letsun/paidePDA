@@ -160,7 +160,6 @@ body {
   line-height: 40px;
   font-size: 26px;
   border: 1px solid #ccc;
-  border-bottom: none;
 }
 .container .content .gd-infor .gd-list .gd-item .gd-key {
   width: 170px;
@@ -222,7 +221,6 @@ body {
 .container .content .gd-infor .gd-list .last-gd-item {
   display: flex;
   border: 1px #ccc solid;
-  border-bottom: none;
 }
 .container .content .gd-infor .gd-list .last-gd-item .gd-left {
   width: 90px;
@@ -390,9 +388,6 @@ body {
   border-bottom: 1px #ccc solid;
   letter-spacing: 5px;
   font-weight: bold;
-}
-.container .mask .maskcon .maskcon-item:last-child {
-  border-bottom: none;
 }
 .container .mask .maskcon .after {
   background: #ff8500;
