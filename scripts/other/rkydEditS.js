@@ -441,7 +441,7 @@ $(function () {
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
             storageNo: storageNo,
-            storageType: storageType,
+            storageType: '1',
             workType: workType,
             storageWarehouseWaybillItemList: storageWarehouseWaybillItemList,
         };

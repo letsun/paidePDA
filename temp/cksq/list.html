@@ -1,8 +1,7 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="content-item" data-applyNo="<%- result.list[i].applyNo %>">
 	<!-- 新增运单 -->
-
-	<% if (result.list[i].outedTotalWeight < result.list[i].totalWeight) { %>
+	<% if ( result.list[i].newStatus == 1 ) { %>
 	<div class="content-item-btn btn1">
 		新增运单
 	</div>

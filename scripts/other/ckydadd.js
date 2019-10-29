@@ -1,7 +1,7 @@
-$(function() {
+$(function () {
 
 	//转圈圈
-	Global.requestTempByAjax('../temp/loading/loading.html', {}, function(template) {
+	Global.requestTempByAjax('../temp/loading/loading.html', {}, function (template) {
 		$('.container').append(template);
 	});
 
@@ -26,7 +26,7 @@ $(function() {
 	getData('GET', api.cksq.findApplyMainDetail, {
 		accountId: accountId,
 		applyNo: applyNo,
-	}, function(res) {
+	}, function (res) {
 		if (res.code == 200) {
 			var data = res.data;
 			$('#applyNo').html(res.data.applyNo);
@@ -43,16 +43,25 @@ $(function() {
 			$('#tmsCarrier').html(res.data.tmsCarrier);
 			$('#tmsSite').html(res.data.tmsSite);
 			$('#tmsShippingMethod').html(res.data.tmsShippingMethod);
-			$('#shippingAddress').html(res.data.shippingAddress);
+			$('#shippingAddress').val(res.data.shippingAddress);
 			$('#applyNo').html(res.data.applyNo);
-			$('#applyNo').html(res.data.applyNo);
-			$('#applyNo').html(res.data.applyNo);
+
+			$('#outType').attr('data-outTypeValue', res.data.outTypeValue)
+
+			$('#outType').html(res.data.outType)
+
+			if (res.data.outTypeValue == 1) {
+				$('.yc').hide()
+			}else{
+				$('.yc').show()
+			}
+
 			if (res.data.productList.length > 0) {
 				Global.requestTempByAjax('../temp/ckyd/ckydsqdmxT.html', {
 					list: res.data.productList
-				}, function(template) {
+				}, function (template) {
 					$('#list').append(template);
-					$('.gd-list-item').each(function(i, item) {
+					$('.gd-list-item').each(function (i, item) {
 						$(item).attr('data-applicationId', applicationId);
 						applicationId++;
 						if ($(item).attr('data-warehouseareaId')) {
@@ -67,30 +76,53 @@ $(function() {
 
 
 	// 跳转到选择队伍页面
-	$('#goTeam').on('click', function() {
+	$('#goTeam').on('click', function () {
 		window.location.href = './cksqListaddForklift.html?func=add&applyNo=' + applyNo + '&accountId=' + accountId;
 	});
 
 
+
+
+
 	// 点击显示作业方式列表
-	$('#showWorkType').on('click', function() {
+	$('#showWorkType').on('click', function () {
 		$('.maskcon').hide();
 		$('.maskcon5').show();
 		$('.mask').show();
+
+		getData('GET', api.yq.findDict, {
+			parameter: 'work_type',
+		}, function (res) {
+
+			if (res.code == 200) {
+				var html_zy = '';
+				var data = res.data;
+				for (var i in data) {
+					html_zy += '<div class="maskcon-item" data-value = "' + data[i].value + '"> ' + data[i].label + '</div>';
+				}
+
+				$('.maskcon5').html(html_zy)
+			}
+
+		})
 	});
 
 	// 选择作业方式
-	$('.maskcon5').on('click', '.maskcon-item', function(e) {
-		$(this).addClass('after').siblings().removeClass('after');
+	$('.maskcon5').on('click', '.maskcon-item', function (e) {
+		// $(this).addClass('after').siblings().removeClass('after');
 		var workType = $(this).html();
 		var workTypeText = $(this).html();
+		var value = $(this).attr('data-value');
 		$('.forklift').html(workTypeText);
+		$('.forklift').attr('data-value', value)
 	});
+
+
 
 	// 获取园区列表
 	getData('GET', api.yq.findList2, {
 		accountId: accountId,
-	}, function(res) {
+	}, function (res) {
 		if (res.code == 200) {
 			var list = res.data;
 			var html_1 = '';
@@ -104,7 +136,7 @@ $(function() {
 
 
 	// 点击显示园区列表
-	$('.container').on('click', '.showPark', function() {
+	$('.container').on('click', '.showPark', function () {
 		$('.maskcon-item').removeClass('after');
 		applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
 		$('.maskcon1').show();
@@ -112,13 +144,13 @@ $(function() {
 	});
 
 	// 选择园区
-	$('.maskcon1').on('click', '.maskcon-item', function(e) {
+	$('.maskcon1').on('click', '.maskcon-item', function (e) {
 		$('.maskcon2').html('');
 		$('.maskcon3').html('');
 		$(this).addClass('after').siblings().removeClass('after');
 		var parkId = $(this).attr('data-id');
 		var parkText = $(this).html();
-		$('.gd-list-item').each(function(i, item) {
+		$('.gd-list-item').each(function (i, item) {
 			var itemId = $(item).attr('data-applicationId');
 			if (applicationId == itemId) {
 				$('.gd-list-item').eq(i).find('.parkText').html(parkText).attr('data-parkId', parkId);
@@ -134,7 +166,7 @@ $(function() {
 	});
 
 	// 点击显示库房列表
-	$('.container').on('click', '.showStoreroom', function() {
+	$('.container').on('click', '.showStoreroom', function () {
 		applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
 		var selfParkId = $(this).parents('.gd-list-item').find('.parkText').attr('data-parkId');
 		if ($(this).parents('.gd-list-item').find('.parkText').html() != '') {
@@ -142,7 +174,7 @@ $(function() {
 			getData('GET', api.yq.findList, {
 				accountId: accountId,
 				baseParkId: selfParkId,
-			}, function(res) {
+			}, function (res) {
 				if (res.code == 200) {
 					var list = res.data;
 					var html_2 = '';
@@ -165,12 +197,12 @@ $(function() {
 	});
 
 	// 选择库房
-	$('.maskcon2').on('click', '.maskcon-item', function(e) {
+	$('.maskcon2').on('click', '.maskcon-item', function (e) {
 		$('.maskcon3').html('');
 		$(this).addClass('after').siblings().removeClass('after');
 		var warehouseId = $(this).attr('data-id');
 		var warehouseText = $(this).html();
-		$('.gd-list-item').each(function(i, item) {
+		$('.gd-list-item').each(function (i, item) {
 			var itemId = $(item).attr('data-applicationId');
 			if (applicationId == itemId) {
 				$('.gd-list-item').eq(i).find('.storeroomText').html(warehouseText).attr('data-warehouseId', warehouseId);
@@ -186,7 +218,7 @@ $(function() {
 
 
 	// 点击显示库区列表
-	$('.container').on('click', '.showReservoirArea', function() {
+	$('.container').on('click', '.showReservoirArea', function () {
 		$('.maskcon3').html('');
 		var selfWarehouseId = $(this).parents('.gd-list-item').find('.storeroomText').attr('data-warehouseId');
 		applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
@@ -195,7 +227,7 @@ $(function() {
 			getData('GET', api.yq.findList3, {
 				accountId: accountId,
 				baseWarehouseId: selfWarehouseId,
-			}, function(res) {
+			}, function (res) {
 				if (res.code == 200) {
 					var list = res.data;
 					var html_3 = '';
@@ -232,14 +264,14 @@ $(function() {
 	});
 
 	// 选择库区
-	$('.maskcon3').on('click', '.maskcon-item', function(e) {
+	$('.maskcon3').on('click', '.maskcon-item', function (e) {
 		if (!$(this).hasClass('disabled')) {
 			var self = $(this);
 			$(this).addClass('after').siblings().removeClass('after');
 			var warehouseAreaId = $(this).attr('data-id');
 			var warehouseAreaText = $(this).html();
 
-			$('.gd-list-item').each(function(i, item) {
+			$('.gd-list-item').each(function (i, item) {
 				var itemId = $(item).attr('data-applicationId');
 				if (applicationId == itemId) {
 					if ($(item).attr('data-warehouseAreaId')) {
@@ -273,13 +305,13 @@ $(function() {
 
 
 	// 点击关闭弹窗
-	$('.mask').on('click', function() {
+	$('.mask').on('click', function () {
 		$('.maskcon').hide();
 		$(this).fadeOut();
 	});
 
 	// 添加申请记录
-	$('.container').on('click', '.gd-add-img', function() {
+	$('.container').on('click', '.gd-add-img', function () {
 		var html = '';
 		applicationId++;
 		html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
@@ -314,7 +346,7 @@ $(function() {
 	});
 
 	// 点击删除申请记录
-	$('.container').on('click', '.gd-minus', function() {
+	$('.container').on('click', '.gd-minus', function () {
 		var text = $(this).parents('.gd-list-item').attr('data-warehouseAreaId');
 		if (text != '') {
 			for (var i = 0; i < allWarehouseArea.length; i++) {
@@ -330,7 +362,7 @@ $(function() {
 
 
 	// 点击保存
-	$('#saveBtn').on('click', function() {
+	$('#saveBtn').on('click', function () {
 
 		var flag = Global.initValidate('.container');
 		if (!flag) {
@@ -340,26 +372,14 @@ $(function() {
 		var applyNo = $('#applyNo').html();
 		var outWaybillNo = $('#outWaybillNo').val();
 		var remarks = $('#remarks').val();
-		var images = '111';
 		var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
-		var workTypeValue = $('#workType').html();
-		
-		var workType = '';
-		if(workTypeValue == "叉车作业"){
-			workType = 1;
-			//console.log(workType)
-		}else if(workTypeValue == "吊带作业"){
-			workType = 2;
-			//console.log(workType)
-		}else if(workTypeValue == "人工作业"){
-			workType = 3;
-			//console.log(workType)
-		}else{
-			workType = 4;
-			//console.log(workType)
-		}
+		var workType = $('#workType').attr('data-value');
 
-		$('.gd-list-item').each(function(i, item) {
+
+		var outType = $('#outType').attr('data-outtypevalue')
+		var shippingAddress = $('#shippingAddress').val()
+
+		$('.gd-list-item').each(function (i, item) {
 			var obj = {};
 			obj.applyItemId = $(item).attr('data-applyItemId');
 			obj.specificationValue = $(item).parents('.yd-item').find('.productName').attr('data-specificationValue');
@@ -376,33 +396,34 @@ $(function() {
 			outWaybillNo: outWaybillNo,
 			remarks: remarks,
 			serviceTeamId: serviceTeamId,
-			images: images,
 			workType: workType,
+			shippingAddress: shippingAddress,
+			outType:outType,
 			outWaybillItemList: outWaybillItemList,
 		};
 
-		//console.log(data2);
-
-		// 提交数据
-		/*getData('POST',api.ckyd.addOutWaybillMain,JSON.stringify(data2),function (res) {
-		    if (res.code == 200) {
-		        outWaybillItemList = [];
-		        common.alert({
-		            mask: true,
-		            content: '提交成功',
-		            ok:function () {
-		                location.reload();
-		            }
-		        })
-		    } else {
-		        common.alert({
-		            mask: true,
-		            content: res.msg,
-		        })
-		    }
-		});*/
-		
+		console.log(data2);
 		$('#loadingWrapper').show();
+		// 提交数据
+		// getData('POST',api.ckyd.addOutWaybillMain,JSON.stringify(data2),function (res) {
+		//     if (res.code == 200) {
+		//         outWaybillItemList = [];
+		//         common.alert({
+		//             mask: true,
+		//             content: '提交成功',
+		//             ok:function () {
+		//                 location.reload();
+		//             }
+		//         })
+		//     } else {
+		//         common.alert({
+		//             mask: true,
+		//             content: res.msg,
+		//         })
+		//     }
+		// });
+
+
 		$.ajax({
 			type: 'POST',
 			contentType: 'application/json;charset=UTF-8',
@@ -411,24 +432,29 @@ $(function() {
 			header: {
 				Authorization: '1111',
 			},
-			success: function(res) {
-				setTimeout(function() {
+			success: function (res) {
 
+				if (res.data.code == 200) {
 					$('#loadingWrapper').hide();
 					common.alert({
 						mask: true,
 						content: '提交成功',
-						ok: function() {
-						
+						ok: function () {
+
 							//window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillMainNo;
-							window.location.href = './cksqList.html?accountId='+accountId;
+							window.location.href = './cksqList.html?accountId=' + accountId;
 						}
 					})
-
-				}, 1500)
+				} else {
+					$('#loadingWrapper').hide();
+					common.alert({
+						mask: true,
+						content: res.msg,
+					})
+				}
 
 			},
-			error: function(res) {
+			error: function (res) {
 				$('#loadingWrapper').hide();
 				common.alert({
 					mask: true,

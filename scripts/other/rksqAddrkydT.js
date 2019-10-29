@@ -402,7 +402,7 @@ $(function () {
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
             storageNo: storageNo,
-            storageType: storageType,
+            storageType: '6',
             workType: workType,
             storageFactoryWaybillItemList: storageFactoryWaybillItemList,
         };

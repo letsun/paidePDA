@@ -14,176 +14,184 @@
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="header">
-        <a class="return" href="javascript:history.back(-1)"> <img src="../img/1_40.png"> </a>
-        新增出库运单
-    </div>
+        <div class="header">
+            <a class="return" href="javascript:history.back(-1)"> <img src="../img/1_40.png"> </a>
+            新增出库运单
+        </div>
 
-    <div class="content">
+        <div class="content">
 
 
-        <div class="gd-infor">
-            <div class="gd-list">
-                <div class="gd-item">
-                    <div class="gd-key">关联申请单</div>
-                    <div class="gd-val" id="applyNo"></div>
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">出库单号</div>
-                    <input type="text" class="gd-val" id="outWaybillNo">
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">仓租付止日</div>
-                    <div class="gd-val" id='rentalEndTime' data-validateInfor="{strategy:isEmpty,msg:仓租起始日不能为空}"></div>
-                    <img class="gd-img" src="../img/1_34.png">
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">合同编号</div>
-                    <div type="text" class="gd-val" id="contractId"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">货主名称</div>
-                    <div class="gd-val" id="customerName"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">运输司机</div>
-                    <div class="gd-val" id="driverName"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">车牌号码</div>
-                    <div type="text" class="gd-val" id="plateNo"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">联系电话</div>
-                    <div class="gd-val" id="driverPhone"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">身份证号</div>
-                    <div class="gd-val" id="idcard"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">运输费用</div>
-                    <div class="gd-val" id="transportFee"></div>
-                </div>
-
-                <div class="gd-item" id="goTeam">
-                    <div class="gd-key">装卸队伍</div>
-                    <div class="gd-val team" id="serviceTeamText" data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
-                    <img class="gd-img" src="../img/1_34.png">
-                </div>
-                <div class="gd-item" id="showWorkType">
-                    <div class="gd-key">作业方式</div>
-                    <div class="gd-val forklift" id="workType" data-validateInfor="{strategy:isEmpty,msg:作业方式不能为空}"></div>
-
-                    <img class="gd-img" src="../img/1_34.png">
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">出库类型</div>
-                    <div class="gd-val">普通出库</div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">调拨集团</div>
-                    <input type="text" class="gd-val" id="transferGroup">
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">调拨仓库</div>
-                    <input type="text" class="gd-val" id="transferCompany">
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">承运单位</div>
-                    <div type="text" class="gd-val" id="tmsCarrier"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">运抵站点</div>
-                    <div class="gd-val" id="tmsSite"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">发运方式</div>
-                    <div class="gd-val" id="tmsShippingMethod"></div>
-                </div>
-
-                <div class="gd-item">
-                    <div class="gd-key">运往地址</div>
-                    <div class="gd-val" id="shippingAddress"></div>
-                </div>
-
-                <div class="last-gd-item">
-                    <div class="gd-left">备注：</div>
-                    <div class="gd-right">
-                        <textarea id="remarks"></textarea>
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">关联申请单</div>
+                        <div class="gd-val" id="applyNo"></div>
                     </div>
+                    <div class="gd-item">
+                        <div class="gd-key">出库单号</div>
+                        <input type="text" class="gd-val" id="outWaybillNo">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">仓租付止日</div>
+                        <div class="gd-val" id='rentalEndTime' data-validateInfor="{strategy:isEmpty,msg:仓租起始日不能为空}">
+                        </div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">合同编号</div>
+                        <div type="text" class="gd-val" id="contractId"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">货主名称</div>
+                        <div class="gd-val" id="customerName"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">运输司机</div>
+                        <div class="gd-val" id="driverName"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">车牌号码</div>
+                        <div type="text" class="gd-val" id="plateNo"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">联系电话</div>
+                        <div class="gd-val" id="driverPhone"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">身份证号</div>
+                        <div class="gd-val" id="idcard"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">运输费用</div>
+                        <div class="gd-val" id="transportFee"></div>
+                    </div>
+
+                    <div class="gd-item" id="goTeam">
+                        <div class="gd-key">装卸队伍</div>
+                        <div class="gd-val team" id="serviceTeamText"
+                            data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item" id="showWorkType">
+                        <div class="gd-key">作业方式</div>
+                        <div class="gd-val forklift" id="workType" data-validateInfor="{strategy:isEmpty,msg:作业方式不能为空}">
+                        </div>
+
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">出库类型</div>
+                        <div class="gd-val" id='outType' data-outTypeValue=''></div>
+                    </div>
+
+                    <div class="yc">
+                        <div class="gd-item">
+                            <div class="gd-key">调拨集团</div>
+                            <div type="text" class="gd-val" id="transferGroup"></div>
+                        </div>
+
+                        <div class="gd-item">
+                            <div class="gd-key">调拨仓库</div>
+                            <div type="text" class="gd-val" id="transferCompany"></div>
+                        </div>
+
+                        <div class="gd-item">
+                            <div class="gd-key">承运单位</div>
+                            <div type="text" class="gd-val" id="tmsCarrier"></div>
+                        </div>
+
+                        <div class="gd-item">
+                            <div class="gd-key">运抵站点</div>
+                            <div class="gd-val" id="tmsSite"></div>
+                        </div>
+
+                        <div class="gd-item">
+                            <div class="gd-key">发运方式</div>
+                            <div class="gd-val" id="tmsShippingMethod"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gd-item">
+                        <div class="gd-key">运往地址</div>
+                        <input class="gd-val" type="text" id="shippingAddress"></input>
+                    </div>
+
+                    <div class="last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remarks"></textarea>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+
+
+            <!--申请明细-->
+            <div class="yd-list" id="list"></div>
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+
+        </div>
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+        <div class="mask">
+
+            <div class="maskcon maskcon1">
 
             </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+
+            <div class="maskcon maskcon3">
+
+            </div>
+
+            <!-- 叉车作业 -->
+            <div class="maskcon maskcon5">
+
+            </div>
+
+            <!-- <div class="maskcon maskcon6">
+
+                <div class="maskcon-item" data-value="1">普通出库</div>
+                <div class="maskcon-item" data-value="4">调拨出库</div>
+            </div> -->
         </div>
-
-
-        <!--申请明细-->
-        <div class="yd-list" id="list"></div>
-
-        <div class="gd-btn" id="saveBtn">保存</div>
 
     </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+    <script src="../scripts/plugins/iosSelect/date.js"></script>
+    <script src="../scripts/other/ckydadd.js"></script>
 
-    <!--大图-->
-    <div class="preview-win" id="preview-win">
-        <img src="../img/1_100.png" alt="">
-    </div>
-
-    <div class="mask">
-
-        <div class="maskcon maskcon1">
-
-        </div>
-        <div class="maskcon maskcon2">
-
-        </div>
-
-        <div class="maskcon maskcon3">
-
-        </div>
-
-        <!-- 叉车作业 -->
-        <div class="maskcon maskcon5">
-
-            <div class="maskcon-item">叉车作业</div>
-
-            <div class="maskcon-item">人工作业</div>
-
-            <div class="maskcon-item">叉车+人工作业</div>
-        </div>
-    </div>
-
-</div>
-<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-<script src="../scripts/lib/ejs.min.js"></script>
-<script src="../scripts/lib/commonFunc.js"></script>
-<script src="../scripts/lib/common.js"></script>
-<script src="../scripts/lib/validate.js"></script>
-<script src="../scripts/lib/api.js"></script>
-<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
-<script src="../scripts/plugins/iosSelect/date.js"></script>
-<script src="../scripts/other/ckydadd.js"></script>
-
-<script>
-    setDateControl('#rentalEndTime');
-</script>
+    <script>
+        setDateControl('#rentalEndTime');
+    </script>
 </body>
 
 </html>

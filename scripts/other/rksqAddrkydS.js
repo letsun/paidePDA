@@ -399,7 +399,7 @@ $(function () {
             serviceTeamId: serviceTeamId,
             serviceTeamName: serviceTeamName,
             storageNo: storageNo,
-            storageType: storageType,
+            storageType: '1',
             workType: workType,
             storageWarehouseWaybillItemList: storageWarehouseWaybillItemList,
         };
