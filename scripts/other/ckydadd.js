@@ -405,23 +405,7 @@ $(function () {
 		console.log(data2);
 		$('#loadingWrapper').show();
 		// 提交数据
-		// getData('POST',api.ckyd.addOutWaybillMain,JSON.stringify(data2),function (res) {
-		//     if (res.code == 200) {
-		//         outWaybillItemList = [];
-		//         common.alert({
-		//             mask: true,
-		//             content: '提交成功',
-		//             ok:function () {
-		//                 location.reload();
-		//             }
-		//         })
-		//     } else {
-		//         common.alert({
-		//             mask: true,
-		//             content: res.msg,
-		//         })
-		//     }
-		// });
+
 
 
 		$.ajax({
@@ -434,13 +418,12 @@ $(function () {
 			},
 			success: function (res) {
 
-				if (res.data.code == 200) {
+				if (res.code == 200) {
 					$('#loadingWrapper').hide();
 					common.alert({
 						mask: true,
 						content: '提交成功',
 						ok: function () {
-
 							//window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillMainNo;
 							window.location.href = './cksqList.html?accountId=' + accountId;
 						}
