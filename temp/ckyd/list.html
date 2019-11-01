@@ -1,5 +1,5 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
-<div class="content-item" data-outWaybillNo="<%- result.list[i].outWaybillNo %>">
+<div class="content-item" data-outWaybillNo="<%- result.list[i].outWaybillNo %>" data-id="<%- result.list[i].id %>">
 
 	<% if (result.list[i].newStatus!=0) { %>
 	<div class="content-item-btn btn2" id="btn2">

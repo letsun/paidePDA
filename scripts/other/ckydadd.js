@@ -5,7 +5,7 @@ $(function () {
 		$('.container').append(template);
 	});
 
-	var applyNo = Global.getUrlParam('applyNo');
+	var applyNo = Global.getUrlParam('id');
 	var serviceTeamId = Global.getUrlParam('zxdwId');
 	var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
 
@@ -25,7 +25,7 @@ $(function () {
 
 	getData('GET', api.cksq.findApplyMainDetail, {
 		accountId: accountId,
-		applyNo: applyNo,
+		id: applyNo,
 	}, function (res) {
 		if (res.code == 200) {
 			var data = res.data;
@@ -77,7 +77,7 @@ $(function () {
 
 	// 跳转到选择队伍页面
 	$('#goTeam').on('click', function () {
-		window.location.href = './cksqListaddForklift.html?func=add&applyNo=' + applyNo + '&accountId=' + accountId;
+		window.location.href = './cksqListaddForklift.html?func=add&id=' + applyNo + '&accountId=' + accountId ;
 	});
 
 
@@ -369,7 +369,8 @@ $(function () {
 			return;
 		}
 
-		var applyNo = $('#applyNo').html();
+		// var applyNo = $('#applyNo').html();
+		
 		var outWaybillNo = $('#outWaybillNo').val();
 		var remarks = $('#remarks').val();
 		var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
@@ -392,7 +393,7 @@ $(function () {
 
 		var data2 = {
 			accountId: accountId,
-			applyNo: applyNo,
+			id: applyNo,
 			outWaybillNo: outWaybillNo,
 			remarks: remarks,
 			serviceTeamId: serviceTeamId,

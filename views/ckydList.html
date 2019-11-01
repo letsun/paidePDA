@@ -150,8 +150,8 @@
 
 			// 点击进入详情
 			$('.container').on('click', '.content-item', function() {
-				var outWaybillNo = $(this).attr('data-outWaybillNo');
-				window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillNo + '&accountId=' + accountId;
+				var id = $(this).attr('data-id');
+				window.location.href = './ckydDetail.html?id=' + id + '&accountId=' + accountId;
 			})
 			
 			/*点击确认完成*/
@@ -159,7 +159,7 @@
 			$('.container').on('click', '#btn2', function (e) {
 			    var that = this;
 			    var outWaybillNo = $(that).parent().attr('data-outwaybillno') //运单id
-			  
+				var id =  $(that).parent().attr('data-id');
 			    e.stopPropagation();
 			    common.alert({
 			        mask: true,
@@ -171,7 +171,7 @@
 			        ok: function (res) {
                         getData('POST',api.ckgd.addOutWorkOrderMain,{
                             accountId:accountId,
-                            outWaybillNo:outWaybillNo,
+                            id:id,
                         },function(res){
                             if (res.code==200){
                                 $(that).removeClass('btn2').addClass('btn3').text('已入库');
@@ -187,7 +187,7 @@
 					cancel: function (res) {
 					    getData('POST',api.ckyd.saveOutWaybill,{
 					        accountId:accountId,
-					        outWaybillNo:outWaybillNo,
+					        id:id,
 					    },function(res){
 					        if (res.code==200){
 					            $(that).removeClass('btn2').addClass('btn3').text('已入库');

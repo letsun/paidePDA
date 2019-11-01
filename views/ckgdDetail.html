@@ -115,11 +115,11 @@
     <script src="../scripts/lib/common.js"></script>
 	<script src="../scripts/lib/api.js"></script>
     <script>
-		var outWorkNo = Global.getUrlParam('outWorkNo');
+		var id = Global.getUrlParam('id');
 		
 		getData('GET', api.ckgd.findOutWorkOrderDetail, {
 			accountId: accountId,
-			outWorkNo: outWorkNo,
+			id: id,
 		}, function(res) {
 			if (res.code == 200) {
 				var data = res.data;

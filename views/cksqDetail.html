@@ -148,11 +148,11 @@
 
 	<script>
 		//获取当前申请订单号数据
-		var applyNo = Global.getUrlParam('applyNo');
+		var applyNo = Global.getUrlParam('id');
 
 		getData('GET', api.cksq.findApplyMainDetail, {
 			accountId: accountId,
-			applyNo: applyNo,
+			id: applyNo,
 		}, function (res) {
 			if (res.code == 200) {
 				var data = res.data;

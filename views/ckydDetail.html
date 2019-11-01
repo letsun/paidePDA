@@ -149,7 +149,7 @@
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script>
-        var outWaybillNo = Global.getUrlParam('outWaybillNo');
+        var id = Global.getUrlParam('id');
 
         //转圈圈
         Global.requestTempByAjax('../temp/loading/loading.html', {
@@ -159,7 +159,7 @@
 
         getData('GET', api.ckyd.findWaybillDetail, {
             accountId: accountId,
-            outWaybillNo: outWaybillNo,
+            id: id,
         }, function (res) {
             if (res.code == 200) {
                 var data = res.data;

@@ -146,8 +146,8 @@
 
 			// 点击进入详情
 			$('.container').on('click', '.content-item', function() {
-				var outWorkNo = $(this).attr('data-outWorkNo');
-				window.location.href = './ckgdDetail.html?outWorkNo=' + outWorkNo + '&accountId=' + accountId;
+				var id = $(this).attr('data-id');
+				window.location.href = './ckgdDetail.html?id=' + id + '&accountId=' + accountId;
 			})
 		</script>
 	</body>
