@@ -235,6 +235,12 @@ body {
   white-space: nowrap;
   width: 570px;
 }
+.container .content .content-item .content-item-con .con-item .overflow3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 130px;
+}
 .container .content .content-item .content-item-con .con-item .con-item-left {
   display: flex;
 }

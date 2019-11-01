@@ -18,7 +18,7 @@
 
             <div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
             出库运单详情
-			<span class="head-state" id="head-state"></span>
+            <span class="head-state" id="head-state"></span>
         </div>
 
         <div class="content">
@@ -105,7 +105,7 @@
                     <div class=" last-gd-item">
                         <div class="gd-left">备注：</div>
                         <div class="gd-right remarks">
-                            
+
                         </div>
                     </div>
 
@@ -123,17 +123,17 @@
                 </div>
             </div>
 
-			<!--运单表单-->
-			<div class="yd-list" id="yd-list"></div>
-			
-			<!--审核记录-->
-			<div class="review-wra">
-			    <div class="review-title">审核记录</div>
-			    <div class="review-list" id="review-list"></div>
-			</div>
-            
-			<!-- 确认完成按钮 -->
-			<!-- <div class="confirm-btn" id="confirm-btn">确认完成</div> -->
+            <!--运单表单-->
+            <div class="yd-list" id="yd-list"></div>
+
+            <!--审核记录-->
+            <div class="review-wra">
+                <div class="review-title">审核记录</div>
+                <div class="review-list" id="review-list"></div>
+            </div>
+
+            <!-- 确认完成按钮 -->
+            <!-- <div class="confirm-btn" id="confirm-btn">确认完成</div> -->
         </div>
 
 
@@ -144,74 +144,70 @@
 
     </div>
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-	<script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/common.js"></script>
-	<script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/lib/api.js"></script>
     <script>
-		var outWaybillNo = Global.getUrlParam('outWaybillNo');
-		
-		//转圈圈
-		Global.requestTempByAjax('../temp/loading/loading.html', {
-		}, function (template) {
-		    $('.container').append(template);
-		});
-		
-		getData('GET', api.ckyd.findWaybillDetail, {
-			accountId: accountId,
-			outWaybillNo: outWaybillNo,
-		}, function(res) {
-			if (res.code == 200) {
-				var data = res.data;
-		
-				$(".outApplyId").html(data.outApplyId);
-				$(".outWaybillNo").html(data.outWaybillNo);
-				$(".rentalEndTime").html(data.rentalEndTime);
-				$(".contractNo").html(data.contractNo);
-				$(".contacter").html(data.contacter);
-				$(".driverName").html(data.driverName);
-				$(".plateNo").html(data.plateNo);
-				$(".driverPhone").html(data.driverPhone);			
-				$(".idcard").html(data.idcard);
-				$(".transportFee").html(data.transportFee);
-				$(".serviceTeam").html(data.serviceTeam); 
-				$(".workType").html(data.workType);
-				$(".outTpye").html(data.outTpye);
-				$(".transferGroup").html(data.transferGroup);
-				$(".transferCompany").html(data.transferCompany);
-				$(".tmsCarrier").html(data.tmsCarrier);
-				$(".tmsSit").html(data.tmsSit);
-				$(".tmsShippingMethod").html(data.tmsShippingMethod);
-				$(".shippingAddress").html(data.shippingAddress);
-				$(".remarks").html(data.remarks);
-				//$(".images").attr("src",'https://up.enterdesk.com/edpic/32/bf/a1/32bfa1860568ba99f575f2b0c66cf7ae.jpg');
-				if(res.data.status == 0) {
-				    $('#head-state').html('审核中');
-				}else if (res.data.status == 1) {
-				    $('#head-state').html('审核通过');
-				}else {
-				    $('#head-state').html('审核拒绝');
-				}
-				
-				//审核记录
-				Global.requestTempByAjax('../temp/rkyd/auditRecord.html', {actList:res.data.actList}, function(template) {
-					$('#review-list').append(template);
-				});
-				
-				renderData(data);
-			}
-		});
-		
-		function renderData(data) {
-			Global.requestTempByAjax('../temp/ckyd/detail.html', {
-				list: data.productList
-			}, function(template) {
-				$('#yd-list').append(template);
-				
-			});
-		}
-		
-		//点击确认完成按钮
+        var outWaybillNo = Global.getUrlParam('outWaybillNo');
+
+        //转圈圈
+        Global.requestTempByAjax('../temp/loading/loading.html', {
+        }, function (template) {
+            $('.container').append(template);
+        });
+
+        getData('GET', api.ckyd.findWaybillDetail, {
+            accountId: accountId,
+            outWaybillNo: outWaybillNo,
+        }, function (res) {
+            if (res.code == 200) {
+                var data = res.data;
+
+                $(".outApplyId").html(data.outApplyId);
+                $(".outWaybillNo").html(data.outWaybillNo);
+                $(".rentalEndTime").html(data.rentalEndTime);
+                $(".contractNo").html(data.contractNo);
+                $(".contacter").html(data.contacter);
+                $(".driverName").html(data.driverName);
+                $(".plateNo").html(data.plateNo);
+                $(".driverPhone").html(data.driverPhone);
+                $(".idcard").html(data.idcard);
+                $(".transportFee").html(data.transportFee);
+                $(".serviceTeam").html(data.serviceTeam);
+                $(".workType").html(data.workType);
+                $(".outTpye").html(data.outTpye);
+                $(".transferGroup").html(data.transferGroup);
+                $(".transferCompany").html(data.transferCompany);
+                $(".tmsCarrier").html(data.tmsCarrier);
+                $(".tmsSit").html(data.tmsSit);
+                $(".tmsShippingMethod").html(data.tmsShippingMethod);
+                $(".shippingAddress").html(data.shippingAddress);
+                $(".remarks").html(data.remarks);
+                //$(".images").attr("src",'https://up.enterdesk.com/edpic/32/bf/a1/32bfa1860568ba99f575f2b0c66cf7ae.jpg');
+
+                $('#head-state').html(data.status);
+
+
+                //审核记录
+                Global.requestTempByAjax('../temp/rkyd/auditRecord.html', { actList: res.data.actList }, function (template) {
+                    $('#review-list').append(template);
+                });
+
+                renderData(data);
+            }
+        });
+
+        function renderData(data) {
+            Global.requestTempByAjax('../temp/ckyd/detail.html', {
+                list: data.productList
+            }, function (template) {
+                $('#yd-list').append(template);
+
+            });
+        }
+
+        //点击确认完成按钮
 		/* $("#confirm-btn").click(function(){
 			common.alert({
 			    mask: true,
@@ -280,22 +276,22 @@
 		}) */
 
         // 显示隐藏运单列表
-        $('.gd-dec').on('click',function () {
+        $('.gd-dec').on('click', function () {
             $(this).removeClass('active').siblings().addClass('active');
             $('#yd-list').toggle();
         });
 
 
         // 点击查看大图
-        $('#preview-btn').on('click',function () {
+        $('#preview-btn').on('click', function () {
             $('#preview-win').fadeIn();
         });
 
         // 点击关闭大图
-        $('#preview-win').on('click',function () {
+        $('#preview-win').on('click', function () {
             $('#preview-win').fadeOut();
         });
-		
+
     </script>
 </body>
 

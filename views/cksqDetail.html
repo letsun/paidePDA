@@ -178,13 +178,7 @@
 				$(".remarks").html(data.remarks);
 				$(".preview-img").attr("src", data.images);
 
-				if (res.data.status == 0) {
-					$('#head-state').html('审核中');
-				} else if (res.data.status == 1) {
-					$('#head-state').html('审核通过');
-				} else {
-					$('#head-state').html('审核拒绝');
-				}
+				$('#head-state').html(data.status);
 
 				//审核记录
 				Global.requestTempByAjax('../temp/rkyd/auditRecord.html', { actList: res.data.actList }, function (template) {

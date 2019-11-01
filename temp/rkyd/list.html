@@ -1,30 +1,18 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 
 <div class="content-item" data-id="<%- result.list[i].id %>">
-    <% if (result.list[i].storageStatusValue == 0 && result.list[i].statusValue == 1) { %>
-    <div class="content-item-btn btn1">
-        确认完成
+    <% if (result.list[i].storageStatusValue == 1 && result.list[i].statusValue ==1 ) { %>
+    <div class="content-item-btn btn1" data-id="<%- result.list[i].id %>">
+            确认完成
     </div>
-    <% } else if (result.list[i].storageStatusValue == 0 && result.list[i].statusValue == 0) { %>
-    <div class="content-item-btn btn2" data-id="<%- result.list[i].id %>">
-        编辑
-    </div>
-    <% } else if (result.list[i].storageStatusValue == 0 && result.list[i].statusValue == 2) { %>
-    <div class="content-item-btn btn3">
-        审核不通过
-    </div>
-    <% } else if (result.list[i].storageStatusValue == 1) { %>
-    <div class="content-item-btn btn3">
-        已入库
-    </div>
-    <% } else if (result.list[i].storageStatusValue == 2) { %>
-    <div class="content-item-btn btn3">
-        已计工单
+    <% }else{ %>
+    <div class="content-item-btn btn3" data-id="<%- result.list[i].id %>">
+        <%- result.list[i].storageStatus %>
     </div>
     <% } %>
-    
 
-    <div class="content-item-header storageNo" >
+
+    <div class="content-item-header storageNo">
         <%- result.list[i].storageNo %>
     </div>
 
