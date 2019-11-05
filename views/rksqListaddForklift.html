@@ -40,9 +40,9 @@
 
     </div>
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-    <script src="../scripts/lib/ejs.min.js"></script>
-    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script> 
     <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
 
@@ -118,6 +118,8 @@
                 id: id,
                 type: type,
                 func: func,
+                accountId:accountId,
+                
             }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();

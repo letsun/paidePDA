@@ -21,7 +21,7 @@
             <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
             入库申请
 
-            <a class="setup" id="setup" href="./rksqAddrksqS.html"> <img src="../img/1_41.png"></a>
+            <a class="setup" id="setup"> <img src="../img/1_41.png"></a>
         </div>
 
         <div class="search">
@@ -44,11 +44,13 @@
 
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
-    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
     <script>
+
+// var accountId = Global.getUrlParam('accountId');
         var scrollWra = new BScroll('#scrollWra', {
             scrollbar: {
                 fade: true
@@ -65,7 +67,7 @@
         var page = 1;          // 第一页;
         var html = '';
 
-        getData('GET',api.rksqS.findPageApi,{
+        getData('GET', api.rksqS.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -121,7 +123,7 @@
         }
 
         // 点击搜索
-        $('#scarchBtn').on('click', function(){
+        $('#scarchBtn').on('click', function () {
 
             page = 1;
             $('#list').html('');
@@ -146,24 +148,30 @@
         });
 
         // 点击进入详情
-        $('.container').on('click','.content-item',function () {
+        $('.container').on('click', '.content-item', function () {
             var id = $(this).attr('data-id');
-            window.location.href = './rksqDetailS.html?id=' + id;
+            window.location.href = './rksqDetailS.html?id=' + id + '&accountId=' + accountId;
         });
 
         // 点击进入新增运单
-        $('.container').on('click','.btn1',function (e) {
+        $('.container').on('click', '.btn1', function (e) {
             e.stopPropagation();
             var id = $(this).parent().attr('data-id');
-            window.location.href = './rksqAddrkydS.html?id=' + id;
+            window.location.href = './rksqAddrkydS.html?id=' + id + '&accountId=' + accountId;
         });
 
         // 点击进入编辑入库申请单
-        $('.container').on('click','.btn2',function (e) {
+        $('.container').on('click', '.btn2', function (e) {
             e.stopPropagation();
             var id = $(this).parent().attr('data-id');
-            window.location.href = './rksqEditrksqS.html?id=' + id;
+            window.location.href = './rksqEditrksqS.html?id=' + id + '&accountId=' + accountId;
         });
+
+
+        // 点击进入新增入库申请页面
+        $('.container').on('click', '#setup', function () {
+            window.location.href = './rksqAddrksqS.html?&accountId=' + accountId;
+        })
 
     </script>
 </body>

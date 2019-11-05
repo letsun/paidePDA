@@ -41,8 +41,8 @@
 		</div>
 		<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
 		<script src="../scripts/lib/ejs.min.js"></script>
-		<script src="../scripts/lib/common.js"></script>
 		<script src="../scripts/lib/commonFunc.js"></script>
+		<script src="../scripts/lib/common.js"></script>
 		<script src="../scripts/lib/api.js"></script>
 		<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
 		<script>
@@ -146,8 +146,8 @@
 
 			// 点击进入详情
 			$('.container').on('click', '.content-item', function() {
-				var outWorkNo = $(this).attr('data-outWorkNo');
-				window.location.href = './ckgdDetail.html?outWorkNo=' + outWorkNo;
+				var id = $(this).attr('data-id');
+				window.location.href = './ckgdDetail.html?id=' + id + '&accountId=' + accountId;
 			})
 		</script>
 	</body>

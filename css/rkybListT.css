@@ -189,11 +189,11 @@ body {
 }
 .container .content .content-item .content-item-btn {
   position: absolute;
-  top: 30px;
+  top: 20px;
   right: 30px;
   display: inline-block;
   font-size: 24px;
-  padding: 5px 20px 5px 20px;
+  padding: 10px 30px 10px 30px;
   border-radius: 30px;
   z-index: 5;
 }
@@ -209,6 +209,19 @@ body {
   background: #ccc;
   color: #fff;
   letter-spacing: 8px;
+}
+.container .content .content-item .content-item-btn1 {
+  position: absolute;
+  top: 90px;
+  right: 30px;
+  display: inline-block;
+  font-size: 24px;
+  padding: 10px 30px 10px 30px;
+  border-radius: 30px;
+  color: #fe9632;
+  background: linear-gradient(to right, #f9bb04, #f68100);
+  color: #fff;
+  z-index: 5;
 }
 .container .content .content-item .content-item-header {
   font-weight: bold;

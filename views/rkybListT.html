@@ -41,8 +41,8 @@
 
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
-    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
     <script>
@@ -108,7 +108,10 @@
 
         function renderData(data) {
             $('.loadText').text('正在加载中...');
-            Global.requestTempByAjax('../temp/rkyb/rkybT/list.html', { list: data }, function (template) {
+            Global.requestTempByAjax('../temp/rkyb/rkybT/list.html', {
+                list: data,
+                accountId: accountId,
+            }, function (template) {
                 $('#list').append(template);
                 scrollWra.finishPullUp();
                 scrollWra.refresh();
@@ -139,6 +142,45 @@
                 }
             });
         });
+
+
+
+        /*点击确认完成*/
+
+        $('.container').on('click', '.content-item-btn1', function (e) {
+            // debugger
+            e.stopPropagation();
+            var that = this;
+            var id = $(that).parent().attr('data-id')
+
+            
+            // common.alert({
+            //     mask: true,
+            //     title: '提示',
+            //     content: '是否完成入库申请?',
+            //     cancelValue: '暂不考虑',
+            //     okValue: '确认完成',
+            //     dialog: true,
+            //     ok: function (reg) {
+
+            //         getData('GET', api.rkybT.forecastFinish, {
+            //             accountId: accountId,
+            //             id: id,
+            //         }, function (res) {
+            //             if (res.code == 200) {
+            //                 $(that).remove('.content-item-btn1')
+            //             } else {
+            //                 common.alert({
+            //                     mask: true,
+            //                     content: res.msg
+            //                 })
+            //             }
+            //         })
+
+
+            //     }
+            // });
+        })
     </script>
 </body>
 

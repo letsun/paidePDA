@@ -43,8 +43,8 @@
 
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
-    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/api.js"></script>
     <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
     <script>
@@ -150,7 +150,7 @@
         /*点击进入详情*/
         $('.container').on('click', '.content-item', function () {
             var id = $(this).attr('data-id');
-            window.location.href = './rkydDetailT.html?id=' + id;
+            window.location.href = './rkydDetailT.html?id=' + id + '&accountId=' + accountId;
         });
 
 
@@ -158,7 +158,7 @@
         $('.container').on('click', '.btn2', function (e) {
             e.stopPropagation();
             var id = $(this).attr('data-id');
-            window.location.href = './rkydEditT.html?id=' + id;
+            window.location.href = './rkydEditT.html?id=' + id + '&accountId=' + accountId;;
         });
 
 
@@ -182,7 +182,7 @@
                         id:id,
                     },function(res){
                         if (res.code==200){
-                            $(that).removeClass('btn1').addClass('btn3').text('已入库')
+                            $(that).removeClass('btn1').addClass('btn3').text(res.data.storageStatus)
                         }else{
                             common.alert({
                                 mask:true,
@@ -190,9 +190,11 @@
                             })
                         }                    
                     })
-
+                
                     
-                }
+                },
+
+                cancel: function (res){}
             });
         })
 

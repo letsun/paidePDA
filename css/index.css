@@ -172,6 +172,3 @@ body {
 .container .content .content-item:nth-child(3n) {
   border-right: none;
 }
-.container .content .content-item:last-child {
-  border-bottom: none;
-}

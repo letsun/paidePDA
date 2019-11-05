@@ -52,6 +52,9 @@ $(function () {
                 $('#serviceTeamName').html(serviceTeamText);
             }
             $('#workType').html(res.data.workType);
+            $('.forklift').attr('data-value',res.data.workTypeValue)
+
+
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
             if (res.data.list.length > 0) {
@@ -81,7 +84,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=ck&func=edit&id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=ck&func=edit&id=' + id  + '&accountId=' + accountId;
     });
 
 
@@ -90,14 +93,33 @@ $(function () {
         $('.maskcon').hide();
         $('.maskcon5').show();
         $('.mask').show();
+
+
+        getData('GET',api.yq.findDict,{
+            parameter:'work_type', 
+        },function(res){
+
+            if(res.code == 200) {
+                var html_zy = '';
+                var data = res.data;
+                for (var i in data) {
+                    html_zy += '<div class="maskcon-item" data-value = "'+data[i].value+'"> '+data[i].label+'</div>';
+                }
+
+                $('.maskcon5').html(html_zy)
+            }
+
+        })
     });
 
     // 选择作业方式
     $('.maskcon5').on('click','.maskcon-item',function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
+        // $(this).addClass('after').siblings().removeClass('after');
         var workType = $(this).html();
         var workTypeText = $(this).html();
+        var value = $(this).attr('data-value')    
         $('.forklift').html(workTypeText);
+        $('.forklift').attr('data-value',value)
     });
 
     // 获取园区列表
@@ -389,7 +411,10 @@ $(function () {
         var serviceTeamId = $('#serviceTeamName').attr('data-serviceTeamId');
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var workType = $('#workType').attr('data-value');
+        
+
+        console.log(workType)
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -416,7 +441,7 @@ $(function () {
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
             storageNo: storageNo,
-            storageType: storageType,
+            storageType: '1',
             workType: workType,
             storageWarehouseWaybillItemList: storageWarehouseWaybillItemList,
         };
@@ -436,7 +461,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rkydListS.html";
+                        window.location.href ="./rkydListS.html?accountId="+accountId;
                     }
                 })
             } else {

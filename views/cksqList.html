@@ -13,16 +13,13 @@
 	<body>
 
 		<div class="container">
-
 			<div class="header">
-
 				<div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
 				出库申请
 			</div>
 
 			<div class="search">
 				<input type="text" id="applyNo" placeholder="输入出库单号/装卸队伍搜索"> <label id="scarchBtn">搜索</label>
-
 				<img src="../img/1_28.png">
 			</div>
 
@@ -43,8 +40,8 @@
 
 		<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
 		<script src="../scripts/lib/ejs.min.js"></script>
-		<script src="../scripts/lib/common.js"></script>
 		<script src="../scripts/lib/commonFunc.js"></script>
+		<script src="../scripts/lib/common.js"></script>
 		<script src="../scripts/lib/api.js"></script>
 		<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
 		<script>
@@ -151,15 +148,16 @@
 
 			// 点击进入详情
 			$('.container').on('click', '.content-item', function() {
-				var applyNo = $(this).attr('data-applyNo');
-				window.location.href = './cksqDetail.html?applyNo=' + applyNo;
+
+				var id = $(this).attr('data-id');
+				window.location.href = './cksqDetail.html?id=' + id  + '&accountId=' + accountId;
 			});
 
-            // 点击进入详情
+            // 点击进入添加运单
             $('.container').on('click', '.btn1', function(e) {
                 e.stopPropagation();
-                var applyNo = $(this).parents('.content-item').attr('data-applyNo');
-                window.location.href = './ckydAdd.html?applyNo=' + applyNo;
+                var id = $(this).parents('.content-item').attr('data-id');
+                window.location.href = './ckydAdd.html?id=' + id  + '&accountId=' + accountId;
             });
 		</script>
 	</body>

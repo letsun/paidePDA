@@ -1,7 +1,7 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
     <% if (result.type == 'ck') { %>
         <% if (result.func == 'add') { %>
-            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rksqAddrkydS.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>">
+            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rksqAddrkydS.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>&accountId=<%- result.accountId %>">
                 <!-- 编号 -->
                 <div class="content-item-header">
                     <%- result.list[i].name %>
@@ -32,7 +32,7 @@
                 </div>
             </a>
         <% } else { %>
-            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rkydEditS.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>">
+            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rkydEditS.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>&accountId=<%- result.accountId %>">
                 <!-- 编号 -->
                 <div class="content-item-header">
                     <%- result.list[i].name %>
@@ -66,7 +66,7 @@
 
     <% } else { %>
         <% if (result.func == 'add') { %>
-            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rksqAddrkydT.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>">
+            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rksqAddrkydT.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>&accountId=<%- result.accountId %>">
                 <!-- 编号 -->
                 <div class="content-item-header">
                     <%- result.list[i].name %>
@@ -97,7 +97,7 @@
                 </div>
             </a>
         <% } else { %>
-            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rkydEditT.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>">
+            <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./rkydEditT.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>&accountId=<%- result.accountId %>">
                 <!-- 编号 -->
                 <div class="content-item-header">
                     <%- result.list[i].name %>

@@ -2,6 +2,7 @@ $(function () {
     var id = Global.getUrlParam('id');
     var serviceTeamId = Global.getUrlParam('zxdwId');
     var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
+    var accountId = Global.getUrlParam('accountId');
 
     if (serviceTeamId && serviceTeamId != 'null') {
         $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
@@ -48,7 +49,7 @@ $(function () {
 
     // 跳转到选择队伍页面
     $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=tc&func=add&id=' + id;
+        window.location.href = './rksqListaddForklift.html?type=tc&func=add&id=' + id + '&accountId='+ accountId;
     });
 
 
@@ -57,14 +58,32 @@ $(function () {
         $('.maskcon').hide();
         $('.maskcon5').show();
         $('.mask').show();
+
+        getData('GET',api.yq.findDict,{
+            parameter:'work_type', 
+        },function(res){
+
+            if(res.code == 200) {
+                var html_zy = '';
+                var data = res.data;
+                for (var i in data) {
+                    html_zy += '<div class="maskcon-item" data-value = "'+data[i].value+'"> '+data[i].label+'</div>';
+                }
+
+                $('.maskcon5').html(html_zy)
+            }
+
+        })
     });
 
     // 选择作业方式
     $('.maskcon5').on('click','.maskcon-item',function (e) {
-        $(this).addClass('after').siblings().removeClass('after');
+        // $(this).addClass('after').siblings().removeClass('after');
         var workType = $(this).html();
         var workTypeText = $(this).html();
+        var value = $(this).attr('data-value')    
         $('.forklift').html(workTypeText);
+        $('.forklift').attr('data-value',value)
     });
 
     // 获取园区列表
@@ -318,7 +337,7 @@ $(function () {
 
         html += '<div class="gd-item showFocusFlag">';
         html += '<div class="gd-key">特别关注</div>';
-        html += '<div class="gd-val focusFlagText" data-validateInfor="{strategy:isEmpty,msg:特别关注不能为空}"></div>';
+        html += '<div class="gd-val focusFlagText"></div>';
         html += '<img class="gd-img" src="../img/1_34.png" >';
         html += '</div>';
         html += '</div>';
@@ -359,7 +378,7 @@ $(function () {
         var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
-        var workType = $('#workType').html();
+        var workType = $('#workType').attr('data-value');
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -383,7 +402,7 @@ $(function () {
             rentStartTime: rentStartTime,
             serviceTeamId: serviceTeamId,
             storageNo: storageNo,
-            storageType: storageType,
+            storageType: '6',
             workType: workType,
             storageFactoryWaybillItemList: storageFactoryWaybillItemList,
         };
@@ -404,7 +423,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rksqListT.html";
+                        window.location.href ="./rksqListT.html?accountId="+accountId;
                     }
                 })
             } else {

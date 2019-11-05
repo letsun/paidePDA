@@ -147,8 +147,7 @@ body {
   display: flex;
   line-height: 40px;
   font-size: 26px;
-  border: 1px solid #ddd;
-  border-bottom: none;
+  border: 1px solid #ccc;
 }
 .container .content .gd-infor .gd-list .gd-item .gd-key {
   width: 170px;
@@ -195,6 +194,9 @@ body {
 .container .content .gd-infor .gd-list .gd-item .active {
   display: block;
 }
+.container .content .gd-infor .gd-list .last-gd-item {
+  border: 1px #ccc solid;
+}
 .container .content .gd-infor .gd-list .last-gd-item .gd-left {
   width: 90px;
   padding: 14px 0;
@@ -224,7 +226,7 @@ body {
   display: block;
   height: 68px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 }
 .container .content .yd-list {
   display: none;
@@ -235,7 +237,7 @@ body {
 .container .content .yd-list .yd-item {
   padding: 0;
   margin-bottom: 25px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 .container .content .yd-list .yd-item .yd-con {
   padding: 14px 0;
@@ -306,7 +308,7 @@ body {
 .container .content .review-wra .review-list .review-item {
   padding: 0;
   margin-bottom: 25px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 .container .content .review-wra .review-list .review-item .review-child-item {
   padding: 6px 30px;

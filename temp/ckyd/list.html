@@ -1,42 +1,17 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
-<div class="content-item" data-outWaybillNo="<%- result.list[i].outWaybillNo %>">
+<div class="content-item" data-outWaybillNo="<%- result.list[i].outWaybillNo %>" data-id="<%- result.list[i].id %>">
 
-	<% if (result.list[i].outedTotalWeight == result.list[i].totalInventory && result.list[i].waybillStatus == 1) { %>
-		<div class="content-item-btn btn2" id="btn2">
-			确认完成
-		</div>
-	<% } %>
-	
-	<% if (result.list[i].outedTotalWeight < result.list[i].totalInventory && result.list[i].waybillStatus == 1) { %>
-		<div class="content-item-btn confirm-complete btn1">
-			待出库
-		</div>
-	<% } %>
-	
-	<% if (result.list[i].waybillStatus == 2) { %>
-		<div class="content-item-btn btn3">
-			已完成
-		</div>
-	<% } %>
-	
-	<% if (result.list[i].waybillStatus == 3) { %>
-		<div class="content-item-btn btn3">
-			已装车
-		</div>
-	<% } %>
-	
-	<% if (result.list[i].waybillStatus == 4) { %>
-		<div class="content-item-btn btn1">
-			已出场地
-		</div>
-	<% } %>
-	
-	<% if (result.list[i].waybillStatus == 5) { %>
-		<div class="content-item-btn btn3">
-			已送达
-		</div>
-	<% } %>
+	<% if (result.list[i].newStatus!=0) { %>
+	<div class="content-item-btn btn2" id="btn2">
+		确认完成
+	</div>
+	<% }else{ %>
 
+	<div class="content-item-btn btn3">
+			<%- result.list[i].waybillStatus %>
+	</div>
+
+	<% } %>
 	<div class="content-item-header">
 		<%- result.list[i].outWaybillNo %>
 	</div>
@@ -59,6 +34,18 @@
 				<div><%- result.list[i].totalInventory %></div>
 			</div>
 		</div>
+
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>已出库数量：</span>
+				<div><%- result.list[i].outedTotalQuantity %></div>
+			</div>
+			<div class="con-item-right">
+				<span>已出库重量(吨)：</span>
+				<div><%- result.list[i].outedTotalWeight %></div>
+			</div>
+		</div>
 		<div class="con-item">
 			<div class="con-item-left">
 				<span>货主名称：</span>
@@ -69,29 +56,29 @@
 		<div class="con-item">
 			<div class="con-item-left">
 				<span>产品名称：</span>
-				<div><%- result.list[i].productName %></div>
+				<div class="overflow"><%- result.list[i].productName %></div>
 			</div>
 		</div>
 
 		<div class="con-item">
 			<div class="con-item-left">
 				<span>产品等级：</span>
-				<div><%- result.list[i].productLevelName %></div>
+				<div class="overflow"><%- result.list[i].productLevelName %></div>
 			</div>
 			<div class="con-item-right">
 				<span>产品榨季：</span>
-				<div><%- result.list[i].zhajiName %></div>
+				<div class="overflow3"><%- result.list[i].zhajiName %></div>
 			</div>
 		</div>
 
 		<div class="con-item">
 			<div class="con-item-left">
 				<span>产品大类：</span>
-				<div><%- result.list[i].productTypeName %></div>
+				<div class="overflow"><%- result.list[i].productTypeName %></div>
 			</div>
 			<div class="con-item-right">
 				<span>产品品牌：</span>
-				<div><%- result.list[i].productBrandName %></div>
+				<div class="overflow3"><%- result.list[i].productBrandName %></div>
 			</div>
 		</div>
 
@@ -99,7 +86,7 @@
 		<div class="con-item">
 			<div class="con-item-left">
 				<span>出库库区：</span>
-				<div><%- result.list[i].warehouseAreaName %></div>
+				<div class="overflow"><%- result.list[i].warehouseAreaName %></div>
 			</div>
 		</div>
 	</div>

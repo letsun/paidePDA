@@ -1,6 +1,6 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
     <% if (result.func == 'add') { %>
-        <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./ckydAdd.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&applyNo=<%- result.applyNo %>">
+        <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./ckydAdd.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&id=<%- result.id %>&accountId=<%- result.accountId %>">
             <!-- 编号 -->
             <div class="content-item-header">
                 <%- result.list[i].name %>
@@ -31,7 +31,7 @@
             </div>
         </a>
     <% } else { %>
-        <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./ckydAdd.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&applyNo=<%- result.applyNo %>">
+        <a class="content-item" data-zxdwId="<%- result.list[i].id %>" href="./ckydAdd.html?zxdwId=<%- result.list[i].id %>&zxdwText=<%- encodeURI(encodeURIComponent(result.list[i].name)) %>&applyNo=<%- result.applyNo %>&accountId=<%- result.accountId %>">
             <!-- 编号 -->
             <div class="content-item-header">
                 <%- result.list[i].name %>

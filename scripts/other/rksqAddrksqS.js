@@ -15,7 +15,7 @@ $(function () {
 
     // 进入合同列表
     $('#goContract').on('click', function () {
-        window.location.href = './rksqaddContract.html';
+        window.location.href = './rksqaddContract.html?accountId='+ accountId ;
     });
 
 
@@ -438,7 +438,7 @@ $(function () {
                     ok: function () {
                         // location.reload();
 
-                        window.location.href = "./rksqListS.html";
+                        window.location.href = "./rksqListS.html?accountId="+accountId;
                     }
                 })
             } else {
@@ -449,6 +449,8 @@ $(function () {
                 })
             }
         });
+
+
     })
 
 

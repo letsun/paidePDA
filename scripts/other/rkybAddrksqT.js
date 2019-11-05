@@ -318,7 +318,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rkybListT.html";
+                        window.location.href ="./rkybListT.html?accountId="+accountId;
                     }
                 })
             } else {

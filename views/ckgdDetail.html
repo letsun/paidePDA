@@ -61,19 +61,19 @@
                         <div class="gd-key">联系电话</div>
                         <div class="gd-val serviceTeamPhone"></div>
                     </div>
-                    <div class="gd-item last-gd-item">
+                    <div class="last-gd-item">
                         <div class="gd-left">备注：</div>
                         <div class="gd-right remarks">
                             
                         </div>
                     </div>
-                    <div class="gd-item last-gd-item">
+                    <!-- <div class="gd-item last-gd-item">
                         <div class="gd-left">附件：</div>
                         <div class="gd-right">
                             <img class="preview-img" src="../img/1_100.png" alt="">
                             <div class="preview-btn" id="preview-btn">(点击查看大图)</div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="gd-item other-gd-item">
                         <div class="gd-dec active">
                             <img class="icon-down" src="../img/1_29.png">
@@ -111,15 +111,15 @@
     </div>
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
 	<script src="../scripts/lib/ejs.min.js"></script>
-	<script src="../scripts/lib/common.js"></script>
-	<script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
 	<script src="../scripts/lib/api.js"></script>
     <script>
-		var outWorkNo = Global.getUrlParam('outWorkNo');
+		var id = Global.getUrlParam('id');
 		
 		getData('GET', api.ckgd.findOutWorkOrderDetail, {
 			accountId: accountId,
-			outWorkNo: outWorkNo,
+			id: id,
 		}, function(res) {
 			if (res.code == 200) {
 				var data = res.data;

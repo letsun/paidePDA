@@ -140,7 +140,7 @@ body {
 }
 .container .content .gd-infor .gd-list-item {
   padding-top: 25px;
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px #ccc solid;
 }
 .container .content .gd-infor .gd-list {
   width: 710px;
@@ -159,7 +159,7 @@ body {
   display: flex;
   line-height: 40px;
   font-size: 26px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #ccc;
 }
 .container .content .gd-infor .gd-list .gd-item .gd-key {
   width: 170px;
@@ -218,6 +218,10 @@ body {
 .container .content .gd-infor .gd-list .gd-item .active {
   display: block;
 }
+.container .content .gd-infor .gd-list .last-gd-item {
+  border: 1px #ccc solid;
+  display: flex;
+}
 .container .content .gd-infor .gd-list .last-gd-item .gd-left {
   width: 90px;
   padding: 14px 0;
@@ -264,7 +268,7 @@ body {
   display: block;
 }
 .container .content .gd-infor .gd-list .last-gd-item:last-child {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 }
 .container .content .gd-infor .gd-list .other-gd-item {
   height: 68px;
@@ -286,7 +290,7 @@ body {
 .container .content .yd-list .yd-item {
   padding: 0;
   margin-bottom: 25px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 .container .content .yd-list .yd-item .yd-con {
   padding: 14px 0;
@@ -343,6 +347,7 @@ body {
 .container .content .gd-add .gd-add-img {
   display: block;
   margin: auto 20px auto auto;
+  height: 60px;
 }
 .container .content .review-wra {
   padding: 20px 0 40px 0;
@@ -361,7 +366,7 @@ body {
 .container .content .review-wra .review-list .review-item {
   padding: 0;
   margin-bottom: 25px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 .container .content .review-wra .review-list .review-item .review-child-item {
   padding: 6px 30px;
@@ -450,12 +455,9 @@ body {
 .container .mask .maskcon .maskcon-item {
   line-height: 100px;
   text-align: center;
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px #ccc solid;
   letter-spacing: 5px;
   font-weight: bold;
-}
-.container .mask .maskcon .maskcon-item:last-child {
-  border-bottom: none;
 }
 .container .mask .maskcon .after {
   background: #ff8500;
