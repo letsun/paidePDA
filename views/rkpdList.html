@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=750, user-scalable=no">
+		<link rel="stylesheet" href="../css/rkpdList.css">
+
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<div class="header">
+
+				<div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
+				入库排队
+			</div>
+
+			<div class="nav-list">
+				<div class="nav-item active">等待放行</div>
+				<div class="nav-item">等待出场</div>
+				<div class="nav-item">历史记录</div>
+			</div>
+
+			<div class="content">
+
+				<div class="scroll-wra" id="scrollWra">
+					<div class="wrapper">
+						<div class="list list1">
+							<div class="content-item">
+								<div class="item-header">
+									<div class="head-key">排队序号：</div>
+									<div class="head-val"></div>
+								</div>
+								<div class="item-header">
+									<div class="head-key">
+										<div class="team-num">B04</div>
+										<div class="team-text">正在排队,等待放行</div>
+									</div>
+									<div class="head-val">
+										<div class="release-btn">允许放行</div>
+									</div>
+								</div>
+
+								<div class="yd-con">
+
+									<div class="yd-child-item">
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">车牌号码：</div>
+											<div class="yd-child-val">1111</div>
+										</div>
+
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">装车地点：</div>
+											<div class="yd-child-val">1好库房</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="yd-con">
+
+									<div class="yd-child-item">
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">司机名称：</div>
+											<div class="yd-child-val">李亚伟</div>
+										</div>
+
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">联系电话：</div>
+											<div class="yd-child-val">18521041000</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="list list2" style="display: none;">
+							<div class="content-item">
+								<div class="item-header">
+									<div class="head-key">排队序号：</div>
+									<div class="head-val"></div>
+								</div>
+								<div class="item-header">
+									<div class="head-key">
+										<div class="team-num">B04</div>
+
+									</div>
+									<div class="head-val">
+										<div class="team-text">已过重磅，等待出场</div>
+									</div>
+								</div>
+
+								<div class="yd-con">
+
+									<div class="yd-child-item">
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">车牌号码：</div>
+											<div class="yd-child-val">1111</div>
+										</div>
+
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">卸车地点：</div>
+											<div class="yd-child-val">1好库房</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="yd-con">
+
+									<div class="yd-child-item">
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">司机名称：</div>
+											<div class="yd-child-val">李亚伟</div>
+										</div>
+
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">联系电话：</div>
+											<div class="yd-child-val">18521041000</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--<div class="search">
+							<input type="text" id="applyNo" placeholder="输入车牌号码/司机名称搜索"> <label id="scarchBtn">搜索</label>
+
+							<img src="../img/1_28.png">
+						</div>-->
+
+						<!--<div class="list list3">
+							<div class="content-item">
+
+								<div class="yd-con">
+
+									<div class="yd-child-item">
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">车牌号码：</div>
+											<div class="yd-child-val">1111</div>
+										</div>
+
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">卸车地点：</div>
+											<div class="yd-child-val">1好库房</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="yd-con">
+
+									<div class="yd-child-item">
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">司机名称：</div>
+											<div class="yd-child-val">李亚伟</div>
+										</div>
+
+										<div class="yd-child-dec double-find">
+											<div class="yd-child-key">联系电话：</div>
+											<div class="yd-child-val">18521041000</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>-->
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+		<script src="../scripts/lib/ejs.min.js"></script>
+		<script src="../scripts/lib/common.js"></script>
+		<script src="../scripts/lib/commonFunc.js"></script>
+		<script src="../scripts/lib/api.js"></script>
+		<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+		<script>
+			var scrollWra = new BScroll('#scrollWra', {
+				scrollbar: {
+					fade: true
+				},
+				click: true,
+				pullUpLoad: {
+					threshold: 0
+				}
+			});
+			
+			// 等待放行
+			$('.release-btn').on('click',function () {
+				
+            })
+		</script>
+	</body>
+
+</html>
