@@ -1,7 +1,8 @@
 
 
-var dev = 'http://192.168.1.11:8899';          //本地
+/*var dev = 'http://192.168.1.11:8899';          //本地*/
 var test = "https://wms.ebiaoji.com";           //线上
+var dev = "http://yecl.lxcyhd.com";           //本地
 
 var ip = dev;
 
@@ -78,6 +79,8 @@ var api = {
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
         findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
         findDict:ip + '/api/pda/baseServiceTeam/findDict', //查询作业方式
+        getQueueEvolutionList:ip + '/wap/gatekeeper/getQueueEvolutionList', //获取园区排队信息实况
+        letPass:ip + '/wap/gatekeeper/letPass', //放行
     },
     ht: {
         findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表

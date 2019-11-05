@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/parkManage.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+        园区管理
+
+        <span class="head-state" id="head-state"></span>
+    </div>
+
+    <div class="content">
+
+        <!--选择园区管理-->
+        <div class="select-list" id="select-list">
+            <select></select>
+        </div>
+        
+        
+        <!--查看排队信息-->
+        <div class="goteam">
+            <span>查看排队信息</span>
+            <img src="../img/1_100.png" alt="">
+        </div>
+    </div>
+
+
+</div>
+<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+<script src="../scripts/lib/ejs.min.js"></script>
+<script src="../scripts/lib/commonFunc.js"></script>
+<script src="../scripts/lib/common.js"></script>
+<script src="../scripts/lib/api.js"></script>
+</body>
+<script>
+
+    var accountId = Global.getUrlParam('accountId');
+
+    // 获取数据
+    getData('GET', api.yq.findList2, {
+        accountId: accountId,
+    }, function (res) {
+        if (res.code == 200) {
+            var html = '';
+            if (res.data.length > 0) {
+                for (var i = 0; i < res.data.length; i++) {
+                    html += '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>';
+                }
+
+                $('#select-list').find('select').html(html);
+            }
+
+        }
+    });
+
+
+    // 跳转到排队信息列表
+    $('.goteam').on('click',function () {
+        var parkId = $('#select-list').find('select').val();
+        location.href = './rkpdList.html?accountId=' + accountId + '&parkId=' + parkId;
+    })
+</script>
+</html>

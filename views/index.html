@@ -174,20 +174,20 @@
             $('.setup').hide();
             $('.text').show();
             $('.checkbox').fadeIn();
-        })
+        });
 
         //点击保存按钮
         $('.text').on('click',function(){
             $('.setup').show();
             $('.text').hide();
             $('.checkbox').fadeOut();
-        })
+        });
 
         var flag= true;
         $('.checkbox').on('click',function(){
             
             var that = this;
-            flag=!flag
+            flag=!flag;
             if(flag){
                 $(that).find('.checkbox-img').hide();
             }else{
