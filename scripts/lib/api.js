@@ -1,10 +1,10 @@
 
 
-/*var dev = 'http://192.168.1.11:8899';          //本地*/
+var dev = 'http://192.168.1.11:8899';          //本地
 var test = "https://wms.ebiaoji.com";           //线上
-var dev = "http://yecl.lxcyhd.com";           //本地
+// var dev = "http://yecl.lxcyhd.com";           //本地
 
-var ip = dev;
+var ip = test;
 
 var api = {
     rkgd: {

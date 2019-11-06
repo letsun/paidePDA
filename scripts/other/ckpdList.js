@@ -28,7 +28,7 @@ $(function () {
                     status: '0',
                 }, function (res) {
                     if (res.code == 200) {
-                        Global.requestTempByAjax('../temp/rkpd/list.html', {list: res.result}, function(template) {
+                        Global.requestTempByAjax('../temp/ckpd/list.html', {list: res.result}, function(template) {
                             $('#list1').html(template);
                         });
                     }
