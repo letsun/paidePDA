@@ -6,6 +6,8 @@ var test = "https://wms.ebiaoji.com";           //线上
 
 var ip = dev;
 
+
+
 var api = {
     rkgd: {
         findPageApi: ip + '/api/pda/storageWorkOrderMain/findPageApi',     // 入库工单列表
