@@ -13,9 +13,6 @@ $(function () {
     });
 
 
-
-
-
     var contractCode = Global.getUrlParam('contractCode');
     var contractId = Global.getUrlParam('contractId');
     var accountId = Global.getUrlParam('accountId');
@@ -310,6 +307,7 @@ $(function () {
         var contractId = $('#contractId').attr('data-contractId');
         var teamName = $('#teamName').val();
         var remark = $('#remark').val();
+        var warehouseOrderNo = $('#warehouseOrderNo').val()
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -328,6 +326,7 @@ $(function () {
         });
 
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             id: id,
             applyNo: applyNo,
             contractId: contractId,

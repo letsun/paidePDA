@@ -1,8 +1,8 @@
 
 
-/*var dev = 'http://192.168.1.11:8899';          //本地*/
+var dev = 'http://192.168.1.11:8899';          //本地*/
 var test = "https://wms.ebiaoji.com";           //线上
-var dev = "http://yecl.lxcyhd.com";           //本地
+//var dev = "http://yecl.lxcyhd.com";           //本地
 
 var ip = dev;
 
@@ -28,12 +28,14 @@ var api = {
     rkydS: {
         findPageApi: ip + '/api/pda/storageWarehouseWaybillMain/findPageApi',     // 入库运单列表
         findDetail: ip + '/api/pda/storageWarehouseWaybillMain/findDetail',     // 入库运单申请详情
-        saveStorage: ip + '/api/pda/storageWarehouseWaybillMain/saveStorage',     // 入库运单确认完成
+        saveStorage: ip + '/api/pda/storageWarehouseWaybillMain/saveStorage',     // 入库运单生成工单
+        complete: ip + '/api/pda/storageWarehouseWaybillMain/complete',     // 入库确认完成
         saveWaybillMain: ip + '/api/pda/storageWarehouseWaybillMain/saveWaybillMain',     // 入库运单修改保存
     },
     rkydT: {
         findPageApi: ip + '/api/pda/storageFactoryWaybillMain/findPageApi',     // 入库运单列表
-        saveStorage: ip + '/api/pda/storageFactoryWaybillMain/saveStorage',    //入库运单列表确认完成
+        saveStorage: ip + '/api/pda/storageFactoryWaybillMain/saveStorage',    //入库运单生成工单
+        complete: ip + '/api/pda/storageFactoryWaybillMain/complete',    //入库运单确认完成
         findDetail: ip + '/api/pda/storageFactoryWaybillMain/findDetail',     // 入库运单申请详情
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryWaybillMain/saveStorageFactoryWaybillMain',     // 入库运单修改保存
     },

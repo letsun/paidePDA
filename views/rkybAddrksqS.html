@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=750, user-scalable=no">
     <link rel="stylesheet" href="../css/rkybAddrksqS.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -29,9 +30,14 @@
                         <input type="text" id="applyNo" class="gd-val">
                     </div>
 
+                    <div class="gd-item">
+                        <div class="gd-key">仓单编号</div>
+                        <input type="text" id="warehouseOrderNo" class="gd-val">
+                    </div>
+
                     <div class="gd-item" id="goContract">
                         <div class="gd-key">合同编号</div>
-                        <div  class="gd-val" id="contractId" data-validateInfor="{strategy:isEmpty,msg:合同编号不能为空}"></div>
+                        <div class="gd-val" id="contractId" data-validateInfor="{strategy:isEmpty,msg:合同编号不能为空}"></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
 
@@ -57,9 +63,9 @@
 
             <!--申请明细-->
             <div class="yd-list" id="yd-list">
-                <div class="yd-item" >
+                <div class="yd-item">
                     <div class="yd-con" id="itemId">
-                        <div class="yd-child-item" >
+                        <div class="yd-child-item">
                             <div class="yd-child-dec">
                                 <div class="yd-child-key">产品名称：</div>
                                 <div class="yd-child-val" id="productName"></div>
@@ -136,7 +142,8 @@
                 <div class="gd-list gd-list-item" data-applicationId="0">
                     <div class="gd-item">
                         <div class="gd-key">申请库存(吨)</div>
-                        <input type="text" class="gd-val inStock" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
+                        <input type="text" class="gd-val inStock"
+                            data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
                     </div>
                     <div class="gd-item showPark">
                         <div class="gd-key">所属园区</div>
@@ -152,7 +159,8 @@
 
                     <div class="gd-item showReservoirArea">
                         <div class="gd-key">所属库区</div>
-                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>
+                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}">
+                        </div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
                 </div>

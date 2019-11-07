@@ -13,137 +13,142 @@
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
 
-    <div class="header">
+        <div class="header">
 
-        <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
-        入库运单编辑
-    </div>
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            入库运单编辑
+        </div>
 
-    <div class="content">
+        <div class="content">
 
-        <div class="gd-infor">
-            <div class="gd-list">
-                <div class="gd-item">
-                    <div class="gd-key">关联申请单</div>
-                    <div class="gd-val" id="applyNo"></div>
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">入库单号</div>
+            <div class="gd-infor">
+                <div class="gd-list">
 
-                    <input type="text" class="gd-val" id="storageNo">
-                    <!-- <div class="gd-val" id="storageNo"></div> -->
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">合租起始日</div>
-
-                    <!-- <div type="text" class="gd-val" id="date" ></div> -->
-                    <div class="gd-val" id="rentStartTime"></div>
-                    <img class="gd-img" src="../img/1_34.png">
-                </div>
-                <div class="gd-item" id="goTeam">
-                    <div class="gd-key">装卸队伍</div>
-                    <div class="gd-val" id="serviceTeamName"></div>
-
-                    <img class="gd-img" src="../img/1_34.png">
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">作业方式</div>
-                    <div class="gd-val forklift" id="workType"></div>
-                    <img class="gd-img" src="../img/1_34.png">
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">入库类型</div>
-                    <div class="gd-val" id="storageType"></div>
-                </div>
-                <div class="last-gd-item">
-                    <div class="gd-left">备注：</div>
-                    <div class="gd-right">
-                        <textarea id="remarks"></textarea>
+                    <div class="gd-item">
+                        <div class="gd-key">仓单编号</div>
+                        <div class="gd-val" id="warehouseOrderNo"></div>
                     </div>
-                </div>
-
-                <div class="gd-item other-gd-item">
-                    <div class="gd-dec active">
-                        <img class="icon-down" src="../img/1_29.png">
-                        <div class="gd-text">展开入库明细</div>
+                    <div class="gd-item">
+                        <div class="gd-key">关联申请单</div>
+                        <div class="gd-val" id="applyNo"></div>
                     </div>
-                    <div class="gd-dec">
-                        <img class="icon-down" src="../img/1_30.png">
-                        <div class="gd-text">收起入库明细</div>
+                    <div class="gd-item">
+                        <div class="gd-key">入库单号</div>
+
+                        <input type="text" class="gd-val" id="storageNo">
+                        <!-- <div class="gd-val" id="storageNo"></div> -->
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">合租起始日</div>
+
+                        <!-- <div type="text" class="gd-val" id="date" ></div> -->
+                        <div class="gd-val" id="rentStartTime"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item" id="goTeam">
+                        <div class="gd-key">装卸队伍</div>
+                        <div class="gd-val" id="serviceTeamName"></div>
+
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">作业方式</div>
+                        <div class="gd-val forklift" id="workType"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">入库类型</div>
+                        <div class="gd-val" id="storageType"></div>
+                    </div>
+                    <div class="last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remarks"></textarea>
+                        </div>
                     </div>
 
+                    <div class="gd-item other-gd-item">
+                        <div class="gd-dec active">
+                            <img class="icon-down" src="../img/1_29.png">
+                            <div class="gd-text">展开入库明细</div>
+                        </div>
+                        <div class="gd-dec">
+                            <img class="icon-down" src="../img/1_30.png">
+                            <div class="gd-text">收起入库明细</div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
+
+            <!--入库明细-->
+            <div class="yd-list" id="list"></div>
+
+            <!--审核记录-->
+            <div class="review-wra">
+                <div class="review-title">审核记录</div>
+                <div class="review-list" id="review-list"></div>
+            </div>
+
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+
+        </div>
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
         </div>
 
 
-        <!--入库明细-->
-        <div class="yd-list" id="list"></div>
+        <div class="mask">
 
-        <!--审核记录-->
-        <div class="review-wra">
-            <div class="review-title">审核记录</div>
-            <div class="review-list" id="review-list"></div>
+            <div class="maskcon maskcon1">
+
+            </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+
+            <div class="maskcon maskcon3">
+
+            </div>
+
+            <!-- 叉车作业 -->
+            <div class="maskcon maskcon5">
+
+                <div class="maskcon-item">叉车作业</div>
+
+                <div class="maskcon-item">人工作业</div>
+
+                <div class="maskcon-item">叉车+人工作业</div>
+            </div>
+
+            <!-- 特别关注 -->
+            <div class="maskcon maskcon6">
+                <div class="maskcon-item">是</div>
+                <div class="maskcon-item">否</div>
+            </div>
         </div>
-
-
-        <div class="gd-btn" id="saveBtn">保存</div>
-
     </div>
 
-    <!--大图-->
-    <div class="preview-win" id="preview-win">
-        <img src="../img/1_100.png" alt="">
-    </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+    <script src="../scripts/plugins/iosSelect/date.js"></script>
+    <script src="../scripts/other/rkydEditS.js"></script>
 
-
-    <div class="mask">
-
-        <div class="maskcon maskcon1">
-
-        </div>
-        <div class="maskcon maskcon2">
-
-        </div>
-
-        <div class="maskcon maskcon3">
-
-        </div>
-
-        <!-- 叉车作业 -->
-        <div class="maskcon maskcon5">
-
-            <div class="maskcon-item">叉车作业</div>
-
-            <div class="maskcon-item">人工作业</div>
-
-            <div class="maskcon-item">叉车+人工作业</div>
-        </div>
-
-        <!-- 特别关注 -->
-        <div class="maskcon maskcon6">
-            <div class="maskcon-item">是</div>
-            <div class="maskcon-item">否</div>
-        </div>
-    </div>
-</div>
-
-<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-<script src="../scripts/lib/ejs.min.js"></script>
-<script src="../scripts/lib/commonFunc.js"></script>
-<script src="../scripts/lib/common.js"></script>
-<script src="../scripts/lib/validate.js"></script>
-<script src="../scripts/lib/api.js"></script>
-<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
-<script src="../scripts/plugins/iosSelect/date.js"></script>
-<script src="../scripts/other/rkydEditS.js"></script>
-
-<script>
-    setDateControl('#rentStartTime');
-</script>
+    <script>
+        setDateControl('#rentStartTime');
+    </script>
 </body>
 
 </html>

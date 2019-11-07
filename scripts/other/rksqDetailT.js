@@ -29,6 +29,7 @@ $(function () {
             $('#teamName').html(res.data.teamName);
             $('#applyTime').html(res.data.applyTime);
             $('#remarks').html(res.data.remarks);
+            $('#warehouseOrderNo').html(res.data.warehouseOrderNo)
 
             $('#head-state').html(res.data.status);
             

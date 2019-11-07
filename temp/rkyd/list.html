@@ -3,7 +3,11 @@
 <div class="content-item" data-id="<%- result.list[i].id %>">
     <% if (result.list[i].storageStatusValue == 1 && result.list[i].statusValue ==1 ) { %>
     <div class="content-item-btn btn1" data-id="<%- result.list[i].id %>">
-            确认完成
+        确认完成
+    </div>
+    <% }else if(result.list[i].statusValue ==0){ %>
+    <div class="content-item-btn btn2" data-id="<%- result.list[i].id %>">
+        编辑
     </div>
     <% }else{ %>
     <div class="content-item-btn btn3" data-id="<%- result.list[i].id %>">
@@ -18,7 +22,14 @@
 
     <div class="content-item-con">
         <div class="con-item">
+            <div class="con-item-left">
+                <span>仓单编号：</span>
+                <div class="overflow"><%- result.list[i].warehouseOrderNo %></div>
+            </div>
+        </div>
 
+
+        <div class="con-item">
             <div class="con-item-left">
                 <span>装卸队伍：</span>
                 <div class="overflow"><%- result.list[i].serviceTeamName %></div>

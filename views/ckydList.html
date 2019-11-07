@@ -166,7 +166,7 @@
 			        title: '提示',
 			        content: '运单已作业完成，同步生成出库工单？',
 					okValue: '立即生成',
-					cancelValue: '暂不考虑',
+					cancelValue: '确认完成',
 			        dialog: true,
 			        ok: function (res) {
                         getData('POST',api.ckgd.addOutWorkOrderMain,{
@@ -174,7 +174,7 @@
                             id:id,
                         },function(res){
                             if (res.code==200){
-                                $(that).removeClass('btn2').addClass('btn3').text('已入库');
+                                $(that).removeClass('btn2').addClass('btn3').text('已出库');
                             }else{
                                 common.alert({
                                     mask:true,
@@ -190,7 +190,7 @@
 					        id:id,
 					    },function(res){
 					        if (res.code==200){
-					            $(that).removeClass('btn2').addClass('btn3').text('已入库');
+					            $(that).removeClass('btn2').addClass('btn3').text('已出库');
 					        }else{
 					            common.alert({
 					                mask: true,

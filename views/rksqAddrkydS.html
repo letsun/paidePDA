@@ -26,6 +26,11 @@
             <!--工单信息-->
             <div class="gd-infor">
                 <div class="gd-list">
+
+                    <div class="gd-item">
+                        <div class="gd-key">仓单编号</div>
+                        <input type="text" class="gd-val" id="warehouseOrderNo">
+                    </div>
                     <div class="gd-item">
                         <div class="gd-key">关联申请单</div>
                         <div class="gd-val" id="applyNo"></div>
@@ -42,12 +47,14 @@
 
                     <div class="gd-item" id="goTeam">
                         <div class="gd-key">装卸队伍</div>
-                        <div class="gd-val team" id="serviceTeamText" data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
+                        <div class="gd-val team" id="serviceTeamText"
+                            data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
                     <div class="gd-item" id="showWorkType">
                         <div class="gd-key">作业方式</div>
-                        <div class="gd-val forklift" id="workType" data-validateInfor="{strategy:isEmpty,msg:作业方式不能为空}"></div>
+                        <div class="gd-val forklift" id="workType" data-validateInfor="{strategy:isEmpty,msg:作业方式不能为空}">
+                        </div>
 
                         <img class="gd-img" src="../img/1_34.png">
                     </div>

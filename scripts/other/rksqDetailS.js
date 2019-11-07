@@ -29,6 +29,7 @@ $(function () {
             $('#contractNo').html(res.data.contractNo);
             $('#applyTime').html(res.data.applyTime);
             $('#remarks').html(res.data.remarks);
+            $('#warehouseOrderNo').html(res.data.warehouseOrderNo)
             $('#head-state').html(res.data.status);
 
             if (res.data.actList.length > 0) {

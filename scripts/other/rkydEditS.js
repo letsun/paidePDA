@@ -57,6 +57,8 @@ $(function () {
 
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
+
+            $('#warehouseOrderNo').html(res.data.warehouseOrderNo)
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/rkydEditSqdmxT.html', {
                     list: res.data.list,
@@ -414,7 +416,7 @@ $(function () {
         var workType = $('#workType').attr('data-value');
         
 
-        console.log(workType)
+        var warehouseOrderNo = $('#warehouseOrderNo').html()
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -434,6 +436,7 @@ $(function () {
 
         var applyId = $('.gd-list-item').attr('data-factoryApplyId')
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             id:id,
             applyNo: applyNo,
             applyId: applyId,

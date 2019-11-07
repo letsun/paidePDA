@@ -38,7 +38,6 @@ $(function () {
             for (var i = 0; i < list.length; i++) {
                 html_1 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
             }
-
             $('.maskcon1').html(html_1);
         }
     });
@@ -285,6 +284,7 @@ $(function () {
         var applyNo = $('#applyNo').val();
         var teamName = $('#teamName').val();
         var remark = $('#remark').val();
+        var warehouseOrderNo = $('#warehouseOrderNo').val()
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -298,6 +298,7 @@ $(function () {
         });
 
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             id: id,
             applyNo: applyNo,
             remarks: remark,

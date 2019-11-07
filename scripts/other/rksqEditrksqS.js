@@ -23,6 +23,8 @@ $(function () {
             $('#contractNo').html(res.data.contractNo);
             $('#applyTime').html(res.data.applyTime);
             $('#remarks').val(res.data.remarks);
+
+            $('#warehouseOrderNo').val(res.data.warehouseOrderNo)
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rksq/sqdmxEditT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
@@ -293,6 +295,7 @@ $(function () {
         var images = '';
         var remarks = $('#remarks').val();
         var teamName = $('#teamName').val();
+        var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -330,6 +333,7 @@ $(function () {
         });
 
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             id: id,
             applyNo: applyNo,
             images: images,

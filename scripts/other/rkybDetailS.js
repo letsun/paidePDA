@@ -33,6 +33,7 @@ $(function () {
             $('#plateNumber').html(res.data.plateNumber);
             $('#contactPhone').html(res.data.contactPhone);
             $('#remarks').html(res.data.remarks);
+            $('#warehouseOrderNo').html(res.data.warehouseOrderNo);
             $('#head-state').html(res.data.status);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyb/rkybS/sqdmxS.html', { list: res.data.list }, function (template) {

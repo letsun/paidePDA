@@ -384,6 +384,7 @@ $(function () {
         var images = '';
         var remarks = $('#remarks').val();
         var teamName = $('#teamName').val();
+        var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -404,6 +405,7 @@ $(function () {
         });
 
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             applyNo: applyNo,
             images: images,
             remarks: remarks,

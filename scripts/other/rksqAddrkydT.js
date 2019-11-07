@@ -379,6 +379,7 @@ $(function () {
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
         var workType = $('#workType').attr('data-value');
+        var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -396,6 +397,7 @@ $(function () {
         });
 
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             applyNo: applyNo,
             factoryApplyId: id,
             remarks: remarks,

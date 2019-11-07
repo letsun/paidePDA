@@ -13,185 +13,195 @@
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="header">
-        <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
-        新增入库申请
-    </div>
+        <div class="header">
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            新增入库申请
+        </div>
 
-    <div class="content">
+        <div class="content">
 
-        <!--工单信息-->
-        <div class="gd-infor">
-            <div class="gd-list">
-                <div class="gd-item">
-                    <div class="gd-key">申请单号</div>
-                    <input type="text" class="gd-val" id="applyNo">
-                </div>
-                <!--<div class="gd-item">
+            <!--工单信息-->
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">仓单编号</div>
+                        <input type="text" class="gd-val" id="warehouseOrderNo">
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">申请单号</div>
+                        <input type="text" class="gd-val" id="applyNo">
+                    </div>
+                    <!--<div class="gd-item">
                     <div class="gd-key">仓租起始日</div>
                     <div class="gd-val" id='date' data-validateInfor="{strategy:isEmpty,msg:仓租起始日不能为空}"></div>
                     <img class="gd-img" src="../img/1_34.png">
                 </div>-->
 
-                <!--<div class="gd-item" id="goTeam">
+                    <!--<div class="gd-item" id="goTeam">
                     <div class="gd-key">装卸队伍</div>
                     <div class="gd-val team" id="serviceTeamText" data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
                     <img class="gd-img" src="../img/1_34.png">
                 </div>-->
-                <div class="gd-item">
-                    <div class="gd-key">工作班次</div>
-                    <input type="text" class="gd-val" id="teamName" data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}">
+                    <div class="gd-item">
+                        <div class="gd-key">工作班次</div>
+                        <input type="text" class="gd-val" id="teamName"
+                            data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}">
+                    </div>
+
+                    <div class="last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remarks"></textarea>
+                        </div>
+                    </div>
+
+
                 </div>
 
-                <div class="last-gd-item">
-                    <div class="gd-left">备注：</div>
-                    <div class="gd-right">
-                        <textarea id="remarks"></textarea>
-                    </div>
+                <div class="gd-add">
+                    <img class="gd-add-img" src="../img/1_32.png">
                 </div>
 
-
-            </div>
-
-            <div class="gd-add">
-                <img class="gd-add-img" src="../img/1_32.png">
-            </div>
-
-            <div class="gd-wra">
-                <div class="gd-list gd-list-item" data-applicationId="0">
-                    <div class="gd-item showProd">
-                        <div class="gd-key">产品名称</div>
-                        <div class="gd-val productName" data-validateInfor="{strategy:isEmpty,msg:产品名称不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">生产批次</div>
-                        <input type="text" class="gd-val produceBatch" data-validateInfor="{strategy:isEmpty,msg:生产批次不能为空}">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">生产日期</div>
-                        <div class="gd-val produceTime" data-validateInfor="{strategy:isEmpty,msg:生产日期不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">包装规格</div>
-                        <div class="gd-val specificationName"></div>
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">产品单位</div>
-                        <div class="gd-val unit"></div>
-                    </div>
-                    <div class="gd-item showProductLevel">
-                        <div class="gd-key">产品等级</div>
-                        <div class="gd-val productLevel" data-validateInfor="{strategy:isEmpty,msg:产品等级不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item showZhaji">
-                        <div class="gd-key">产品榨季</div>
-                        <div class="gd-val zhaji" data-validateInfor="{strategy:isEmpty,msg:产品榨季不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">产品大类</div>
-                        <div class="gd-val productType"></div>
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">产品品牌</div>
-                        <div class="gd-val productBrand"></div>
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">申请库存(吨)</div>
-                        <input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
-                    </div>
-                    <!-- <div class="gd-item">
+                <div class="gd-wra">
+                    <div class="gd-list gd-list-item" data-applicationId="0">
+                        <div class="gd-item showProd">
+                            <div class="gd-key">产品名称</div>
+                            <div class="gd-val productName" data-validateInfor="{strategy:isEmpty,msg:产品名称不能为空}"></div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">生产批次</div>
+                            <input type="text" class="gd-val produceBatch"
+                                data-validateInfor="{strategy:isEmpty,msg:生产批次不能为空}">
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">生产日期</div>
+                            <div class="gd-val produceTime" data-validateInfor="{strategy:isEmpty,msg:生产日期不能为空}"></div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">包装规格</div>
+                            <div class="gd-val specificationName"></div>
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">产品单位</div>
+                            <div class="gd-val unit"></div>
+                        </div>
+                        <div class="gd-item showProductLevel">
+                            <div class="gd-key">产品等级</div>
+                            <div class="gd-val productLevel" data-validateInfor="{strategy:isEmpty,msg:产品等级不能为空}"></div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
+                        <div class="gd-item showZhaji">
+                            <div class="gd-key">产品榨季</div>
+                            <div class="gd-val zhaji" data-validateInfor="{strategy:isEmpty,msg:产品榨季不能为空}"></div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">产品大类</div>
+                            <div class="gd-val productType"></div>
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">产品品牌</div>
+                            <div class="gd-val productBrand"></div>
+                        </div>
+                        <div class="gd-item">
+                            <div class="gd-key">申请库存(吨)</div>
+                            <input type="text" class="gd-val applyWeight"
+                                data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
+                        </div>
+                        <!-- <div class="gd-item">
                         <div class="gd-key">质检信息</div>
                         <input type="text" class="gd-val">
                     </div> -->
-                    <div class="gd-item showPark">
-                        <div class="gd-key">所属园区</div>
-                        <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
-                    <div class="gd-item showStoreroom">
-                        <div class="gd-key">所属库房</div>
-                        <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>
+                        <div class="gd-item showPark">
+                            <div class="gd-key">所属园区</div>
+                            <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
+                        <div class="gd-item showStoreroom">
+                            <div class="gd-key">所属库房</div>
+                            <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}">
+                            </div>
 
-                        <img class="gd-img" src="../img/1_34.png">
-                    </div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
 
-                    <div class="gd-item showReservoirArea">
-                        <div class="gd-key">所属库区</div>
-                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>
-                        <img class="gd-img" src="../img/1_34.png">
+                        <div class="gd-item showReservoirArea">
+                            <div class="gd-key">所属库区</div>
+                            <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}">
+                            </div>
+                            <img class="gd-img" src="../img/1_34.png">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+        </div>
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+        <div class="mask">
+
+            <div class="maskcon maskcon1">
+
+            </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+
+            <div class="maskcon maskcon3">
+
+            </div>
+
+            <!-- 产品等级 -->
+            <div class="maskcon maskcon5">
+                <div class="maskcon-item"></div>
+            </div>
+
+            <!-- 产品榨季 -->
+            <div class="maskcon maskcon6"></div>
+        </div>
+
+
+        <!--商品列表-->
+        <div class="product-win" id="product-win">
+            <div class="product-con">
+                <div class="search">
+                    <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
+
+                    <img src="../img/1_28.png">
+                </div>
+
+                <div class="scroll-wra" id="scrollWra">
+                    <div class="wrapper">
+                        <div class="list" id="list"></div>
+
+                        <div class="loadText">上滑加载更多</div>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <div class="gd-btn" id="saveBtn">保存</div>
     </div>
-
-    <!--大图-->
-    <div class="preview-win" id="preview-win">
-        <img src="../img/1_100.png" alt="">
-    </div>
-
-    <div class="mask">
-
-        <div class="maskcon maskcon1">
-
-        </div>
-        <div class="maskcon maskcon2">
-
-        </div>
-
-        <div class="maskcon maskcon3">
-
-        </div>
-
-        <!-- 产品等级 -->
-        <div class="maskcon maskcon5">
-            <div class="maskcon-item"></div>
-        </div>
-
-        <!-- 产品榨季 -->
-        <div class="maskcon maskcon6"></div>
-    </div>
-
-
-    <!--商品列表-->
-    <div class="product-win" id="product-win">
-        <div class="product-con">
-            <div class="search">
-                <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
-
-                <img src="../img/1_28.png">
-            </div>
-
-            <div class="scroll-wra" id="scrollWra">
-                <div class="wrapper">
-                    <div class="list" id="list"></div>
-
-                    <div class="loadText">上滑加载更多</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-<script src="../scripts/lib/ejs.min.js"></script>
-<script src="../scripts/lib/commonFunc.js"></script>
-<script src="../scripts/lib/common.js"></script>
-<script src="../scripts/lib/validate.js"></script>
-<script src="../scripts/lib/api.js"></script>
-<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
-<script src="../scripts/plugins/iosSelect/date.js"></script>
-<script src="../scripts/other/rksqAddrksqT.js"></script>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+    <script src="../scripts/plugins/iosSelect/date.js"></script>
+    <script src="../scripts/other/rksqAddrksqT.js"></script>
 </body>
 
 </html>

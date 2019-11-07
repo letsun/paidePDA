@@ -32,6 +32,7 @@ $(function () {
             $('#workType').html(res.data.workType);
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
+            $('#warehouseOrderNo').html(res.data.warehouseOrderNo);
             $('#head-state').html(res.data.status);
 
             if (res.data.list.length > 0) {

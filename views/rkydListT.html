@@ -172,8 +172,8 @@
             common.alert({
                 mask: true,
                 title: '提示',
-                content: '运单已作业完成,同步生成出库工单?',
-                cancelValue:'暂不考虑',
+                content: '运单已作业完成,同步生成入库工单?',
+                cancelValue:'确认完成',
                 okValue:'立即生成',
                 dialog: true,
                 ok: function (reg) {
@@ -194,7 +194,21 @@
                     
                 },
 
-                cancel: function (res){}
+                cancel:function(reg){
+                    getData('GET',api.rkydT.complete,{
+                        accountId:accountId,
+                        id:id,
+                    },function(res){
+                        // if (res.code==200){
+                        //     $(that).removeClass('btn1').addClass('btn3').text(res.data.storageStatus)
+                        // }else{
+                        //     common.alert({
+                        //         mask:true,
+                        //         content:res.msg
+                        //     })
+                        // }
+                    })
+                }
             });
         })
 

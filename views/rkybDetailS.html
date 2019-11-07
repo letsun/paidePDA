@@ -18,12 +18,16 @@
             <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
             申请详情
 
-            <div class="status" id ="status"></div>
+            <div class="status" id="status"></div>
         </div>
 
         <div class="content">
             <div class="gd-infor">
                 <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">仓单编号</div>
+                        <div class="gd-val" id="warehouseOrderNo"></div>
+                    </div>
                     <div class="gd-item">
                         <div class="gd-key">预报单号</div>
                         <div class="gd-val" id="forecastNo"></div>
@@ -83,7 +87,7 @@
 
     </div>
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-    <script src="../scripts/lib/ejs.min.js"></script>    
+    <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/common.js"></script>
     <script src="../scripts/lib/api.js"></script>

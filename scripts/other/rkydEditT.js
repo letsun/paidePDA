@@ -55,8 +55,8 @@ $(function () {
                 $('#serviceTeamName').html(serviceTeamText);
             }
             $('#workType').html(res.data.workType);
-            $('.forklift').attr('data-value',res.data.workTypeValue)
-            console.log(res.data.workType)
+            $('.forklift').attr('data-value',res.data.workTypeValue);
+            $('#warehouseOrderNo').html(res.data.warehouseOrderNo)
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
             if (res.data.list.length > 0) {
@@ -417,7 +417,7 @@ $(function () {
         var storageNo = $('#storageNo').val();
         var storageType = $('#storageType').html();
         var workType = $('.forklift').attr('data-value');
-        console.log(workType)
+        var warehouseOrderNo = $('#warehouseOrderNo').html()
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.factoryApplyId = $(item).attr('data-factoryApplyId');;
@@ -437,6 +437,7 @@ $(function () {
         var factoryApplyId = $('.gd-list-item').attr('data-factoryApplyId')
 
         var data2 = {
+            warehouseOrderNo:warehouseOrderNo,
             id:id,
             applyNo: applyNo,
             factoryApplyId: factoryApplyId,

@@ -14,76 +14,80 @@
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="header">
-        <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
-        编辑入库申请
-    </div>
+        <div class="header">
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            编辑入库申请
+        </div>
 
-    <div class="content">
+        <div class="content">
 
-        <!--工单信息-->
-        <div class="gd-infor">
-            <div class="gd-list">
-                <div class="gd-item">
-                    <div class="gd-key">申请单号</div>
-                    <div class="gd-val" id="applyNo"></div>
-                </div>
-                <div class="gd-item">
-                    <div class="gd-key">工作班次</div>
-                    <input type="text" class="gd-val" id="teamName">
-                </div>
-
-                <div class="last-gd-item">
-                    <div class="gd-left">备注：</div>
-                    <div class="gd-right">
-                        <textarea id="remarks"></textarea>
+            <!--工单信息-->
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">仓单编号</div>
+                        <input type="text" class="gd-val" id="warehouseOrderNo">
                     </div>
-                </div>
+                    <div class="gd-item">
+                        <div class="gd-key">申请单号</div>
+                        <div class="gd-val" id="applyNo"></div>
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">工作班次</div>
+                        <input type="text" class="gd-val" id="teamName">
+                    </div>
 
+                    <div class="last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remarks"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!--申请明细-->
+            <div class="yd-list" id="list"></div>
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+
+        </div>
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+        <div class="mask">
+
+            <div class="maskcon maskcon1">
+
+            </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+
+            <div class="maskcon maskcon3">
 
             </div>
         </div>
 
-
-        <!--申请明细-->
-        <div class="yd-list" id="list"></div>
-
-        <div class="gd-btn" id="saveBtn">保存</div>
-
     </div>
-
-    <!--大图-->
-    <div class="preview-win" id="preview-win">
-        <img src="../img/1_100.png" alt="">
-    </div>
-
-    <div class="mask">
-
-        <div class="maskcon maskcon1">
-
-        </div>
-        <div class="maskcon maskcon2">
-
-        </div>
-
-        <div class="maskcon maskcon3">
-
-        </div>
-    </div>
-
-</div>
-<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-<script src="../scripts/lib/ejs.min.js"></script>
-<script src="../scripts/lib/commonFunc.js"></script>
-<script src="../scripts/lib/common.js"></script>
-<script src="../scripts/lib/validate.js"></script>
-<script src="../scripts/lib/api.js"></script>
-<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
-<script src="../scripts/plugins/iosSelect/date.js"></script>
-<script src="../scripts/other/rksqEditrksqT.js"></script>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+    <script src="../scripts/plugins/iosSelect/date.js"></script>
+    <script src="../scripts/other/rksqEditrksqT.js"></script>
 </body>
 
 </html>

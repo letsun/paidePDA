@@ -5,8 +5,8 @@
 
 
     <div class="content-item-btn btn3">
-            <%- result.list[i].status %>
-            <!-- <% if ( result.list.status == 0 ) { %>
+        <%- result.list[i].status %>
+        <!-- <% if ( result.list.status == 0 ) { %>
 
            
                 审核中
@@ -15,7 +15,7 @@
                 <% }else { %>
                 审核不通过
                 <% } %> -->
-	</div>
+    </div>
 
 
 
@@ -24,6 +24,13 @@
     </div>
 
     <div class="content-item-con">
+
+        <div class="con-item">
+            <div class="con-item-left">
+                <span>仓单编号：</span>
+                <div class="overflow"> <%- result.list[i].warehouseOrderNo %></div>
+            </div>
+        </div>
         <div class="con-item">
             <div class="con-item-left">
                 <span>装卸队伍：</span>
