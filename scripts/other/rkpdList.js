@@ -42,4 +42,10 @@ $(function () {
         });
     })
 
+    $('.container').on('click','.nav-item',function(){
+        var that = this;
+        $('.nav-item').removeClass('active')
+        $(that).addClass('active')
+    })
+
 });
