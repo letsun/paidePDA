@@ -31,7 +31,12 @@
         
         
         <!--查看排队信息-->
-        <div class="goteam">
+        <div class="goteam goteam1">
+            <span>查看排队信息</span>
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+        <div class="goteam goteam2">
             <span>查看排队信息</span>
             <img src="../img/1_100.png" alt="">
         </div>
@@ -67,10 +72,17 @@
     });
 
 
-    // 跳转到排队信息列表
-    $('.goteam').on('click',function () {
+    // 跳转到入库排队信息列表
+    $('.goteam1').on('click',function () {
         var parkId = $('#select-list').find('select').val();
         location.href = './rkpdList.html?accountId=' + accountId + '&parkId=' + parkId;
+    })
+
+
+    // 跳转到出库排队信息列表
+    $('.goteam2').on('click',function () {
+        var parkId = $('#select-list').find('select').val();
+        location.href = './ckpdList.html?accountId=' + accountId + '&parkId=' + parkId;
     })
 </script>
 </html>
