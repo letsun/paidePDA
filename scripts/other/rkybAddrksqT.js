@@ -10,6 +10,7 @@ $(function () {
     // 获取产品信息
     getData('GET',api.rkybT.findDetailById,{
         id: id,
+        accountId:accountId
     },function (res) {
         if (res.code == 200) {
             var data = res.data;
@@ -25,6 +26,10 @@ $(function () {
             $('#unit').html(res.data.unit);
             $('#zhaji').html(res.data.zhaji);
             $('#checkStatus').html(res.data.checkStatus);
+
+            $('#applyNo').html(res.data.autoFactoryApplyNo)
+
+            // console.log(res.data.autoFactoryApplyNo.length)
         }
     });
 
@@ -281,7 +286,7 @@ $(function () {
             return;
         }
 
-        var applyNo = $('#applyNo').val();
+        var applyNo = $('#applyNo').html();
         var teamName = $('#teamName').val();
         var remark = $('#remark').val();
         var warehouseOrderNo = $('#warehouseOrderNo').val()

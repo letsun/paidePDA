@@ -154,32 +154,33 @@
             var id = $(that).parent().attr('data-id')
 
             
-            // common.alert({
-            //     mask: true,
-            //     title: '提示',
-            //     content: '是否完成入库申请?',
-            //     cancelValue: '暂不考虑',
-            //     okValue: '确认完成',
-            //     dialog: true,
-            //     ok: function (reg) {
+            common.alert({
+                mask: true,
+                title: '提示',
+                content: '确认结束此预报?',
+                cancelValue: '取消',
+                okValue: '确认',
+                dialog: true,
+                ok: function (reg) {
 
-            //         getData('GET', api.rkybT.forecastFinish, {
-            //             accountId: accountId,
-            //             id: id,
-            //         }, function (res) {
-            //             if (res.code == 200) {
-            //                 $(that).remove('.content-item-btn1')
-            //             } else {
-            //                 common.alert({
-            //                     mask: true,
-            //                     content: res.msg
-            //                 })
-            //             }
-            //         })
+                    getData('GET', api.rkybT.forecastFinish, {
+                        accountId: accountId,
+                        id: id,
+                    }, function (res) {
+                        if (res.code == 200) {
+                            $(that).siblings('.content-item-btn').remove();
+                            $(that).remove();
+                        } else {
+                            common.alert({
+                                mask: true,
+                                content: res.msg
+                            })
+                        }
+                    })
 
 
-            //     }
-            // });
+                }
+            });
         })
     </script>
 </body>

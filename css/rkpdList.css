@@ -157,10 +157,16 @@ body {
   color: #fe9632;
   letter-spacing: 2px;
 }
-.container .search img {
+.container .search .search-img {
   position: absolute;
   top: 35px;
   left: 50px;
+}
+.container .curQueueDate {
+  padding: 20px 0px 20px 30px;
+}
+.container .title {
+  padding: 20px 0px 20px 30px;
 }
 .container .nav-list {
   position: relative;
@@ -188,9 +194,11 @@ body {
   width: 100%;
 }
 .container .content .scroll-wra {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   overflow: hidden;
 }
 .container .content .scroll-wra .loadText {
@@ -226,10 +234,6 @@ body {
   line-height: 54px;
   font-weight: bold;
 }
-.container .content .list .content-item .item-header .head-key .team-text {
-  font-size: 26px;
-  color: #fe9632;
-}
 .container .content .list .content-item .item-header .head-val {
   float: right;
 }
@@ -241,6 +245,10 @@ body {
   color: #fe9632;
   border: 1px solid #fe9632;
   border-radius: 10px;
+}
+.container .content .list .content-item .item-header .head-val .team-text {
+  font-size: 26px;
+  color: #fe9632;
 }
 .container .content .list .content-item .yd-con {
   background: #fff;

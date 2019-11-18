@@ -1,0 +1,86 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="content" data-parkId=" <%- result.list[i].parkId %>">
+
+    <div class="content-header"> <%- result.list[i].parkName %></div>
+    <div class="content-item">
+        <div class="item-left">
+            排队类型
+        </div>
+
+        <div class="item-middel">
+            入库
+        </div>
+
+        <div class="item-right">
+            出库
+        </div>
+    </div>
+
+    <div class="content-item">
+        <div class="item-left">
+            正在排队车辆
+        </div>
+
+        <div class="item-middel">
+            <%- result.list[i].parkQueues[0].waitVehicle %>
+        </div>
+
+        <div class="item-right">
+            <%- result.list[i].parkQueues[1].waitVehicle %>
+        </div>
+    </div>
+
+
+    <div class="content-item">
+        <div class="item-left">
+            正在作业车辆
+        </div>
+
+        <div class="item-middel">
+            <%- result.list[i].parkQueues[0].workVehicle %>
+        </div>
+
+        <div class="item-right">
+            <%- result.list[i].parkQueues[1].workVehicle %>
+        </div>
+    </div>
+    <div class="content-item">
+        <div class="item-left">
+            今日已出场车辆
+        </div>
+
+        <div class="item-middel">
+            <%- result.list[i].parkQueues[0].outVehicle %>
+        </div>
+
+        <div class="item-right">
+            <%- result.list[i].parkQueues[1].outVehicle %>
+        </div>
+    </div>
+
+    <div class="content-item">
+        <div class="item-left">
+            已作业完成吨数
+        </div>
+
+        <div class="item-middel">
+            <%- result.list[i].parkQueues[0].workWeight %>
+        </div>
+
+        <div class="item-right">
+            <%- result.list[i].parkQueues[1].workWeight %>
+        </div>
+    </div>
+
+    <div class="content-item btn goteam1">
+        查看入库排队
+        <img class="item-img" src="../img/1_34.png">
+    </div>
+    <div class="content-item btn goteam2">
+        查看出库排队
+        <img class="item-img" src="../img/1_34.png">
+    </div>
+
+</div>
+
+<% } %>

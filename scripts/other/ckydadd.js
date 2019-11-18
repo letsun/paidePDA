@@ -48,6 +48,8 @@ $(function () {
 
 			$('#outType').attr('data-outTypeValue', res.data.outTypeValue)
 
+
+			$('#outWaybillNo').html(res.data.autoWaybillNo)
 			$('#outType').html(res.data.outType)
 
 			if (res.data.outTypeValue == 1) {
@@ -371,7 +373,7 @@ $(function () {
 
 		// var applyNo = $('#applyNo').html();
 		
-		var outWaybillNo = $('#outWaybillNo').val();
+		var outWaybillNo = $('#outWaybillNo').html();
 		var remarks = $('#remarks').val();
 		var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
 		var workType = $('#workType').attr('data-value');

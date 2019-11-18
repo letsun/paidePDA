@@ -1,47 +1,124 @@
-<% for (var i = 0; i < result.list.length; i++) { %>
-    <div class="content-item">
-        <div class="item-header">
-            <div class="head-key">排队序号：</div>
-            <div class="head-val"><%- result.list[i].showTime %></div>
-        </div>
-        <div class="item-header">
-            <div class="head-key">
-                <div class="team-num"><%- result.list[i].queueSequence %></div>
-                <div class="team-text">正在排队,等待放行</div>
-            </div>
-            <div class="head-val">
-                <div class="release-btn" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">允许放行</div>
-            </div>
-        </div>
-
-        <div class="yd-con">
-
-            <div class="yd-child-item">
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">车牌号码：</div>
-                    <div class="yd-child-val"><%- result.list[i].platNo %></div>
-                </div>
-
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">装车地点：</div>
-                    <div class="yd-child-val"><%- result.list[i].loadWhere %></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="yd-con">
-
-            <div class="yd-child-item">
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">司机名称：</div>
-                    <div class="yd-child-val"><%- result.list[i].driverName %></div>
-                </div>
-
-                <div class="yd-child-dec double-find">
-                    <div class="yd-child-key">联系电话：</div>
-                    <div class="yd-child-val"><%- result.list[i].contactPhone %></div>
-                </div>
-            </div>
-        </div>
+<%  if( result.index==2) { %>
+    <!-- <div class="search">
+        <input type="text" id="applyNo" placeholder="输入车牌号码/司机名称搜索"> <label id="scarchBtn">搜索</label>
+    
+        <img src="../img/1_28.png">
     </div>
-<% } %>
+    
+    <div class="title">
+        <%- result.list.curQueueDate %>
+    </div> -->
+        <% for (var i = 0; i < result.list.childList.length; i++) { %>
+        <div class="content-item">
+    
+            <div class="yd-con">
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">车牌号码：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].platNo %></div>
+                    </div>
+    
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">司机姓名：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].driverName %></div>
+                    </div>
+                </div>
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">联系电话：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
+                    </div>
+                </div>
+    
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">排队时间：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
+                    </div>
+                </div>
+    
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">进场时间：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].intoTime %></div>
+                    </div>
+                </div>
+    
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">出场时间：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].outTime %></div>
+                    </div>
+    
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">等待时长：</div>
+                        <div class="yd-child-val"><%- result.list.childList[i].waitTime %></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    
+    <%  }else { %>
+    
+        <% for (var i = 0; i < result.list.length; i++) { %>
+        <div class="content-item">
+            <div class="item-header">
+                <div class="head-key">排队序号：</div>
+                <div class="head-val"><%- result.list[i].showTime %></div>
+            </div>
+            <div class="item-header">
+                <div class="head-key">
+                    <div class="team-num"><%- result.list[i].queueSequence %></div>
+    
+                    <% if (result.status == 0) { %>
+                    <div class="team-text">正在排队,等待放行</div>
+    
+                    <% } %>
+    
+                </div>
+                <div class="head-val">
+                    <% if (result.status == 0) { %>
+    
+                    <div class="release-btn" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">允许放行</div>
+    
+                    <% }else if (result.status == 2) { %>
+                    <div class="team-text">已过重磅，等待出场</div>
+                    <% } %>
+                </div>
+            </div>
+    
+            <div class="yd-con">
+    
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">车牌号码：</div>
+                        <div class="yd-child-val"><%- result.list[i].platNo %></div>
+                    </div>
+    
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">装车地点：</div>
+                        <div class="yd-child-val"><%- result.list[i].loadWhere %></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="yd-con">
+    
+                <div class="yd-child-item">
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">司机名称：</div>
+                        <div class="yd-child-val"><%- result.list[i].driverName %></div>
+                    </div>
+    
+                    <div class="yd-child-dec double-find">
+                        <div class="yd-child-key">联系电话：</div>
+                        <div class="yd-child-val"><%- result.list[i].contactPhone %></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    
+    
+    <%  }%>

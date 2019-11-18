@@ -17,7 +17,7 @@ $(function () {
     var contractId = Global.getUrlParam('contractId');
     var accountId = Global.getUrlParam('accountId');
 
-    console.log(accountId)
+
 
     // 进入合同列表
     $('#goContract').on('click',function () {
@@ -31,6 +31,7 @@ $(function () {
     // 获取产品信息
     getData('GET',api.rkybS.findDetailById,{
         id: id,
+        accountId:accountId
     },function (res) {
         if (res.code == 200) {
             var data = res.data.list[0];
@@ -47,7 +48,8 @@ $(function () {
             $('#zhaji').html(data.zhaji);
             $('#checkStatus').html(data.checkStatus);
             $('#itemId').attr('data-itemId',data.itemId)
-           
+            $('#applyNo').html(res.data.autoWarehouseApplyNo)
+
         }
     });
 
@@ -303,7 +305,7 @@ $(function () {
             return;
         }
 
-        var applyNo = $('#applyNo').val();
+        var applyNo = $('#applyNo').html();
         var contractId = $('#contractId').attr('data-contractId');
         var teamName = $('#teamName').val();
         var remark = $('#remark').val();
