@@ -1,0 +1,63 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="yd-item">
+	<div class="yd-con yd-con1">
+		<div class="yd-child-item">
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">产品名称：</div>
+				<div class="yd-child-val"><%- result.list[i].productName %></div>
+			</div>
+		</div>
+		<div class="yd-child-item">
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">生产批次：</div>
+				<div class="yd-child-val"><%- result.list[i].batchNo %></div>
+			</div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">生产日期：</div>
+				<div class="yd-child-val"><%- result.list[i].produceTime %></div>
+			</div>
+		</div>
+		<div class="yd-child-item">
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">包装规格：</div>
+				<div class="yd-child-val"><%- result.list[i].productSpec %></div>
+			</div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">产品单位：</div>
+				<div class="yd-child-val"><%- result.list[i].productUnit %></div>
+			</div>
+		</div>
+		<div class="yd-child-item">
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">产品等级：</div>
+				<div class="yd-child-val"><%- result.list[i].productLevel %></div>
+			</div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">产品榨季：</div>
+				<div class="yd-child-val"><%- result.list[i].productZhaji %></div>
+			</div>
+		</div>
+		<div class="yd-child-item">
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">产品大类：</div>
+				<div class="yd-child-val"><%- result.list[i].productType %></div>
+			</div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">产品品牌：</div>
+				<div class="yd-child-val"><%- result.list[i].productBrand %></div>
+			</div>
+		</div>
+		<div class="yd-child-item">
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">移库数量：</div>
+				<div class="yd-child-val"><%- result.list[i].adjustQuantity %></div>
+			</div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">移库重量：</div>
+				<div class="yd-child-val"><%- result.list[i].adjustWeight %></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<% } %>

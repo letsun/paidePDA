@@ -1,0 +1,92 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="content-item" data-id="<%- result.list[i].stockLockId %>">
+
+	<!-- 编号 -->
+	<div class="content-item-header">
+		<%- result.list[i].parkName %>
+	</div>
+
+	<div class="content-item-con">
+		
+		<div class="con-item">
+
+			<div class="con-item-left">
+				<span>锁定原因：</span>
+				<div>
+					<%- result.list[i].lockReason %>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>锁定时间：</span>
+				<div>
+					<%- result.list[i].lockTime %>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>锁定库存(吨)：</span>
+				<div>
+					<%- result.list[i].lockInventory %>
+				</div>
+			</div>
+			<div class="con-item-right">
+				<span>剩余锁定(吨)：</span>
+				<div>
+					<%- result.list[i].currStock %>
+				</div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>货主名称：</span>
+				<div class="overflow1">
+					<%- result.list[i].customerName %>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品名称：</span>
+				<div>
+					<%- result.list[i].productName %>
+				</div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品等级：</span>
+				<div>
+					<%- result.list[i].productLevel %>
+				</div>
+			</div>
+			<div class="con-item-right">
+				<span>产品榨季：</span>
+				<div>
+					<%- result.list[i].productZhaji %>
+				</div>
+			</div>
+		</div>
+
+		<div class="con-item">
+			<div class="con-item-left">
+				<span>产品大类：</span>
+				<div>
+					<%- result.list[i].productType %>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<% } %>
