@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/knykmx.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            库内移库明细
+        </div>
+
+        <div class="content">
+			
+			<!--申请明细-->
+			<div class="yd-list" id="yd-list">
+			    <div class="yd-item">
+			        <div class="yd-con" id="itemId">
+						<div class="yd-child-item">
+						    <div class="yd-child-dec double-find">
+						        <div class="yd-child-key">生产批次：</div>
+						        <div class="yd-child-val" id="produceBatchNo">2019072410001</div>
+						    </div>
+						</div>
+			            <div class="yd-child-item">
+			                <div class="yd-child-dec double-find">
+			                    <div class="yd-child-key">生产日期：</div>
+			                    <div class="yd-child-val" id="produceTime">2019-07-24</div>
+			                </div>
+							<div class="yd-child-dec double-find">
+							    <div class="yd-child-key">包装规格：</div>
+							    <div class="yd-child-val" id="specification">50kg/包</div>
+							</div>
+			            </div>
+			            <div class="yd-child-item">
+			                <div class="yd-child-dec double-find">
+			                    <div class="yd-child-key">产品等级：</div>
+			                    <div class="yd-child-val" id="productLevel">一级</div>
+			                </div>
+			                <div class="yd-child-dec double-find">
+			                    <div class="yd-child-key">产品榨季：</div>
+			                    <div class="yd-child-val" id="zhaji">19/20</div>
+			                </div>
+			            </div>
+			            <div class="yd-child-item">
+			                <div class="yd-child-dec double-find">
+			                    <div class="yd-child-key">产品大类：</div>
+			                    <div class="yd-child-val" id="productType">白糖类</div>
+			                </div>
+			                <div class="yd-child-dec double-find">
+			                    <div class="yd-child-key">产品品牌：</div>
+			                    <div class="yd-child-val" id="productBrand">华糖牌</div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			
+			</div>
+
+            <!--工单信息-->
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">货主名称</div>
+                        <!-- <input type="text" id="applyNo" class="gd-val"> -->
+						<div class="gd-val">TL201907230001</div>
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">产品名称</div>
+                       <div class="gd-val">华糖牌白糖</div>
+                    </div>
+					<div class="gd-item">
+					    <div class="gd-key">移库数量</div>
+					   <div class="gd-val">600</div>
+					</div>
+					<div class="gd-item">
+					    <div class="gd-key">移库重量(吨)</div>
+					   <div class="gd-val">30.00</div>
+					</div>
+                    <!-- <div class="gd-item" id="goContract">
+                        <div class="gd-key">合同编号</div>
+                        <div class="gd-val" id="contractId" data-validateInfor="{strategy:isEmpty,msg:合同编号不能为空}"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- 添加库区 -->
+            <div class="gd-add">
+                <img class="gd-add-img" src="../img/1_33.png">
+            </div>
+
+            <div class="gd-infor" id='gd-infor'>
+                <div class="gd-list gd-list-item" data-applicationId="0">
+                    <div class="gd-item">
+                        <div class="gd-key">货主名称</div>
+                        <input type="text" class="gd-val inStock"
+                            data-validateInfor="{strategy:isEmpty,msg:货主名称不能为空}">
+                    </div>
+                    <div class="gd-item showPark">
+                        <div class="gd-key">产品名称</div>
+                        <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:货主名称不能为空}"></div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                    <div class="gd-item showStoreroom">
+                        <div class="gd-key">移库数量</div>
+                        <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:移库数量不能为空}|{strategy:isNumber,msg:移库数量需为数字}"></div>
+
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+
+                    <div class="gd-item showReservoirArea">
+                        <div class="gd-key">移库重量(吨)</div>
+                        <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:移库重量不能为空}|{strategy:isNumber,msg:移库数量需为数字}">
+                        </div>
+                        <img class="gd-img" src="../img/1_34.png">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 保存工单 -->
+
+            <div class="gd-btn" id="saveBtn">保存</div>
+        </div>
+
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+        <div class="mask">
+            <div class="maskcon maskcon1">
+
+            </div>
+            <div class="maskcon maskcon2">
+
+            </div>
+            <div class="maskcon maskcon3">
+
+            </div>
+        </div>
+
+    </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/validate.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script src="../scripts/other/knykmx.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/rksqListaddForklift.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
+            选择货主
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="输入货主名称/联系人搜索" id="name"> <label>搜索</label>
+
+            <img src="../img/1_28.png">
+        </div>
+
+        <div class="content">
+
+            <div class="scroll-wra" id="scrollWra">
+                <div class="wrapper">
+                    <div class="list" id="list"></div>
+
+                    <div class="loadText">上滑加载更多</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+
+    <script>
+        var applyNo = Global.getUrlParam('applyNo');
+
+        var id = Global.getUrlParam('id');
+        var func = Global.getUrlParam('func');
+        var accountId = Global.getUrlParam('accountId')
+
+        console.log(accountId)
+
+        var scrollWra = new BScroll('#scrollWra', {
+            scrollbar: {
+                fade: true
+            },
+            click: true,
+            pullUpLoad: {
+                threshold: 0
+            }
+        });
+
+        var name = '';
+
+        var totalPage = 1;     // 总页数;
+        var page = 1;          // 第一页;
+        var html = '';
+
+        getData('GET', api.yq.findPageApi, {
+            accountId: accountId,
+            pageNo: page,
+            pageSize: 10,
+            name: name,
+        }, function (res) {
+            if (res.code == 200) {
+                if (res.data.list.length > 0) {
+                    totalPage = res.data.totalPage;
+                    var data = res.data.list;
+                    renderData(data);
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+        scrollWra.on('pullingUp', function () {
+            if (totalPage == page) {
+                $('.loadText').text('没有更多数据了');
+                return false;
+            }
+
+            page++;
+            getData('GET', api.yq.findPageApi, {
+                accountId: accountId,
+                pageNo: page,
+                pageSize: 10,
+                name: name,
+            }, function (res) {
+                if (res.code == 200) {
+                    if (res.data.list.length > 0) {
+                        totalPage = res.data.totalPage;
+                        var data = res.data.list;
+                        renderData(data);
+                    } else {
+                        $('.loadText').text('暂无数据');
+                    }
+                }
+            });
+
+        });
+
+
+        function renderData(data) {
+            $('.loadText').text('正在加载中...');
+            Global.requestTempByAjax('../temp/ckyd/zxdw.html', {
+                list: data,
+                id: id,
+                func: func,
+                accountId:accountId,
+            }, function (template) {
+                $('#list').append(template);
+                scrollWra.finishPullUp();
+                scrollWra.refresh();
+                $('.loadText').text('上滑加载更多...');
+            });
+        }
+
+
+        // 点击搜索
+        $('#scarchBtn').on('click', function () {
+            page = 1;
+            $('#list').html('');
+            name = $('#name').val();
+            getData('GET', api.yq.findPageApi, {
+                accountId: accountId,
+                pageNo: page,
+                pageSize: 10,
+                name: name,
+            }, function (res) {
+                if (res.code == 200) {
+                    if (res.data.list.length > 0) {
+                        totalPage = res.data.totalPage;
+                        var data = res.data.list;
+                        renderData(data);
+                    } else {
+                        $('.loadText').text('暂无数据');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

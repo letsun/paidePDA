@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/knykDetail.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
+            库内移库详情
+            <span class="head-state" id="head-state"></span>
+        </div>
+
+        <div class="content">
+
+            <!--工单信息-->
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">移库单号</div>
+                        <div class="gd-val areaAdjustNo"></div>
+                    </div>
+                    <div class="gd-item">
+                        <div class="gd-key">所属园区</div>
+                        <div class="gd-val parkName"></div>
+                    </div>
+					<div class="gd-item">
+					    <div class="gd-key">所属库房</div>
+					    <div class="gd-val warehouseName"></div>
+					</div>
+					<div class="gd-item">
+					    <div class="gd-key">移库时间</div>
+					    <div class="gd-val areaAdjustTime"></div>
+					</div>
+					<div class="gd-item">
+					    <div class="gd-key">移前库区</div>
+					    <div class="gd-val oriWarehouseAreaName"></div>
+					</div>
+					<div class="gd-item">
+					    <div class="gd-key">移后库区</div>
+					    <div class="gd-val tarWarehouseAreaName"></div>
+					</div>
+					<div class="gd-item">
+					    <div class="gd-key">装卸队伍</div>
+					    <div class="gd-val serviceTeam"></div>
+					</div>
+					<div class="gd-item">
+					    <div class="gd-key">作业方式</div>
+					    <div class="gd-val workType"></div>
+					</div>
+                    <div class="last-gd-item">
+                        <div class="gd-left">备注：</div>
+                        <div class="gd-right">
+                            <textarea id="remarks" rows="5" cols="80"></textarea>
+                        </div>
+                    </div>
+                    <div class="gd-item last-gd-item">
+                        <div class="gd-left">附件：</div>
+                        <div class="gd-right">
+                            <img class="preview-img" src="../img/1_100.png" alt="">
+                            <div class="preview-btn" id="preview-btn">(点击查看大图)</div>
+                        </div>
+                    </div>
+
+                    <div class="gd-item other-gd-item">
+                        <div class="gd-dec active">
+                            <img class="icon-down" src="../img/1_29.png">
+                            <div class="gd-text">展开移库明细</div>
+                        </div>
+                        <div class="gd-dec">
+                            <img class="icon-down" src="../img/1_30.png">
+                            <div class="gd-text">收起移库明细</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--运单表单-->
+            <div class="yd-list" id="yd-list">
+
+			</div>
+
+            <!--审核记录-->
+            <!-- <div class="review-wra">
+                <div class="review-title">审核记录</div>
+                <div class="review-list" id="review-list"></div>
+            </div> -->
+
+            <!-- 确认完成按钮 -->
+            <div class="confirm-btn" id="confirm-btn">确认完成</div>
+        </div>
+
+        <!--大图-->
+        <div class="preview-win" id="preview-win">
+            <img src="../img/1_100.png" alt="">
+        </div>
+
+    </div>
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script>
+        var id = Global.getUrlParam('id');
+		var accountId = 2;
+        //转圈圈
+        // Global.requestTempByAjax('../temp/loading/loading.html', {
+        // }, function (template) {
+        //     $('.container').append(template);
+        // });
+        getData('POST', api.knyk.getAreaAdjustDetail, {
+			accountId: accountId,
+            stockAreaAdjustId: id,
+        }, function (res) {
+            if (res.code == 200) {
+				//console.log(res.result)
+                var data = res.result;
+
+                $(".areaAdjustNo").html(data.areaAdjustNo);
+                $(".parkName").html(data.parkName);
+				$(".warehouseName").html(data.warehouseName);
+				$(".areaAdjustTime").html(data.areaAdjustTime);
+				$(".oriWarehouseAreaName").html(data.oriWarehouseAreaName);
+				$(".tarWarehouseAreaName").html(data.tarWarehouseAreaName);
+				$(".serviceTeam").html(data.serviceTeam);
+				$(".workType").html(data.workType);
+                $("#remarks").html(data.remarks);
+                //$(".images").attr("src",'https://up.enterdesk.com/edpic/32/bf/a1/32bfa1860568ba99f575f2b0c66cf7ae.jpg');
+                // $('#head-state').html(data.status);
+
+                //审核记录
+                // Global.requestTempByAjax('../temp/rkyd/auditRecord.html', { actList: res.data.actList }, function (template) {
+                //     $('#review-list').append(template);
+                // });
+				
+                renderData(data);
+            }
+        });
+
+        function renderData(data) {
+            Global.requestTempByAjax('../temp/knyk/detail.html', {
+                list: data.itemList
+            }, function (template) {
+                $('#yd-list').append(template);
+
+            });
+        }
+
+        //点击确认完成按钮
+		/* $("#confirm-btn").click(function(){
+			common.alert({
+			    mask: true,
+				dialog: true,
+				cancelValue: "暂不考虑",
+				okValue: "立即生成",
+			    content: '运单已作业完成，同步生成出库工单？',
+			    ok:function () {
+					$('#loadingWrapper').show();
+					getData('POST', api.ckgd.addOutWorkOrderMain, {
+						accountId: accountId,
+						outWaybillNo: outWaybillNo,
+					}, function(res) {
+						setTimeout(function(){
+							$('#loadingWrapper').hide();
+							
+							if (res.code == 200) {
+							
+								common.alert({
+									 mask: true,
+									content: res.msg
+								})
+							}else{
+								common.alert({
+									 mask: true,
+									content: res.msg
+								})
+							}
+							
+						},1500)
+						
+						
+					});
+			        
+			    },
+				cancel:function(){
+					$('#loadingWrapper').show();
+					getData('GET', api.ckyd.saveOutWaybill, {
+						accountId: accountId,
+						outWaybillNo: outWaybillNo,
+					}, function(res) {
+						setTimeout(function(){
+							$('#loadingWrapper').hide();
+							
+							if (res.code == 200) {
+								var data = res.data;
+								
+								common.alert({
+									content: "确认完成"
+								})
+							}else{
+								common.alert({
+									content: res.msg,
+									ok:function(){
+										
+									}
+								})
+							}
+						},1500)
+						
+						
+					});
+				}
+			})
+			
+		}) */
+
+        // 显示隐藏运单列表
+        $('.gd-dec').on('click', function () {
+            $(this).removeClass('active').siblings().addClass('active');
+            $('#yd-list').toggle();
+        });
+
+
+        // 点击查看大图
+        $('#preview-btn').on('click', function () {
+            $('#preview-win').fadeIn();
+        });
+
+        // 点击关闭大图
+        $('#preview-win').on('click', function () {
+            $('#preview-win').fadeOut();
+        });
+
+    </script>
+</body>
+
+</html>

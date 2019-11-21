@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=750, user-scalable=no">
+		<link rel="stylesheet" href="../css/knykAdd.css">
+
+		<link rel="stylesheet" href="../scripts/plugins/iosSelect/iosSelect.css">
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<div class="header">
+				<a class="return" href="javascript:history.back(-1)"> <img src="../img/1_40.png"> </a>
+				新增库内移库
+			</div>
+
+			<div class="content">
+
+
+				<div class="gd-infor">
+					<div class="gd-list">
+						<div class="gd-item">
+							<div class="gd-key">移库单号</div>
+							<input type="text" class="gd-val" id="outWaybillNo">
+						</div>
+						<div class="gd-item">
+							<div class="gd-key">所属园区</div>
+							<div type="text" class="gd-val" id="contractId"></div>
+						</div>
+						<div class="gd-item">
+							<div class="gd-key">所属库房</div>
+							<div type="text" class="gd-val" id="contractId"></div>
+						</div>
+						<div class="gd-item">
+							<div class="gd-key">移库时间</div>
+							<div class="gd-val" id='rentalEndTime' data-validateInfor="{strategy:isEmpty,msg:移库时间不能为空}">
+							</div>
+							<img class="gd-img" src="../img/1_34.png">
+						</div>
+						<div class="gd-item">
+							<div class="gd-key">移前库区</div>
+							<div type="text" class="gd-val" id="contractId"></div>
+						</div>
+						<div class="gd-item">
+							<div class="gd-key">移后库区</div>
+							<div type="text" class="gd-val" id="contractId"></div>
+						</div>
+						<div class="gd-item" id="goTeam">
+							<div class="gd-key">装卸队伍</div>
+							<div class="gd-val team" id="serviceTeamText" data-validateInfor="{strategy:isEmpty,msg:装卸队伍不能为空}"></div>
+							<img class="gd-img" src="../img/1_34.png">
+						</div>
+						<div class="gd-item" id="showWorkType">
+							<div class="gd-key">作业方式</div>
+							<div class="gd-val forklift" id="workType" data-validateInfor="{strategy:isEmpty,msg:作业方式不能为空}">
+							</div>
+							<img class="gd-img" src="../img/1_34.png">
+						</div>
+						<div class="gd-item">
+							<div class="gd-key">移库明细</div>
+							<div type="text" class="gd-val" id="contractId">点击添加</div>
+						</div>
+						<div class="last-gd-item">
+							<div class="gd-left">备注：</div>
+							<div class="gd-right">
+								<textarea id="remarks"></textarea>
+							</div>
+						</div>
+						<div class="gd-item last-gd-item">
+							<div class="gd-left">附件：</div>
+							<div class="gd-right">
+								<img class="preview-img" src="../img/1_100.png" alt="">
+								<div class="preview-btn" id="preview-btn">(点击查看大图)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!--申请明细-->
+				<div class="yd-list" id="list"></div>
+
+				<div class="gd-btn" id="saveBtn">保存</div>
+
+			</div>
+
+			<!--大图-->
+			<div class="preview-win" id="preview-win">
+				<img src="../img/1_100.png" alt="">
+			</div>
+
+			<div class="mask">
+
+				<div class="maskcon maskcon1">
+
+				</div>
+				<div class="maskcon maskcon2">
+
+				</div>
+
+				<div class="maskcon maskcon3">
+
+				</div>
+
+				<!-- 叉车作业 -->
+				<div class="maskcon maskcon5">
+
+				</div>
+
+			</div>
+
+		</div>
+		<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+		<script src="../scripts/lib/ejs.min.js"></script>
+		<script src="../scripts/lib/commonFunc.js"></script>
+		<script src="../scripts/lib/common.js"></script>
+		<script src="../scripts/lib/validate.js"></script>
+		<script src="../scripts/lib/api.js"></script>
+		<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+		<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+		<script src="../scripts/plugins/iosSelect/date.js"></script>
+		<script src="../scripts/other/ckydadd.js"></script>
+
+		<script>
+			setDateControl('#rentalEndTime');
+		</script>
+	</body>
+
+</html>
