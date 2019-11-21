@@ -26,7 +26,8 @@ $(function () {
 
 
     // 等待放行
-    $('.container').on('click', '.release-btn', function () {
+    $('.container').on('click', '.release-btn', function (e) {
+        e.stopPropagation();
         var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
 
         common.alert({
@@ -114,10 +115,11 @@ $(function () {
 
     //等待出场等待出场
     function getQueueEvolutionList() {
+
         // 获取数据
         $('#loadingWrapper').show()
         getData('GET', api.yq.getQueueEvolutionList, {
-            parkId: parkId,
+            parkId:parkId,
             queueType: '2',
             status: status,
         }, function (res) {
@@ -210,10 +212,10 @@ $(function () {
 
 
     // 查看排队详情
-    // $('.container').on('click', '.qidbtn', function () {
-    //     var queueCodeRecordId = $(this).attr('data-queueCodeRecordId')
-    //     window.location.href = './rkpdDetail.html?queueCodeRecordId=' + queueCodeRecordId;
-    // })
+    $('.container').on('click', '.content-item', function () {
+        var queueCodeRecordId = $(this).attr('data-queueCodeRecordId')
+        window.location.href = './ckpdDetail.html?queueCodeRecordId=' + queueCodeRecordId;
+    })
 
 });
 
@@ -277,7 +279,7 @@ var nowSecond = now.getSeconds();
  * @param string element 日期控件元素*/
 function setDateControl(element) {
     var showDateDom = $(element);
-    console.log(element)
+
 
     showDateDom.attr('data-year', nowYear);
     showDateDom.attr('data-month', nowMonth);

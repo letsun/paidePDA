@@ -15,7 +15,7 @@ $(function () {
 
     // 进入合同列表
     $('#goContract').on('click', function () {
-        window.location.href = './rksqaddContract.html?accountId='+ accountId ;
+        window.location.href = './rksqaddContract.html?accountId=' + accountId;
     });
 
 
@@ -25,6 +25,18 @@ $(function () {
     if (contractId != 'null') {
         $('#goContract').find('.gd-val').attr('data-contractId', contractId).html(contractCode);
     }
+
+
+    console.log(accountId)
+    // 自动生成单号
+    getData('GET', api.yq.getAutoNo, {
+        accountId: accountId,
+        autoNoType: '仓库入库申请',
+    }, function (res) {
+        if (res.code == 200) {
+            $('#applyNo').html(res.data.autoNo)
+        }
+    });
 
     // 获取园区列表
     getData('GET', api.yq.findList2, {
@@ -388,7 +400,7 @@ $(function () {
             return;
         }
 
-        var applyNo = $('#applyNo').val();
+        var applyNo = $('#applyNo').html();
         var images = '';
         var remarks = $('#remarks').val();
         var teamName = $('#teamName').val();
@@ -419,7 +431,7 @@ $(function () {
             images: images,
             remarks: remarks,
             contractId: contractId,
-            contractNo:contractCode,
+            contractNo: contractCode,
             storageWarehouseApplyItemList: storageWarehouseApplyItemList,
         };
 
@@ -441,7 +453,7 @@ $(function () {
                     ok: function () {
                         // location.reload();
 
-                        window.location.href = "./rksqListS.html?accountId="+accountId;
+                        window.location.href = "./rksqListS.html?accountId=" + accountId;
                     }
                 })
             } else {

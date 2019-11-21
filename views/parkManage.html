@@ -51,14 +51,14 @@
     // 跳转到入库排队信息列表
     $('.container').on('click', '.goteam1', function () {
         var parkId = $(this).parent().attr('data-parkid');
-        location.href = './rkpdList.html?accountId=' + accountId + '&parkId=' + parkId;
+        window.location.href = './rkpdList.html?accountId=' + accountId + '&parkId=' + parkId;
     })
 
 
     // 跳转到出库排队信息列表
     $('.container').on('click', '.goteam2', function () {
-        var parkId = $('#select-list').find('select').val();
-        location.href = './ckpdList.html?accountId=' + accountId + '&parkId=' + parkId;
+        var parkId = $(this).parent().attr('data-parkid');
+        window.location.href = './ckpdList.html?accountId=' + accountId + '&parkId=' + parkId;
     })
 </script>
 

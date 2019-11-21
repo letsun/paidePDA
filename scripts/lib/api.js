@@ -3,7 +3,6 @@
 // var dev = 'http://192.168.1.77:8899';          //本地*/
 
 var dev = 'http://192.168.1.11:8899';          //本地*/
-
 var test = "https://wms.ebiaoji.com";           //线上
 //var dev = "http://yecl.lxcyhd.com";           //本地
 
@@ -86,10 +85,11 @@ var api = {
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
         findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
         findDict:ip + '/api/pda/baseServiceTeam/findDict', //查询作业方式,
-
         findParkQueue:ip + '/api/pda/parkQueue/findParkQueue', //统计园区
         getQueueEvolutionList:ip + '/wap/gatekeeper/getQueueEvolutionList', //获取园区排队信息实况
         letPass:ip + '/wap/gatekeeper/letPass', //放行
+        getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
+        
         getHistoryQueueRecord:ip + '/wap/gatekeeper/getHistoryQueueRecord', //历史排队纪录
         getQueueDetailById:ip + '/wap/driver/getQueueDetailById', //根据排队记录id，获取排队详情
         

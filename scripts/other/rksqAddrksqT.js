@@ -8,13 +8,25 @@ $(function () {
     var allWarehouseArea = [];      // 已选库区
 
 
-
     Global.requestTempByAjax('../temp/loading/loading.html', {
     }, function (template) {
         $('.container').append(template);
     });
 
 
+    console.log(accountId)
+    // 自动生成单号
+    getData('GET',api.yq.getAutoNo,{
+        accountId: accountId,
+        autoNoType: '糖企入库申请',
+    },function (res) {
+        if (res.code == 200) {
+            $('#applyNo').html(res.data.autoNo)
+        }
+    });
+
+
+    
     // 获取园区列表
     getData('GET',api.yq.findList2,{
         accountId: accountId,
@@ -380,7 +392,7 @@ $(function () {
             return;
         }
 
-        var applyNo = $('#applyNo').val();
+        var applyNo = $('#applyNo').html();
         var images = '';
         var remarks = $('#remarks').val();
         var teamName = $('#teamName').val();
