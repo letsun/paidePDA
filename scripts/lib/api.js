@@ -1,14 +1,9 @@
-
-
-// var dev = 'http://192.168.1.77:8899';          //本地*/
-
-var dev = 'http://192.168.1.11:8899';          //本地*/
+//var dev = 'http://192.168.1.11:8899';          //吴阎峰*/
 var test = "https://wms.ebiaoji.com";           //线上
-//var dev = "http://yecl.lxcyhd.com";           //本地
+//var dev = "http://yecl.lxcyhd.com";           //春玲姐
+var dev = 'http://192.168.1.77:8899';          //吴剑*/
 
 var ip = dev;
-
-
 
 var api = {
     rkgd: {
@@ -97,4 +92,16 @@ var api = {
     ht: {
         findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表
     },
+	kcjs:{
+		findPageApi: ip + '/api/pda/stockUnlockMain/findPageApi',     // 库存解锁列表
+		findStockUnlockDetail: ip + '/api/pda/stockUnlockMain/findStockUnlockDetail',     //库存解锁详情
+	},
+	kcsd:{
+		getStockList: ip + '/api/stocklock/getStockList',     // 库存锁定列表
+		getStockDetail: ip + '/api/stocklock/getStockDetail',     //库存锁定详情
+	},
+	knyk:{
+		getAreaAdjustList: ip + '/api/stockAreaAdjust/getAreaAdjustList',     //库内移库列表
+		getAreaAdjustDetail: ip + '/api/stockAreaAdjust/getAreaAdjustDetail',     //库内移库详情
+	}
 };
