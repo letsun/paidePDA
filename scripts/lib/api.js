@@ -88,10 +88,11 @@ var api = {
         findParkQueue:ip + '/api/pda/parkQueue/findParkQueue', //统计园区
         getQueueEvolutionList:ip + '/wap/gatekeeper/getQueueEvolutionList', //获取园区排队信息实况
         letPass:ip + '/wap/gatekeeper/letPass', //放行
-        getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
-        
         getHistoryQueueRecord:ip + '/wap/gatekeeper/getHistoryQueueRecord', //历史排队纪录
         getQueueDetailById:ip + '/wap/driver/getQueueDetailById', //根据排队记录id，获取排队详情
+
+        getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
+        findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次
         
     },
     ht: {
