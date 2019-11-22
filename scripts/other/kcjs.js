@@ -7,12 +7,13 @@ var scrollWra = new BScroll('#scrollWra', {
 		threshold: 0
 	}
 });
-var accountId = 2;
 var applyNo = '';
 
 var totalPage = ""; // 总页数;
 var page = 1; // 第一页;
 var html = '';
+
+var accountId = Global.getUrlParam('accountId');
 
 getData('GET', api.kcjs.findPageApi, {
 	accountId: accountId,
@@ -97,7 +98,7 @@ $('#scarchBtn').on('click', function() {
 //点击进入详情
 $('.container').on('click', '.content-item', function() {
 	var id = $(this).attr('data-id');
-	window.location.href = './kcjsDetail.html?id=' + id;
+	window.location.href = './kcjsDetail.html?id=' + id + '&accountId=' + accountId;
 });
 
 // 点击进入添加运单

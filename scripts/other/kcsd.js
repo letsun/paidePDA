@@ -11,7 +11,8 @@ var scrollWra = new BScroll('#scrollWra', {
 var totalPage = 1; // 总页数;
 var page = 1; // 第一页;
 var html = '';
-var accountId = 2;
+var applyNo ='';
+var accountId = Global.getUrlParam('accountId');
 
 getData('POST', api.kcsd.getStockList, {
 	accountId: accountId,
