@@ -80,10 +80,16 @@
                 <div class="head-val">
                     <% if (result.status == 0) { %>
     
-                    <div class="release-btn" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">允许放行</div>
+                    <div class="release-btn release-btn1" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">允许放行</div>
     
                     <% }else if (result.status == 2) { %>
-                    <div class="team-text">已过重磅，等待出场</div>
+
+                        <%if(result.list[i].queueStatus == 2) {%>
+                            <div class="release-btn release-btn2" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">确认完成</div>
+                            <%}else if (result.list[i].queueStatus == 4) {%>
+                            <div class="team-text">完成装车，等待出场</div>
+                            <%}%>
+
                     <% } %>
                 </div>
             </div>

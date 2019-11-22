@@ -26,7 +26,7 @@ $(function () {
 
 
     // 等待放行
-    $('.container').on('click', '.release-btn', function (e) {
+    $('.container').on('click', '.release-btn1', function (e) {
         e.stopPropagation();
         var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
 
@@ -46,6 +46,48 @@ $(function () {
                             parkId: parkId,
                             queueType: '2',
                             status: '0',
+                        }, function (res) {
+                            if (res.code == 200) {
+                                Global.requestTempByAjax('../temp/ckpd/list.html', { list: res.result, status: status, index: index }, function (template) {
+                                    $('#list1').html(template);
+                                });
+                            }
+                        });
+                    } else {
+                        common.alert({
+                            mask: true,
+                            content: res.massage
+                        })
+                    }
+                });
+            }
+
+        })
+
+    })
+
+
+    // 确认完成作业
+    $('.container').on('click', '.release-btn2', function (e) {
+        e.stopPropagation();
+        var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
+
+        common.alert({
+            mask: true,
+            title: '放行提示',
+            content: '是否完成作业,确认此操作？',
+            dialog: true,
+            ok: function () {
+                getData('GET', api.yq.letPass, {
+                    actionType: '3',
+                    queueCodeRecordId: queueCodeRecordId,
+                }, function (res) {
+                    if (res.code == 200) {
+
+                        getData('GET', api.yq.getQueueEvolutionList, {
+                            parkId: parkId,
+                            queueType: '2',
+                            status: '2',
                         }, function (res) {
                             if (res.code == 200) {
                                 Global.requestTempByAjax('../temp/ckpd/list.html', { list: res.result, status: status, index: index }, function (template) {
@@ -113,13 +155,13 @@ $(function () {
 
     })
 
-    //等待出场等待出场
+    //等待出场
     function getQueueEvolutionList() {
 
         // 获取数据
         $('#loadingWrapper').show()
         getData('GET', api.yq.getQueueEvolutionList, {
-            parkId:parkId,
+            parkId: parkId,
             queueType: '2',
             status: status,
         }, function (res) {
@@ -211,11 +253,11 @@ $(function () {
 
 
 
-    // 查看排队详情
-    $('.container').on('click', '.content-item', function () {
-        var queueCodeRecordId = $(this).attr('data-queueCodeRecordId')
-        window.location.href = './ckpdDetail.html?queueCodeRecordId=' + queueCodeRecordId;
-    })
+    // // 查看排队详情
+    // $('.container').on('click', '.content-item', function () {
+    //     var queueCodeRecordId = $(this).attr('data-queueCodeRecordId')
+    //     window.location.href = './ckpdDetail.html?queueCodeRecordId=' + queueCodeRecordId;
+    // })
 
 });
 

@@ -24,7 +24,7 @@ $(function () {
 
 
     // 等待放行
-    $('.container').on('click', '.release-btn', function () {
+    $('.container').on('click', '.release-btn1', function () {
         var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
 
         common.alert({
@@ -62,6 +62,46 @@ $(function () {
         })
 
     })
+
+    // 完成作业
+    $('.container').on('click', '.release-btn2', function () {
+        var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
+
+        common.alert({
+            mask: true,
+            title: '提示',
+            content: '是否完成作业,确认此操作？',
+            dialog: true,
+            ok: function () {
+                getData('GET', api.yq.letPass, {
+                    actionType: '3',
+                    queueCodeRecordId: queueCodeRecordId,
+                }, function (res) {
+                    if (res.code == 200) {
+
+                        getData('GET', api.yq.getQueueEvolutionList, {
+                            parkId: parkId,
+                            queueType: '1',
+                            status: '2',
+                        }, function (res) {
+                            if (res.code == 200) {
+                                Global.requestTempByAjax('../temp/rkpd/list.html', { list: res.result, status: status, index: index }, function (template) {
+                                    $('#list1').html(template);
+                                });
+                            }
+                        });
+                    } else {
+                        common.alert({
+                            mask: true,
+                            content: res.massage
+                        })
+                    }
+                });
+            }
+
+        })
+
+    })    
 
 
     $('.container').on('click', '.nav-item', function () {

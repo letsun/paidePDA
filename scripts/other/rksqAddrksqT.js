@@ -14,7 +14,6 @@ $(function () {
     });
 
 
-    console.log(accountId)
     // 自动生成单号
     getData('GET',api.yq.getAutoNo,{
         accountId: accountId,
@@ -468,7 +467,7 @@ $(function () {
     var totalPage = 1;     // 总页数;
     var page = 1;          // 第一页;
 
-    getData('GET', api.sp.findPageApi, {
+    getData('GET', api.rkybT.findPageApi, {
         accountId: accountId,
         pageNo: page,
         pageSize: 10,
@@ -492,7 +491,7 @@ $(function () {
         }
 
         page++;
-        getData('GET', api.sp.findPageApi, {
+        getData('GET', api.rkybT.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -514,7 +513,7 @@ $(function () {
 
     function renderData(data) {
         $('.loadText').text('正在加载中...');
-        Global.requestTempByAjax('../temp/sp/spList.html', {
+        Global.requestTempByAjax('../temp/rksq/spList.html', {
             list: data,
         }, function (template) {
             $('#list').append(template);
