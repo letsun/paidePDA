@@ -1,5 +1,5 @@
 var parkId = Global.getUrlParam('parkId');
-var status = '0';
+var status = '1';
 
 var index = '0'
 
@@ -24,7 +24,8 @@ $(function () {
 
 
     // 等待放行
-    $('.container').on('click', '.release-btn1', function () {
+    $('.container').on('click', '.release-btn1', function (e) {
+        e.stopPropagation();
         var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
 
         common.alert({
@@ -64,7 +65,9 @@ $(function () {
     })
 
     // 完成作业
-    $('.container').on('click', '.release-btn2', function () {
+    $('.container').on('click', '.release-btn2', function (e) {
+
+        e.stopPropagation();
         var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
 
         common.alert({
@@ -74,7 +77,7 @@ $(function () {
             dialog: true,
             ok: function () {
                 getData('GET', api.yq.letPass, {
-                    actionType: '3',
+                    actionType: '2',
                     queueCodeRecordId: queueCodeRecordId,
                 }, function (res) {
                     if (res.code == 200) {
@@ -113,7 +116,7 @@ $(function () {
 
         $('.content-item').remove()
         if (index == 0) {
-            status = '0';
+            status = '1';
             index = '0';
             page = 1;
             $('.scroll-wra').css({
@@ -244,7 +247,7 @@ $(function () {
 
 
     // 查看排队详情
-    $('.container').on('click','.qidbtn',function(){
+    $('.container').on('click','.content-item',function(){
         var queueCodeRecordId = $(this).attr('data-queueCodeRecordId')
         window.location.href = './rkpdDetail.html?queueCodeRecordId=' + queueCodeRecordId ;
     })

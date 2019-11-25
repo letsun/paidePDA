@@ -25,7 +25,7 @@
     <div class="relation-form-wrap">
 
 
-      <div class="relation-form-top">
+      <div class="relation-form-top" style="display: none;">
         <div class="form-item">
           <div class="form-title">排队顺序</div>
           <div class="form-content queueSequence">B09</div>
@@ -51,67 +51,96 @@
           <div class="form-content idCard">411322197809120099</div>
         </div>
       </div>
-      <div class="relation-title">关联运单</div>
-          <div class="relation-form">
-            <div class="form-item">
-              <div class="form-title">出库单号</div>
-              <div class="form-content">OD201907230001</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">货主名称</div>
-              <div class="form-content">华糖实业股份有限公司</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">联系人</div>
-              <div class="form-content">李文斌</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">联系电话</div>
-              <div class="form-content">18918845699</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">出库数量</div>
-              <div class="form-content">600</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">出库重量</div>
-              <div class="form-content">30.00吨</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">运输费用</div>
-              <div class="form-content">500.00吨</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">调拨集团</div>
-              <div class="form-content">诺金供应链集团</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">调拨仓库</div>
-              <div class="form-content">诺金仓库</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">承运单位</div>
-              <div class="form-content">诺金供应链股份有限公司</div>
-            </div>
-            <div class="form-item">
-              <div class="form-title">抵运站点</div>
-              <div class="form-content">安阳</div>
-            </div>
+
+
+      <div class="con" style="display: none;">
+
+        <div class="relation-title"></div>
+        <div class="relation-form">
+          <div class="form-item">
+            <div class="form-title billNo" >出库单号</div>
+            <div class="form-content" id='billNo'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">货主名称</div>
+            <div class="form-content" id='customerName'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">联系人</div>
+            <div class="form-content" id='contacter'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">联系电话</div>
+            <div class="form-content" id='contactPhone'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title totalQuantity">出库数量</div>
+            <div class="form-content" id='totalQuantity'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title totalWeight">出库重量</div>
+            <div class="form-content" id='totalWeight'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">运输费用</div>
+            <div class="form-content" id='transportFee'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">调拨集团</div>
+            <div class="form-content" id='transferGroupName'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">调拨仓库</div>
+            <div class="form-content" id='transferCompanyName'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">承运单位</div>
+            <div class="form-content" id='carrierName'></div>
+          </div>
+          <div class="form-item">
+            <div class="form-title">抵运站点</div>
+            <div class="form-content" id='tmsSiteName'></div>
           </div>
         </div>
-      
+        <div class="form-item">
+          <div class="form-title">发运方式</div>
+          <div class="form-content" id='shippingMethodName'></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">运往地址</div>
+          <div class="form-content" id='billNo'></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title ckmx">出库明细</div>
+          <div class="form-content">
+            <div class="more">点击查看</div>
+            <div class="more-icon">></div>
+          </div>
+        </div>
 
-
+      </div>
 
     </div>
 
 
-    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-    <script src="../scripts/lib/commonFunc.js"></script>
-    <script src="../scripts/lib/common.js"></script>
-    <script src="../scripts/lib/api.js"></script>
-    <script>
-      var queueCodeRdId = Global.getUrlParam('queueCodeRecordId');
+
+
+  </div>
+
+
+  <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+  <script src="../scripts/lib/commonFunc.js"></script>
+  <script src="../scripts/lib/common.js"></script>
+  <script src="../scripts/lib/api.js"></script>
+  <script>
+    var queueCodeRdId = Global.getUrlParam('queueCodeRecordId');
+    var queueConnectForm = Global.getUrlParam('queueConnectForm');
+    var billType = Global.getUrlParam('billType');
+    var billId = Global.getUrlParam('billId');
+
+
+    if (queueConnectForm == 0) {
+      $('.relation-form-top').show()
       getData('GET', api.yq.getQueueDetailById, {
         queueCodeRdId: queueCodeRdId,
       }, function (res) {
@@ -122,9 +151,59 @@
           $('.plateNo').html(res.result.plateNo)
           $('.contactPhone').html(res.result.contactPhone)
           $('.idCard').html(res.result.idCard)
-        } 
+        }
       });
-    </script>
+    } else {
+
+      if (billType == 3) {
+        $('.relation-title').html('关联申请单');
+        $('.billNo').html('出库单号');
+        $('.totalQuantity').html('出库数量');
+        $('.totalWeight').html('出库重量'); 
+        $('.ckmx').html('出库明细'); 
+        
+      } else {
+        $('.relation-title').html('关联运单');
+
+        $('.billNo').html('申请单号');
+        $('.totalQuantity').html('申请数量');
+        $('.totalWeight').html('申请重量'); 
+        $('.ckmx').html('申请明细'); 
+      }
+
+
+      getData('GET', api.yq.getBillDetail, {
+        billType: billType,
+        billId: billId,
+      }, function (res) {
+        if (res.code == 200) {
+
+          $('#billNo').html(res.result.billNo);
+          $('#customerName').html(res.result.customerName);
+          $('#contacter').html(res.result.contacter);
+          $('#contactPhone').html(res.result.contactPhone);
+          $('#totalQuantity').html(res.result.totalQuantity);
+          $('#totalWeight').html(res.result.totalWeight);
+          $('#transportFee').html(res.result.transportFee);
+          $('#transferGroupName').html(res.result.transferGroupName);
+          $('#transferCompanyName').html(res.result.transferCompanyName);
+          $('#carrierName').html(res.result.carrierName);
+          $('#tmsSiteName').html(res.result.tmsSiteName);
+          $('#shippingMethodName').html(res.result.shippingMethodName);
+          // $('.billNo').html(res.result.billNo);
+        }
+      });
+
+
+
+      $('.con').show()
+
+
+
+    }
+
+
+  </script>
 
 </body>
 

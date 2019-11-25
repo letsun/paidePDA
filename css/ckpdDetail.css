@@ -126,14 +126,18 @@ body {
   top: 0px;
   display: none;
 }
+.container {
+  padding-bottom: 120px;
+}
 .relation-form-wrap {
-  margin: 30px ;
+  padding-top: 30px;
+  width: 637px;
+  margin: 0 auto;
 }
 .relation-title {
   color: #333;
-  border-left: 5px solid #ff8402;
   padding-left: 22px;
-  margin-top: 36px;
+  border-left: 5px solid #ff8402;
 }
 .relation-form {
   margin-top: 36px;
@@ -158,7 +162,7 @@ body {
   color: #999;
 }
 .form-content {
-  display: inline-block;
+  display: flex;
   width: 410px;
   text-align: left;
   font-size: 26px;
@@ -167,6 +171,7 @@ body {
 }
 .more {
   color: #ff8402;
+  width: 360px;
 }
 .more-icon {
   float: right;

@@ -1,5 +1,5 @@
 var parkId = Global.getUrlParam('parkId');
-var status = '0';
+var status = '1';
 
 var index = '0'
 
@@ -79,7 +79,7 @@ $(function () {
             dialog: true,
             ok: function () {
                 getData('GET', api.yq.letPass, {
-                    actionType: '3',
+                    actionType: '2',
                     queueCodeRecordId: queueCodeRecordId,
                 }, function (res) {
                     if (res.code == 200) {
@@ -120,7 +120,7 @@ $(function () {
 
         $('.content-item').remove()
         if (index == 0) {
-            status = '0';
+            status = '1';
             index = '0';
             page = 1;
             $('.scroll-wra').css({
@@ -181,20 +181,12 @@ $(function () {
 
 
     $('#queryKey').on('input', function () {
-
         $('.content-item').remove()
         queryKey = $('#queryKey').val()
 
         getHistoryQueueRecord()
 
     })
-
-
-
-
-
-
-
 
     scrollWra.on('pullingUp', function () {
 
@@ -242,7 +234,7 @@ $(function () {
     function renderData(data) {
         $('.loadText').text('正在加载中...');
         Global.requestTempByAjax('../temp/ckpd/list.html', {
-            list: data, index: index, status: status
+            list: data, index: index, status: status,
         }, function (template) {
             $('#list1').append(template);
             // scrollWra.finishPullUp();
@@ -254,10 +246,13 @@ $(function () {
 
 
     // // 查看排队详情
-    // $('.container').on('click', '.content-item', function () {
-    //     var queueCodeRecordId = $(this).attr('data-queueCodeRecordId')
-    //     window.location.href = './ckpdDetail.html?queueCodeRecordId=' + queueCodeRecordId;
-    // })
+    $('.container').on('click', '.content-itema', function () {
+        var queueCodeRecordId = $(this).attr('data-queueCodeRecordId');
+        var queueConnectForm = $(this).attr('data-queueConnectForm');
+        var billType = $(this).attr('data-billType');
+        var billId = $(this).attr('data-billId');
+        window.location.href = './ckpdDetail.html?queueCodeRecordId=' + queueCodeRecordId + '&queueConnectForm=' + queueConnectForm + '&billType=' + billType + '&billId=' + billId;
+    })
 
 });
 
