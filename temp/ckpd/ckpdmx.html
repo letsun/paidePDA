@@ -1,0 +1,95 @@
+<% for (var i = 0; i < result.list.length; i++) { %>
+
+<div class="relation-form">
+    <div class="form-item">
+
+        <% if (result.billType == 3) { %>
+        <div class="form-title">出库库区</div>
+        <% }else if (result.billType == 2){ %>
+        <div class="form-title">申请库区</div>
+        <% } %>
+
+        <div class="form-content" id="warehouseAreaName"><%- result.list[i].warehouseAreaName %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">所属库房</div>
+        <div class="form-content" id="warehouseName"><%- result.list[i].warehouseName %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">所属园区</div>
+        <div class="form-content" id="parkName"><%- result.list[i].parkName %></div>
+    </div>
+    <div class="form-item">
+
+
+        <% if (result.billType == 3) { %>
+        <div class="form-title">出库数量</div>
+        <div class="form-content"><%- result.list[i].projectQuantity %></div>
+        <% }else if (result.billType == 2){ %>
+        <div class="form-title">申请数量</div>
+        <div class="form-content"><%- result.list[i].applyQuantity %></div>
+        <% } %>
+
+
+    </div>
+    <div class="form-item">
+        <% if (result.billType == 3) { %>
+        <div class="form-title">出库重量(吨)</div>
+        <div class="form-content"><%- result.list[i].projectWeight %></div>
+        <% }else if (result.billType == 2){ %>
+        <div class="form-title">申请重量(吨)</div>
+        <div class="form-content"><%- result.list[i].applyInventory %></div>
+        <% } %>
+    </div>
+    <div class="form-item">
+        <div class="form-title">产品名称</div>
+        <div class="form-content"><%- result.list[i].productName %></div>
+    </div>
+
+    <% if (result.billType == 2){ %>
+    <div class="form-item">
+        <div class="form-title">账面库存(吨)</div>
+        <div class="form-content"><%- result.list[i].inventory %></div>
+    </div>
+
+
+    <div class="form-item">
+        <div class="form-title">实物库存(吨)</div>
+        <div class="form-content"><%- result.list[i].realInventory %></div>
+    </div>
+    <% } %>
+
+
+
+
+    <div class="form-item">
+        <div class="form-title">生产批次</div>
+        <div class="form-content"><%- result.list[i].produceBatch %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">生产日期</div>
+        <div class="form-content"><%- result.list[i].produceTime %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">包装规格</div>
+        <div class="form-content"><%- result.list[i].specificationName %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">产品等级</div>
+        <div class="form-content"><%- result.list[i].produceLevel %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">产品单位</div>
+        <div class="form-content"><%- result.list[i].produceUnit %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">产品大类</div>
+        <div class="form-content"><%- result.list[i].productTypeName %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">产品品牌</div>
+        <div class="form-content"><%- result.list[i].productBrand %></div>
+    </div>
+</div>
+
+<%  }%>

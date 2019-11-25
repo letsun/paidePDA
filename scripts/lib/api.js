@@ -87,6 +87,7 @@ var api = {
         getHistoryQueueRecord:ip + '/wap/gatekeeper/getHistoryQueueRecord', //历史排队纪录
         getQueueDetailById:ip + '/wap/driver/getQueueDetailById', //根据排队记录id，获取排队详情
         getBillDetail:ip + '/wap/driver/getBillDetail', //获取(出库/出库申请)运单详情
+        getBillItemLi:ip + '/wap/driver/getBillItemLi', //获取单据Item列表
         getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
         findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次
         

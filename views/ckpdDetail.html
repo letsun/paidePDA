@@ -106,13 +106,13 @@
           <div class="form-title">发运方式</div>
           <div class="form-content" id='shippingMethodName'></div>
         </div>
-        <div class="form-item">
+        <div class="form-item" id = "adderss" style="display: none;">
           <div class="form-title">运往地址</div>
           <div class="form-content" id='billNo'></div>
         </div>
         <div class="form-item">
           <div class="form-title ckmx">出库明细</div>
-          <div class="form-content">
+          <div class="form-content ckmxbtn">
             <div class="more">点击查看</div>
             <div class="more-icon">></div>
           </div>
@@ -163,15 +163,16 @@
         $('.ckmx').html('出库明细'); 
         
       } else {
-        $('.relation-title').html('关联运单');
+        $('#adderss').show()
 
+        $('.relation-title').html('关联运单');
         $('.billNo').html('申请单号');
         $('.totalQuantity').html('申请数量');
         $('.totalWeight').html('申请重量'); 
         $('.ckmx').html('申请明细'); 
       }
 
-
+      //有单据时显示单据
       getData('GET', api.yq.getBillDetail, {
         billType: billType,
         billId: billId,
@@ -197,10 +198,14 @@
 
 
       $('.con').show()
-
-
-
     }
+
+
+    //跳转到出库单据明细
+    $('.container').on('click','.ckmxbtn',function(){
+      
+      window.location.href = './ckpdDetailmx.html?&billType=' + billType + '&billId=' + billId;
+    })
 
 
   </script>
