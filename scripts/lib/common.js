@@ -1,7 +1,7 @@
 window.common = {};
 
 // var accountId = '1';
-// var accountId = Global.getUrlParam('accountId');
+var accountId = Global.getUrlParam('accountId');
 (function ($) {
     /**
      * @func common.alert()
