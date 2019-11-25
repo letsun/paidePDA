@@ -12,7 +12,6 @@ var totalPage = 1; // 总页数;
 var page = 1; // 第一页;
 var html = '';
 var applyNo ='';
-var accountId = Global.getUrlParam('accountId');
 
 getData('POST', api.kcsd.getStockList, {
 	accountId: accountId,
@@ -75,7 +74,7 @@ $('#scarchBtn').on('click', function() {
 	page = 1;
 	$('#list').html('');
 	applyNo = $('#applyNo').val();
-	getData('POST', api.api.kcsd.getStockList, {
+	getData('POST', api.kcsd.getStockList, {
 		accountId: accountId,
 		pageNo: page,
 		pageSize: 10,
@@ -100,9 +99,9 @@ $('.container').on('click', '.content-item', function() {
 	window.location.href = './kcsdDetail.html?id=' + id + '&accountId=' + accountId;
 });
 
-// 点击进入添加运单
-// $('.container').on('click', '.btn1', function(e) {
-// 	e.stopPropagation();
-// 	var id = $(this).parents('.content-item').attr('data-id');
-// 	window.location.href = './ckydAdd.html?id=' + id + '&accountId=' + accountId;
-// });
+//点击进入解锁新增页面
+$('.container').on('click', '.btn2', function(e) {
+	e.stopPropagation();
+	var id = $(this).parents('.content-item').attr('data-id'); //库存锁定id
+	window.location.href = './kcjsAdd.html?id=' + id + '&accountId=' + accountId;
+});
