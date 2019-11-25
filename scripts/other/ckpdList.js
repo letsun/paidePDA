@@ -173,8 +173,10 @@ $(function () {
                     }
                 });
 
-                $('#loadingWrapper').hide()
+               
             }
+
+            $('#loadingWrapper').hide()
         });
     }
 

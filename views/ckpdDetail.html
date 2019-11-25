@@ -156,16 +156,16 @@
     } else {
 
       if (billType == 3) {
-        $('.relation-title').html('关联申请单');
+        $('.relation-title').html('关联运单');
         $('.billNo').html('出库单号');
         $('.totalQuantity').html('出库数量');
         $('.totalWeight').html('出库重量'); 
         $('.ckmx').html('出库明细'); 
         
-      } else {
+      } else if (billType == 2){
         $('#adderss').show()
 
-        $('.relation-title').html('关联运单');
+        $('.relation-title').html('关联申请单');
         $('.billNo').html('申请单号');
         $('.totalQuantity').html('申请数量');
         $('.totalWeight').html('申请重量'); 

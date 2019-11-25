@@ -28,6 +28,7 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
+            $('#storageNo').html(res.data.autoWarehouseWaybillNo);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
@@ -372,7 +373,7 @@ $(function () {
         var rentStartTime = $('#date').html();
         var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
         var serviceTeamName = $('#serviceTeamText').html();
-        var storageNo = $('#storageNo').val();
+        var storageNo = $('#storageNo').html();
         var storageType = $('#storageType').html();
         var workType = $('#workType').attr('data-value');
         var warehouseOrderNo = $('#warehouseOrderNo').val();

@@ -168,7 +168,7 @@
                         id: id,
                     }, function (res) {
                         if (res.code == 200) {
-                            $(that).siblings('.content-item-btn').remove();
+                            $(that).siblings('.content-item-btn').removeClass('btn1').addClass('btn3').text('已结束');
                             $(that).remove();
                         } else {
                             common.alert({

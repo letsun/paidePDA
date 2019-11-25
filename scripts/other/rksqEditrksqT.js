@@ -7,6 +7,34 @@ $(function () {
 
     var allWarehouseArea = [];      // 已选库区
 
+    // 获取工作班次
+    $('#teamName').on('click', function () {
+        getData('GET', api.yq.findShiftWorkList, {
+            accountId: accountId,
+        }, function (res) {
+            if (res.code == 200) {
+
+                var html_4 = '';
+                for (var i = 0; i < res.data.shiftWorkList.length; i++) {
+                    html_4 += '<div class="maskcon-item" data-id="' + res.data.shiftWorkList[i].id + '">' + res.data.shiftWorkList[i].name + '</div>';
+                }
+                $('.maskcon4').html(html_4);
+
+                $('.maskcon4').show();
+                $('.mask').show();
+            }
+        });
+    })
+
+    //选择工作班次
+    $('.maskcon4').on('click','.maskcon-item',function(){
+
+        var teamNameId = $(this).attr('data-id');
+        var teamName = $(this).html()
+        $('#teamName').attr('data-teamNameId',teamNameId);
+        $('#teamName').html(teamName)
+    })
+
 
     Global.requestTempByAjax('../temp/loading/loading.html', {
     }, function (template) {
@@ -21,7 +49,7 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
-            $('#teamName').val(res.data.teamName);
+            $('#teamName').html(res.data.teamName);
             $('#warehouseOrderNo').val(res.data.warehouseOrderNo)
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rksq/sqdmxEditT.html', {list:res.data.list}, function(template) {
@@ -294,7 +322,7 @@ $(function () {
         var applyNo = $('#applyNo').html();
         var images = '';
         var remarks = $('#remarks').val();
-        var teamName = $('#teamName').val();
+        var teamName = $('#teamName').html();
         var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i,item) {

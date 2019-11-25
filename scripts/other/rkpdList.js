@@ -166,10 +166,9 @@ $(function () {
                     if (index != 2) {
                         $('#list1').html(template);
                     }
-                });
-
-                $('#loadingWrapper').hide()
+                });         
             }
+            $('#loadingWrapper').hide()
         });
     }
 
