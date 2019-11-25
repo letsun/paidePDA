@@ -97,6 +97,7 @@ var api = {
 	kcjs:{
 		findPageApi: ip + '/api/pda/stockUnlockMain/findPageApi',     // 库存解锁列表
 		findStockUnlockDetail: ip + '/api/pda/stockUnlockMain/findStockUnlockDetail',     //库存解锁详情
+		addStockUnlockMain: ip + '/api/pda/stockUnlockMain/addStockUnlockMain'     // 库存解锁新增
 	},
 	kcsd:{
 		getStockList: ip + '/api/stocklock/getStockList',     // 库存锁定列表

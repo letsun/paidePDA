@@ -13,8 +13,6 @@ var totalPage = ""; // 总页数;
 var page = 1; // 第一页;
 var html = '';
 
-var accountId = Global.getUrlParam('accountId');
-
 getData('GET', api.kcjs.findPageApi, {
 	accountId: accountId,
 	pageNo: page,
