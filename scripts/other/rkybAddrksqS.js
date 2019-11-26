@@ -309,7 +309,7 @@ $(function () {
         var contractId = $('#contractId').attr('data-contractId');
         var teamName = $('#teamName').val();
         var remark = $('#remark').val();
-        var warehouseOrderNo = $('#warehouseOrderNo').val()
+        var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -321,7 +321,7 @@ $(function () {
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             // obj.warehouseForecastItemId = $('#itemId').attr('data-itemId');
-            obj.warehouseForecastMainId = id,
+            obj.warehouseForecastMainId = id;
             storageWarehouseApplyItemList.push(obj);
             
            
@@ -337,15 +337,15 @@ $(function () {
             storageWarehouseApplyItemList: storageWarehouseApplyItemList,
         };
 
-        console.log(data2)
-        $('#loadingWrapper').show()
+        console.log(data2);
+        $('#loadingWrapper').show();
         // 提交数据
         getData('POST',api.rkybS.saveWarehouseApplyMain,{
             accountId:accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
-                $('#loadingWrapper').hide()
+                $('#loadingWrapper').hide();
                 common.alert({
                     mask: true,
                     content: '提交成功',
@@ -355,7 +355,7 @@ $(function () {
                     }
                 })
             } else {
-                $('#loadingWrapper').hide()
+                $('#loadingWrapper').hide();
                 common.alert({
                     mask: true,
                     content: res.msg,

@@ -1,7 +1,7 @@
-//var dev = 'http://192.168.1.11:8899';          //吴阎峰*/
+var dev = 'http://192.168.1.11:8899';          //吴阎峰
 var test = "https://wms.ebiaoji.com";           //线上
 //var dev = "http://yecl.lxcyhd.com";           //春玲姐
-var dev = 'http://192.168.1.77:8899';          //吴剑*/
+// var dev = 'http://192.168.1.77:8899';          //吴剑
 
 var ip = dev;
 
@@ -16,6 +16,7 @@ var api = {
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
         editStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/editStorageFactoryApplyMain',     // 入库申请单编辑
+        addApplyByForecasts: ip + '/api/pda/storageFactoryApplyMain/addApplyByForecasts',     // 新增入库申请多个预报
     },
     rksqS: {
         findPageApi: ip + '/api/pda/storageWarehouseApplyMain/findPageApi',     // 入库申请单列表
