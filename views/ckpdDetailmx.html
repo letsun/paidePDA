@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=750, user-scalable=no">
+  <link rel="stylesheet" href="../css/ckpdDetailmx.css">
+
+
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <div class="header">
+      <div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
+      排队详情
+    </div>
+
+    <div class="relation-form-wrap">
+
+      <div class="relation-form">
+        <div class="form-item">
+          <div class="form-title">出库库区</div>
+          <div class="form-content" id="warehouseAreaName"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">所属库房</div>
+          <div class="form-content" id="warehouseName"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">所属园区</div>
+          <div class="form-content" id="parkName"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">出库数量</div>
+          <div class="form-content" id="projectQuantity"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">出库重量(吨)</div>
+          <div class="form-content" id="projectWeight"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">产品名称</div>
+          <div class="form-content" id="productName"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">生产批次</div>
+          <div class="form-content" id="produceBatch"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">生产日期</div>
+          <div class="form-content" id="produceTime"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">包装规格</div>
+          <div class="form-content" id="specificationName"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">产品等级</div>
+          <div class="form-content" id="produceLevel"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">产品单位</div>
+          <div class="form-content" id="produceUnit"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">产品大类</div>
+          <div class="form-content" id="productTypeName"></div>
+        </div>
+        <div class="form-item">
+          <div class="form-title">产品品牌</div>
+          <div class="form-content" id="productBrand"></div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+
+  <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+  <script src="../scripts/lib/ejs.min.js"></script>
+  <script src="../scripts/lib/commonFunc.js"></script>
+  <script src="../scripts/lib/common.js"></script>
+  <script src="../scripts/lib/api.js"></script>
+  <script>
+
+    var billType = Global.getUrlParam('billType');
+    var billId = Global.getUrlParam('billId');
+
+    getData('GET', api.yq.getBillItemLi, {
+      billType: billType,
+      billId: billId,
+    }, function (res) {
+      if (res.code == 200) {
+
+
+        Global.requestTempByAjax('../temp/ckpd/ckpdmx.html', {
+          list: res.result,
+          billType:billType
+        }, function (template) {
+           $('.relation-form-wrap').html(template)
+        });
+      }
+    });
+
+
+
+  </script>
+
+</body>
+
+</html>

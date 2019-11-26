@@ -1,5 +1,5 @@
 <%  if( result.index==2) { %>
-    <!-- <div class="search">
+<!-- <div class="search">
         <input type="text" id="applyNo" placeholder="输入车牌号码/司机名称搜索"> <label id="scarchBtn">搜索</label>
     
         <img src="../img/1_28.png">
@@ -8,123 +8,148 @@
     <div class="title">
         <%- result.list.curQueueDate %>
     </div> -->
-        <% for (var i = 0; i < result.list.childList.length; i++) { %>
-        <div class="content-item">
-    
-            <div class="yd-con">
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">车牌号码：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].platNo %></div>
-                    </div>
-    
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">司机姓名：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].driverName %></div>
-                    </div>
+<% for (var i = 0; i < result.list.childList.length; i++) { %>
+<div class="content-item">
+
+    <div class="yd-con">
+        <div class="yd-child-item">
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">车牌号码：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].platNo %></div>
+            </div>
+
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">司机姓名：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].driverName %></div>
+            </div>
+        </div>
+        <div class="yd-child-item">
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">联系电话：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
+            </div>
+        </div>
+
+        <div class="yd-child-item">
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">排队时间：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
+            </div>
+        </div>
+
+        <div class="yd-child-item">
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">进场时间：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].intoTime %></div>
+            </div>
+        </div>
+
+        <div class="yd-child-item">
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">出场时间：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].outTime %></div>
+            </div>
+
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">等待时长：</div>
+                <div class="yd-child-val"><%- result.list.childList[i].waitTime %></div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+
+<%  }else { %>
+
+<% for (var i = 0; i < result.list.length; i++) { %>
+
+
+    <% if(result.status == 1) { %>
+    <div class="content-item content-itema" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>" data-queueConnectForm="<%- result.list[i].queueConnectForm %>" data-billType="<%- result.list[i].billType %>"  data-billId="<%- result.list[i].billId %>" >
+    <% } %>
+
+    <% if(result.status == 2) { %>
+    <div class="content-item content-itemb" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">
+    <% } %>
+
+        <div class="item-header">
+            <div class="head-key">排队序号：</div>
+            <div class="head-val"><%- result.list[i].showTime %></div>
+        </div>
+        <div class="item-header">
+            <div class="head-key">
+                <div class="team-num"><%- result.list[i].queueSequence %></div>
+
+                <% if (result.status == 1) { %>
+
+
+                <div class="team-text">正在排队,等待放行</div>
+
+                <% } %>
+
+            </div>
+            <div class="head-val">
+                <% if (result.status == 1) { %>
+
+                <% if(result.queueConnectForm==0) { %>
+                <div class="team-text">未关联运单</div>
+                <% }else { %>
+
+                    <% if (result.list[i].billType == 2) { %>
+                        <div class="team-text">关联申请单</div>
+                    <% } else if (result.list[i].billType == 3) { %>
+                        <div class="team-text">关联运单</div>
+                    <% } %>
+               
+                <% } %>
+                <div class="release-btn release-btn1"  data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>" >允许放行
                 </div>
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">联系电话：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
-                    </div>
+
+                <% }else if (result.status == 2) { %>
+
+                <%if(result.list[i].queueStatus == 2) {%>
+                <div class="release-btn release-btn2" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">
+                    确认完成
                 </div>
-    
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">排队时间：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
-                    </div>
+                <%}else if (result.list[i].queueStatus == 4) {%>
+                <div class="team-text">完成装车，等待出场</div>
+                <%}%>
+
+                    <% } %>
+            </div>
+        </div>
+
+        <div class="yd-con">
+
+            <div class="yd-child-item">
+                <div class="yd-child-dec double-find">
+                    <div class="yd-child-key">车牌号码：</div>
+                    <div class="yd-child-val"><%- result.list[i].platNo %></div>
                 </div>
-    
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">进场时间：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].intoTime %></div>
-                    </div>
-                </div>
-    
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">出场时间：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].outTime %></div>
-                    </div>
-    
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">等待时长：</div>
-                        <div class="yd-child-val"><%- result.list.childList[i].waitTime %></div>
-                    </div>
+
+                <div class="yd-child-dec double-find">
+                    <div class="yd-child-key">装车地点：</div>
+                    <div class="yd-child-val"><%- result.list[i].loadWhere %></div>
                 </div>
             </div>
         </div>
-        <% } %>
-    
-    <%  }else { %>
-    
-        <% for (var i = 0; i < result.list.length; i++) { %>
-        <div class="content-item">
-            <div class="item-header">
-                <div class="head-key">排队序号：</div>
-                <div class="head-val"><%- result.list[i].showTime %></div>
-            </div>
-            <div class="item-header">
-                <div class="head-key">
-                    <div class="team-num"><%- result.list[i].queueSequence %></div>
-    
-                    <% if (result.status == 0) { %>
-                    <div class="team-text">正在排队,等待放行</div>
-    
-                    <% } %>
-    
-                </div>
-                <div class="head-val">
-                    <% if (result.status == 0) { %>
-    
-                    <div class="release-btn release-btn1" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">允许放行</div>
-    
-                    <% }else if (result.status == 2) { %>
 
-                        <%if(result.list[i].queueStatus == 2) {%>
-                            <div class="release-btn release-btn2" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">确认完成</div>
-                            <%}else if (result.list[i].queueStatus == 4) {%>
-                            <div class="team-text">完成装车，等待出场</div>
-                            <%}%>
+        <div class="yd-con">
 
-                    <% } %>
+            <div class="yd-child-item">
+                <div class="yd-child-dec double-find">
+                    <div class="yd-child-key">司机名称：</div>
+                    <div class="yd-child-val"><%- result.list[i].driverName %></div>
                 </div>
-            </div>
-    
-            <div class="yd-con">
-    
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">车牌号码：</div>
-                        <div class="yd-child-val"><%- result.list[i].platNo %></div>
-                    </div>
-    
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">装车地点：</div>
-                        <div class="yd-child-val"><%- result.list[i].loadWhere %></div>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="yd-con">
-    
-                <div class="yd-child-item">
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">司机名称：</div>
-                        <div class="yd-child-val"><%- result.list[i].driverName %></div>
-                    </div>
-    
-                    <div class="yd-child-dec double-find">
-                        <div class="yd-child-key">联系电话：</div>
-                        <div class="yd-child-val"><%- result.list[i].contactPhone %></div>
-                    </div>
+
+                <div class="yd-child-dec double-find">
+                    <div class="yd-child-key">联系电话：</div>
+                    <div class="yd-child-val"><%- result.list[i].contactPhone %></div>
                 </div>
             </div>
         </div>
-        <% } %>
-    
-    
-    <%  }%>
+    </div>
+    <% } %>
+
+
+<%  }%>

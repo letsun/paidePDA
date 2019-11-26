@@ -62,14 +62,14 @@
 <%  }else { %>
 
 <% for (var i = 0; i < result.list.length; i++) { %>
-<% if (result.status == 0) { %>
-<div class="content-item">
+<% if (result.status == 1) { %>
+<div class="content-item" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">
     <div class="item-header">
         <div class="head-key">排队序号：</div>
         <div class="head-val"><%- result.list[i].showTime %></div>
     </div>
     <div class="item-header">
-        <div class="head-key qidbtn" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">
+        <div class="head-key qidbtn" >
             <div class="team-num"><%- result.list[i].queueSequence %></div>
             <div class="team-text">正在排队,等待放行</div>
         </div>
