@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=750, user-scalable=no">
 	<link rel="stylesheet" href="../css/rkpdList.css">
-    <link rel="stylesheet" href="../scripts/plugins/iosSelect/iosSelect.css">
+	<link rel="stylesheet" href="../scripts/plugins/iosSelect/iosSelect.css">
 </head>
 
 <body>
@@ -18,6 +18,8 @@
 		<div class="header">
 			<div class="return" onclick="history.go(-1)"> <img src="../img/1_40.png"></div>
 			入库排队
+
+			<!-- <a class="setup" id="setup">二维码</a> -->
 		</div>
 
 		<div class="nav-list">
@@ -30,13 +32,14 @@
 
 			<div class="content-nav" style="display:none">
 				<div class="search">
-					<input type="text" id="queryKey" placeholder="输入车牌号码/司机名称搜索"> <label id="datea" ><img src="../img/1_42.png"></label>
+					<input type="text" id="queryKey" placeholder="输入车牌号码/司机名称搜索"> <label id="datea"><img
+							src="../img/1_42.png"></label>
 
 					<img class="search-img" src="../img/1_28.png">
 				</div>
 
-				<div class="curQueueDate" >
-										
+				<div class="curQueueDate">
+
 				</div>
 			</div>
 
@@ -48,11 +51,52 @@
 
 					</div>
 
-					<div class="loadText" style="display: none;">上滑加载更多</d
+					<div class="loadText" style="display: none;">上滑加载更多</div>
 				</div>
 			</div>
 
 		</div>
+
+
+		<!-- <div class="mask" style="display: none;">
+
+			<div class="mask-con">
+
+				<div class="content-header">
+
+					<div class="content-hedear-left">
+						排队动态二维码
+					</div>
+
+					<div class="content-header-right" >
+						A园区
+					</div>
+
+				<div class="content-qrcode">
+
+					<canvas class='canvas' canvas-id='canvas' style="width: 100%;height: 100%"
+						bindlongtap="save"></canvas>
+
+				</div>
+
+
+				<div class="content-refresh" bindtap="refresh">
+
+					<div class="content-refresh-image">
+						<image src="https://wechat-1254182596.cos.ap-guangzhou.myqcloud.com/pdxcx/1_6.png"></image>
+					</div>
+
+					<div class="content-refresh-text">排队码自动
+						<text>刷新</text>
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+		</div> -->
 
 	</div>
 
@@ -63,8 +107,8 @@
 	<script src="../scripts/lib/api.js"></script>
 	<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
 	<script src="../scripts/other/rkpdList.js"></script>
-    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
-    <!-- <script src="../scripts/plugins/iosSelect/date.js"></script> -->
+	<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+	<!-- <script src="../scripts/plugins/iosSelect/date.js"></script> -->
 
 	<script>
 		var scrollWra = new BScroll('#scrollWra', {

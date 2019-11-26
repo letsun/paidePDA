@@ -43,7 +43,7 @@ $(function () {
                         getData('GET', api.yq.getQueueEvolutionList, {
                             parkId: parkId,
                             queueType: '1',
-                            status: '0',
+                            status: '1',
                         }, function (res) {
                             if (res.code == 200) {
                                 Global.requestTempByAjax('../temp/rkpd/list.html', { list: res.result, status: status, index: index }, function (template) {

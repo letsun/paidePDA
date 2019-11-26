@@ -1,10 +1,10 @@
-var dev = 'http://192.168.1.11:8899';          //闫世峰*/
+var dev = 'http://192.168.1.77:8899';          //闫世峰*/
 var test = "https://wms.ebiaoji.com";           //线上
 //var dev = "http://yecl.lxcyhd.com";           //春玲姐
 
 //var dev = 'http://192.168.1.77:8899';          //吴剑*/
 
-var ip = dev;
+var ip = test;
 
 var api = {
     rkgd: {
@@ -88,6 +88,7 @@ var api = {
         getQueueDetailById:ip + '/wap/driver/getQueueDetailById', //根据排队记录id，获取排队详情
         getBillDetail:ip + '/wap/driver/getBillDetail', //获取(出库/出库申请)运单详情
         getBillItemLi:ip + '/wap/driver/getBillItemLi', //获取单据Item列表
+        getCode:ip + '/wap/gatekeeper/getCode', //获取二维码
         getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
         findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次
         
