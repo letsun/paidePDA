@@ -333,6 +333,7 @@ $(function () {
 
         var data2 = {
             accountId: accountId,
+            id: id,
             warehouseOrderNo: warehouseOrderNo,
             applyNo: applyNo,
             remarks: remark,
@@ -342,40 +343,40 @@ $(function () {
 
         console.log(data2);
 
-        // $.ajax({
-        //     type: 'POST',
-        //     url: api.rksqT.addApplyByForecasts,
-        //     data: JSON.stringify(data2),
-        //     dataType: "json",
-        //     contentType:'application/json;charset=UTF-8',
-        //     header: {
-        //         Authorization: '1111',
-        //     },
-        //     success: function(res) {
-        //         if (res.code == 200) {
-        //             $('#loadingWrapper').hide();
-        //             common.alert({
-        //                 mask: true,
-        //                 content: '提交成功',
-        //                 ok:function () {
-        //                     window.location.href ="./rksqListT.html?accountId="+accountId;
-        //                 }
-        //             })
-        //         } else {
-        //             $('#loadingWrapper').hide();
-        //             common.alert({
-        //                 mask: true,
-        //                 content: res.msg,
-        //             })
-        //         }
-        //     },
-        //     error: function(res) {
-        //         common.alert({
-        //             mask: true,
-        //             content: res.msg
-        //         })
-        //     }
-        // });
+        $.ajax({
+            type: 'POST',
+            url: api.rksqT.editApplyByForecasts,
+            data: JSON.stringify(data2),
+            dataType: "json",
+            contentType:'application/json;charset=UTF-8',
+            header: {
+                Authorization: '1111',
+            },
+            success: function(res) {
+                if (res.code == 200) {
+                    $('#loadingWrapper').hide();
+                    common.alert({
+                        mask: true,
+                        content: '提交成功',
+                        ok:function () {
+                            window.location.href ="./rksqListT.html?accountId="+accountId;
+                        }
+                    })
+                } else {
+                    $('#loadingWrapper').hide();
+                    common.alert({
+                        mask: true,
+                        content: res.msg,
+                    })
+                }
+            },
+            error: function(res) {
+                common.alert({
+                    mask: true,
+                    content: res.msg
+                })
+            }
+        });
     });
 
 
