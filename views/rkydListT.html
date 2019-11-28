@@ -162,58 +162,70 @@
         });
 
 
-        /*点击生成工单*/
+        /*点击确认完成*/
         $('.container').on('click', '.btn1', function (e) {
             var that = this;
+            var id = $(that).parent().attr('data-id'); //运单id
+
+            e.stopPropagation();
+
+            common.alert({
+                mask: true,
+                title: '提示',
+                content: '运单已作业完成,是否同步生成入库工单?',
+                okValue: '立即生成',
+                dialog: true,
+                ok: function (reg) {
+                    getData('GET', api.rkydT.complete, {
+                        accountId: accountId,
+                        id: id,
+                    }, function (res) {
+                        if (res.code == 200) {
+                            $(that).removeClass('btn1').addClass('btn5').text('生成工单')
+                        } else {
+                            common.alert({
+                                mask: true,
+                                content: res.msg
+                            })
+                        }
+                    })
+                },
+            });
+        })
+
+        /*点击生成工单*/
+        $('.container').on('click', '.btn5', function (e) {
+            var that = this;
             var id = $(that).parent().attr('data-id') //运单id
-          
+
             e.stopPropagation();
             common.alert({
                 mask: true,
                 title: '提示',
                 content: '运单已作业完成,是否同步生成入库工单?',
-                okValue:'立即生成',
+                okValue: '立即生成',
                 dialog: true,
                 ok: function (reg) {
-                    getData('GET',api.rkydT.saveStorage,{
-                        accountId:accountId,
-                        id:id,
-                    },function(res){
-                        if (res.code==200){
-                            $(that).siblings('.btn4').hide();
-                            $(that).removeClass('btn1').addClass('btn3').text(res.data.storageStatus);
-                        }else{
+                    getData('GET', api.rkydT.saveStorage, {
+                        accountId: accountId,
+                        id: id,
+                    }, function (res) {
+                        if (res.code == 200) {
+
+                            $(that).removeClass('btn5').addClass('btn3').text('已记工单');
+                        } else {
                             common.alert({
-                                mask:true,
-                                content:res.msg
+                                mask: true,
+                                content: res.msg
                             })
-                        }                    
+                        }
                     })
                 },
             });
         });
 
 
-        /*点击确认完成运单*/
-        $('.container').on('click', '.btn4', function (e) {
-            var that = this;
-            var id = $(that).parent().attr('data-id'); //运单id
 
-            e.stopPropagation();
-            getData('GET',api.rkydT.complete,{
-                accountId:accountId,
-                id:id,
-            },function(res){
-                if (res.code==200){
-                    $(that).hide();
-                }else{
-                    common.alert({
-                        mask:true,
-                        content:res.msg
-                    })
-                }
-            })
-        })
 
 
     </script>
