@@ -33,7 +33,7 @@
         <div class="yd-child-item">
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">排队时间：</div>
-                <div class="yd-child-val"><%- result.list.childList[i].contactPhone %></div>
+                <div class="yd-child-val"><%- result.list.childList[i].queueBeginTime %></div>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
 
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">等待时长：</div>
-                <div class="yd-child-val"><%- result.list.childList[i].waitTime %></div>
+                <div class="yd-child-val"><%- result.list.childList[i].waitTime %> 分钟</div>
             </div>
         </div>
     </div>
@@ -141,7 +141,7 @@
             </div>
 
             <div class="yd-child-dec double-find">
-                <div class="yd-child-key">装车地点：</div>
+                <div class="yd-child-key">卸车地点：</div>
                 <div class="yd-child-val"><%- result.list[i].loadWhere %></div>
             </div>
         </div>

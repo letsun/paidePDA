@@ -142,7 +142,7 @@ $(function () {
             page = 1;
 
             $('.scroll-wra').css({
-                'top': '180px'
+                'top': '100px'
             })
             $('.content-nav').show()
 

@@ -23,8 +23,6 @@
     </div>
 
     <div class="relation-form-wrap">
-
-
       <div class="relation-form-top" style="display: none;">
         <div class="form-item">
           <div class="form-title">排队顺序</div>
@@ -54,7 +52,6 @@
 
 
       <div class="con" style="display: none;">
-
         <div class="relation-title"></div>
         <div class="relation-form">
           <div class="form-item">
@@ -129,48 +126,39 @@
 
 
   <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+  <script src="../scripts/lib/ejs.min.js"></script>
   <script src="../scripts/lib/commonFunc.js"></script>
   <script src="../scripts/lib/common.js"></script>
   <script src="../scripts/lib/api.js"></script>
   <script>
     var queueCodeRdId = Global.getUrlParam('queueCodeRecordId');
+    var queueConnectForm = 0;
     var queueConnectForm = Global.getUrlParam('queueConnectForm');
     var billType = Global.getUrlParam('billType');
     var billId = Global.getUrlParam('billId');
 
 
+//     var billType = "3";
+//     var billId = "bb89c9176f0d43688118629c32a67286,c73f94b1d1924f52929a4fd501df5ac2";
+
     if (queueConnectForm == 0) {
-      $('.relation-form-top').show()
+
       getData('GET', api.yq.getQueueDetailById, {
         queueCodeRdId: queueCodeRdId,
       }, function (res) {
         if (res.code == 200) {
-          $('.queueSequence').html(res.result.queueSequence)
-          $('.queueBeginTime').html(res.result.queueBeginTime)
-          $('.driverName').html(res.result.driverName)
-          $('.plateNo').html(res.result.plateNo)
-          $('.contactPhone').html(res.result.contactPhone)
-          $('.idCard').html(res.result.idCard)
+
+          Global.requestTempByAjax('../temp/ckpd/ckpdDetail.html', {
+            list: res.result,
+            billType:billType,
+            queueConnectForm:0,
+          }, function (template) {
+
+            $('.relation-form-wrap').html(template)
+          });
         }
       });
     } else {
-
-      if (billType == 3) {
-        $('.relation-title').html('关联运单');
-        $('.billNo').html('出库单号');
-        $('.totalQuantity').html('出库数量');
-        $('.totalWeight').html('出库重量'); 
-        $('.ckmx').html('出库明细'); 
-        
-      } else if (billType == 2){
-        $('#adderss').show()
-
-        $('.relation-title').html('关联申请单');
-        $('.billNo').html('申请单号');
-        $('.totalQuantity').html('申请数量');
-        $('.totalWeight').html('申请重量'); 
-        $('.ckmx').html('申请明细'); 
-      }
 
       //有单据时显示单据
       getData('GET', api.yq.getBillDetail, {
@@ -179,31 +167,23 @@
       }, function (res) {
         if (res.code == 200) {
 
-          $('#billNo').html(res.result.billNo);
-          $('#customerName').html(res.result.customerName);
-          $('#contacter').html(res.result.contacter);
-          $('#contactPhone').html(res.result.contactPhone);
-          $('#totalQuantity').html(res.result.totalQuantity);
-          $('#totalWeight').html(res.result.totalWeight);
-          $('#transportFee').html(res.result.transportFee);
-          $('#transferGroupName').html(res.result.transferGroupName);
-          $('#transferCompanyName').html(res.result.transferCompanyName);
-          $('#carrierName').html(res.result.carrierName);
-          $('#tmsSiteName').html(res.result.tmsSiteName);
-          $('#shippingMethodName').html(res.result.shippingMethodName);
-          // $('.billNo').html(res.result.billNo);
+          Global.requestTempByAjax('../temp/ckpd/ckpdDetail.html', {
+          list: res.result,
+          billType:billType,
+          queueConnectForm:queueConnectForm,
+          }, function (template) {
+            $('.relation-form-wrap').html(template)
+          });
+
         }
       });
-
-
-
-      $('.con').show()
     }
 
 
-    //跳转到出库单据明细
-    $('.container').on('click','.ckmxbtn',function(){
-      
+    //跳转到入出库单据明细
+    $('.container').on('click','.ckmxbtn',function(e){
+      var billId = $(this).attr('data-billId');
+      console.log(billId)
       window.location.href = './ckpdDetailmx.html?&billType=' + billType + '&billId=' + billId;
     })
 

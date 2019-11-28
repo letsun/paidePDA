@@ -1,0 +1,131 @@
+<% if (result.queueConnectForm == 0) { %>
+
+<div class="relation-form-top">
+    <div class="form-item">
+        <div class="form-title">排队顺序</div>
+        <div class="form-content queueSequence"><%- result.list.queueSequence %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">开始时间</div>
+        <div class="form-content queueBeginTime"><%- result.list.queueBeginTime %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">排队人名</div>
+        <div class="form-content driverName"><%- result.list.driverName %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">车牌号码</div>
+        <div class="form-content plateNo"><%- result.list.plateNo %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">联系电话</div>
+        <div class="form-content contactPhone"><%- result.list.contactPhone %></div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">身份证号</div>
+        <div class="form-content idCard"><%- result.list.idCard %></div>
+    </div>
+</div>
+
+<% }else{ %>
+
+<% if (result.billType ==3) { %>
+<div class="relation-title">关联运单</div>
+<% }else{ %>
+<div class="relation-title">关联申请单</div>
+
+<% } %>
+
+<% for (var i = 0; i < result.list.length; i++) { %>
+<div class="con">
+    <div class="relation-title"></div>
+    <div class="relation-form">
+        <div class="form-item">
+            <% if (result.billType ==3) { %>
+            <div class="form-title">出库单号</div>
+            <% }else{ %>
+            <div class="form-title">申请单号</div>
+            <% } %>
+
+            <div class="form-content" id='billNo'><%- result.list[i].billNo %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">货主名称</div>
+            <div class="form-content" id='customerName'><%- result.list[i].customerName %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">联系人</div>
+            <div class="form-content" id='contacter'><%- result.list[i].contacter %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">联系电话</div>
+            <div class="form-content" id='contactPhone'><%- result.list[i].contactPhone %></div>
+        </div>
+
+
+        <div class="form-item">
+            <% if (result.billType ==3) { %>
+            <div class="form-title">出库数量</div>
+            <% }else{ %>
+            <div class="form-title">申请数量</div>
+            <% } %>
+            <div class="form-content" id='totalQuantity'><%- result.list[i].totalQuantity %></div>
+        </div>
+        <div class="form-item">
+            <% if (result.billType ==3) { %>
+            <div class="form-title">出库重量</div>
+            <% }else{ %>
+            <div class="form-title">申请重量</div>
+            <% } %>
+            <div class="form-content" id='totalWeight'><%- result.list[i].totalWeight %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">运输费用</div>
+            <div class="form-content" id='transportFee'><%- result.list[i].transportFee %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">调拨集团</div>
+            <div class="form-content" id='transferGroupName'><%- result.list[i].transferGroupName %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">调拨仓库</div>
+            <div class="form-content" id='transferCompanyName'><%- result.list[i].transferCompanyName %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">承运单位</div>
+            <div class="form-content" id='carrierName'><%- result.list[i].carrierName %></div>
+        </div>
+        <div class="form-item">
+            <div class="form-title">抵运站点</div>
+            <div class="form-content" id='tmsSiteName'><%- result.list[i].tmsSiteName %></div>
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="form-title">发运方式</div>
+        <div class="form-content" id='shippingMethodName'><%- result.list[i].shippingMethodName %></div>
+    </div>
+
+    <% if (result.billType ==3) { %>
+    <div class="form-item" id="adderss">
+        <div class="form-title">运往地址</div>
+        <div class="form-content" id='billNo'><%- result.list[i].shippingAddress %></div>
+    </div>
+    <% } %>
+
+    <div class="form-item">
+        <% if (result.billType ==3) { %>
+        <div class="form-title ckmx" >出库明细</div>
+        <% }else{ %>
+        <div class="form-title ckmx">申请明细</div>
+        <% } %>
+
+        <div class="form-content ckmxbtn" data-billId= "<%- result.list[i].billId %>" >
+            <div class="more">点击查看</div>
+            <div class="more-icon">></div>
+        </div>
+    </div>
+
+</div>
+<% } %>
+
+<% } %>

@@ -26,7 +26,7 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
-            $('#teamName').html(res.data.teamName);
+            $('#teamName').html(res.data.shiftWorkName);
             $('#applyTime').html(res.data.applyTime);
             $('#remarks').html(res.data.remarks);
             $('#warehouseOrderNo').html(res.data.warehouseOrderNo)

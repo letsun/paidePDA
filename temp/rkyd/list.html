@@ -1,17 +1,23 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 
 <div class="content-item" data-id="<%- result.list[i].id %>">
-    <% if (result.list[i].storageStatusValue == 1 && result.list[i].statusValue ==1 ) { %>
+    <% if ( result.list[i].statusValue ==1 ) { %>
 
-    <div class="content-item-btn btn4" style="padding: 10px 16px;right: 170px;" data-id="<%- result.list[i].id %>">
-        确认完成
-    </div>
+        <% if (result.list[i].storageStatusValue==0 || result.list[i].storageStatusValue==1) { %>
 
+        <div class="content-item-btn btn1" data-id="<%- result.list[i].id %>">
+            确认完成
+        </div>
+        <%} else if(result.list[i].storageStatusValue==11) { %>
+        <div class="content-item-btn btn5" data-id="<%- result.list[i].id %>">
+            生成工单
+        </div>
+        <%} else { %>
+        <div class="content-item-btn btn3" data-id="<%- result.list[i].id %>">
+            <%- result.list[i].storageStatus %>
+        </div>
 
-    <div class="content-item-btn btn1" style="padding: 10px 16px;" data-id="<%- result.list[i].id %>">
-        生成工单
-    </div>
-
+        <% } %>
 
     <% }else if(result.list[i].statusValue ==0){ %>
     <div class="content-item-btn btn2" data-id="<%- result.list[i].id %>">
