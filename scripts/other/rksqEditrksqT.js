@@ -25,7 +25,7 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
-            $('#teamName').html(res.data.teamName).attr('data-teamNameId',res.data.teamName);
+            $('#teamName').html(res.data.shiftWorkName).attr('data-shiftWorkId',res.data.teamName);
             $('#warehouseOrderNo').val(res.data.warehouseOrderNo);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rksq/sqdmxEditT.html', {list:res.data.list}, function(template) {

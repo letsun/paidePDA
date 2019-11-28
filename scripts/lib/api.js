@@ -1,7 +1,7 @@
 
 var dev = 'http://192.168.1.11:8899';          //闫世峰*/
 var test = "https://wms.ebiaoji.com";           //线上
-var ip = dev;
+var ip = test;
 
 var api = {
     rkgd: {
