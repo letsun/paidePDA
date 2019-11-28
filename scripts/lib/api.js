@@ -1,5 +1,5 @@
 
-var dev = 'http://192.168.1.11:8899';          //闫世峰*/
+var dev = 'http://192.168.1.11:8899';       //闫世峰*/
 var test = "https://wms.ebiaoji.com";           //线上
 var ip = dev;
 
@@ -15,6 +15,7 @@ var api = {
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
         editStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/editStorageFactoryApplyMain',     // 入库申请单编辑
         addApplyByForecasts: ip + '/api/pda/storageFactoryApplyMain/addApplyByForecasts',     // 新增入库申请多个预报
+        editApplyByForecasts: ip + '/api/pda/storageFactoryApplyMain/editApplyByForecasts',     // 编辑入库申请多个预报
     },
     rksqS: {
         findPageApi: ip + '/api/pda/storageWarehouseApplyMain/findPageApi',     // 入库申请单列表
