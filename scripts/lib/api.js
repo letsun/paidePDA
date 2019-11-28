@@ -1,10 +1,7 @@
-//var dev = 'http://192.168.1.11:8899';          //闫世峰*/
-var test = "https://wms.ebiaoji.com";           //线上
-//var dev = "http://yecl.lxcyhd.com";           //春玲姐
-//var dev  = "http://192.168.1.41:8899";
-var dev = 'http://192.168.1.77:8899';          //吴剑*/
 
-var ip = test;
+var dev = 'http://192.168.1.11:8899';          //闫世峰*/
+var test = "https://wms.ebiaoji.com";           //线上
+var ip = dev;
 
 var api = {
     rkgd: {
@@ -17,6 +14,7 @@ var api = {
         saveStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryApplyMain',     // 入库申请单保存
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
         editStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/editStorageFactoryApplyMain',     // 入库申请单编辑
+        addApplyByForecasts: ip + '/api/pda/storageFactoryApplyMain/addApplyByForecasts',     // 新增入库申请多个预报
     },
     rksqS: {
         findPageApi: ip + '/api/pda/storageWarehouseApplyMain/findPageApi',     // 入库申请单列表
@@ -90,8 +88,7 @@ var api = {
         getBillItemLi:ip + '/wap/driver/getBillItemLi', //获取单据Item列表
         getCode:ip + '/wap/gatekeeper/getCode', //获取二维码
         getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
-        findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次
-        
+        findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次      
     },
     ht: {
         findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表

@@ -58,7 +58,9 @@ $(function () {
             $('#storageType').html(res.data.storageType);
             $('#remarks').html(res.data.remarks);
 
-            $('#warehouseOrderNo').val(res.data.warehouseOrderNo)
+            $('#warehouseOrderNo').val(res.data.warehouseOrderNo);
+
+            $('.billingType').html(res.data.billingType);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/rkydEditSqdmxT.html', {
                     list: res.data.list,
@@ -89,7 +91,40 @@ $(function () {
         window.location.href = './rksqListaddForklift.html?type=ck&func=edit&id=' + id  + '&accountId=' + accountId;
     });
 
+	// 点击显示费率列表
+	$('#fl').on('click', function () {
+		$('.maskcon').hide();
+		$('.maskcon7').show();
+		$('.mask').show();
 
+		getData('GET', api.yq.findDict, {
+			parameter: 'billing_type',
+		}, function (res) {
+
+			if (res.code == 200) {
+				var html_fl = '';
+				var data = res.data;
+				for (var i in data) {
+					html_fl += '<div class="maskcon-item" data-value = "' + data[i].value + '"> ' + data[i].label + '</div>';
+				}
+
+				$('.maskcon7').html(html_fl)
+			}
+
+		})
+	});
+
+
+	// 选择费率
+	$('.maskcon7').on('click', '.maskcon-item', function (e) {
+		// $(this).addClass('after').siblings().removeClass('after');
+		var workType = $(this).html();
+		var workTypeText = $(this).html();
+		var value = $(this).attr('data-value');
+		$('#fl').html(workTypeText);
+		$('#fl').attr('data-value', value)
+    });
+    
     // 点击显示作业方式列表
     $('.forklift').on('click',function () {
         $('.maskcon').hide();
@@ -414,9 +449,8 @@ $(function () {
         var storageNo = $('#storageNo').html();
         var storageType = $('#storageType').html();
         var workType = $('#workType').attr('data-value');
-        
-
-        var warehouseOrderNo = $('#warehouseOrderNo').val()
+        var warehouseOrderNo = $('#warehouseOrderNo').val();
+        var billingType = $(('#fl')).attr('data-value');
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
@@ -436,6 +470,7 @@ $(function () {
 
         var applyId = $('.gd-list-item').attr('data-factoryApplyId')
         var data2 = {
+            billingType:billingType,
             warehouseOrderNo:warehouseOrderNo,
             id:id,
             applyNo: applyNo,

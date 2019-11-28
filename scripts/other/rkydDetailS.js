@@ -34,7 +34,9 @@ $(function () {
             $('#remarks').html(res.data.remarks);
             $('#warehouseOrderNo').html(res.data.warehouseOrderNo);
             $('#head-state').html(res.data.status);
+            $('#billingType').html(res.data.billingType);
 
+            
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/sqdmxS.html', { list: res.data.list }, function (template) {
                     $('#list').append(template);
