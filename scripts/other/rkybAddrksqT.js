@@ -29,7 +29,6 @@ $(function () {
 
 
     $('.maskcon4').on('click','.maskcon-item',function(){
-
         var teamNameId = $(this).attr('data-id');
         var teamName = $(this).html()
         $('#teamName').attr('data-teamNameId',teamNameId);
@@ -319,7 +318,7 @@ $(function () {
         var applyNo = $('#applyNo').html();
         var teamName = $('#teamName').attr('data-teamNameId');
         var remark = $('#remark').val();
-        var warehouseOrderNo = $('#warehouseOrderNo').val()
+        var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i, item) {
             var obj = {};
@@ -340,9 +339,6 @@ $(function () {
             teamName: teamName,
             storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
-
-
-        console.log(data2)
         // 提交数据
         getData('POST', api.rkybT.saveStorageFactoryApplyMain, {
             accountId: accountId,

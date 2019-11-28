@@ -33,7 +33,9 @@
                     </div>
                     <div class="gd-item">
                         <div class="gd-key">仓单编号</div>
-                        <input type="text" class="gd-val" id="warehouseOrderNo">
+                        <div class="gd-val">
+                            <input type="text" class="gd-input" id="warehouseOrderNo">
+                        </div>
                     </div>
 
                     <!--<div class="gd-item">
@@ -49,8 +51,10 @@
                 </div>-->
                     <div class="gd-item">
                         <div class="gd-key">工作班次</div>
-                        <input type="text" class="gd-val" id="teamName"
-                            data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}">
+                        <div class="gd-val">
+                            <div class="gd-input" id="teamName" style="height: 100%;" data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}"></div>
+                        </div>
+
                     </div>
 
                     <div class="last-gd-item">
@@ -63,82 +67,109 @@
 
                 </div>
 
-                <div class="gd-add">
+                <!--选择产品-->
+                <div class="showProd">
                     <img class="gd-add-img" src="../img/1_32.png">
                 </div>
 
-                <div class="gd-wra">
-                    <div class="gd-list gd-list-item" data-applicationId="0">
-                        <div class="gd-item showProd">
-                            <div class="gd-key">产品名称</div>
-                            <div class="gd-val productName" data-validateInfor="{strategy:isEmpty,msg:产品名称不能为空}"></div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">生产批次</div>
-                            <input type="text" class="gd-val produceBatch"
-                                data-validateInfor="{strategy:isEmpty,msg:生产批次不能为空}">
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">生产日期</div>
-                            <div class="gd-val produceTime" data-validateInfor="{strategy:isEmpty,msg:生产日期不能为空}"></div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">包装规格</div>
-                            <div class="gd-val specificationName"></div>
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">产品单位</div>
-                            <div class="gd-val unit"></div>
-                        </div>
-                        <div class="gd-item showProductLevel">
-                            <div class="gd-key">产品等级</div>
-                            <div class="gd-val productLevel" data-validateInfor="{strategy:isEmpty,msg:产品等级不能为空}"></div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-                        <div class="gd-item showZhaji">
-                            <div class="gd-key">产品榨季</div>
-                            <div class="gd-val zhaji" data-validateInfor="{strategy:isEmpty,msg:产品榨季不能为空}"></div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">产品大类</div>
-                            <div class="gd-val productType"></div>
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">产品品牌</div>
-                            <div class="gd-val productBrand"></div>
-                        </div>
-                        <div class="gd-item">
-                            <div class="gd-key">申请库存(吨)</div>
-                            <input type="text" class="gd-val applyWeight"
-                                data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">
-                        </div>
-                        <!-- <div class="gd-item">
-                        <div class="gd-key">质检信息</div>
-                        <input type="text" class="gd-val">
-                    </div> -->
-                        <div class="gd-item showPark">
-                            <div class="gd-key">所属园区</div>
-                            <div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-                        <div class="gd-item showStoreroom">
-                            <div class="gd-key">所属库房</div>
-                            <div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}">
-                            </div>
+                <div class="yb-wrapper">
 
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
+                    <!--<div class="ybproduct-item">-->
+                        <!--&lt;!&ndash;申请明细&ndash;&gt;-->
+                        <!--<div class="yd-list">-->
+                            <!--<div class="yd-item">-->
+                                <!--<div class="yd-con">-->
+                                    <!--<div class="yd-child-item">-->
+                                        <!--<div class="yd-child-dec">-->
+                                            <!--<div class="yd-child-key">产品名称：</div>-->
+                                            <!--<div class="yd-child-val productName"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="yd-child-item double-find">-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">预报数量：</div>-->
+                                            <!--<div class="yd-child-val totalQuantity"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">预报重量(吨)：</div>-->
+                                            <!--<div class="yd-child-val totalWeight"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="yd-child-item">-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">生产批次：</div>-->
+                                            <!--<div class="yd-child-val produceBatchNo"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">生产日期：</div>-->
+                                            <!--<div class="yd-child-val produceTime"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="yd-child-item">-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">包装规格：</div>-->
+                                            <!--<div class="yd-child-val specification"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">产品单位：</div>-->
+                                            <!--<div class="yd-child-val unit"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="yd-child-item">-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">产品等级：</div>-->
+                                            <!--<div class="yd-child-val productLevel"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">产品榨季：</div>-->
+                                            <!--<div class="yd-child-val zhaji"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="yd-child-item">-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">产品大类：</div>-->
+                                            <!--<div class="yd-child-val productType"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="yd-child-dec double-find">-->
+                                            <!--<div class="yd-child-key">产品品牌：</div>-->
+                                            <!--<div class="yd-child-val productBrand"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                        <div class="gd-item showReservoirArea">
-                            <div class="gd-key">所属库区</div>
-                            <div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}">
-                            </div>
-                            <img class="gd-img" src="../img/1_34.png">
-                        </div>
-                    </div>
+                        <!--</div>-->
+
+                        <!--&lt;!&ndash;添加库区&ndash;&gt;-->
+                        <!--<div class="gd-add">-->
+                            <!--<img class="gd-add-img" src="../img/1_32.png">-->
+                        <!--</div>-->
+
+                        <!--<div class="gd-wra">-->
+                            <!--<div class="gd-list gd-list-item" data-applicationId="0">-->
+                                <!--<div class="gd-item showPark">-->
+                                    <!--<div class="gd-key">所属园区</div>-->
+                                    <!--<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>-->
+                                    <!--<img class="gd-img" src="../img/1_34.png">-->
+                                <!--</div>-->
+                                <!--<div class="gd-item showStoreroom">-->
+                                    <!--<div class="gd-key">所属库房</div>-->
+                                    <!--<div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}">-->
+                                    <!--</div>-->
+
+                                    <!--<img class="gd-img" src="../img/1_34.png">-->
+                                <!--</div>-->
+
+                                <!--<div class="gd-item showReservoirArea">-->
+                                    <!--<div class="gd-key">所属库区</div>-->
+                                    <!--<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}">-->
+                                    <!--</div>-->
+                                    <!--<img class="gd-img" src="../img/1_34.png">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
                 </div>
 
             </div>
@@ -163,6 +194,8 @@
             <div class="maskcon maskcon3">
 
             </div>
+
+            <div class="maskcon maskcon4"></div>
 
             <!-- 产品等级 -->
             <div class="maskcon maskcon5">

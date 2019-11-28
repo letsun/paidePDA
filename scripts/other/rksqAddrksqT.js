@@ -1,9 +1,13 @@
 $(function () {
     setDateControl('.produceTime');
 
+    var productList = [];
+
+    var productIdList = [];
+
     var applicationId = 0;
 
-    var storageFactoryApplyItemList = [];
+    var storageFactoryForecastList = [];
 
     var allWarehouseArea = [];      // 已选库区
 
@@ -210,84 +214,6 @@ $(function () {
     });
 
 
-    // 点击显示产品等级
-    $('.container').on('click','.showProductLevel',function () {
-        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        // 获取产品等级列表
-        getData('GET',api.sp.findList2,{
-            accountId: accountId,
-        },function (res) {
-            if (res.code == 200) {
-                var list = res.data;
-                var html_5 = '';
-                for (var i = 0; i < list.length; i++) {
-                    html_5 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
-                }
-
-                $('.maskcon5').html(html_5);
-                $('.maskcon').hide();
-                $('.maskcon5').show();
-                $('.mask').show();
-            }
-        });
-    });
-
-    // 选择产品等级
-    $('.maskcon5').on('click','.maskcon-item',function () {
-        var productLevel = $(this).html();
-        var productLevelId = $(this).attr('data-id');
-        $('.gd-list-item').each(function (i,item) {
-            var itemId = $(item).attr('data-applicationId');
-            if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.productLevel').html(productLevel).attr('data-id',productLevelId);
-                $('.maskcon').hide();
-                $('.mask').hide();
-                return;
-            }
-        });
-
-    });
-
-
-    // 点击显示产品榨季
-    $('.container').on('click','.showZhaji',function () {
-        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        // 获取产品等级列表
-        getData('GET',api.sp.findList,{
-            accountId: accountId,
-        },function (res) {
-            if (res.code == 200) {
-                var list = res.data;
-                var html_6 = '';
-                for (var i = 0; i < list.length; i++) {
-                    html_6 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
-                }
-
-                $('.maskcon6').html(html_6);
-                $('.maskcon').hide();
-                $('.maskcon6').show();
-                $('.mask').show();
-            }
-        });
-    });
-
-    // 选择产品榨季
-    $('.maskcon6').on('click','.maskcon-item',function () {
-        var zhaji = $(this).html();
-        var zhajiId = $(this).attr('data-id');
-        $('.gd-list-item').each(function (i,item) {
-            var itemId = $(item).attr('data-applicationId');
-            if (applicationId == itemId) {
-                $('.gd-list-item').eq(i).find('.zhaji').html(zhaji).attr('data-id',zhajiId);
-                $('.maskcon').hide();
-                $('.mask').hide();
-                return;
-            }
-        });
-
-    });
-
-
     // 点击关闭弹窗
     $('.mask').on('click',function () {
         $('.maskcon').hide();
@@ -295,52 +221,11 @@ $(function () {
     });
 
     // 添加申请记录
-    $('.container').on('click','.gd-add-img',function () {
+    $('.container').on('click','.gd-add',function () {
         var html = '';
         applicationId ++;
-        
         html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
         html += '<img class="gd-minus" src="../img/1_31.png">';
-        html += '<div class="gd-item showProd">';
-        html += '<div class="gd-key">产品名称</div>';
-        html += '<div class="gd-val productName" data-validateInfor="{strategy:isEmpty,msg:产品名称不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png">';
-        html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">生产批次</div>';
-        html += '<input type="text" class="gd-val produceBatch" data-validateInfor="{strategy:isEmpty,msg:生产批次不能为空}">';
-        html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">生产日期</div>';
-        html += '<div class="gd-val produceTime" data-validateInfor="{strategy:isEmpty,msg:生产日期不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png">';
-        html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">包装规格</div>';
-        html += '<div class="gd-val specificationName"></div>';
-        html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">产品单位</div>';
-        html += '<div class="gd-val unit"></div>';
-        html += '</div>';
-        html += '<div class="gd-item showProductLevel">';
-        html += '<div class="gd-key">产品等级</div>';
-        html += '<div class="gd-val productLevel" data-validateInfor="{strategy:isEmpty,msg:产品等级不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png">';
-        html += '</div>';
-        html += '<div class="gd-item showZhaji">';
-        html += '<div class="gd-key">产品榨季</div>';
-        html += '<div class="gd-val zhaji" data-validateInfor="{strategy:isEmpty,msg:产品榨季不能为空}"></div>';
-        html += '<img class="gd-img" src="../img/1_34.png">';
-        html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">产品大类</div>';
-        html += '<div class="gd-val productType"></div>';
-        html += '</div>';
-        html += '<div class="gd-item">';
-        html += '<div class="gd-key">产品品牌</div>';
-        html += '<div class="gd-val productBrand"></div>';
-        html += '</div>';
         html += '<div class="gd-item">';
         html += '<div class="gd-key">申请库存(吨)</div>';
         html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">';
@@ -362,8 +247,7 @@ $(function () {
         html += '<img class="gd-img" src="../img/1_34.png">';
         html += '</div>';
         html += '</div>';
-
-        $('.gd-wra').append(html);
+        $(this).siblings('.gd-wra').append(html);
     });
 
 
@@ -381,76 +265,104 @@ $(function () {
         $(this).parents('.gd-list-item').remove();
     });
 
+    // 获取工作班次
+    $('#teamName').on('click', function () {
+        getData('GET', api.yq.findShiftWorkList, {
+            accountId: accountId,
+        }, function (res) {
+            if (res.code == 200) {
+
+                var html_4 = '';
+                for (var i = 0; i < res.data.shiftWorkList.length; i++) {
+                    html_4 += '<div class="maskcon-item" data-id="' + res.data.shiftWorkList[i].id + '">' + res.data.shiftWorkList[i].name + '</div>';
+                }
+                $('.maskcon4').html(html_4);
+
+                $('.maskcon4').show();
+                $('.mask').show();
+            }
+        });
+    })
+
+
+    $('.maskcon4').on('click','.maskcon-item',function(){
+        var teamNameId = $(this).attr('data-id');
+        var teamName = $(this).html();
+        $('#teamName').attr('data-teamNameId',teamNameId);
+        $('#teamName').html(teamName)
+    })
+
 
     // 点击保存
     $('#saveBtn').on('click',function () {
-        
-        
         var flag = Global.initValidate('.container');
         if (!flag) {
             return;
         }
 
         var applyNo = $('#applyNo').html();
-        var images = '';
-        var remarks = $('#remarks').val();
-        var teamName = $('#teamName').val();
+        var teamName = $('#teamName').attr('data-teamNameId');
+        var remark = $('#remark').val();
         var warehouseOrderNo = $('#warehouseOrderNo').val();
 
         $('.gd-list-item').each(function (i,item) {
             var obj = {};
             obj.applyWeight = $(item).find('.applyWeight').val();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatch = {};
-            obj.produceBatch.produceBatchNo = $(item).find('.produceBatch').val();
-            obj.produceBatch.productLevel = {};
-            obj.produceBatch.productLevel.id = $(item).find('.productLevel').attr('data-id');
-            obj.produceBatch.productLevel.name = $(item).find('.productLevel').html();
-            obj.produceBatch.zhaji = $(item).find('.zhaji').html();
-            obj.produceBatch.zhajiId = $(item).find('.zhaji').attr('data-id');
-            obj.produceTime = $(item).find('.produceTime').html();
-            obj.productId = $(item).find('.productName').attr('data-id');
-            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
+            obj.factoryForecastId = $(item).parents('.gd-wra').siblings('.yd-list').attr('data-id');
+            // obj.productId = $(item).parents('.gd-wra').siblings('.yd-list').find('.productName').attr('data-productId');
+            // obj.produceBatchId = $(item).parents('.gd-wra').siblings('.yd-list').find('#produceBatchNo').attr('data-produceBatchId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
-            storageFactoryApplyItemList.push(obj);
+            obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
+            storageFactoryForecastList.push(obj);
         });
 
         var data2 = {
-            warehouseOrderNo:warehouseOrderNo,
+            accountId: accountId,
+            warehouseOrderNo: warehouseOrderNo,
             applyNo: applyNo,
-            images: images,
-            remarks: remarks,
+            remarks: remark,
             teamName: teamName,
-            storageFactoryApplyItemList: storageFactoryApplyItemList,
+            storageFactoryForecastList: storageFactoryForecastList,
         };
 
         console.log(data2);
-        $('#loadingWrapper').show()
-        // 提交数据
-        getData('POST',api.rksqT.saveStorageFactoryApplyMain,{
-            accountId: accountId,
-            jsonData: JSON.stringify(data2),
-        },function (res) {
 
-            if (res.code == 200) { 
-                $('#loadingWrapper').hide()
+        $.ajax({
+            type: 'POST',
+            url: api.rksqT.addApplyByForecasts,
+            data: JSON.stringify(data2),
+            dataType: "json",
+            contentType:'application/json;charset=UTF-8',
+            header: {
+                Authorization: '1111',
+            },
+            success: function(res) {
+                if (res.code == 200) {
+                    $('#loadingWrapper').hide();
+                    common.alert({
+                        mask: true,
+                        content: '提交成功',
+                        ok:function () {
+                            window.location.href ="./rksqListT.html?accountId="+accountId;
+                        }
+                    })
+                } else {
+                    $('#loadingWrapper').hide();
+                    common.alert({
+                        mask: true,
+                        content: res.msg,
+                    })
+                }
+            },
+            error: function(res) {
                 common.alert({
                     mask: true,
-                    content: '提交成功',
-                    ok:function () {
-                        // location.reload();
-                        window.location.href ="./rksqListT.html?accountId="+accountId;
-                    }
-                })
-            } else {
-                $('#loadingWrapper').hide()
-                common.alert({
-                    mask: true,
-                    content: res.msg,
+                    content: res.msg
                 })
             }
         });
-    })
+    });
 
 
     var scrollWra = new BScroll('#scrollWra', {
@@ -477,6 +389,7 @@ $(function () {
             if (res.data.list.length > 0) {
                 totalPage = res.data.totalPage;
                 var data = res.data.list;
+                productList = productList.concat(data);
                 renderData(data);
             } else {
                 $('.loadText').text('暂无数据');
@@ -501,6 +414,7 @@ $(function () {
                 if (res.data.list.length > 0) {
                     totalPage = res.data.totalPage;
                     var data = res.data.list;
+                    productList = productList.concat(data);
                     renderData(data);
                 } else {
                     $('.loadText').text('暂无数据');
@@ -513,7 +427,7 @@ $(function () {
 
     function renderData(data) {
         $('.loadText').text('正在加载中...');
-        Global.requestTempByAjax('../temp/rksq/spList.html', {
+        Global.requestTempByAjax('../temp/rkyb/rkybT/list.html', {
             list: data,
         }, function (template) {
             $('#list').append(template);
@@ -529,7 +443,7 @@ $(function () {
         page = 1;
         $('#list').html('');
         productName = $('#productName').val();
-        getData('GET', api.sp.findPageApi, {
+        getData('GET', api.rkybT.findPageApi, {
             accountId: accountId,
             pageNo: page,
             pageSize: 10,
@@ -549,8 +463,10 @@ $(function () {
 
     // 点击显示商品弹窗
     $('.container').on('click','.showProd',function () {
-        applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
-        $('#product-win').fadeIn();
+        /*applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');*/
+        $('#product-win').fadeIn(function () {
+            scrollWra.refresh();
+        });
     });
     
     
@@ -558,31 +474,145 @@ $(function () {
     $('#product-win').on('click',function () {
         $(this).fadeOut();
     });
-    
-    
+
     // 点击选择商品
     $('#list').on('click','.content-item',function () {
-        var productId = $(this).attr('data-id');
-        if (productId != 'null') {
-            getData('GET',api.sp.findById,{
-                id: productId,
-            },function (res) {
-                if (res.code == 200) {
-                    var data = res.data.list[0];
-                    $('.gd-list-item').each(function (i,item) {
-                        var itemId = $(item).attr('data-applicationId');
-                        if (applicationId == itemId) {
-                            $(item).find('.productName').html(data.productName).attr('data-id',data.id);
-                            $(item).find('.specificationName').html(data.specificationName);
-                            $(item).find('.unit').html(data.unit);
-                            $(item).find('.productType').html(data.productType);
-                            $(item).find('.productBrand').html(data.productBrand);
-                            $('#product-win').fadeOut();
-                        }
+        var id = $(this).attr('data-id');
+        if (productIdList.length > 0) {
+            for (var i = 0; i < productIdList.length; i++) {
+                if (id == productIdList[i]) {
+                    common.alert({
+                        mask: true,
+                        content: '该预报已添加'
                     });
-
+                    return false;
                 }
-            });
+            }
         }
+
+        productIdList.push(id);
+
+        var html = '';
+        html += '<div class="ybproduct-item">';
+
+        // 获取产品信息
+        getData('GET', api.rkybT.findDetailById, {
+            id: id,
+            accountId: accountId
+        }, function (res) {
+            if (res.code == 200) {
+                var data = res.data;
+                // $('#produceBatchNo').html(res.data.produceBatchNo).attr('data-produceBatchId', res.data.produceBatchId);
+                // $('#produceTime').html(res.data.produceTime);
+                // $('#productBrand').html(res.data.productBrand);
+                // $('#productLevel').html(res.data.productLevel);
+                // $('#productName').html(res.data.productName).attr('data-productId', res.data.productId);
+                // $('#productType').html(res.data.productType);
+                // $('#specification').html(res.data.specification);
+                // $('#totalQuantity').html(res.data.totalQuantity);
+                // $('#totalWeight').html(res.data.totalWeight);
+                // $('#unit').html(res.data.unit);
+                // $('#zhaji').html(res.data.zhaji);
+                // $('#checkStatus').html(res.data.checkStatus);
+
+                html += '<div class="yd-list" data-id="' + id + '">';
+                html += '<div class="yd-item">';
+                html += '<div class="yd-con">';
+                html += '<div class="yd-child-item">';
+                html += '<div class="yd-child-dec">';
+                html += '<div class="yd-child-key">产品名称：</div>';
+                html += '<div class="yd-child-val productName" data-productId="' + res.data.productId + '">' + res.data.productName + '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-item double-find">';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">预报数量：</div>';
+                html += '<div class="yd-child-val totalQuantity">' + res.data.totalQuantity + '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">预报重量(吨)：</div>';
+                html += '<div class="yd-child-val totalWeight">' + res.data.totalWeight + '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-item">';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">生产批次：</div>';
+                html += '<div class="yd-child-val produceBatchNo" data-produceBatchId="' + res.data.produceBatchId + '">' + res.data.produceBatchNo + '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">生产日期：</div>';
+                html += '<div class="yd-child-val produceTime">' + res.data.produceTime + '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-item">';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">包装规格：</div>';
+                html += '<div class="yd-child-val specification">' + res.data.specification + '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">产品单位：</div>';
+                html += '<div class="yd-child-val unit">' + res.data.unit + '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-item">';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">产品等级：</div>';
+                html += '<div class="yd-child-val productLevel">' + res.data.productLevel + '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">产品榨季：</div>';
+                html += '<div class="yd-child-val zhaji">' + res.data.zhaji + '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-item">';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">产品大类：</div>';
+                html += '<div class="yd-child-val productType">' + res.data.productType + '</div>';
+                html += '</div>';
+                html += '<div class="yd-child-dec double-find">';
+                html += '<div class="yd-child-key">产品品牌：</div>';
+                html += '<div class="yd-child-val productBrand">' + res.data.productBrand + '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+
+                html += '<div class="gd-add">';
+                html += '<img class="gd-add-img" src="../img/1_33.png">';
+                html += '</div>';
+                html += '<div class="gd-wra">';
+
+                html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
+                html += '<img class="gd-minus" src="../img/1_31.png">';
+                html += '<div class="gd-item">';
+                html += '<div class="gd-key">申请库存(吨)</div>';
+                html += '<input type="text" class="gd-val applyWeight" data-validateInfor="{strategy:isEmpty,msg:申请库存不能为空}|{strategy:isNumber,msg:申请库存需为数字}">';
+                html += '</div>';
+
+                html += '<div class="gd-item showPark">';
+                html += '<div class="gd-key">所属园区</div>';
+                html += '<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>';
+                html += '<img class="gd-img" src="../img/1_34.png">';
+                html += '</div>';
+                html += '<div class="gd-item showStoreroom">';
+                html += '<div class="gd-key">所属库房</div>';
+                html += '<div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>';
+                html += '<img class="gd-img" src="../img/1_34.png">';
+                html += '</div>';
+                html += '<div class="gd-item showReservoirArea">';
+                html += '<div class="gd-key">所属库区</div>';
+                html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>';
+                html += '<img class="gd-img" src="../img/1_34.png">';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+
+                $('.yb-wrapper').append(html);
+                applicationId ++;
+            }
+        });
+
     })
 });

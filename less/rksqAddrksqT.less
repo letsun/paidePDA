@@ -49,7 +49,7 @@ body {
 					font-size: 26px;
 
 					border: 1px solid #ccc;
-					//border-bottom: none;
+					border-bottom: none;
 
 					.gd-key {
 						width: 170px;
@@ -68,10 +68,14 @@ body {
 						margin: 0 20px;
 
 						color: #333;
-						background: #fff;
 
 						word-break: break-all;
 						font-size: 24px;
+
+						.gd-input {
+							color: #333;
+							font-size: 24px;
+						}
 					}
 
 					.gd-img {
@@ -274,18 +278,32 @@ body {
 			}
 		}
 
+		.showProd {
+			margin-top: 25px;
+
+			.gd-add-img {
+				display: block;
+				margin:  auto 20px auto auto;
+				width: 110px;
+			}
+		}
+
 		.gd-add {
 			margin-top: 25px;
 
 			.gd-add-img {
 				display: block;
 				margin:  auto 20px auto auto;
-				height: 60px;
+				width: 150px;
 			}
 		}
 
 
 
+	}
+
+	.content-item-btn1 {
+		display: none;
 	}
 
 	.preview-win {
@@ -457,7 +475,7 @@ body {
 							position: absolute;
 							top: 20px;
 							right: 30px;              
-							display: inline-block;               
+							display: none;
 							font-size: 24px;
 							padding: 10px 30px 10px 30px; 
 							border-radius: 30px;
