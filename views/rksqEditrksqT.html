@@ -7,91 +7,126 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rksqEditrksqT.css">
-
     <link rel="stylesheet" href="../scripts/plugins/iosSelect/iosSelect.css">
+    <link rel="stylesheet" href="../css/rksqEditrksqT.css">
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="header">
-            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
-            编辑入库申请
-        </div>
+    <div class="header">
+        <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+        编辑入库申请
+    </div>
 
-        <div class="content">
+    <div class="content">
 
-            <!--工单信息-->
-            <div class="gd-infor">
-                <div class="gd-list">
-                    <div class="gd-item">
-                        <div class="gd-key">仓单编号</div>
-                        <input type="text" class="gd-val" id="warehouseOrderNo">
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">申请单号</div>
-                        <div class="gd-val" id="applyNo"></div>
-                    </div>
-                    <div class="gd-item">
-                        <div class="gd-key">工作班次</div>
+        <!--工单信息-->
+        <div class="gd-infor">
+            <div class="gd-list">
+                <div class="gd-item">
+                    <div class="gd-key">申请单号</div>
 
-                        <div class="gd-val" id="teamName" ></div>
-                    </div>
-
-                    <div class="last-gd-item">
-                        <div class="gd-left">备注：</div>
-                        <div class="gd-right">
-                            <textarea id="remarks"></textarea>
-                        </div>
-                    </div>
-
+                    <div class="gd-val" id="applyNo"></div>
 
                 </div>
+                <div class="gd-item">
+                    <div class="gd-key">仓单编号</div>
+                    <div class="gd-val">
+                        <input type="text" class="gd-input" id="warehouseOrderNo">
+                    </div>
+                </div>
+                <div class="gd-item">
+                    <div class="gd-key">工作班次</div>
+                    <div class="gd-val">
+                        <div class="gd-input" id="teamName" style="height: 100%;" data-validateInfor="{strategy:isEmpty,msg:工作班次不能为空}"></div>
+                    </div>
+
+                </div>
+
+                <div class="last-gd-item">
+                    <div class="gd-left">备注：</div>
+                    <div class="gd-right">
+                        <textarea id="remarks"></textarea>
+                    </div>
+                </div>
+
+
             </div>
 
+            <!--选择产品-->
+            <div class="showProd">
+                <img class="gd-add-img" src="../img/1_32.png">
+            </div>
 
-            <!--申请明细-->
-            <div class="yd-list" id="list"></div>
-
-            <div class="gd-btn" id="saveBtn">保存</div>
+            <div class="yb-wrapper"></div>
 
         </div>
 
-        <!--大图-->
-        <div class="preview-win" id="preview-win">
-            <img src="../img/1_100.png" alt="">
-        </div>
-
-        <div class="mask">
-
-            <div class="maskcon maskcon1">
-
-            </div>
-            <div class="maskcon maskcon2">
-
-            </div>
-
-            <div class="maskcon maskcon3">
-
-            </div>
-
-
-            <div class="maskcon maskcon4"></div>
-        </div>
-
+        <div class="gd-btn" id="saveBtn">保存</div>
     </div>
-    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
-    <script src="../scripts/lib/ejs.min.js"></script>
-    <script src="../scripts/lib/commonFunc.js"></script>
-    <script src="../scripts/lib/common.js"></script>
-    <script src="../scripts/lib/validate.js"></script>
-    <script src="../scripts/lib/api.js"></script>
-    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
-    <script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
-    <script src="../scripts/plugins/iosSelect/date.js"></script>
-    <script src="../scripts/other/rksqEditrksqT.js"></script>
+
+    <!--大图-->
+    <div class="preview-win" id="preview-win">
+        <img src="../img/1_100.png" alt="">
+    </div>
+
+    <div class="mask">
+
+        <div class="maskcon maskcon1">
+
+        </div>
+        <div class="maskcon maskcon2">
+
+        </div>
+
+        <div class="maskcon maskcon3">
+
+        </div>
+
+        <div class="maskcon maskcon4"></div>
+
+        <!-- 产品等级 -->
+        <div class="maskcon maskcon5">
+            <div class="maskcon-item"></div>
+        </div>
+
+        <!-- 产品榨季 -->
+        <div class="maskcon maskcon6"></div>
+    </div>
+
+
+    <!--商品列表-->
+    <div class="product-win" id="product-win">
+        <div class="product-con">
+            <div class="search">
+                <input type="text" placeholder="输入产品名称搜索" id="productName"> <label id="scarchBtn">搜索</label>
+
+                <img src="../img/1_28.png">
+            </div>
+
+            <div class="scroll-wra" id="scrollWra">
+                <div class="wrapper">
+                    <div class="list" id="list"></div>
+
+                    <div class="loadText">上滑加载更多</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+<script src="../scripts/lib/ejs.min.js"></script>
+<script src="../scripts/lib/commonFunc.js"></script>
+<script src="../scripts/lib/common.js"></script>
+<script src="../scripts/lib/validate.js"></script>
+<script src="../scripts/lib/api.js"></script>
+<script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+<script src="../scripts/plugins/iosSelect/iosSelect.js"></script>
+<script src="../scripts/plugins/iosSelect/date.js"></script>
+<script src="../scripts/other/rksqEditrksqT.js"></script>
 </body>
 
 </html>

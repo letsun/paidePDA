@@ -352,7 +352,10 @@ body {
 .container .content .gd-add .gd-add-img {
   display: block;
   margin: auto 20px auto auto;
-  width: 110px;
+  width: 150px;
+}
+.container .content-item-btn1 {
+  display: none;
 }
 .container .preview-win {
   position: fixed;

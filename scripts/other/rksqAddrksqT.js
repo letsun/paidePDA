@@ -318,6 +318,7 @@ $(function () {
         });
 
         var data2 = {
+            accountId: accountId,
             warehouseOrderNo: warehouseOrderNo,
             applyNo: applyNo,
             remarks: remark,
@@ -326,31 +327,42 @@ $(function () {
         };
 
         console.log(data2);
-        // $('#loadingWrapper').show();
-        // 提交数据
-        getData('POST',api.rksqT.addApplyByForecasts,{
-            accountId: accountId,
-            jsonData: JSON.stringify(data2),
-        },function (res) {
-            if (res.code == 200) { 
-                $('#loadingWrapper').hide();
+
+        $.ajax({
+            type: 'POST',
+            url: api.rksqT.addApplyByForecasts,
+            data: JSON.stringify(data2),
+            dataType: "json",
+            contentType:'application/json;charset=UTF-8',
+            header: {
+                Authorization: '1111',
+            },
+            success: function(res) {
+                if (res.code == 200) {
+                    $('#loadingWrapper').hide();
+                    common.alert({
+                        mask: true,
+                        content: '提交成功',
+                        ok:function () {
+                            window.location.href ="./rksqListT.html?accountId="+accountId;
+                        }
+                    })
+                } else {
+                    $('#loadingWrapper').hide();
+                    common.alert({
+                        mask: true,
+                        content: res.msg,
+                    })
+                }
+            },
+            error: function(res) {
                 common.alert({
                     mask: true,
-                    content: '提交成功',
-                    ok:function () {
-                        // location.reload();
-                        window.location.href ="./rksqListT.html?accountId="+accountId;
-                    }
-                })
-            } else {
-                $('#loadingWrapper').hide()
-                common.alert({
-                    mask: true,
-                    content: res.msg,
+                    content: res.msg
                 })
             }
         });
-    })
+    });
 
 
     var scrollWra = new BScroll('#scrollWra', {
@@ -567,7 +579,7 @@ $(function () {
                 html += '</div>';
 
                 html += '<div class="gd-add">';
-                html += '<img class="gd-add-img" src="../img/1_32.png">';
+                html += '<img class="gd-add-img" src="../img/1_33.png">';
                 html += '</div>';
                 html += '<div class="gd-wra">';
 
