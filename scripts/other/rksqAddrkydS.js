@@ -461,7 +461,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rksqListS.html?accountId="+accountId;
+                        window.location.href ="./rkydListS.html?accountId="+accountId;
                     }
                 })
             } else {
