@@ -54,7 +54,7 @@ $(function () {
 
 			if (res.data.outTypeValue == 1) {
 				$('.yc').hide()
-			}else{
+			} else {
 				$('.yc').show()
 			}
 
@@ -79,10 +79,42 @@ $(function () {
 
 	// 跳转到选择队伍页面
 	$('#goTeam').on('click', function () {
-		window.location.href = './cksqListaddForklift.html?func=add&id=' + applyNo + '&accountId=' + accountId ;
+		window.location.href = './cksqListaddForklift.html?func=add&id=' + applyNo + '&accountId=' + accountId;
+	});
+
+	// 点击显示费率列表
+	$('#fl').on('click', function () {
+		$('.maskcon').hide();
+		$('.maskcon6').show();
+		$('.mask').show();
+
+		getData('GET', api.yq.findDict, {
+			parameter: 'billing_type',
+		}, function (res) {
+
+			if (res.code == 200) {
+				var html_fl = '';
+				var data = res.data;
+				for (var i in data) {
+					html_fl += '<div class="maskcon-item" data-value = "' + data[i].value + '"> ' + data[i].label + '</div>';
+				}
+
+				$('.maskcon6').html(html_fl)
+			}
+
+		})
 	});
 
 
+	// 选择费率
+	$('.maskcon6').on('click', '.maskcon-item', function (e) {
+		// $(this).addClass('after').siblings().removeClass('after');
+		var workType = $(this).html();
+		var workTypeText = $(this).html();
+		var value = $(this).attr('data-value');
+		$('#fl').html(workTypeText);
+		$('#fl').attr('data-value', value)
+	});
 
 
 
@@ -372,12 +404,13 @@ $(function () {
 		}
 
 		// var applyNo = $('#applyNo').html();
-		
+
 		var outWaybillNo = $('#outWaybillNo').html();
 		var remarks = $('#remarks').val();
 		var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
 		var workType = $('#workType').attr('data-value');
-
+		var billingType = $(('#fl')).attr('data-value');
+		console.log(billing_type)
 
 		var outType = $('#outType').attr('data-outtypevalue')
 		var shippingAddress = $('#shippingAddress').val()
@@ -394,6 +427,7 @@ $(function () {
 		});
 
 		var data2 = {
+			billingType:billingType,
 			accountId: accountId,
 			id: applyNo,
 			outWaybillNo: outWaybillNo,
@@ -401,7 +435,7 @@ $(function () {
 			serviceTeamId: serviceTeamId,
 			workType: workType,
 			shippingAddress: shippingAddress,
-			outType:outType,
+			outType: outType,
 			outWaybillItemList: outWaybillItemList,
 		};
 

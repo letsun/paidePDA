@@ -78,6 +78,11 @@
                         <div class="gd-key">出库类型</div>
                         <div class="gd-val outTpye"></div>
                     </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">费率类型</div>
+                        <div class="gd-val" id="billingType" ></div>
+                    </div>
                     <div class="gd-item">
                         <div class="gd-key">调拨集团</div>
                         <div class="gd-val transferGroup"></div>
@@ -184,6 +189,7 @@
                 $(".tmsShippingMethod").html(data.tmsShippingMethod);
                 $(".shippingAddress").html(data.shippingAddress);
                 $(".remarks").html(data.remarks);
+                $('#billingType').html(res.data.billingType);
                 //$(".images").attr("src",'https://up.enterdesk.com/edpic/32/bf/a1/32bfa1860568ba99f575f2b0c66cf7ae.jpg');
 
                 $('#head-state').html(data.status);
