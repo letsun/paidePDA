@@ -5,7 +5,7 @@ var test = "https://wms.ebiaoji.com";           //线上
 //var dev  = "http://192.168.1.41:8899";
 // var dev = 'http://192.168.1.77:8899';          //吴剑*/
 
-var ip = test;
+var ip = dev;
 
 var api = {
     rkgd: {
