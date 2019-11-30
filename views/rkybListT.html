@@ -76,6 +76,11 @@
                 } else {
                     $('.loadText').text('暂无数据');
                 }
+            } else {
+                common.alert({
+                    mask: true,
+                    content: res.msg
+                })
             }
         });
 
@@ -100,6 +105,11 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
+                } else {
+                    common.alert({
+                        mask: true,
+                        content: res.msg
+                    })
                 }
             });
 
@@ -139,6 +149,11 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
+                } else {
+                    common.alert({
+                        mask: true,
+                        content: res.msg
+                    })
                 }
             });
         });
@@ -153,7 +168,7 @@
             var that = this;
             var id = $(that).parent().attr('data-id');
 
-            
+
             common.alert({
                 mask: true,
                 title: '提示',

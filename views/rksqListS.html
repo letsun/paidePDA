@@ -81,6 +81,11 @@
                 } else {
                     $('.loadText').text('暂无数据');
                 }
+            } else {
+                common.alert({
+                    mask: 'true',
+                    content: res.msg
+                })
             }
         });
 
@@ -105,6 +110,11 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
+                } else {
+                    common.alert({
+                        mask: 'true',
+                        content: res.msg
+                    })
                 }
             });
 
@@ -142,6 +152,11 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
+                } else {
+                    common.alert({
+                        mask: 'true',
+                        content: res.msg
+                    })
                 }
             })
 

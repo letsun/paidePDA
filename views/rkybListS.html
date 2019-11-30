@@ -80,6 +80,11 @@
                 } else {
                     $('.loadText').text('暂无数据');
                 }
+            } else {
+                common.alert({
+                    mask: true,
+                    content: res.msg
+                })
             }
         });
 
@@ -104,6 +109,11 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
+                } else {
+                    common.alert({
+                        mask: true,
+                        content: res.msg
+                    })
                 }
             });
 
@@ -144,6 +154,11 @@
                     } else {
                         $('.loadText').text('暂无数据');
                     }
+                } else {
+                    common.alert({
+                        mask: true,
+                        content: res.msg
+                    })
                 }
             });
         });
@@ -175,7 +190,7 @@
                         accountId: accountId,
                         id: id,
                     }, function (res) {
-                        
+
                         if (res.code == 200) {
                             $(that).siblings('.content-item-btn').removeClass('btn1').addClass('btn3').text('已结束');
                             $(that).remove('.content-item-btn1');
