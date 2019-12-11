@@ -463,7 +463,7 @@ $(function () {
                     content: '提交成功',
                     ok:function () {
                         // location.reload();
-                        window.location.href ="./rksqListT.html?accountId="+accountId;
+                        window.location.href ="./rkydListT.html?accountId="+accountId;
                     }
                 })
             } else {

@@ -31,7 +31,7 @@ $(function () {
 			var data = res.data;
 			$('#applyNo').html(res.data.applyNo);
 			$('#rentalEndTime').html(res.data.rentalEndTime);
-			$('#contractId').html(res.data.contractId);
+			$('#contractId').html(res.data.contractNo);
 			$('#customerName').html(res.data.customerName);
 			$('#driverName').html(res.data.driverName);
 			$('#plateNo').html(res.data.plateNo);
@@ -410,7 +410,7 @@ $(function () {
 		var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
 		var workType = $('#workType').attr('data-value');
 		var billingType = $(('#fl')).attr('data-value');
-		console.log(billing_type)
+		// console.log(billing_type)
 
 		var outType = $('#outType').attr('data-outtypevalue')
 		var shippingAddress = $('#shippingAddress').val()
