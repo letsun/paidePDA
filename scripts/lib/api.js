@@ -6,7 +6,7 @@ var test = "https://wms.ebiaoji.com";           //线上
 // var dev = 'http://192.168.1.77:8899';          //吴剑*/
 var product = 'https://wms.hisugar.com';    // 生产环境
 
-var ip = product;
+var ip = test;
 
 var api = {
     rkgd: {
