@@ -266,7 +266,7 @@ $(function () {
     });
 
     // 获取工作班次
-    $('#teamName').on('click', function () {
+    $('.teamName').on('click', function () {
 
         getData('GET', api.yq.findShiftWorkList, {
             accountId: accountId,
