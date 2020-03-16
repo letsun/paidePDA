@@ -1,13 +1,11 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 <div class="content-item" data-id="<%- result.list[i].id %>">
 
-    <% if(result.list[i].forecastStatusValue==1){ %>
+    <% if(result.list[i].forecastStatusValue!=2){ %>
     <a class="content-item-btn btn1"
         href="./rkybAddrksqT.html?id=<%- result.list[i].id %>&accountId=<%- result.accountId %>">
         新增申请
     </a>
-
-
     <a class="content-item-btn1">
         结束预报
     </a>
