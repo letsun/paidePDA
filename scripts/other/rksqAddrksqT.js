@@ -598,12 +598,12 @@ $(function () {
                 html += '</div>';
                 html += '<div class="gd-item showStoreroom">';
                 html += '<div class="gd-key">所属库房</div>';
-                html += '<div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>';
+                html += '<div class="gd-val storeroomText" ></div>';
                 html += '<img class="gd-img" src="../img/1_34.png">';
                 html += '</div>';
                 html += '<div class="gd-item showReservoirArea">';
                 html += '<div class="gd-key">所属库区</div>';
-                html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:所属库区不能为空}"></div>';
+                html += '<div class="gd-val reservoirAreaText"> </div>';
                 html += '<img class="gd-img" src="../img/1_34.png">';
                 html += '</div>';
                 html += '</div>';
