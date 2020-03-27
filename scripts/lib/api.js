@@ -1,12 +1,12 @@
 
-var dev = 'http://192.168.1.11:8899';          //闫世峰*/
+var dev = 'http://192.168.1.68:8899';          //谭柳*/
 var test = "https://wms.ebiaoji.com";           //线上
 //var dev = "http://yecl.lxcyhd.com";           //春玲姐
 //var dev  = "http://192.168.1.41:8899";
 // var dev = 'http://192.168.1.77:8899';          //吴剑*/
 var product = 'https://wms.pd-kj.com';    // 生产环境
 
-var ip = test;
+var ip = dev;
 
 var api = {
     rkgd: {
@@ -20,7 +20,6 @@ var api = {
         saveStorageFactoryWaybillMain: ip + '/api/pda/storageFactoryApplyMain/saveStorageFactoryWaybillMain',     // 入库运单保存
         editStorageFactoryApplyMain: ip + '/api/pda/storageFactoryApplyMain/editStorageFactoryApplyMain',     // 入库申请单编辑
         addApplyByForecasts: ip + '/api/pda/storageFactoryApplyMain/addApplyByForecasts',     // 新增入库申请多个预报
-
         editApplyByForecasts: ip + '/api/pda/storageFactoryApplyMain/editApplyByForecasts',     // 编辑入库申请多个预报
     },
     rksqS: {
@@ -96,6 +95,7 @@ var api = {
         getCode:ip + '/wap/gatekeeper/getCode', //获取二维码
         getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
         findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次      
+        findCustomerList:ip + '/api/pda/baseMethod/findCustomerList', //查询货主列表
     },
     ht: {
         findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表

@@ -46,11 +46,11 @@ $(function () {
 			$('#shippingAddress').val(res.data.shippingAddress);
 			$('#applyNo').html(res.data.applyNo);
 
-			$('#outType').attr('data-outTypeValue', res.data.outTypeValue)
+			$('#outType').attr('data-outTypeValue', res.data.outTypeValue);
 
 
-			$('#outWaybillNo').html(res.data.autoWaybillNo)
-			$('#outType').html(res.data.outType)
+			$('#outWaybillNo').html(res.data.autoWaybillNo);
+			$('#outType').html(res.data.outType);
 
 			if (res.data.outTypeValue == 1) {
 				$('.yc').hide()
@@ -352,7 +352,7 @@ $(function () {
 		html += '<img class="gd-minus" src="../img/1_31.png">';
 
 		html += '<div class="gd-item">';
-		html += '<div class="gd-key">入库重量(吨)</div>';
+		html += '<div class="gd-key">出库重量(吨)</div>';
 		html +=
 			'<input type="text" class="gd-val projectWeight" data-validateInfor="{strategy:isEmpty,msg:入库重量不能为空}|{strategy:isNumber,msg:入库重量需为数字}">';
 		html += '</div>';
@@ -370,7 +370,7 @@ $(function () {
 		html += '</div>';
 
 		html += '<div class="gd-item showReservoirArea">';
-		html += '<div class="gd-key">入库库区</div>';
+		html += '<div class="gd-key">出库库区</div>';
 		html += '<div class="gd-val reservoirAreaText" data-validateInfor="{strategy:isEmpty,msg:入库库区不能为空}"></div>';
 		html += '<img class="gd-img" src="../img/1_34.png" >';
 		html += '</div>';
@@ -412,12 +412,12 @@ $(function () {
 		var billingType = $(('#fl')).attr('data-value');
 		// console.log(billing_type)
 
-		var outType = $('#outType').attr('data-outtypevalue')
-		var shippingAddress = $('#shippingAddress').val()
+		var outType = $('#outType').attr('data-outtypevalue');
+		var shippingAddress = $('#shippingAddress').val();
 
 		$('.gd-list-item').each(function (i, item) {
 			var obj = {};
-			obj.applyItemId = $(item).attr('data-applyItemId');
+			obj.applyItemId = $('.gd-list-item').eq(0).attr('data-applyItemId');
 			obj.specificationValue = $(item).parents('.yd-item').find('.productName').attr('data-specificationValue');
 			obj.parkId = $(item).find('.parkText').attr('data-parkId');
 			obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
@@ -443,8 +443,6 @@ $(function () {
 		$('#loadingWrapper').show();
 		// 提交数据
 
-
-
 		$.ajax({
 			type: 'POST',
 			contentType: 'application/json;charset=UTF-8',
@@ -462,10 +460,11 @@ $(function () {
 						content: '提交成功',
 						ok: function () {
 							//window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillMainNo;
-							window.location.href = './cksqList.html?accountId=' + accountId;
+							// window.location.href = './cksqList.html?accountId=' + accountId;
 						}
 					})
 				} else {
+                    outWaybillItemList = [];
 					$('#loadingWrapper').hide();
 					common.alert({
 						mask: true,
@@ -475,6 +474,7 @@ $(function () {
 
 			},
 			error: function (res) {
+                outWaybillItemList = [];
 				$('#loadingWrapper').hide();
 				common.alert({
 					mask: true,

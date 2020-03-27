@@ -1,6 +1,8 @@
 $(function () {
     setDateControl('.produceTime');
 
+    var customerPage = 1;
+
     var productList = [];
 
     var productIdList = [];
@@ -283,15 +285,104 @@ $(function () {
                 $('.mask').show();
             }
         });
-    })
+    });
+
+    var maskconWra = new BScroll('.maskcon7', {
+        scrollbar: {
+            fade: true
+        },
+        click: true,
+        pullUpLoad: {
+            threshold: 0
+        }
+    });
+
+    var customerTotalPage = 1;
+    // 获取货主列表
+    $('.selectCustomer').on('click', function () {
+        customerPage = 1;
+        $('.maskcon7 .maskcon-wra').html('');
+        getData('GET', api.yq.findCustomerList, {
+            accountId: accountId,
+            pageNo: customerPage,
+            pageSize: 20,
+        }, function (res) {
+            if (res.code == 200) {
+                var customerList = res.data.customerList;
+                customerTotalPage = res.data.totalPage;
+                if (customerList.length > 0) {
+                    var html_4 = '';
+                    for (var i = 0; i < customerList.length; i++) {
+                        html_4 += '<div class="maskcon-item" data-id="' + customerList[i].id + '">' + customerList[i].name + '</div>';
+                    }
+                    $('.maskcon7 .maskcon-wra').append(html_4);
+
+                    $('.maskcon7').show();
+                    $('.mask').show();
+                    maskconWra.finishPullUp();
+                    maskconWra.refresh();
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+        // $('.maskcon7').show();
+        // $('.mask').show();
+        // maskconWra.finishPullUp();
+        // maskconWra.refresh();
+    });
+
+    maskconWra.on('pullingUp', function () {
+        if (customerTotalPage == customerPage) {
+            $('.loadText').text('没有更多数据了');
+            return false;
+        }
+
+        customerPage++;
+        getData('GET', api.yq.findCustomerList, {
+            accountId: accountId,
+            pageNo: customerPage,
+            pageSize: 20,
+        }, function (res) {
+            if (res.code == 200) {
+                var customerList = res.data.customerList;
+                customerTotalPage = res.data.totalPage;
+                if (customerList.length > 0) {
+                    var html_4 = '';
+                    for (var i = 0; i < customerList.length; i++) {
+                        html_4 += '<div class="maskcon-item" data-id="' + customerList[i].id + '">' + customerList[i].name + '</div>';
+                    }
+                    $('.maskcon7 .maskcon-wra').append(html_4);
+                    $('.maskcon7').show();
+                    $('.mask').show();
+                    maskconWra.finishPullUp();
+                    maskconWra.refresh();
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+    });
 
 
+    // 选择工作班次
     $('.maskcon4').on('click','.maskcon-item',function(){
         var teamNameId = $(this).attr('data-id');
         var teamName = $(this).html();
         $('#teamName').attr('data-teamNameId',teamNameId);
         $('#teamName').html(teamName)
-    })
+    });
+
+    // 选择货主
+    $('.maskcon7').on('click','.maskcon-item',function(){
+        var customerId = $(this).attr('data-id');
+        var customerName = $(this).html();
+        $('#selectCustomer').attr('data-customerId',customerId);
+        $('#selectCustomer').html(customerName);
+    });
+
 
 
     // 点击保存
@@ -303,6 +394,7 @@ $(function () {
 
         var applyNo = $('#applyNo').html();
         var teamName = $('#teamName').attr('data-teamNameId');
+        var customerId = $('#selectCustomer').attr('data-customerId');
         var remark = $('#remark').val();
         var warehouseOrderNo = $('#warehouseOrderNo').val();
 
@@ -324,6 +416,7 @@ $(function () {
             applyNo: applyNo,
             remarks: remark,
             teamName: teamName,
+            customerId: customerId,
             storageFactoryForecastList: storageFactoryForecastList,
         };
 
@@ -382,6 +475,7 @@ $(function () {
 
     getData('GET', api.rkybT.findPageApi, {
         accountId: accountId,
+        forecastStatus: 1,
         pageNo: page,
         pageSize: 10,
         productName: productName,
@@ -407,6 +501,7 @@ $(function () {
         page++;
         getData('GET', api.rkybT.findPageApi, {
             accountId: accountId,
+            forecastStatus: 1,
             pageNo: page,
             pageSize: 10,
             productName: productName,
@@ -446,6 +541,7 @@ $(function () {
         productName = $('#productName').val();
         getData('GET', api.rkybT.findPageApi, {
             accountId: accountId,
+            forecastStatus: 1,
             pageNo: page,
             pageSize: 10,
             productName: productName,

@@ -411,6 +411,17 @@ body {
   background: #999;
   color: #fff;
 }
+.container .mask .maskcon7 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.container .mask .maskcon7 .maskcon-wra {
+  width: 100%;
+}
 .product-win {
   position: fixed;
   left: 0;

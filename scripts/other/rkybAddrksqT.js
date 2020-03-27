@@ -33,7 +33,7 @@ $(function () {
         var teamName = $(this).html()
         $('#teamName').attr('data-teamNameId',teamNameId);
         $('#teamName').html(teamName)
-    })
+    });
 
 
     // 获取产品信息
@@ -308,6 +308,95 @@ $(function () {
     });
 
 
+    var maskconWra = new BScroll('.maskcon7', {
+        scrollbar: {
+            fade: true
+        },
+        click: true,
+        pullUpLoad: {
+            threshold: 0
+        }
+    });
+
+    var customerTotalPage = 1;
+    // 获取货主列表
+    $('.selectCustomer').on('click', function () {
+        customerPage = 1;
+        $('.maskcon7 .maskcon-wra').html('');
+        getData('GET', api.yq.findCustomerList, {
+            accountId: accountId,
+            pageNo: customerPage,
+            pageSize: 20,
+        }, function (res) {
+            if (res.code == 200) {
+                var customerList = res.data.customerList;
+                customerTotalPage = res.data.totalPage;
+                if (customerList.length > 0) {
+                    var html_4 = '';
+                    for (var i = 0; i < customerList.length; i++) {
+                        html_4 += '<div class="maskcon-item" data-id="' + customerList[i].id + '">' + customerList[i].name + '</div>';
+                    }
+                    $('.maskcon7 .maskcon-wra').append(html_4);
+
+                    $('.maskcon7').show();
+                    $('.mask').show();
+                    maskconWra.finishPullUp();
+                    maskconWra.refresh();
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+        // $('.maskcon7').show();
+        // $('.mask').show();
+        // maskconWra.finishPullUp();
+        // maskconWra.refresh();
+    });
+
+    maskconWra.on('pullingUp', function () {
+        if (customerTotalPage == customerPage) {
+            $('.loadText').text('没有更多数据了');
+            return false;
+        }
+
+        customerPage++;
+        getData('GET', api.yq.findCustomerList, {
+            accountId: accountId,
+            pageNo: customerPage,
+            pageSize: 20,
+        }, function (res) {
+            if (res.code == 200) {
+                var customerList = res.data.customerList;
+                customerTotalPage = res.data.totalPage;
+                if (customerList.length > 0) {
+                    var html_4 = '';
+                    for (var i = 0; i < customerList.length; i++) {
+                        html_4 += '<div class="maskcon-item" data-id="' + customerList[i].id + '">' + customerList[i].name + '</div>';
+                    }
+                    $('.maskcon7 .maskcon-wra').append(html_4);
+                    $('.maskcon7').show();
+                    $('.mask').show();
+                    maskconWra.finishPullUp();
+                    maskconWra.refresh();
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+    });
+
+
+    // 选择货主
+    $('.maskcon7').on('click','.maskcon-item',function(){
+        var customerId = $(this).attr('data-id');
+        var customerName = $(this).html();
+        $('#selectCustomer').attr('data-customerId',customerId);
+        $('#selectCustomer').html(customerName);
+    });
+
+
     // 点击保存
     $('#saveBtn').on('click', function () {
         var flag = Global.initValidate('.container');
@@ -317,6 +406,7 @@ $(function () {
 
         var applyNo = $('#applyNo').html();
         var teamName = $('#teamName').attr('data-teamNameId');
+        var customerId = $('#selectCustomer').attr('data-customerId');
         var remark = $('#remark').val();
         var warehouseOrderNo = $('#warehouseOrderNo').val();
 
@@ -337,8 +427,11 @@ $(function () {
             applyNo: applyNo,
             remarks: remark,
             teamName: teamName,
+            customerId: customerId,
             storageFactoryApplyItemList: storageFactoryApplyItemList,
         };
+
+        console.log(data2);
         // 提交数据
         getData('POST', api.rkybT.saveStorageFactoryApplyMain, {
             accountId: accountId,
@@ -349,7 +442,7 @@ $(function () {
                     mask: true,
                     content: '提交成功',
                     ok: function () {
-                        // location.reload();
+                        location.reload();
                         window.location.href = "./rkybListT.html?accountId=" + accountId;
                     }
                 })
