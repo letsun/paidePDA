@@ -94,10 +94,13 @@ $(function () {
 
     // 点击生产批次
     $('.container').on('click','.productLevel',function () {
-        if ($(this).html() == '') {
-            $('.maskcon8').show();
-            $('.mask').show();
-        }
+        // if ($(this).html() == '') {
+        //     $('.maskcon8').show();
+        //     $('.mask').show();
+        // }
+
+        $('.maskcon8').show();
+        $('.mask').show();
     });
 
 	// 点击显示费率列表
