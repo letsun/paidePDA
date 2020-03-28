@@ -83,6 +83,7 @@ var api = {
         index: '/pda/park/index',     // 园区排队信息总览
         findList2: ip + '/api/pda/basePark/findList',     // 查询园区
         findList3: ip + '/api/pda/baseWarehouseArea/findList',     // 查询库区
+        findWarehouseArea: ip + '/api/pda/stockInventoryItemApi/findWarehouseArea',     // 查询出库运单库区库存
         findPageApi: ip + '/api/pda/baseServiceTeam/findPageApi',     // 查询装卸队伍
         findDict:ip + '/api/pda/baseServiceTeam/findDict', //查询作业方式,
         findParkQueue:ip + '/api/pda/parkQueue/findParkQueue', //统计园区
@@ -96,6 +97,7 @@ var api = {
         getAutoNo:ip + '/api/pda/baseMethod/getAutoNo', //自动生成单号
         findShiftWorkList:ip + '/api/pda/baseMethod/findShiftWorkList', //工作班次      
         findCustomerList:ip + '/api/pda/baseMethod/findCustomerList', //查询货主列表
+        findDriverList:ip + '/api/pda/baseMethod/findDriverList', //查询司机列表
     },
     ht: {
         findPageApi: ip + '/api/pda/baseContract/findPageApi',     // 查询合同列表

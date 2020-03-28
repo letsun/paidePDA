@@ -178,6 +178,15 @@ body {
   word-break: break-all;
   font-size: 24px;
 }
+.container .content .gd-infor .gd-list .gd-item .gd-val input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+}
+.container .content .gd-infor .gd-list .gd-item .gd-val div {
+  height: 100%;
+}
 .container .content .gd-infor .gd-list .gd-item .gd-img {
   position: absolute;
   right: 20px;
@@ -394,4 +403,60 @@ body {
 .container .mask .maskcon .disabled {
   background: #999;
   color: #fff;
+}
+.container .mask .maskcon7 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.container .mask .maskcon7 .maskcon-wra {
+  width: 100%;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item {
+  margin: 20px 30px 20px 30px;
+  padding: 20px;
+  position: relative;
+  border-bottom: 1px #ccc solid;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-header {
+  font-weight: bold;
+  font-size: 26px;
+  padding-bottom: 10px;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con {
+  font-size: 24px;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item {
+  position: relative;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item span {
+  color: #999;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .span {
+  width: 120px;
+  text-align: right;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 260px;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .overflow1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 530px;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .con-item-left {
+  display: flex;
+}
+.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .con-item-right {
+  position: absolute;
+  top: 0px;
+  left: 380px;
+  display: flex;
 }

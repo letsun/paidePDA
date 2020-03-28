@@ -29,8 +29,7 @@ $(function () {
         if (res.code == 200) {
             var data = res.data;
             $('#applyNo').html(res.data.applyNo);
-            $('#storageNo').html(res.data.autoFactoryWaybillNo)
-            
+            $('#storageNo').html(res.data.autoFactoryWaybillNo);
             if (res.data.list.length > 0) {
                 Global.requestTempByAjax('../temp/rkyd/rkydsqdmxT.html', {list:res.data.list}, function(template) {
                     $('#list').append(template);
@@ -46,6 +45,59 @@ $(function () {
             }
         }
 
+    });
+
+    getData('GET',api.sp.findList2,{
+        accountId: accountId,
+    },function (res) {
+        if (res.code == 200) {
+            for (var i = 0; i < res.data.length; i++) {
+                res.data[i].open = true;
+            }
+            if (res.data.length > 0) {
+                var setting = {
+                    view: {
+                        dblClickExpand: false,
+                        showLine: true,
+                        selectedMulti: false
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true,
+                            idKey: "id",
+                            pIdKey: "parentId",
+                            rootPId: ""
+                        }
+                    },
+                    callback: {
+                        onClick : function (e,treeId, treeNode) {
+                            e.stopPropagation();
+                            if (treeNode.isParent) {
+                                return;
+                            }
+                            $('.productLevel').html(treeNode.name).attr('data-productLevelId',treeNode.id);
+                            $('.mask-con8').hide();
+                            $('.mask').hide();
+                        }
+                    }
+                };
+
+                var zNodes = res.data;
+
+                $.fn.zTree.init($("#tree"), setting, zNodes);
+            }
+        }
+
+    });
+
+
+
+    // 点击生产批次
+    $('.container').on('click','.productLevel',function () {
+        if ($(this).html() == '') {
+            $('.maskcon8').show();
+            $('.mask').show();
+        }
     });
 
 	// 点击显示费率列表
@@ -117,7 +169,7 @@ $(function () {
         // $(this).addClass('after').siblings().removeClass('after');
         var workType = $(this).html();
         var workTypeText = $(this).html();
-        var value = $(this).attr('data-value')    
+        var value = $(this).attr('data-value');
         $('.forklift').html(workTypeText);
         $('.forklift').attr('data-value',value)
     });
@@ -400,9 +452,6 @@ $(function () {
 
     // 点击保存
     $('#saveBtn').on('click',function () {
-       
-
-
         var flag = Global.initValidate('.container');
         if (!flag) {
             return;
@@ -430,6 +479,7 @@ $(function () {
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.weight = $(item).find('.weight').val();
+            obj.productLevelId = $(item).parents('.yd-item').find('.productLevel').attr('data-productLevelId');
             storageFactoryWaybillItemList.push(obj);
         });
 
@@ -448,14 +498,14 @@ $(function () {
         };
 
         console.log(data2);
-        $('#loadingWrapper').show()
+        $('#loadingWrapper').show();
         // 提交数据
         getData('POST',api.rkydT.saveStorageFactoryWaybillMain,{
             accountId: accountId,
             jsonData: JSON.stringify(data2),
         },function (res) {
             if (res.code == 200) {
-                $('#loadingWrapper').hide()
+                $('#loadingWrapper').hide();
 
                 storageFactoryWaybillItemList = [];
                 common.alert({

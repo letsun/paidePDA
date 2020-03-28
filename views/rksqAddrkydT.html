@@ -7,9 +7,9 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
-    <link rel="stylesheet" href="../css/rksqAddrkydT.css">
-
+    <link rel="stylesheet" href="../scripts/plugins/zTree/css/zTreeStyle/zTreeStyle.css">
     <link rel="stylesheet" href="../scripts/plugins/iosSelect/iosSelect.css">
+    <link rel="stylesheet" href="../css/rksqAddrkydT.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="gd-item">
                         <div class="gd-key">仓租起始日</div>
-                        <div class="gd-val" id='date' data-validateInfor="{strategy:isEmpty,msg:仓租起始日不能为空}"></div>
+                        <div class="gd-val" id='date'></div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
 
@@ -132,10 +132,15 @@
             <div class="maskcon maskcon7">
 
             </div>
+
+            <div class="maskcon maskcon8">
+                <ul class="tree-wra ztree" id="tree"></ul>
+            </div>
         </div>
 
     </div>
     <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/plugins/zTree/js/jquery.ztree.core.js"></script>
     <script src="../scripts/lib/ejs.min.js"></script>
     <script src="../scripts/lib/commonFunc.js"></script>
     <script src="../scripts/lib/common.js"></script>

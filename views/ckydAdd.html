@@ -37,7 +37,7 @@
                     </div>
                     <div class="gd-item">
                         <div class="gd-key">仓租付止日</div>
-                        <div class="gd-val" id='rentalEndTime' data-validateInfor="{strategy:isEmpty,msg:仓租起始日不能为空}">
+                        <div class="gd-val" id='rentalEndTime'>
                         </div>
                         <img class="gd-img" src="../img/1_34.png">
                     </div>
@@ -54,27 +54,31 @@
 
                     <div class="gd-item">
                         <div class="gd-key">运输司机</div>
-                        <div class="gd-val" id="driverName"></div>
+                        <div class="gd-val">
+                            <div id="driverName" class="driverName" data-validateInfor="{strategy:isEmpty,msg:运输司机不能为空}"></div>
+                        </div>
                     </div>
 
                     <div class="gd-item">
                         <div class="gd-key">车牌号码</div>
-                        <div type="text" class="gd-val" id="plateNo"></div>
+                        <div class="gd-val driverName" id="plateNo"></div>
                     </div>
 
                     <div class="gd-item">
                         <div class="gd-key">联系电话</div>
-                        <div class="gd-val" id="driverPhone"></div>
+                        <div class="gd-val driverName" id="driverPhone"></div>
                     </div>
 
                     <div class="gd-item">
                         <div class="gd-key">身份证号</div>
-                        <div class="gd-val" id="idcard"></div>
+                        <div class="gd-val driverName" id="idcard"></div>
                     </div>
 
                     <div class="gd-item">
-                        <div class="gd-key">运输费用</div>
-                        <div class="gd-val" id="transportFee"></div>
+                        <div class="gd-key">吨运费</div>
+                        <div class="gd-val">
+                            <input id="transportFee" data-validateInfor="{strategy:isEmpty,msg:吨运费不能为空}" type="text">
+                        </div>
                     </div>
 
                     <div class="gd-item" id="goTeam">
@@ -180,6 +184,11 @@
             <div class="maskcon maskcon6">
 
 
+            </div>
+
+            <!--货主列表-->
+            <div class="maskcon maskcon7">
+                <div class="maskcon-wra"></div>
             </div>
         </div>
 

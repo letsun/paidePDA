@@ -94,6 +94,12 @@
 					<%- result.list[i].productType %>
 				</div>
 			</div>
+			<% if (result.list[i].produceBatchNo != 'null') { %>
+				<div class="con-item-right">
+					<span>生产批次：</span>
+					<div><%- result.list[i].produceBatchNo %></div>
+				</div>
+			<% } %>
 		</div>
 
 	</div>

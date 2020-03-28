@@ -1,10 +1,10 @@
 $(function () {
-
 	//转圈圈
 	Global.requestTempByAjax('../temp/loading/loading.html', {}, function (template) {
 		$('.container').append(template);
 	});
 
+	var productList = [];
 	var applyNo = Global.getUrlParam('id');
 	var serviceTeamId = Global.getUrlParam('zxdwId');
 	var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
@@ -29,15 +29,18 @@ $(function () {
 	}, function (res) {
 		if (res.code == 200) {
 			var data = res.data;
+			console.log(res.data);
 			$('#applyNo').html(res.data.applyNo);
 			$('#rentalEndTime').html(res.data.rentalEndTime);
 			$('#contractId').html(res.data.contractNo);
 			$('#customerName').html(res.data.customerName);
-			$('#driverName').html(res.data.driverName);
+			if (res.data.driverId != null && res.data.driverId != '' && res.data.driverId != 'undefined') {
+                $('#driverName').html(res.data.driverName).attr('data-id',res.data.driverId);
+			}
 			$('#plateNo').html(res.data.plateNo);
 			$('#driverPhone').html(res.data.driverPhone);
 			$('#idcard').html(res.data.idcard);
-			$('#transportFee').html(res.data.transportFee);
+			$('#transportFee').val(res.data.transportFee);
 			$('#transferGroup').html(res.data.transferGroup);
 			$('#transferCompany').html(res.data.transferCompany);
 			$('#tmsCarrier').html(res.data.tmsCarrier);
@@ -57,8 +60,8 @@ $(function () {
 			} else {
 				$('.yc').show()
 			}
-
 			if (res.data.productList.length > 0) {
+                productList = res.data.productList;
 				Global.requestTempByAjax('../temp/ckyd/ckydsqdmxT.html', {
 					list: res.data.productList
 				}, function (template) {
@@ -258,9 +261,12 @@ $(function () {
 		applicationId = $(this).parents('.gd-list-item').attr('data-applicationId');
 		if ($(this).parents('.gd-list-item').find('.storeroomText').html() != '') {
 			// 获取库区列表
-			getData('GET', api.yq.findList3, {
+			getData('GET', api.yq.findWarehouseArea, {
 				accountId: accountId,
-				baseWarehouseId: selfWarehouseId,
+                applyMainId: applyNo,
+                warehouseId: selfWarehouseId,
+                productId: $('.productName').attr('data-productId'),
+                productLevelId: $('.productLevel').attr('data-productLevelId'),
 			}, function (res) {
 				if (res.code == 200) {
 					var list = res.data;
@@ -269,17 +275,17 @@ $(function () {
 						if (allWarehouseArea.length > 0) {
 							for (var j = 0; j < allWarehouseArea.length; j++) {
 								if (list[i].id == allWarehouseArea[j]) {
-									html_3 += '<div class="maskcon-item disabled" data-id="' + list[i].id + '">' + list[i].name + '</div>';
+									html_3 += '<div class="maskcon-item disabled" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].realInventory + '</div>';
 									break;
 								} else {
 									if (j == allWarehouseArea.length - 1) {
-										html_3 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
+										html_3 += '<div class="maskcon-item" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].realInventory + '</div>';
 									}
 
 								}
 							}
 						} else {
-							html_3 += '<div class="maskcon-item" data-id="' + list[i].id + '">' + list[i].name + '</div>';
+							html_3 += '<div class="maskcon-item" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].realInventory + '</div>';
 						}
 
 					}
@@ -303,6 +309,9 @@ $(function () {
 			var self = $(this);
 			$(this).addClass('after').siblings().removeClass('after');
 			var warehouseAreaId = $(this).attr('data-id');
+			var produceBatchId = $(this).attr('data-produceBatchId');
+			var productLevelId = $(this).attr('data-productLevelId');
+			var inventoryItemId = $(this).attr('data-inventoryItemId');
 			var warehouseAreaText = $(this).html();
 
 			$('.gd-list-item').each(function (i, item) {
@@ -317,7 +326,7 @@ $(function () {
 					}
 
 					$('.gd-list-item').eq(i).find('.reservoirAreaText').html(warehouseAreaText).attr('data-warehouseAreaId',
-						warehouseAreaId);
+						warehouseAreaId).attr('data-produceBatchId',produceBatchId).attr('data-productLevelId',productLevelId).attr('data-inventoryItemId',inventoryItemId);
 					$('.gd-list-item').eq(i).attr('data-warehouseAreaId', warehouseAreaId);
 					//allWarehouseArea.push(warehouseAreaId);
 					$('.maskcon').hide();
@@ -337,13 +346,6 @@ $(function () {
 
 	});
 
-
-	// 点击关闭弹窗
-	$('.mask').on('click', function () {
-		$('.maskcon').hide();
-		$(this).fadeOut();
-	});
-
 	// 添加申请记录
 	$('.container').on('click', '.gd-add-img', function () {
 		var html = '';
@@ -359,13 +361,13 @@ $(function () {
 
 		html += '<div class="gd-item showPark">';
 		html += '<div class="gd-key">所属园区</div>';
-		html += '<div class="gd-val parkText" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"></div>';
+		html += '<div class="gd-val parkText" data-parkId="'+ productList[0].warehouseList[0].parkId + '" data-validateInfor="{strategy:isEmpty,msg:所属园区不能为空}"> '+ productList[0].warehouseList[0].park + '</div>';
 		html += '<img class="gd-img" src="../img/1_34.png">';
 		html += '</div>';
 
 		html += '<div class="gd-item showStoreroom">';
 		html += '<div class="gd-key">所属库房</div>';
-		html += '<div class="gd-val storeroomText" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}"></div>';
+		html += '<div class="gd-val storeroomText" data-warehouseId="'+ productList[0].warehouseList[0].warehouseId + '" data-validateInfor="{strategy:isEmpty,msg:所属库房不能为空}">'+ productList[0].warehouseList[0].warehouse + '</div>';
 		html += '<img class="gd-img " src="../img/1_34.png" >';
 		html += '</div>';
 
@@ -410,8 +412,8 @@ $(function () {
 		var serviceTeamId = $('#serviceTeamText').attr('data-serviceTeamId');
 		var workType = $('#workType').attr('data-value');
 		var billingType = $(('#fl')).attr('data-value');
-		// console.log(billing_type)
-
+		var driverId = $('#driverName').attr('data-id');
+		var transportFee = $('#transportFee').val();
 		var outType = $('#outType').attr('data-outtypevalue');
 		var shippingAddress = $('#shippingAddress').val();
 
@@ -421,6 +423,9 @@ $(function () {
 			obj.specificationValue = $(item).parents('.yd-item').find('.productName').attr('data-specificationValue');
 			obj.parkId = $(item).find('.parkText').attr('data-parkId');
 			obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
+			obj.inventoryItemId = $(item).find('.reservoirAreaText').attr('data-inventoryItemId') ? obj.inventoryItemId = $(item).find('.reservoirAreaText').attr('data-inventoryItemId') : '';
+			obj.produceBatchId = $(item).find('.reservoirAreaText').attr('data-produceBatchId') ? $(item).find('.reservoirAreaText').attr('data-produceBatchId') : '';
+			obj.productLevelId = $(item).find('.reservoirAreaText').attr('data-productLevelId') ? $(item).find('.reservoirAreaText').attr('data-productLevelId') : '';
 			obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
 			obj.projectWeight = $(item).find('.projectWeight').val();
 			outWaybillItemList.push(obj);
@@ -437,6 +442,8 @@ $(function () {
 			shippingAddress: shippingAddress,
 			outType: outType,
 			outWaybillItemList: outWaybillItemList,
+            driverId: driverId,
+            transportFee: transportFee,
 		};
 
 		console.log(data2);
@@ -459,8 +466,8 @@ $(function () {
 						mask: true,
 						content: '提交成功',
 						ok: function () {
-							//window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillMainNo;
-							// window.location.href = './cksqList.html?accountId=' + accountId;
+							// window.location.href = './ckydDetail.html?outWaybillNo=' + outWaybillMainNo;
+							window.location.href = './ckydList.html?accountId=' + accountId;
 						}
 					})
 				} else {
@@ -483,4 +490,139 @@ $(function () {
 			}
 		});
 	})
+
+
+    var maskconWra = new BScroll('.maskcon7', {
+        scrollbar: {
+            fade: true
+        },
+        click: true,
+        pullUpLoad: {
+            threshold: 0
+        },
+        preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|DIV)$/}
+    });
+
+    var customerTotalPage = 1;
+    var customerPage = 1;
+    // 获取运输司机列表
+    $('.driverName').on('click', function () {
+        customerPage = 1;
+        $('.maskcon7 .maskcon-wra').html('');
+        getData('GET', api.yq.findDriverList, {
+            accountId: accountId,
+            pageNo: customerPage,
+            pageSize: 20,
+        }, function (res) {
+            if (res.code == 200) {
+                var driverList = res.data.driverList;
+                customerTotalPage = res.data.totalPage;
+                if (driverList.length > 0) {
+                    var html_4 = '';
+                    for (var i = 0; i < driverList.length; i++) {
+                        html_4 += '<div class="content-item" data-id="' + driverList[i].id + '">';
+                        html_4 += '<div class="content-item-header">姓名：<span>' + driverList[i].name + '</span></div>';
+                        html_4 += '<div class="content-item-con">';
+                        html_4 += '<div class="con-item">';
+                        html_4 += '<div class="con-item-left">';
+                        html_4 += '<span>身份证号码：</span>';
+                        html_4 += '<div class="con-item-val con-item-val1">' + driverList[i].idcard + '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                        html_4 += '<div class="con-item">';
+                        html_4 += '<div class="con-item-left">';
+                        html_4 += '<span>联系电话：</span>';
+                        html_4 += '<div class="con-item-val con-item-val2">' + driverList[i].contactPhone + '</div>';
+                        html_4 += '</div>';
+                        html_4 += '<div class="con-item-right">';
+                        html_4 += '<span>车牌号：</span>';
+                        html_4 += '<div class="con-item-val con-item-val3">' + driverList[i].plateNo + '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                    }
+                    $('.maskcon7 .maskcon-wra').append(html_4);
+
+                    $('.maskcon7').show();
+                    $('.mask').show();
+                    maskconWra.finishPullUp();
+                    maskconWra.refresh();
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+    });
+
+    maskconWra.on('pullingUp', function () {
+        if (customerTotalPage == customerPage) {
+            $('.loadText').text('没有更多数据了');
+            return false;
+        }
+
+        customerPage++;
+        getData('GET', api.yq.findDriverList, {
+            accountId: accountId,
+            pageNo: customerPage,
+            pageSize: 20,
+        }, function (res) {
+            if (res.code == 200) {
+                var driverList = res.data.driverList;
+                customerTotalPage = res.data.totalPage;
+                if (driverList.length > 0) {
+                    var html_4 = '';
+                    for (var i = 0; i < driverList.length; i++) {
+                        html_4 += '<div class="content-item" data-id="' + driverList[i].id + '">';
+                        html_4 += '<div class="content-item-header">姓名：<span>' + driverList[i].name + '</span></div>';
+                        html_4 += '<div class="content-item-con">';
+                        html_4 += '<div class="con-item">';
+                        html_4 += '<div class="con-item-left">';
+                        html_4 += '<span>身份证号码：</span>';
+                        html_4 += '<div class="con-item-val con-item-val1">' + driverList[i].idcard + '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                        html_4 += '<div class="con-item">';
+                        html_4 += '<div class="con-item-left">';
+                        html_4 += '<span>联系电话：</span>';
+                        html_4 += '<div class="con-item-val con-item-val2">' + driverList[i].contactPhone + '</div>';
+                        html_4 += '</div>';
+                        html_4 += '<div class="con-item-right">';
+                        html_4 += '<span>车牌号：</span>';
+                        html_4 += '<div class="con-item-val con-item-val3">' + driverList[i].plateNo + '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                        html_4 += '</div>';
+                    }
+                    $('.maskcon7 .maskcon-wra').append(html_4);
+
+                    $('.maskcon7').show();
+                    $('.mask').show();
+                    maskconWra.finishPullUp();
+                    maskconWra.refresh();
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+    });
+
+    // 点击选择运输司机
+	$('.maskcon7').on('click','.content-item',function (e) {
+		e.stopPropagation();
+		$('#driverName').html($(this).find('.content-item-header').find('span').html()).attr('data-id',$(this).attr('data-id'));
+		$('#plateNo').html($(this).find('.con-item-val3').html());
+		$('#driverPhone').html($(this).find('.con-item-val2').html());
+		$('#idcard').html($(this).find('.con-item-val1').html());
+		$('.maskcon7').hide();
+		$('.mask').fadeOut();
+    });
+
+    // 点击关闭弹窗
+    $('.mask').on('click', function () {
+        $('.maskcon').hide();
+        $(this).fadeOut();
+    });
 });
