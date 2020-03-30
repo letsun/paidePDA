@@ -135,8 +135,18 @@ body {
                     .con-item-right {
                         position: absolute;
                         top: 0px;
-                        left: 400px;
-                        display: flex; 
+                        left: 380px;
+                        right: 0;
+
+                        display: flex;
+
+                        div {
+                            flex: 1;
+
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
                     }
                 }
             }

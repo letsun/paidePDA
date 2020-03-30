@@ -1,13 +1,6 @@
 $(function () {
     var id = Global.getUrlParam('id');
-    var serviceTeamId = Global.getUrlParam('zxdwId');
-    var serviceTeamText = decodeURI(decodeURIComponent(Global.getUrlParam('zxdwText')));
     var accountId = Global.getUrlParam('accountId');
-
-    if (serviceTeamId && serviceTeamId != 'null') {
-        $('#serviceTeamText').attr('data-serviceTeamId',serviceTeamId);
-        $('#serviceTeamText').html(serviceTeamText);
-    }
 
     var applicationId = 0;
 
@@ -136,12 +129,6 @@ $(function () {
 		$('#fl').html(workTypeText);
 		$('#fl').attr('data-value', value)
 	});
-
-
-    // 跳转到选择队伍页面
-    $('#goTeam').on('click',function () {
-        window.location.href = './rksqListaddForklift.html?type=tc&func=add&id=' + id + '&accountId='+ accountId;
-    });
 
 
     // 点击显示作业方式列表
@@ -476,7 +463,7 @@ $(function () {
             obj.factoryApplyItemId = $(item).attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
-            obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
+            obj.produceBatchId = $(item).attr('data-produceBatchId');
             obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
             /*obj.quantity = $(item).find('.quantity').val();*/
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');
@@ -520,7 +507,7 @@ $(function () {
                     }
                 })
             } else {
-                $('#loadingWrapper').hide()
+                $('#loadingWrapper').hide();
 
                 common.alert({
                     mask: true,
@@ -529,4 +516,131 @@ $(function () {
             }
         });
     })
+
+
+    // 实例化装卸队伍
+    var scrollWra = new BScroll('#scrollWra', {
+        scrollbar: {
+            fade: true
+        },
+        click: true,
+        pullUpLoad: {
+            threshold: 0
+        }
+    });
+
+    var name = '';
+
+    var totalPage = 1;     // 总页数;
+    var page = 1;          // 第一页;
+    var html = '';
+
+    getData('GET', api.yq.findPageApi, {
+        accountId: accountId,
+        pageNo: page,
+        pageSize: 10,
+        name: name,
+    }, function (res) {
+        if (res.code == 200) {
+            if (res.data.list.length > 0) {
+                totalPage = res.data.totalPage;
+                var data = res.data.list;
+                renderData(data);
+            } else {
+                $('.loadText').text('暂无数据');
+            }
+        }
+    });
+
+    scrollWra.on('pullingUp', function () {
+        if (totalPage == page) {
+            $('.loadText').text('没有更多数据了');
+            return false;
+        }
+
+        page++;
+        getData('GET', api.yq.findPageApi, {
+            accountId: accountId,
+            pageNo: page,
+            pageSize: 10,
+            name: name,
+        }, function (res) {
+            if (res.code == 200) {
+                if (res.data.list.length > 0) {
+                    totalPage = res.data.totalPage;
+                    var data = res.data.list;
+                    renderData(data);
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+
+    });
+
+    // 跳转到选择队伍页面
+    $('#goTeam').on('click',function () {
+        $('.maskcon9').show();
+        $('.mask').fadeIn(function(){
+            scrollWra.finishPullUp();
+            scrollWra.refresh();
+        });
+    });
+
+    function renderData(data) {
+        $('.loadText').text('正在加载中...');
+        Global.requestTempByAjax('../temp/rkyd/zxdw.html', {
+            list: data,
+            id: id,
+            type: 'tc',
+            func: 'add',
+            accountId:accountId,
+
+        }, function (template) {
+            $('#dwlist').append(template);
+            scrollWra.finishPullUp();
+            scrollWra.refresh();
+            $('.loadText').text('上滑加载更多...');
+        });
+    }
+
+    $('#name').on('click',function (e) {
+        e.stopPropagation();
+    });
+
+
+    // 点击搜索
+    $('#scarchBtn').on('click', function (e) {
+        e.stopPropagation();
+        page = 1;
+        $('#list').html('');
+        name = $('#name').val();
+        getData('GET', api.yq.findPageApi, {
+            accountId: accountId,
+            pageNo: page,
+            pageSize: 10,
+            name: name,
+        }, function (res) {
+            if (res.code == 200) {
+                if (res.data.list.length > 0) {
+                    totalPage = res.data.totalPage;
+                    var data = res.data.list;
+                    renderData(data);
+                } else {
+                    $('.loadText').text('暂无数据');
+                }
+            }
+        });
+    });
+
+    // 点击装卸队伍
+    $('.maskcon9').on('click','.content-item',function (e) {
+        e.stopPropagation();
+        var zxdwId = $(this).attr('data-zxdwId');
+        var serviceTeamText = $(this).find('.content-item-header').html();
+        $('#serviceTeamText').attr('data-serviceTeamId', zxdwId);
+        $('#serviceTeamText').html(serviceTeamText);
+        $('.maskcon').hide();
+        $('.mask').fadeOut();
+    });
 });

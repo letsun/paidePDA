@@ -2,11 +2,11 @@
 <div class="content-item" data-id="<%- result.list[i].id %>">
     <!-- 新增运单 -->
 
-    <% if (result.list[i].status == 1) { %>
+    <% if (result.list[i].status == 1 && (result.list[i].waybillTotalQuantity < result.list[i].totalQuantity)) { %>
 
-    <div class="content-item-btn btn1">
-        新增运单
-    </div>
+        <div class="content-item-btn btn1">
+            新增运单
+        </div>
 
     <% } %>
 

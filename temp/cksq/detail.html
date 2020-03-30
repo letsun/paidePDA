@@ -17,16 +17,16 @@
 				<div class="yd-child-val"><%- result.list[i].realInventory %></div>
 			</div>
 		</div>
-		<div class="yd-child-item">
-			<div class="yd-child-dec double-find">
-				<div class="yd-child-key">生产批次：</div>
-				<div class="yd-child-val"><%- result.list[i].productBatch %></div>
-			</div>
-			<div class="yd-child-dec double-find">
-				<div class="yd-child-key">生产日期：</div>
-				<div class="yd-child-val"><%- result.list[i].productTime %></div>
-			</div>
-		</div>
+		<!--<div class="yd-child-item">-->
+			<!--<div class="yd-child-dec double-find">-->
+				<!--<div class="yd-child-key">生产批次：</div>-->
+				<!--<div class="yd-child-val"><%- result.list[i].productBatch %></div>-->
+			<!--</div>-->
+			<!--<div class="yd-child-dec double-find">-->
+				<!--<div class="yd-child-key">生产日期：</div>-->
+				<!--<div class="yd-child-val"><%- result.list[i].productTime %></div>-->
+			<!--</div>-->
+		<!--</div>-->
 		<div class="yd-child-item">
 			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">包装规格：</div>
@@ -82,9 +82,13 @@
 			</div>
 		</div>
 		<div class="yd-child-item">
-			<div class="yd-child-dec">
+			<div class="yd-child-dec double-find">
 				<div class="yd-child-key">申请库存(吨)：</div>
 				<div class="yd-child-val"><%- result.list[i].warehouseList[a].applyInventory %></div>
+			</div>
+			<div class="yd-child-dec double-find">
+				<div class="yd-child-key">生产批次：</div>
+				<div class="yd-child-val"><%- result.list[i].warehouseList[a].produceBatchNo %></div>
 			</div>
 		</div>
 	</div>

@@ -67,15 +67,15 @@
                 </div>
             </div>
 
-            <!-- 添加库区 -->
-            <div class="gd-add">
-                <img class="gd-add-img" src="../img/1_33.png">
-            </div>
+            <!--&lt;!&ndash; 添加库区 &ndash;&gt;-->
+            <!--<div class="gd-add">-->
+                <!--<img class="gd-add-img" src="../img/1_33.png">-->
+            <!--</div>-->
 
             <div class="gd-infor">
                 <% if (productList.length > 0) { %>
                     <% for (var j = 0; j < productList.length; j++) { %>
-                        <div class="gd-list gd-list-item" data-applicationId="0" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
+                        <div class="gd-list gd-list-item" data-applicationId="0" data-produceBatchId="<%- productList[j].produceBatchId %>" data-warehouseareaId="<%- productList[j].warehouseAreaId %>" data-applyItemId="<%- productList[j].applyItemId %>">
                             <img class="gd-minus" src="../img/1_31.png">
                             <div class="gd-item">
                                 <div class="gd-key">入库重量(吨)</div>

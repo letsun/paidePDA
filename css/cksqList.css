@@ -236,6 +236,13 @@ body {
 .container .content .content-item .content-item-con .con-item .con-item-right {
   position: absolute;
   top: 0px;
-  left: 400px;
+  left: 380px;
+  right: 0;
   display: flex;
+}
+.container .content .content-item .content-item-con .con-item .con-item-right div {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -22,16 +22,16 @@
                 <div class="yd-child-val"><%- result.list[i].forecastTotalWeight %></div>
             </div>
         </div>
-        <div class="yd-child-item">
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">生产批次：</div>
-                <div class="yd-child-val"><%- result.list[i].produceBatchNo %></div>
-            </div>
-            <div class="yd-child-dec double-find">
-                <div class="yd-child-key">生产日期：</div>
-                <div class="yd-child-val"><%- result.list[i].produceTime %></div>
-            </div>
-        </div>
+        <!--<div class="yd-child-item">-->
+            <!--<div class="yd-child-dec double-find">-->
+                <!--<div class="yd-child-key">生产批次：</div>-->
+                <!--<div class="yd-child-val"><%- result.list[i].produceBatchNo %></div>-->
+            <!--</div>-->
+            <!--<div class="yd-child-dec double-find">-->
+                <!--<div class="yd-child-key">生产日期：</div>-->
+                <!--<div class="yd-child-val"><%- result.list[i].produceTime %></div>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="yd-child-item">
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">包装规格：</div>
@@ -83,6 +83,12 @@
             <div class="yd-child-dec double-find">
                 <div class="yd-child-key">申请库存(吨)：</div>
                 <div class="yd-child-val"><%- result.list[i].productList[a].applyWeight %></div>
+            </div>
+        </div>
+        <div class="yd-child-item">
+            <div class="yd-child-dec double-find">
+                <div class="yd-child-key">生产批次：</div>
+                <div class="yd-child-val"><%- result.list[i].productList[a].produceBatchNo %></div>
             </div>
         </div>
     </div>
