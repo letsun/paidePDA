@@ -364,7 +364,7 @@ body {
   max-height: 100%;
   -webkit-transform: translate(-50%, -50%);
 }
-.container .mask {
+.mask {
   position: fixed;
   top: 0;
   left: 0;
@@ -374,28 +374,30 @@ body {
   background: rgba(0, 0, 0, 0.6);
   display: none;
 }
-.container .mask .maskcon {
+.mask .maskcon {
   position: absolute;
   bottom: 0px;
   left: 0;
   right: 0px;
   display: none;
+  max-height: 100%;
+  overflow: scroll;
   font-size: 28px;
   background: #fff;
   color: #333;
 }
-.container .mask .maskcon .maskcon-item {
+.mask .maskcon .maskcon-item {
   line-height: 100px;
   text-align: center;
   border-bottom: 1px #ccc solid;
   letter-spacing: 5px;
   font-weight: bold;
 }
-.container .mask .maskcon .after {
+.mask .maskcon .after {
   background: #ff8500;
   color: #fff;
 }
-.container .mask .maskcon .disabled {
+.mask .maskcon .disabled {
   background: #999;
   color: #fff;
 }

@@ -369,7 +369,7 @@ body {
   max-height: 100%;
   -webkit-transform: translate(-50%, -50%);
 }
-.container .mask {
+.mask {
   position: fixed;
   top: 0;
   left: 0;
@@ -379,32 +379,34 @@ body {
   background: rgba(0, 0, 0, 0.6);
   display: none;
 }
-.container .mask .maskcon {
+.mask .maskcon {
   position: absolute;
   bottom: 0px;
   left: 0;
   right: 0px;
   display: none;
+  max-height: 100%;
+  overflow: scroll;
   font-size: 28px;
   background: #fff;
   color: #333;
 }
-.container .mask .maskcon .maskcon-item {
+.mask .maskcon .maskcon-item {
   line-height: 100px;
   text-align: center;
   border-bottom: 1px #ccc solid;
   letter-spacing: 5px;
   font-weight: bold;
 }
-.container .mask .maskcon .after {
+.mask .maskcon .after {
   background: #ff8500;
   color: #fff;
 }
-.container .mask .maskcon .disabled {
+.mask .maskcon .disabled {
   background: #999;
   color: #fff;
 }
-.container .mask .maskcon7 {
+.mask .maskcon7 {
   position: absolute;
   left: 0;
   top: 0;
@@ -412,75 +414,75 @@ body {
   width: 100%;
   overflow: hidden;
 }
-.container .mask .maskcon7 .maskcon-wra {
+.mask .maskcon7 .maskcon-wra {
   width: 100%;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item {
+.mask .maskcon7 .maskcon-wra .content-item {
   margin: 20px 30px 20px 30px;
   padding: 20px;
   position: relative;
   border-bottom: 1px #ccc solid;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-header {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-header {
   font-weight: bold;
   font-size: 26px;
   padding-bottom: 10px;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con {
   font-size: 24px;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item {
   position: relative;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item span {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item span {
   color: #999;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .span {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .span {
   width: 120px;
   text-align: right;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .overflow {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .overflow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 260px;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .overflow1 {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .overflow1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 530px;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .con-item-left {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .con-item-left {
   display: flex;
 }
-.container .mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .con-item-right {
+.mask .maskcon7 .maskcon-wra .content-item .content-item-con .con-item .con-item-right {
   position: absolute;
   top: 0px;
   left: 380px;
   display: flex;
 }
-.container .mask .maskcon8 {
+.mask .maskcon8 {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
 }
-.container .mask .maskcon8 .search {
+.mask .maskcon8 .search {
   padding: 20px 0px 20px 30px;
   border-bottom: 1px #ccc solid;
   display: flex;
   position: relative;
 }
-.container .mask .maskcon8 .search input {
+.mask .maskcon8 .search input {
   background: #f2f2f2;
   padding: 10px 30px 10px 60px;
   font-size: 26px;
   width: 73%;
   border-radius: 5px;
 }
-.container .mask .maskcon8 .search label {
+.mask .maskcon8 .search label {
   width: 10%;
   display: block;
   margin: auto;
@@ -488,68 +490,68 @@ body {
   color: #fe9632;
   letter-spacing: 2px;
 }
-.container .mask .maskcon8 .search img {
+.mask .maskcon8 .search img {
   position: absolute;
   top: 35px;
   left: 50px;
 }
-.container .mask .maskcon8 .dwcontent .after {
+.mask .maskcon8 .dwcontent .after {
   box-shadow: 0px 0px 10px 0px #ddd;
   border-radius: 10px;
 }
-.container .mask .maskcon8 .dwcontent .content-item {
+.mask .maskcon8 .dwcontent .content-item {
   margin: 20px 30px 20px 30px;
   padding: 20px;
   position: relative;
   border-bottom: 1px #ccc solid;
 }
-.container .mask .maskcon8 .dwcontent .content-item .btn1 {
+.mask .maskcon8 .dwcontent .content-item .btn1 {
   background: linear-gradient(to right, #f9bb04, #f68100);
   color: #fff;
 }
-.container .mask .maskcon8 .dwcontent .content-item .btn2 {
+.mask .maskcon8 .dwcontent .content-item .btn2 {
   color: #fe9632;
   border: #fe9632 1px solid;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-header {
+.mask .maskcon8 .dwcontent .content-item .content-item-header {
   font-weight: bold;
   font-size: 26px;
   padding-bottom: 10px;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con {
+.mask .maskcon8 .dwcontent .content-item .content-item-con {
   font-size: 24px;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item {
   position: relative;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item span {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item span {
   color: #999;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .span {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .span {
   width: 120px;
   text-align: right;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .overflow {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .overflow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 260px;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .overflow1 {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .overflow1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 530px;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .con-item-left {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .con-item-left {
   display: flex;
 }
-.container .mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .con-item-right {
+.mask .maskcon8 .dwcontent .content-item .content-item-con .con-item .con-item-right {
   position: absolute;
   top: 0px;
   left: 380px;
   display: flex;
 }
-.container .mask .maskcon8 .dwcontent .loadText {
+.mask .maskcon8 .dwcontent .loadText {
   text-align: center;
 }

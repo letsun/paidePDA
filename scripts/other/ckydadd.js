@@ -259,17 +259,17 @@ $(function () {
 						if (allWarehouseArea.length > 0) {
 							for (var j = 0; j < allWarehouseArea.length; j++) {
 								if (list[i].id == allWarehouseArea[j]) {
-									html_3 += '<div class="maskcon-item disabled" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].realInventory + '</div>';
+									html_3 += '<div class="maskcon-item disabled" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].inventory + '</div>';
 									break;
 								} else {
 									if (j == allWarehouseArea.length - 1) {
-										html_3 += '<div class="maskcon-item" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].realInventory + '</div>';
+										html_3 += '<div class="maskcon-item" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].inventory + '</div>';
 									}
 
 								}
 							}
 						} else {
-							html_3 += '<div class="maskcon-item" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].realInventory + '</div>';
+							html_3 += '<div class="maskcon-item" data-produceBatchId="' + list[i].produceBatchId + '" data-productLevelId="' + list[i].productLevelId + '" data-inventoryItemId="' + list[i].inventoryItemId + '" data-id="' + list[i].id + '">' + list[i].name + ',' + list[i].produceBatchNo + ',' + list[i].inventory + '</div>';
 						}
 
 					}
