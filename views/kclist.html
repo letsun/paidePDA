@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/kclist.css">
+
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            产品库存
+
+        </div>
+
+        <div class="search">
+            <input type="text" id="productName" placeholder="输入产品名称搜索"> <label id="scarchBtn">搜索</label>
+
+            <img src="../img/1_28.png">
+        </div>
+
+
+        <div class="nav">
+
+            <select name="" id="nav">
+                <option value="" selected>全部</option>
+            </select>
+            <img src="../img/1_43.png" alt="" >
+
+        </div>
+
+        <div class="select">
+            <div class="select-item">
+                <select name="" id="select1">
+                    <option value="" selected>全部</option>
+                </select>
+                <img src="../img/1_43.png" alt="" >
+            </div>
+            <div class="select-item">
+                <select name="" id="select2">
+                    <option value="">全部</option>
+                </select>
+                <img src="../img/1_43.png" alt="" >
+            </div>
+            <div class="select-item">
+                <select name="" id="select3">
+                    <option value="">全部</option>
+
+                </select>
+                <img src="../img/1_43.png" alt="" >
+            </div>
+            <div class="select-item">
+                <select name="" id="select4">
+                    <option value="">全部</option>
+ 
+                </select>
+                <img src="../img/1_43.png" alt="" >
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="scroll-wra" id="scrollWra">
+                <div class="wrapper">
+                    <div class="list" id="list">
+
+                    </div>
+
+                    <div class="loadText">上滑加载更多</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/other/kclist.js"></script>
+    <script src="../scripts/plugins/betterScroll/bscroll.js"></script>
+    <script>
+        // var select = $("#select").find("option:selected").text()
+        // console.log(select) 
+      
+    </script>
+</body>
+
+</html>

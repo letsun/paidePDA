@@ -33,14 +33,21 @@
 <script>
 
     var accountId = Global.getUrlParam('accountId');
-
+    var corporationId = Global.getUrlParam('corporationId');
+    var mtkjUserType = Global.getUrlParam('mtkjUserType');
     // 获取数据
     getData('GET', api.yq.findParkQueue, {
         accountId: accountId,
+        corporationId: corporationId,
+        mtkjUserType: mtkjUserType
     }, function (res) {
         if (res.code == 200) {
 
-            Global.requestTempByAjax('../temp/parkManage/list.html', { list: res.data }, function (template) {
+            Global.requestTempByAjax('../temp/parkManage/list.html', { 
+                list: res.data,
+
+                accountId:accountId
+             }, function (template) {
 
                 $('.con').html(template);
             });

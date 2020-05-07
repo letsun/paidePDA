@@ -1,12 +1,10 @@
-
+//var dev = 'http://192.168.1.11:8080';   
 var dev = 'http://192.168.1.68:8899';          //谭柳*/
 var test = "https://wms.ebiaoji.com";           //线上
-//var dev = "http://yecl.lxcyhd.com";           //春玲姐
-//var dev  = "http://192.168.1.41:8899";
-// var dev = 'http://192.168.1.77:8899';          //吴剑*/
+
 var product = 'https://wms.pd-kj.com';    // 生产环境
 
-var ip = product;
+var ip = test;
 
 var api = {
     rkgd: {
@@ -114,5 +112,10 @@ var api = {
 	knyk:{
 		getAreaAdjustList: ip + '/api/stockAreaAdjust/getAreaAdjustList',     //库内移库列表
 		getAreaAdjustDetail: ip + '/api/stockAreaAdjust/getAreaAdjustDetail',     //库内移库详情
-	}
+    },
+    kc:{
+        search: ip + '/api/stock/search',     //库内移库详情
+        getByTraceId:ip+ '/api/pda/baseMethod/getByTraceId',//根据溯源系统查询wms系统id
+    }
+
 };

@@ -64,13 +64,15 @@
 <% for (var i = 0; i < result.list.length; i++) { %>
 
 
-    <% if(result.status == 1) { %>
-    <div class="content-item content-itema" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>" data-queueConnectForm="<%- result.list[i].queueConnectForm %>" data-billType="<%- result.list[i].billType %>"  data-billId="<%- result.list[i].billId %>" >
+<% if(result.status == 1) { %>
+<div class="content-item content-itema" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>"
+    data-queueConnectForm="<%- result.list[i].queueConnectForm %>" data-billType="<%- result.list[i].billType %>"
+    data-billId="<%- result.list[i].billId %>">
     <% } %>
 
     <% if(result.status == 2) { %>
     <div class="content-item content-itemb" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">
-    <% } %>
+        <% } %>
 
         <div class="item-header">
             <div class="head-key">排队序号：</div>
@@ -89,20 +91,23 @@
 
             </div>
             <div class="head-val">
+                <% if (result.accountId != null) { %>
+
                 <% if (result.status == 1) { %>
 
                 <% if(result.queueConnectForm==0) { %>
                 <div class="team-text">未关联运单</div>
                 <% }else { %>
 
-                    <% if (result.list[i].billType == 2) { %>
-                        <div class="team-text">关联申请单</div>
-                    <% } else if (result.list[i].billType == 3) { %>
-                        <div class="team-text">关联运单</div>
-                    <% } %>
-               
+                <% if (result.list[i].billType == 2) { %>
+                <div class="team-text">关联申请单</div>
+                <% } else if (result.list[i].billType == 3) { %>
+                <div class="team-text">关联运单</div>
                 <% } %>
-                <div class="release-btn release-btn1"  data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>" >允许放行
+
+                <% } %>
+                <div class="release-btn release-btn1" data-queueCodeRecordId="<%- result.list[i].queueCodeRecordId %>">
+                    允许放行
                 </div>
 
                 <% }else if (result.status == 2) { %>
@@ -116,6 +121,8 @@
                 <%}%>
 
                     <% } %>
+
+                <% } %>
             </div>
         </div>
 
@@ -152,4 +159,4 @@
     <% } %>
 
 
-<%  }%>
+    <%  }%>
