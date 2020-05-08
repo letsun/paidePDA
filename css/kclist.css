@@ -173,11 +173,12 @@ body {
   height: 70px;
   line-height: 70px;
   display: none;
+  padding-left: 20px;
   border: 1px solid #ccc;
 }
 .container .nav select {
   position: absolute;
-  left: 0;
+  left: 150px;
   right: 0;
   bottom: 0;
   top: 0;

@@ -35,18 +35,18 @@ $(function () {
                     for (var i = 0; i < res.data.companyList.length; i++) {
                         html += '<option value="' + res.data.companyList[i].id + '">' + res.data.companyList[i].name + '</option>';
                     }
-                    $("#nav").append(html);
+                    $("#nav").html(html);
                     $('.nav').show();
 
 
                 } else {
                     $('.content').css('top', '240px');
                     $('.nav').hide();
-                    companyId = res.data.companyId;
-
+                    
+                    console.log(companyId)
 
                 }
-
+                companyId = res.data.companyId;
                 yq();//查询园区
                 findPageApi();//查询产品
             }
@@ -62,7 +62,20 @@ $(function () {
     //选择企业获取园区
 
     $('#nav').change(function () {
-        $('#nav').val()
+        companyId=$('#nav').val();
+
+
+        parkId ='';
+        warehouseId = '';
+        warehouseAreaId = '';
+        productId = '';
+
+        $('#select1').val('');
+        $('#select2').val('');
+        $('#select3').val('');
+        $('#select4').val('');
+        yq()
+        search();
     })
 
 
@@ -154,10 +167,12 @@ $(function () {
             companyId: companyId,
         }, function (res) {
             var html = '';
+
+            html += '<option value="">全部</option>';
             for (var i = 0; i < res.data.length; i++) {
                 html += '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>';
             }
-            $("#select1").append(html)
+            $("#select1").html(html)
         })
     }
 
@@ -179,10 +194,11 @@ $(function () {
             companyId: companyId,
         }, function (res) {
             var html = '';
+            html += '<option value="">全部</option>';
             for (var i = 0; i < res.data.length; i++) {
                 html += '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>';
             }
-            $("#select2").append(html);
+            $("#select2").html(html);
             search();
         })
 
@@ -201,10 +217,11 @@ $(function () {
             companyId: companyId
         }, function (res) {
             var html = '';
+            html += '<option value="">全部</option>';
             for (var i = 0; i < res.data.length; i++) {
                 html += '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>';
             }
-            $("#select3").append(html)
+            $("#select3").html(html)
 
             search();
         })
@@ -221,10 +238,11 @@ $(function () {
         }, function (res) {
             console.log(res)
             var html = '';
+            html += '<option value="">全部</option>';
             for (var i = 0; i < res.data.list.length; i++) {
                 html += '<option value="' + res.data.list[i].id + '">' + res.data.list[i].productName + '</option>';
             }
-            $("#select4").append(html)
+            $("#select4").html(html)
 
             search();
         })
