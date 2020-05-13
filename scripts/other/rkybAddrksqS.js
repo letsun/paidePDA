@@ -38,7 +38,8 @@ $(function () {
             $('#produceBatchNo').html(data.produceBatchNo).attr('data-produceBatchId',data.productBatchId);
             $('#produceTime').html(data.produceTime);
             $('#productBrand').html(data.productBrand);
-            $('#productLevel').html(data.productLevel);
+            $('#productLevel').html(data.productLevel).attr("data-id",data.productLevelId);
+           
             $('#productName').html(data.productName).attr('data-productId',data.productId);
             $('#productType').html(data.productType);
             $('#specification').html(data.specification);
@@ -316,7 +317,7 @@ $(function () {
             obj.applyWeight = $(item).find('.inStock').val();
             obj.productId = $('#productName').attr('data-productId');
             obj.produceBatchId = $('#produceBatchNo').attr('data-produceBatchId');
-
+            obj.productLevelId =  $('#productLevel').attr('data-id');
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
             obj.warehouseId = $(item).find('.storeroomText').attr('data-warehouseId');
             obj.warehouseAreaId = $(item).find('.reservoirAreaText').attr('data-warehouseareaId');

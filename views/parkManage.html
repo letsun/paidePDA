@@ -33,12 +33,12 @@
 <script>
 
     var accountId = Global.getUrlParam('accountId');
-    var corporationId = Global.getUrlParam('corporationId');
+    var mtkjId = Global.getUrlParam('mtkjId');
     var mtkjUserType = Global.getUrlParam('mtkjUserType');
     // 获取数据
     getData('GET', api.yq.findParkQueue, {
         accountId: accountId,
-        corporationId: corporationId,
+        mtkjId: mtkjId,
         mtkjUserType: mtkjUserType
     }, function (res) {
         if (res.code == 200) {

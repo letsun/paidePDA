@@ -21,15 +21,18 @@ $(function () {
     var warehouseAreaId = '';
     var warehouseId = '';
     var companyId = '';
+    var customerId ='';
     // 根据溯源系统查询wms系统id
     if (traceGroupId != null || traceCompanyId != null) {
         getData('GET', api.kc.getByTraceId, {
             traceGroupId: traceGroupId,
             traceCompanyId: traceCompanyId
         }, function (res) {
+
+            console.log(res)
             if (res.code == 200) {
                 if (res.data.showSelect == 1) {
-                    $('.content').css('top', '310px');
+                    $('.content').css('top', '460px');
 
                     var html = '';
                     for (var i = 0; i < res.data.companyList.length; i++) {
@@ -40,32 +43,36 @@ $(function () {
 
 
                 } else {
-                    $('.content').css('top', '240px');
+                    $('.content').css('top', '390px');
                     $('.nav').hide();
-                    
+
                     console.log(companyId)
 
                 }
                 companyId = res.data.companyId;
                 yq();//查询园区
                 findPageApi();//查询产品
+                findCustomerList();//货主查询
+                search();
             }
         })
 
         console.log('111')
     } else {
         yq();//查询园区
+        search();
         findPageApi();//查询产品
+        findCustomerList();//货主查询
     }
 
 
     //选择企业获取园区
 
     $('#nav').change(function () {
-        companyId=$('#nav').val();
+        companyId = $('#nav').val();
 
 
-        parkId ='';
+        parkId = '';
         warehouseId = '';
         warehouseAreaId = '';
         productId = '';
@@ -244,9 +251,34 @@ $(function () {
             }
             $("#select4").html(html)
 
-            search();
+
         })
     }
+
+
+    //货主查询
+    function findCustomerList() {
+        getData('get', api.yq.findCustomerList, {
+            accountId: accountId,
+
+            companyId: companyId
+        }, function (res) {
+            console.log(res)
+            var html = '';
+            html += '<option value="">全部</option>';
+            for (var i = 0; i < res.data.customerList.length; i++) {
+                html += '<option value="' + res.data.customerList[i].id + '">' + res.data.customerList[i].name + '</option>';
+            }
+            $("#nav1").html(html)
+
+  
+        })
+    }
+
+    $('#nav1').change(function(){
+        customerId = $('#nav1').val();
+        search();
+    })
 
 
 
@@ -255,8 +287,6 @@ $(function () {
         warehouseAreaId = $("#select3").val();
         productId = '';
         $('#select4').val('');
-
-
         search();
     })
 
@@ -281,11 +311,15 @@ $(function () {
             traceGroupId: traceGroupId,	//溯源系统集团id	number	
             warehouseAreaId: warehouseAreaId,	//库区id	string	
             warehouseId: warehouseId,  //库房id
+            customerId:customerId, //货主id
         }, function (res) {
             if (res.code == 200) {
                 if (res.data.records.length > 0) {
                     totalPage = res.data.totalPage;
                     var data = res.data.records;
+
+                    $('#totalInventory').html(res.data.totalInventory+'吨');
+                    $('#totalRealInventory').html(res.data.totalRealInventory+'吨')
                     renderData(data);
                 } else {
                     $('.loadText').text('暂无数据');

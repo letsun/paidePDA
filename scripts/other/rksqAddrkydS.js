@@ -422,6 +422,8 @@ $(function () {
             obj.warehouseApplyItemId = $(item).attr('data-applyItemId');
             obj.focusFlag = $(item).find('.focusFlagText').html();
             obj.parkId = $(item).find('.parkText').attr('data-parkId');
+
+            obj.productLevelId = $('.productLevel').attr('data-productlevelid');
             obj.produceBatchId = $(item).parents('.yd-item').find('.produceBatch').attr('data-produceBatchId');
             obj.productId = $(item).parents('.yd-item').find('.productName').attr('data-productId');
             /*obj.quantity = $(item).find('.quantity').val();*/

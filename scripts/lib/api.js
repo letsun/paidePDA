@@ -1,4 +1,4 @@
-//var dev = 'http://192.168.1.11:8080';   
+//var dev = 'http://192.168.1.11:8899';   
 var dev = 'http://192.168.1.68:8899';          //谭柳*/
 var test = "https://wms.ebiaoji.com";           //线上
 

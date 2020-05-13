@@ -334,7 +334,7 @@ $(function () {
 	$('.container').on('click', '.gd-add-img', function () {
 		var html = '';
 		applicationId++;
-		html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '">';
+		html += '<div class="gd-list gd-list-item" data-applicationId="' + applicationId + '" data-applyitemid="'+ productList[0].warehouseList[0].applyitemid + '">';
 		html += '<img class="gd-minus" src="../img/1_31.png">';
 
 		html += '<div class="gd-item">';
