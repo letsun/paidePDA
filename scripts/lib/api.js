@@ -1,10 +1,10 @@
-//var dev = 'http://192.168.1.11:8899';   
-var dev = 'http://192.168.1.68:8899';          //谭柳*/
+var dev = 'http://192.168.1.11:8899';   
+//var dev = 'http://192.168.1.68:8899';          //谭柳*/
 var test = "https://wms.ebiaoji.com";           //线上
 
 var product = 'https://wms.pd-kj.com';    // 生产环境
 
-var ip = test;
+var ip = dev;
 
 var api = {
     rkgd: {
