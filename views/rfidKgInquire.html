@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link rel="stylesheet" href="../css/rfidKgInquire.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <a href="javascript:history.back(-1)" class="return"> <img src="../img/1_40.png"></a>
+            库格查询
+        </div>
+
+        <div class="content">
+
+
+            <div class="gd-infor">
+                <div class="gd-list">
+                    <div class="gd-item">
+                        <div class="gd-key">RFID标签</div>
+                        <div id="stackCode" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品名称</div>
+                        <div id="productName" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">生产批次</div>
+                        <div id="batchNo" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">生产日期</div>
+                        <div id="produceTime" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">包装规格</div>
+                        <div id="specification" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品单位</div>
+                        <div id="unit" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品等级</div>
+                        <div id="level" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品榨季</div>
+                        <div id="zhaji" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品大类</div>
+                        <div id="type" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品品牌</div>
+                        <div id="brand" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品重量(吨)</div>
+                        <div id="weight" class="gd-val"></div>
+                    </div>
+
+                    <div class="gd-item">
+                        <div class="gd-key">产品数量</div>
+                        <div id="quality" class="gd-val"></div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--糖包二维码-->
+            <div class="code-wra">
+                <div class="code-title">糖包二维码：</div>
+                <div class="list"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../scripts/lib/jquery-2.2.2.min.js"></script>
+    <script src="../scripts/lib/ejs.min.js"></script>
+    <script src="../scripts/lib/commonFunc.js"></script>
+    <script src="../scripts/lib/common.js"></script>
+    <script src="../scripts/lib/api.js"></script>
+    <script src="../scripts/other/rfidKgInquire.js"></script>
+</body>
+
+</html>

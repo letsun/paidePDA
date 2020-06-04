@@ -1,0 +1,131 @@
+<div class="content">
+
+    <div class="gd-infor">
+        <div class="gd-list">
+            <div class="gd-item">
+                <div class="gd-key">地标标签</div>
+                <div id="landmarkCode" class="gd-val"><%- result.data.landmarkCode %></div>
+            </div>
+
+            <div class="gd-item">
+                <div class="gd-key">所属库房</div>
+                <div id="warehouseName" class="gd-val"><%- result.data.warehouseName %></div>
+            </div>
+
+            <div class="gd-item">
+                <div class="gd-key">库区名称</div>
+                <div id="warehouseAreaName" class="gd-val"><%- result.data.warehouseAreaName %></div>
+            </div>
+
+            <div class="gd-item">
+                <div class="gd-key">入库总量(吨)</div>
+                <div id="stroageTotalWeight" class="gd-val"><%- result.data.stroageTotalWeight %></div>
+            </div>
+
+            <div class="gd-item">
+                <div class="gd-key">出库总量(吨)</div>
+                <div id="outTotalWeight" class="gd-val"><%- result.data.outTotalWeight %></div>
+            </div>
+
+            <div class="gd-item">
+                <div class="gd-key">剩余库存(吨)</div>
+                <div id="weight" class="gd-val"><%- result.data.weight %></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--库格分布图-->
+    <div class="distr-wra">
+        <div class="title">
+            <div class="title-key">库格分布图：</div>
+            <div class="title-val" id="openInfo">扩展信息</div>
+        </div>
+
+        <div class="lattice-wra">
+            <div class="lattice-list">
+                <div class="lattice-item" style="<%- 'width:' + (result.data.lineCount * 84) + 'px' %>">
+                    <% for(var i = 0; i < result.data.positionMainVo.length; i++) { %>
+                        <div class="child-item <%- result.data.positionMainVo[i].status == 0 ? 'active' : '' %>">
+                            <div class="lattice-text"><%- result.data.positionMainVo[i].floorNum %></div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <!--canvas-->
+        <div class="canvas-wra" id="main"></div>
+
+
+        <!--产品列表-->
+        <div class="prod-list">
+            <% for(var i = 0; i < result.data.rfidDetailVos.length; i++) { %>
+                <div class="prod-item">
+                    <div class="child-item">
+                        <div class="prod-key">产品名称</div>
+                        <div class="prod-val"><%- result.data.rfidDetailVos[i].productName %></div>
+                    </div>
+                    <div class="child-item">
+                        <div class="prod-key">生产批次</div>
+                        <div class="prod-val"><%- result.data.rfidDetailVos[i].batch %></div>
+                    </div>
+                    <div class="child-item">
+                        <div class="prod-key">产品等级</div>
+                        <div class="prod-val"><%- result.data.rfidDetailVos[i].level %></div>
+                    </div>
+                    <div class="child-item">
+                        <div class="prod-key">产品榨季</div>
+                        <div class="prod-val"><%- result.data.rfidDetailVos[i].zhaji %></div>
+                    </div>
+                    <div class="child-item">
+                        <div class="prod-key">产品大类</div>
+                        <div class="prod-val"><%- result.data.rfidDetailVos[i].productType %></div>
+                    </div>
+                    <div class="child-item">
+                        <div class="prod-key">产品重量(吨)</div>
+                        <div class="prod-val"><%- result.data.rfidDetailVos[i].productWeight %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+    </div>
+</div>
+
+
+<!--扩展信息-->
+<div class="info-win">
+    <div class="info-content">
+        <div class="info-list">
+            <div class="info-item">
+                <div class="info-key">可容库存(吨)</div>
+                <div class="info-val"><%- result.data.capableStock %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-key">存储单位</div>
+                <div class="info-val"><%- result.data.storageUnit %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-key">空库时入库序号</div>
+                <div class="info-val"><%- result.data.emptySequenceNo %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-key">满库时出库序号</div>
+                <div class="info-val"><%- result.data.fullSequenceNo %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-key">堆叠方式</div>
+                <div class="info-val"><%- result.data.stackTypeLabel %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-key">存取方式</div>
+                <div class="info-val"><%- result.data.accessTypeLabel %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-key">可容库格(个)</div>
+                <div class="info-val"><%- result.data.positionMainCount %></div>
+            </div>
+        </div>
+    </div>
+</div>

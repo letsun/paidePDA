@@ -4,7 +4,7 @@ var test = "https://wms.ebiaoji.com";           //线上
 
 var product = 'https://wms.pd-kj.com';    // 生产环境
 
-var ip = product;
+var ip = test;
 
 var api = {
     rkgd: {
@@ -116,6 +116,13 @@ var api = {
     kc:{
         search: ip + '/api/stock/search',     //库内移库详情
         getByTraceId:ip+ '/api/pda/baseMethod/getByTraceId',//根据溯源系统查询wms系统id
+    },
+    jc:{
+        rfidQuery: ip + '/api/pda/rfid/relieveBind/rfidQuery',     // RFID库格查询
+        landmarkQuery: ip + '/api/pda/rfid/relieveBind/landmarkQuery',     // RFID地标查询(库区查询)
+        kcksh: ip + '/api/pda/rfid/relieveBind/totalInventoryStatisticsView',     // 库存可视化
+        parkStatisticsView: ip + '/api/pda/rfid/relieveBind/parkStatisticsView',     // 库房可视化
+        kqksh: ip + '/api/pda/rfid/relieveBind/warehouseAreaStatisticsView',     // 库区可视化
     }
 
 };

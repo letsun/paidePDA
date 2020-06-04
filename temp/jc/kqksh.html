@@ -1,0 +1,63 @@
+<div class="title"><%- result.data.warehouseAreaName %></div>
+
+<!--库格分布图-->
+<div class="distr-wra">
+
+    <div class="lattice-wra">
+        <div class="lattice-list">
+            <div class="lattice-item" style="<%- 'width:' + (result.data.lineCount * 84) + 'px' %>">
+                <% for(var i = 0; i < result.data.positionMainGroup.length; i++) { %>
+                    <div class="child-item <%- result.data.positionMainGroup[i].status == 0 ? 'active' : '' %>">
+                        <div class="lattice-text"><%- result.data.positionMainGroup[i].floorNum %></div>
+                    </div>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="prod-list">
+    <% for(var i = 0; i < result.data.productBatchGroup.length; i++) { %>
+        <div class="prod-item">
+            <div class="info-item">
+                <div class="child-item">
+                    <div class="child-key">产品名称:</div>
+                    <div class="child-val"><%- result.data.productBatchGroup[i].productName %></div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="child-item double-item">
+                    <div class="child-key">产品等级:</div>
+                    <div class="child-val"><%- result.data.productBatchGroup[i].levelName %></div>
+                </div>
+                <div class="child-item double-item">
+                    <div class="child-key">产品大类:</div>
+                    <div class="child-val"><%- result.data.productBatchGroup[i].type %></div>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="child-item">
+                    <div class="child-key">生产批次:</div>
+                    <div class="child-val"><%- result.data.productBatchGroup[i].batchNo %></div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="child-item double-item">
+                    <div class="child-key">库存数量:</div>
+                    <div class="child-val"><%- result.data.productBatchGroup[i].quantity %></div>
+                </div>
+                <div class="child-item double-item">
+                    <div class="child-key">库存重量(吨):</div>
+                    <div class="child-val"><%- result.data.productBatchGroup[i].weight %></div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<!--canvas-->
+<div class="canvas-wra" id="main"></div>

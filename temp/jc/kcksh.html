@@ -1,0 +1,38 @@
+<div class="list">
+    <% for(var i = 0; i < result.list.length; i++) { %>
+        <div class="item" >
+
+            <div class="title"><%- result.list[i].name %></div>
+            <div class="park-list">
+                <% for(var j = 0; j < result.list[i].parkInfoVoList.length; j++) { %>
+                    <div class="park-item">
+                        <div class="park-text"><%- result.list[i].parkInfoVoList[j].name %></div>
+                        <div class="park-bg"></div>
+                    </div>
+                <% } %>
+            </div>
+
+            <div class="bottom">
+                <div class="info-item">
+                    <div class="child-item">
+                        <div class="child-key">今日总库存(吨):</div>
+                        <div class="child-val"><%- result.list[i].todayTotalWeight %></div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="child-item double-item">
+                        <div class="child-key">今日入库量(吨):</div>
+                        <div class="child-val"><%- result.list[i].outedWeight %></div>
+                    </div>
+                    <div class="child-item double-item">
+                        <div class="child-key">今日出库量(吨):</div>
+                        <div class="child-val"><%- result.list[i].storagedWeight %></div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-wra" id="main<%- i %>" data-rk="<%- result.list[i].outedWeight %>" data-ck="<%- result.list[i].storagedWeight %>"></div>
+        </div>
+    <% } %>
+
+</div>
