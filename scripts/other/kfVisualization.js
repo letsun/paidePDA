@@ -14,4 +14,11 @@ $(function () {
             });
         }
     });
+
+
+    // 点击库区
+    $('.container').on('click','.resev-item',function () {
+        var warehouseAreaId = $(this).attr('data-id');
+        window.location.href = './kqVisualization.html?accountId=' + accountId + '&warehouseAreaId=' + warehouseAreaId;
+    })
 });

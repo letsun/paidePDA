@@ -3,28 +3,32 @@
         <div class="item">
 
             <div class="title"><%- result.list[i].name %></div>
-            <div class="visu-wra">
-                <% for(var j = 0; j < result.list[i].warehouseAreaInfoVos.length; j++) { %>
-                    <% if (result.list[i].warehouseAreaInfoVos[j].type == 1) { %>
-                        <div class="resev-item resev-item1" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
-                            <img src="../img/1_102.png" alt="">
-                        </div>
-                    <% } else if (result.list[i].warehouseAreaInfoVos[j].type == 2) { %>
-                        <div class="resev-item resev-item2" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
-                            <img src="../img/1_103.png" alt="">
-                        </div>
-                    <% } else if (result.list[i].warehouseAreaInfoVos[j].type == 3) { %>
-                        <div class="resev-item resev-item3" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
-                            <img src="../img/1_104.png" alt="">
-                        </div>
-                    <% } else { %>
-                        <div class="resev-item resev-item4" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
-                            <img src="../img/1_105.png" alt="">
-                        </div>
-                    <% } %>
 
-                <% } %>
-            </div>
+            <% if (result.list[i].warehouseAreaInfoVos.length > 0) { %>
+                <div class="visu-wra">
+                    <% for(var j = 0; j < result.list[i].warehouseAreaInfoVos.length; j++) { %>
+                        <% if (result.list[i].warehouseAreaInfoVos[j].type == 1) { %>
+                            <div class="resev-item resev-item1" data-id="<%- result.list[i].warehouseAreaInfoVos[j].id %>" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
+                                <img src="../img/1_102.png" alt="">
+                            </div>
+                        <% } else if (result.list[i].warehouseAreaInfoVos[j].type == 2) { %>
+                            <div class="resev-item resev-item2" data-id="<%- result.list[i].warehouseAreaInfoVos[j].id %>" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
+                                <img src="../img/1_103.png" alt="">
+                            </div>
+                        <% } else if (result.list[i].warehouseAreaInfoVos[j].type == 3) { %>
+                            <div class="resev-item resev-item3" data-id="<%- result.list[i].warehouseAreaInfoVos[j].id %>" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
+                                <img src="../img/1_104.png" alt="">
+                            </div>
+                        <% } else { %>
+                            <div class="resev-item resev-item4" data-id="<%- result.list[i].warehouseAreaInfoVos[j].id %>" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
+                                <img src="../img/1_105.png" alt="">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            <% } %>
+
+
 
             <div class="bottom">
                 <div class="info-item">

@@ -1,9 +1,13 @@
 $(function () {
     var landmarkCode = Global.getUrlParam('landmarkCode');
+    var userId = Global.getUrlParam('userId');
+    var warehouseAreaId = Global.getUrlParam('warehouseAreaId');
 
     getData('GET',api.jc.landmarkQuery,{
         accountId: accountId,
         landmarkCode: landmarkCode,
+        userId: userId,
+        warehouseAreaId: warehouseAreaId,
     },function (res) {
         if (res.code == 200) {
             var data = res.data;

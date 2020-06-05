@@ -5,7 +5,7 @@
             <div class="title"><%- result.list[i].name %></div>
             <div class="park-list">
                 <% for(var j = 0; j < result.list[i].parkInfoVoList.length; j++) { %>
-                    <div class="park-item">
+                    <div class="park-item" data-id="<%- result.list[i].parkInfoVoList[j].id %>">
                         <div class="park-text"><%- result.list[i].parkInfoVoList[j].name %></div>
                         <div class="park-bg"></div>
                     </div>

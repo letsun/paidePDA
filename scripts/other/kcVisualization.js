@@ -1,10 +1,6 @@
 $(function () {
-    var id = Global.getUrlParam('id');
-
-
     getData('GET',api.jc.kcksh,{
         accountId: accountId,
-        id: id,
     },function (res) {
         if (res.code == 200) {
             var list = res.data;
@@ -70,4 +66,9 @@ $(function () {
     }
 
 
+    // 点击园区
+    $('.container').on('click','.park-item',function () {
+        var parkId = $(this).attr('data-id');
+        window.location.href = './kfVisualization.html?accountId=' + accountId + '&parkId=' + parkId;
+    })
 })
