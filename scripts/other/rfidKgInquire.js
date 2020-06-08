@@ -22,6 +22,8 @@ $(function () {
             $('#brand').html(data.brand);
             $('#weight').html(data.weight);
             $('#quality').html(data.quality);
+            $('#location').html(data.location);
+            $('#position').html(data.position);
 
             for (var i = 0; i < data.code.length; i++) {
                 html += '<div class="item">' + data.code[i] + '</div>';
@@ -29,4 +31,4 @@ $(function () {
             $('.list').html(html);
         }
     });
-})
+});
