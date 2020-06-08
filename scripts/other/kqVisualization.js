@@ -39,9 +39,8 @@ $(function () {
                 formatter: '{a} <br/>{b} : {c} ({d}%)'
             },
             legend: {
-                orient: 'horizontal',
-                left: 'center',
-                top: '60px',
+                left: 'left',
+                top: 'top',
                 data: data1,
             },
             series: [

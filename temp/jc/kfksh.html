@@ -9,6 +9,7 @@
                     <% for(var j = 0; j < result.list[i].warehouseAreaInfoVos.length; j++) { %>
                         <% if (result.list[i].warehouseAreaInfoVos[j].type == 1) { %>
                             <div class="resev-item resev-item1" data-id="<%- result.list[i].warehouseAreaInfoVos[j].id %>" style="<%- 'left:' +  result.list[i].warehouseAreaInfoVos[j].colIndex * 0.55 +'px;top:' + result.list[i].warehouseAreaInfoVos[j].rowIndex * 0.55 + 'px;' %>">
+                                <div class="resev-text"><%- result.list[i].warehouseAreaInfoVos[j].name %></div>
                                 <img src="../img/1_102.png" alt="">
                             </div>
                         <% } else if (result.list[i].warehouseAreaInfoVos[j].type == 2) { %>

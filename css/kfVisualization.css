@@ -163,6 +163,19 @@ body {
   display: block;
   width: 100%;
 }
+.container .content .list .item .visu-wra .resev-item .resev-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: 20px;
+  align-items: center;
+  -webkit-transform: scale(0.8);
+}
 .container .content .list .item .visu-wra .resev-item1 {
   width: 62.7px;
 }

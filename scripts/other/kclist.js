@@ -25,11 +25,10 @@ $(function () {
     // 根据溯源系统查询wms系统id
     if (traceGroupId != null || traceCompanyId != null) {
         getData('GET', api.kc.getByTraceId, {
+            accountId: accountId,
             traceGroupId: traceGroupId,
             traceCompanyId: traceCompanyId
         }, function (res) {
-
-            console.log(res)
             if (res.code == 200) {
                 if (res.data.showSelect == 1) {
                     $('.content').css('top', '460px');
@@ -158,7 +157,7 @@ $(function () {
 
     $('#productName').on('input', function () {
         productName = $('#productName').val();
-    })
+    });
 
 
     // 点击搜索
@@ -208,8 +207,7 @@ $(function () {
             $("#select2").html(html);
             search();
         })
-
-    })
+    });
 
     //选择库房查询库区
     $("#select2").change(function () {
@@ -217,7 +215,7 @@ $(function () {
         warehouseAreaId = '';
         productId = '';
         $('#select3').val('');
-        $('#select4').val('')
+        $('#select4').val('');
         getData('get', api.yq.findList3, {
             accountId: accountId,
             baseWarehouseId: warehouseId,
@@ -260,7 +258,6 @@ $(function () {
     function findCustomerList() {
         getData('get', api.yq.findCustomerList, {
             accountId: accountId,
-
             companyId: companyId
         }, function (res) {
             console.log(res)
@@ -278,7 +275,7 @@ $(function () {
     $('#nav1').change(function(){
         customerId = $('#nav1').val();
         search();
-    })
+    });
 
 
 
@@ -288,13 +285,13 @@ $(function () {
         productId = '';
         $('#select4').val('');
         search();
-    })
+    });
 
     //选择产品
     $("#select4").change(function () {
         productId = $("#select4").val();
         search();
-    })
+    });
 
     function search() {
         page = 1;
@@ -331,6 +328,4 @@ $(function () {
             }
         });
     }
-
-
-})
+});
