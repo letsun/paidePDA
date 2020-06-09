@@ -39,8 +39,8 @@ $(function () {
                 formatter: '{a} <br/>{b} : {c} ({d}%)'
             },
             legend: {
-                left: 'left',
-                top: 'top',
+                left: 'center',
+                top: '560px',
                 data: data1,
             },
             series: [
@@ -48,7 +48,7 @@ $(function () {
                     name: '',
                     type: 'pie',
                     radius: '55%',
-                    center: ['50%', '50%'],
+                    center: ['50%', '30%'],
                     data: data2,
                     emphasis: {
                         itemStyle: {
