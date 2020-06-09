@@ -11,6 +11,10 @@ $(function () {
     });
 
     var accountId = Global.getUrlParam('accountId');
+    // if (accountId  && accountId != null) {
+    //     $('.header').hide();
+    //     $('.content').css({'top': '300px'});
+    // }
     var traceGroupId = Global.getUrlParam('traceGroupId'); //集团id
     var traceCompanyId = Global.getUrlParam('traceCompanyId');//企业id
     var totalPage = 1;     // 总页数;

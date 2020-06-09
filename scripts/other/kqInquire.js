@@ -25,6 +25,10 @@ $(function () {
                 for (var i = 0; i < echartsData.length; i++) {
                     data1.push(echartsData[i].name);
                 }
+                if (data1.length > 6) {
+                    var col = Math.ceil((data1.length - 6) / 3);
+                    $('#main').height(700 + col * 50);
+                }
                 getEchartsData(data1,echartsData);
             });
         }
@@ -50,7 +54,7 @@ function getEchartsData (data1,data2) {
         legend: {
             orient: 'horizontal',
             left: 'center',
-            top: '60px',
+            top: '580px',
             data: data1,
         },
         series: [
@@ -58,7 +62,7 @@ function getEchartsData (data1,data2) {
                 name: '',
                 type: 'pie',
                 radius: '55%',
-                center: ['50%', '50%'],
+                center: ['50%', '300px'],
                 data: data2,
                 emphasis: {
                     itemStyle: {

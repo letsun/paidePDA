@@ -168,6 +168,9 @@ body {
   border-radius: 0;
   border: none;
 }
+.container select option {
+  font-size: 12px;
+}
 .container .nav {
   position: relative;
   height: 70px;
@@ -187,6 +190,9 @@ body {
   padding-left: 20px;
   background: transparent;
   z-index: 9;
+}
+.container .nav select option {
+  font-size: 12px;
 }
 .container .nav img {
   position: absolute;
@@ -252,6 +258,9 @@ body {
   padding-left: 20px;
   background: transparent;
   z-index: 9;
+}
+.container .select .select-item select option {
+  font-size: 12px;
 }
 .container .select .select-item img {
   position: absolute;

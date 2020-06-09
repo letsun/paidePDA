@@ -12,6 +12,11 @@ $(function () {
                 data: data
             }, function (template) {
                 $('.content').html(template);
+                var width = $('.lattice-item').width();
+                if (width <= 710) {
+                    $('.lattice-item').css({'margin': '0 auto'});
+                }
+
                 var echartsData = data.diagramDate;
                 var data1 = [];
                 for (var i = 0; i < echartsData.length; i++) {
