@@ -4,7 +4,7 @@ var test = "https://wms.ebiaoji.com";           //线上
 
 var product = 'https://wms.pd-kj.com';    // 生产环境
 
-var ip = dev;
+var ip = test;
 
 var api = {
     rkgd: {
